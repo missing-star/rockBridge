@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/goods.css">
+    <title>叠石桥</title>
+</head>
+<body>
+    <div id="app" >
+        <header>
+            <form class="input-group">
+                <input placeholder="输入商品或商店名称" v-model="searchContent" id="search" class="search-page-input" type="text">
+                <img @click="clearInput" class="clear-icon" src="imgs/clear.png"/>
+            </form>
+            <template v-if="isShowGoods">
+                <img @click="switchGoodsLayout" class="switch-layout" :class="{active:!isDefGoodsLayout}" src="imgs/layout-default.png"/>
+                <img @click="switchGoodsLayout" class="switch-layout" :class="{active:isDefGoodsLayout}" src="imgs/layout-line.png"/>
+            </template>
+            <template v-else>
+                <img id="bu" @click="switchBusLayout" class="switch-layout" :class="{active:!isDefBusLayout}" src="imgs/layout-default.png"/>
+                <img id="bu2" @click="switchBusLayout" class="switch-layout" :class="{active:isDefBusLayout}" src="imgs/layout-line.png"/>
+            </template>
+        </header>
+        <!--底部导航栏-->
+        <nav class="mui-bar mui-bar-tab">
+            <a class="mui-tab-item" href="index.html">
+                <img src="imgs/home.png" class="mui-icon nav-bar-icon active"/>
+                <img src="imgs/home-active.png" class="mui-icon nav-bar-icon"/>
+                <span class="mui-tab-label">首页</span>
+            </a>
+            <a class="mui-tab-item mui-active" href="javascript:;">
+                <img src="imgs/goods.png" class="mui-icon nav-bar-icon"/>
+                <img src="imgs/goods-active.png" class="mui-icon nav-bar-icon active"/>
+                <span class="mui-tab-label">商品</span>
+            </a>
+            <a class="mui-tab-item" href="info.html">
+                <img src="imgs/info.png" class="mui-icon nav-bar-icon active"/>
+                <img src="imgs/info-active.png" class="mui-icon nav-bar-icon"/>
+                <span class="mui-tab-label">资讯</span>
+            </a>
+            <a class="mui-tab-item" href="user.html">
+                <img src="imgs/user.png" class="mui-icon nav-bar-icon active"/>
+                <img src="imgs/user-active.png" class="mui-icon nav-bar-icon"/>
+                <span class="mui-tab-label">我的</span>
+            </a>
+        </nav>
+        <div class="mui-content">
+            <!--分类-->
+            <ul class="tab-bar">
+                <li @click="switchTab(0,$event)" class="tab-bar-item active">商品</li>
+                <li @click="switchTab(1,$event)" class="tab-bar-item">商铺</li>
+            </ul>
+            <!--分类排序-->
+            <ul class="sort-header">
+                <li class="sort-item active">
+                    <p class="sort-item-title">综合</p>
+                    <img class="sort-icon" src="imgs/sort-down-active.png"/>
+                </li>
+                <li class="sort-item">
+                    <p class="sort-item-title">销量</p>
+                    <img class="sort-icon" src="imgs/sort-down.png"/>
+                </li>
+                <li class="sort-item">
+                    <p class="sort-item-title">价格</p>
+                    <img class="sort-icon" src="imgs/sort-down.png"/>
+                </li>
+                <li class="sort-item">
+                    <p class="sort-item-title">筛选</p>
+                    <img class="sort-icon" src="imgs/sort-down.png"/>
+                </li>
+            </ul>
+            <!--商品tab页内容-->
+            <div class="tab-content goods" :class="{active:isShowGoods}">
+                <div v-for="n in 11" :class={'goods-item':isDefGoodsLayout,'goods-item-line':!isDefGoodsLayout}>
+                    <img class="goods-img" src="imgs/bed1.png"/>
+                    <div class="goods-info">
+                        <p>
+                            <span>商品名称</span>
+                            <span class="eye-container"><img class="view-num" src="imgs/eye.png"/>123</span>
+                        </p>
+                        <p>
+                            <span class="goods-price">￥200</span>
+                            <button class="reserve">预约</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="bottom-line">
+                    ······ 已见底了 ······
+                </div>
+            </div>
+            <!--商家tab页内容-->
+            <div class="tab-content business" :class="{active:!isShowGoods}">
+                <div v-for="n in 5" :class={'business-item':isDefBusLayout,'business-item-line':!isDefBusLayout}>
+                    <div class="top">
+                        <div class="business-info">
+                            <img src="imgs/business-logo.png" class="business-logo"/>
+                            <p class="business-detail">
+                                <span class="business-name">店铺名称<img v-for="n in 4" src="imgs/star.png" class="business-level"/></span>
+                                <span>销量 22万 | 收藏 36</span>
+                            </p>
+                        </div>
+                        <button class="go-business-btn">
+                            进店
+                        </button>
+                    </div>
+                    <div class="bottom">
+                        <template v-if="isDefBusLayout">
+                            <img v-for="n in 3" src="imgs/bed1.png" class="business-img-item"/>
+                        </template>
+                        <template v-else>
+                            <img src="imgs/bed1.png" class="business-img-item"/>
+                            <div class="goods-desc">
+                                <p class="goods-title">商品名称</p>
+                                <p class="goods-detail">
+                                    销量 36万 | 收藏 12351
+                                </p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="bottom-line">
+                    ······ 已见底了 ······
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>   
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/goods.js"></script>
+</body>
+</html>

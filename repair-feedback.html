@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/repair-feedback.css">
+    <title>叠石桥</title>
+    <!--
+        维修反馈
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>维修反馈</p>
+            </header>
+            <ul class="repair-info">
+                <li class="repair-item question">
+                    <label for="" class="title">报修问题描述</label>
+                    <textarea v-model="quesDesc" @input="limitLength" placeholder="简单描述您的报修问题" name="" id=""></textarea>
+                    <span class="show-number">{{inputCount}}/300</span>
+                </li>
+                <li class="repair-item upload">
+                    <div v-for="(item,index) in uploadedImgs" class="upload-item">
+                        <img :src="item" alt="" class="upload-img-item">
+                        <span @click="deleteImg(index)" class="delete-icon">
+                        </span>
+                    </div>
+                    <div :class="{active:uploadedImgs.length < 3}" class="upload-item upload">
+                        <div @click="uploadImg($event)" class="mask-click">
+                            <input class="upload-input" hidden type="file" accept="image/*">
+                        </div>
+                        <img src="imgs/camera.png" alt="" class="camera">
+                        <span class="imgs-num">{{uploadedImgs.length}} / 3</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="sevice-comments">
+                <div class="service-item">
+                    <div class="mask-click"></div>
+                    <p class="service-name">满意</p>
+                </div>
+                <div class="service-item">
+                    <div class="mask-click"></div>
+                    <p class="service-name">一般</p>
+                </div>
+                <div class="service-item">
+                    <div class="mask-click"></div>
+                    <p class="service-name">不满意</p>
+                </div>
+            </div>
+            <button class="submit-repair">
+                提交反馈
+            </button>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/repair-feedback.js"></script>
+</body>
+
+</html>

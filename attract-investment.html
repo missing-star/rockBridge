@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/attract-investment.css">
+    <title>叠石桥</title>
+    <!--
+        招商招租
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <img onclick="history.go(-1)" src="imgs/arrow-left.png" alt="" class="icon-back">
+        </header>
+        <p class="title">
+            招商招租
+        </p>
+        <div class="investment-list">
+            <div @click="goDetail(0)" v-for="n in 5" class="investment-item">
+                <img src="imgs/business.png" alt="" class="investment-img">
+                <p class="desc">
+                    <span class="title">终于等到你</span>
+                    <span class="sub-title">优选店面</span>
+                </p>
+            </div>
+        </div>
+        <div class="bottom-line">
+            ······ 已见底了 ······
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/attract-investment.js"></script>
+</body>
+
+</html>

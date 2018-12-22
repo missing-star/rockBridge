@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/shop-base-info.css">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <img onclick="goBack()" src="imgs/arrow-left.png" class="icon-back">
+        </header>
+        <div class="mui-content">
+            <p class="shop-info">商铺信息</p>
+            <div class="shop-logo-info">
+                <img src="imgs/business-logo.png" alt="" class="shop-logo">
+                <p class="shop-info-level">
+                    <span class="shop-name">叠石桥家纺城官方旗舰店</span>
+                    <span class="shop-level-icon">
+                        <img src="imgs/crown-active.png" alt="" class="level-icon level-icon-active">
+                        <img v-for="n in 4" src="imgs/crown.png" alt="" class="level-icon">
+                        <span>4.8分</span>
+                    </span>
+                </p>
+            </div>
+            <!--浏览量，好评率，关注量-->
+            <div class="base-data">
+                <div class="base-data-item">
+                    <span class="number">2345</span>
+                    <span class="title">浏览量</span>
+                </div>
+                <div class="base-data-item">
+                    <span class="number">100%</span>
+                    <span class="title">好评率</span>
+                </div>
+                <div class="base-data-item">
+                    <span class="number">2345</span>
+                    <span class="title">关注量</span>
+                </div>
+            </div>
+            <!--商铺评分-->
+            <ul class="shop-score">
+                <li class="shop-score-item">
+                    <span class="title">商品描述</span>
+                    <span class="icon">
+                        <img v-for="n in 4" src="imgs/star-high.png" alt="">
+                        <img src="imgs/star.png" alt="">
+                    </span>
+                    <span class="score">
+                        <span class="high">4.8</span>
+                        <img class="arrow-rise-reduce" src="imgs/rise.png" alt="">
+                    </span>
+                </li>
+                <li class="shop-score-item">
+                    <span class="title">商品描述</span>
+                    <span class="icon">
+                        <img v-for="n in 3" src="imgs/star-low.png" alt="">
+                        <img v-for="n in 2" src="imgs/star.png" alt="">
+                    </span>
+                    <span class="score">
+                        <span class="low">3</span>
+                        <img class="arrow-rise-reduce" src="imgs/reduce.png" alt="">
+                    </span>
+                </li>
+                <li class="shop-score-item">
+                    <span class="title">商品描述</span>
+                    <span class="icon">
+                        <img v-for="n in 4" src="imgs/star-high.png" alt="">
+                        <img src="imgs/star.png" alt="">
+                    </span>
+                    <span class="score">
+                        <span class="high">4.8</span>
+                        <img class="arrow-rise-reduce" src="imgs/rise.png" alt="">
+                    </span>
+                </li>
+            </ul>
+            <!--地址信息-->
+            <ul class="address-list">
+                <li class="address-item">
+                    <p class="title">所在地区</p>
+                    <p class="content">南京市江南区高新园321人才创业大厦</p>
+                </li>
+                <li class="address-item">
+                    <p class="title">实名认证</p>
+                    <p class="content">已通过系统实名认证</p>
+                </li>
+                <li class="address-item">
+                    <p class="title">商家电话</p>
+                    <p class="content">400-000-0000</p>
+                </li>
+                <li class="address-item">
+                    <p class="title">所在地区</p>
+                    <p class="content">2014-12-21</p>
+                </li>
+            </ul>
+            <!--工商执照-->
+            <div class="card">
+                工商执照
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/shop-base-info.js"></script>
+</body>
+
+</html>

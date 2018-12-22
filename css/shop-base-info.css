@@ -1,0 +1,161 @@
+div.mui-content {
+    padding-top: 0;
+}
+
+img.icon-back {
+    width: 0.6rem;
+}
+
+header {
+    padding: 1rem;
+}
+
+p.shop-info {
+    font-size: 1rem;
+    color: #000;
+}
+
+.shop-logo-info {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    height: 5rem;
+}
+
+img.shop-logo {
+    width: 3rem;
+}
+
+p.shop-info-level {
+    display: flex;
+    height: 100%;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    margin-left: 1rem;
+}
+
+span.shop-name {
+    color: #000;
+    font-size: 0.8rem;
+}
+
+img.level-icon {
+    width: 0.6rem;
+    margin-right: 0.2rem;
+}
+
+span.shop-level-icon>span {
+    color: #000;
+    font-size: 0.8rem;
+}
+
+div.base-data {
+    background-image: linear-gradient(-90deg, #fecd94 0%, #fa8383 100%);
+    box-shadow: 0 2px 6px 0 rgba(201, 77, 40, 0.50);
+    height: 6rem;
+    border: none;
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.base-data-item {
+    width: calc(100% / 3);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    color: #fff;
+    height: 100%;
+}
+.base-data-item:nth-child(2):before {
+    content: '';
+    height: 30%;
+    position: absolute;
+    background: #fff;
+    width: 1px;
+    left: 0;
+}
+.base-data-item:nth-child(2):after {
+    content: '';
+    height: 30%;
+    position: absolute;
+    background: #fff;
+    width: 1px;
+    right: 0;
+}
+span.number {
+    font-size: 0.8rem;
+    padding-bottom: 0.2rem;
+}
+span.title {
+    font-size: 0.8rem;
+}
+ul.shop-score {
+    margin: 0;
+    list-style: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f6f6f6;
+}
+li.shop-score-item {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+}
+li.shop-score-item img {
+    width: 0.8rem;
+}
+span.icon {
+    padding-left: 1rem;
+}
+span.score {
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+img.arrow-rise-reduce {
+    margin-left: 0.5rem;
+    width: 0.45rem !important;
+}
+span.icon img {
+    margin-right: 0.2rem;
+}
+li.shop-score-item span.title {
+    color: #aaaaaa;
+}
+span.score>span.high {
+    color: #ff8b16;
+}
+span.score>span.low{
+    color:#83d472;
+}
+ul.address-list {
+    list-style: none;
+    padding: 0;
+    border-bottom: 1px solid #f6f6f6;
+}
+li.address-item {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+}
+li.address-item>p.title {
+    color: #aaaaaa;
+    padding-right: 1rem;
+    font-size: 0.8rem;
+}
+li.address-item>p.content {
+    color: #333;
+    font-size: 0.8rem;
+}
+.card {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #333;
+    background:url(../imgs/arrow-right.png) no-repeat;
+    background-position: right;
+    background-size: 0.5rem;
+}

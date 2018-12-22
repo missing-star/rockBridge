@@ -1,0 +1,77 @@
+
+html,body,.mui-content{
+    font-size: calc(100vw / 20);
+    background: #ffffff;
+}
+div.mui-content{
+    padding: 1rem;
+}
+header.mui-bar.mui-bar-nav {
+    background: #ffffff;
+    box-shadow: none;
+}
+nav.mui-bar.mui-bar-tab {
+    background: #ffffff;
+    box-shadow:0 0 6px 0 rgba(0,0,0,0.15);
+}
+nva.mui-bar-tab span.mui-tab-label{
+    color:#9d7e60;
+}
+.mui-bar-tab .mui-tab-item.mui-active{
+    color:#5f4831;
+}
+
+img.mui-icon.nav-bar-icon.active {
+    display: inline;
+}
+img.mui-icon.nav-bar-icon {
+    display: none;
+}
+p{
+    margin: 0;
+}
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea {
+    margin-bottom: 0;
+    width: auto;
+    height: auto;
+    border: none;
+    flex: 1;
+    font-size: 0.8rem;
+}
+input::-webkit-input-placeholder {
+    color:#c2c2c2;
+}
+nav.mui-bar.mui-bar-tab a.mui-tab-item {
+    touch-action: none;
+    height: 100%;
+}
+nav.mui-bar.mui-bar-tab {
+    height: 3rem;
+}
+.mui-bar-tab .mui-tab-item .mui-icon {
+    top: 3px;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0.1rem;
+}
+.mui-bar-tab .mui-tab-item .mui-icon~.mui-tab-label{
+    font-size: 0.5rem;
+    line-height: 1rem;
+}
+.mui-bar-tab~.mui-content{
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+}
+button.submit {
+    background: #9d7e60;
+    width: 100%;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #fff;
+    margin-top: 1rem;
+    height: 2rem;
+}

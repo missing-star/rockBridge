@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/repair-record.css">
+    <!--
+        报修记录
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>报修记录</p>
+            </header>
+            <ul class="repair-list">
+                <li @click="getRecordDetail(0)" v-for="item in recordList" class="repair-item">
+                    <p class="head">
+                        <span>{{item.shopNo}}</span>
+                        <span class="status" :class="{'warning':item.status == 2}">{{item.statusName}}</span>
+                    </p>
+                    <p class="repair-content">
+                        <span class="title">{{item.title}}</span>
+                        <span class="date">{{item.dateTime}}</span>
+                    </p>
+                    <p v-if="item.charge" class="charge">
+                        额外收费：￥{{item.charge}}
+                    </p>
+                </li>
+            </ul>
+            <button @click="goRepair" class="submit-repair">
+                申请报修
+            </button>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="assets/mui/picker/js/mui.picker.js"></script>
+    <script src="assets/mui/picker/js/mui.poppicker.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/repair-record.js"></script>
+</body>
+
+</html>

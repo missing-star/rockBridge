@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>叠石桥</title>
+</head>
+<body>
+    <div id="app" >
+        <!--顶部搜索栏-->
+        <header class="mui-bar mui-bar-nav">
+            <img src="imgs/search-left-icon.png" class="search-left-icon"/>
+            <input readonly @focus="showSearch" type="text" class="search-input" placeholder="四件套|寻找优质羽绒蚕丝"/>
+            <div class="notice-container">
+                <img src="imgs/notice.png" class="notice-icon"/>
+                <span class="mui-badge mui-badge-danger">22</span>
+            </div>
+        </header>
+        <!--底部导航栏-->
+        <nav class="mui-bar mui-bar-tab">
+            <a class="mui-tab-item mui-active" href="javascript:;">
+                <img src="imgs/home.png" class="mui-icon nav-bar-icon"/>
+                <img src="imgs/home-active.png" class="mui-icon nav-bar-icon active"/>
+                <span class="mui-tab-label">首页</span>
+            </a>
+            <a class="mui-tab-item" href="goods.html"> 
+                <img src="imgs/goods.png" class="mui-icon nav-bar-icon active"/>
+                <img src="imgs/goods-active.png" class="mui-icon nav-bar-icon"/>
+                <span class="mui-tab-label">商品</span>
+            </a>
+            <a class="mui-tab-item" href="info.html">
+                <img src="imgs/info.png" class="mui-icon nav-bar-icon active"/>
+                <img src="imgs/info-active.png" class="mui-icon nav-bar-icon"/>
+                <span class="mui-tab-label">资讯</span>
+            </a>
+            <a class="mui-tab-item" href="user.html">
+                <img src="imgs/user.png" class="mui-icon nav-bar-icon active"/>
+                <img src="imgs/user-active.png" class="mui-icon nav-bar-icon"/>
+                <span class="mui-tab-label">我的</span>
+            </a>
+        </nav>
+        <div class="mui-content">
+            <!--页面主体内容-->
+            <!--图片展示-->
+            <div class="banner">
+                <div class="banner-content-bg">
+                    <div class="banner-content">
+                        <p class="content-title">只为最纯净的柔软</p>
+                        <p class="content-desc">品质 绿色 纯净</p>
+                    </div>
+                </div>
+            </div>
+            <!--滑动项目-->
+            <div class="slider">
+                <div @click="jumpLink(item.url)" class="slider-item" v-for="item in itemList">
+                    <img class="item-icon" :src="item.icon"/>
+                    <p class="item-desc">
+                        <span class="item-desc-title">{{item.title}}</span>
+                        <span class="item-desc-content">{{item.desc}}</span>
+                    </p>
+                </div>
+            </div>
+            <!--招商招租-->
+            <p @click="jumpLink('attract-investment.html')" class="business-top-title">
+                <span class="first-title">招商招租</span>
+                <span class="middle-icon"> | </span>
+                <span class="end-title">优选店面</span>
+            </p>
+            <div class="slider-business">
+                <div @click="goDetail('attract-investment-detail.html',0)" v-for="n in 5" class="slider-business-item">
+                    <img src="imgs/rent.png"/>
+                    <p class="business-item-title">终于等到你</p>
+                    <p class="business-item-content">优选店面</p>
+                </div>
+            </div>
+            <!--卡片：新闻，领券，通知-->
+            <div class="card-view-con">
+                <div class="news-card">
+                    <p class="card-content-con">
+                        <span class="title">新闻资讯</span>
+                        <span class="desc">每日更新资讯知天下事</span>
+                    </p>
+                </div>
+                <div class="right-container">
+                    <div class="quan-card">
+                        <p class="card-content-con">
+                            <span class="title">天天领券</span>
+                            <span class="desc">每日优惠惊喜不断</span>
+                        </p>
+                    </div>
+                    <div class="notice-card">
+                        <p class="card-content-con">
+                            <span class="title">实时通知</span>
+                            <span class="desc">平台重大消息及时通知</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--人气好物-->
+            <div class="good-goods-con">
+                <p class="title">
+                    <span>人气好物 | </span>
+                    <span>回头率超高</span>
+                </p>
+                <div class="goods-container">
+                    <div class="top">
+
+                    </div>
+                    <div class="bottom">
+                        <div class="bottom-item" v-for="n in 3">
+                            <img src="imgs/bed1.png"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--商家推荐-->
+            <p class="class-title">商家推荐</p>
+            <div class="business-recommond">
+                <div v-for="n in 2" class="business-item">
+                    <div class="top">
+                        <div class="business-info">
+                            <img src="imgs/business-logo.png" class="business-logo"/>
+                            <p class="business-detail">
+                                <span class="business-name">店铺名称<img v-for="n in 4" src="imgs/star.png" class="business-level"/></span>
+                                <span>销量 22万 | 收藏 36</span>
+                            </p>
+                        </div>
+                        <button @click="enterShop(0)" class="go-business-btn">
+                            进店
+                        </button>
+                    </div>
+                    <div class="bottom">
+                        <img v-for="n in 3" src="imgs/bed1.png" class="business-img-item"/>
+                    </div>
+                </div>
+            </div>
+            <!--有好货-->
+            <p class="class-title">有好货</p>
+            <div class="have-good-goods">
+                <div v-for="n in 3" class="goods-item">
+                    <img class="goods-img" src="imgs/bed1.png"/>
+                    <div class="goods-info">
+                        <p>
+                            <span>商品名称</span>
+                            <span class="eye-container"><img class="view-num" src="imgs/eye.png"/>123</span>
+                        </p>
+                        <p>
+                            <span class="goods-price">￥200</span>
+                            <button class="reserve">预约</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-line">
+                ······ 已见底了 ······
+            </div>
+        </div>
+        <!--搜索页-->
+        <div class="search-page" :class={active:isFadeIn,'slide-out':isFadeOut}>
+            <header>
+                <img @click="hideSearch" src="imgs/icon-back.png" class="icon-back"/>
+                <form class="input-group">
+                    <input placeholder="输入商品或商店名称" v-model="searchContent" id="search" class="search-page-input" type="text">
+                    <img @click="clearInput" class="clear-icon" src="imgs/clear.png"/>
+                </form>
+                <span @click="hideSearch" class="cancel-search">取消</span>
+            </header>
+            <ul class="tab-bar">
+                <li class="tab-bar-item active">全部</li>
+                <li class="tab-bar-item">商品</li>
+                <li class="tab-bar-item">商铺</li>
+            </ul>
+            <!--历史搜索-->
+            <div class="search-history">
+                <header class="history-header">
+                    <p class="search-history-title">历史搜索</p>
+                    <img src="imgs/delete.png" class="icon-delete"/>
+                </header>
+                <ul class="history-list">
+                    <template v-for="n in 3">
+                        <li class="list-item">手机</li> 
+                        <li class="list-item">羽绒服</li> 
+                    </template>
+                </ul>
+            </div>
+            <!--热门搜索-->
+            <div class="hot-search">
+                    <header class="hot-header">
+                        <p class="search-hot-title">热门搜索</p>
+                    </header>
+                    <ul class="hot-list">
+                        <template v-for="n in 3">
+                            <li class="list-item">手机</li> 
+                            <li class="list-item">羽绒服</li> 
+                        </template>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>   
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+div#app {
+    padding: 1rem;
+}
+
+img.icon-back {
+    width: 0.6rem;
+}
+
+p.title {
+    color: #000000;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+}
+
+.investment-list {
+    padding: 1rem 0;
+}
+
+.investment-item {
+    width: 48%;
+    margin-bottom: 1rem;
+}
+
+img.investment-img {
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.investment-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+p.desc {
+    display: flex;
+    flex-flow: column;
+}
+
+span.title {
+    color: #333333;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+span.sub-title {
+    color: #aaaaaa;
+    font-size: 0.6rem;
+    line-height: 1rem;
+}
+
+.bottom-line {
+    width: 100%;
+    color: #aaa;
+    font-size: 0.8rem;
+    text-align: center;
+    height: 2rem;
+}

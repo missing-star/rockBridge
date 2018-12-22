@@ -1,0 +1,79 @@
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+header.packet-title>p:last-child {
+    color: #000000;
+    font-size: 0.7rem;
+}
+header.mui-bar.mui-bar-nav{
+    height: 2.5rem;
+    padding:0 1rem;
+    display: flex;
+    align-items: center;
+}
+.mui-bar-nav~.mui-content{
+    padding-top: 2.5rem;
+}
+.packet-balance {
+    position: relative;
+    background: linear-gradient(-90deg, #fecd93 0%, #fa8383 100%);
+    height: 7rem;
+    border-radius: 0.3rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+span.packet-balance-icon {
+    line-height: 6rem;
+    font-size: 6rem;
+    color: #FFFFFF;
+    position: absolute;
+    top: -0.5rem;
+    right: 0;
+    opacity: 0.3;
+}
+.packet-balance>p {
+    color: #FFFFFF;
+}
+.packet-balance>p:first-child {
+    font-size: 0.9rem;
+    line-height: 3rem;
+}
+.packet-balance>p:nth-child(2){
+    font-size: 2rem;
+    line-height: 2.2rem;
+}
+.packet-btn-group {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+button.btn-charge {
+    background: #9d7e60;
+    border: 1px solid #9d7e60;
+    border-radius: 1rem;
+    font-size: 1rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+button.btn-get-cash {
+    border: 1px solid #9d7e60;
+    border-radius: 1rem;
+    font-size: 1rem;
+    color: #9d7e60;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/shop-detail.css">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--顶部搜索栏-->
+        <header class="mui-bar mui-bar-nav">
+            <div class="bg-black">
+                <div class="search-group">
+                    <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+                    <input readonly @focus="showSearch" type="text" class="search-input" placeholder="搜宝贝" />
+                    <img v-for="n in 3" src="imgs/shop-more.png" class="notice-icon" />
+                </div>
+                <div class="shop-info">
+                    <img src="imgs/business-logo.png" alt="" class="shop-logo">
+                    <div class="shop-title">
+                        <p class="shop-name">叠石桥家纺城官方旗舰店</p>
+                        <p class="shop-level">
+                            <span class="shop-score">8.8分</span>
+                            <span class="shop-level-icon">
+                                <img class="img-level" src="imgs/crown-active.png" alt="">
+                                <img class="img-level" v-for="n in 4" src="imgs/crown.png" alt="">
+                            </span>
+                        </p>
+                    </div>
+                    <button class="follow active">
+                        已收藏
+                    </button>
+                </div>
+                <ul class="tab-list">
+                    <li class="tab-item active">首页</li>
+                    <li class="tab-item">商品</li>
+                </ul>
+            </div>
+        </header>
+        <div class="mui-content">
+            <!--招商招租-->
+            <p class="business-top-title">
+                人气推荐
+            </p>
+            <div class="slider-business">
+                <div v-for="n in 5" class="slider-business-item">
+                    <img src="imgs/bed1.png" />
+                    <p class="business-item-title">羽绒蚕丝被</p>
+                    <p class="business-item-content">1200起</p>
+                </div>
+            </div>
+            <!--全部商品-->
+            <p class="class-title">全部商品</p>
+            <div class="have-good-goods">
+                <div v-for="n in 3" class="goods-item">
+                    <img class="goods-img" src="imgs/bed1.png"/>
+                    <div class="goods-info">
+                        <p>
+                            <span>商品名称</span>
+                            <span class="eye-container"><img class="view-num" src="imgs/eye.png"/>123</span>
+                        </p>
+                        <p>
+                            <span class="goods-price">￥200</span>
+                            <button class="reserve">预约</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-line">
+                ······ 已见底了 ······
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/shop-detail.js"></script>
+</body>
+
+</html>

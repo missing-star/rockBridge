@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/online-pay.css">
+    <title>叠石桥</title>
+    <!--
+        缴费
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>缴费</p>
+                <p @click="goDetail">明细</p>
+            </header>
+            <div class="online-pay" :class="{active:!isNext}">
+                <ul class="pay-list">
+                    <li id="classify" class="pay-item picker">
+                        <label for="" class="title">缴费类型</label>
+                        <input v-model="selectedClassify" type="text" class="classify" readonly>
+                    </li>
+                    <li class="pay-item picker">
+                        <label for="" class="title">缴费单位</label>
+                        <input value="南京供电公司" type="text" class="address" readonly>
+                    </li>
+                    <li class="pay-item picker">
+                        <label for="" class="title">户号</label>
+                        <input type="text" class="address">
+                    </li>
+                </ul>
+                <button @click="getNext" class="next">下一步</button>
+            </div>
+            <div class="online-pay" :class="{active:isNext}">
+                <ul class="pay-list">
+                    <li id="classify" class="pay-item">
+                        <label for="" class="title">缴费单位</label>
+                        <input value="南京供电公司" type="text" class="classify" readonly>
+                    </li>
+                    <li class="pay-item">
+                        <label for="" class="title space-between"><span>户</span><span>号</span></label>
+                        <input value="2015521" type="text" class="address" readonly>
+                    </li>
+                    <li class="pay-item">
+                        <label for="" class="title space-between"><span>户</span><span>名</span></label>
+                        <input value="看见快乐风阿拉丁发来的" type="text" class="address" readonly>
+                    </li>
+                    <li class="pay-item">
+                        <label for="" class="title">住址信息</label>
+                        <input value="看见快乐风阿拉丁发来的" type="text" class="address" readonly>
+                    </li>
+                    <li class="pay-item">
+                        <label for="" class="title">欠费日期</label>
+                        <input value="看见快乐风阿拉丁发来的" type="text" class="address" readonly>
+                    </li>
+                    <li class="pay-item">
+                        <label for="" class="title">欠费金额</label>
+                        <input value="看见快乐风阿拉丁发来的" type="text" class="address" readonly>
+                    </li>
+                    <li class="pay-item">
+                        <label for="" class="title">缴费金额</label>
+                        <input type="number" class="address" placeholder="请输入充值金额">
+                    </li>
+
+                </ul>
+                <button class="next">立即缴费</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="assets/mui/picker/js/mui.picker.js"></script>
+    <script src="assets/mui/picker/js/mui.poppicker.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/online-pay.js"></script>
+</body>
+
+</html>

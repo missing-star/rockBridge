@@ -1,0 +1,82 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+.trade-container {
+    text-align: center;
+    padding: 1rem;
+}
+img.trade-icon {
+    width: 1rem;
+}
+p.title {
+    color: #000000;
+    line-height: 1.2rem;
+    font-size: 0.9rem;
+}
+p.trade-money {
+    color: #000000;
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+p.trade-status {
+    color: #aaaaaa;
+    font-size: 0.8rem;
+}
+ul.detail-list {
+    list-style: none;
+    padding: 0;
+}
+li.detail-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 1rem 0;
+}
+label.title {
+    font-size: 0.9rem;
+    color: #888888;
+    width:25%;
+}
+p.content {
+    color: #000000;
+    font-size: 0.9rem;
+}
+label.title.space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+}
+p.concat {
+    background: url(../imgs/arrow-right.png) no-repeat;
+    background-size: 0.5rem;
+    background-position: 95%;
+    flex: 1;
+}
+header.packet-title>p:last-child {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: #000000;
+}

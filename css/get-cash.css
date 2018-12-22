@@ -1,0 +1,148 @@
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+header.mui-bar.mui-bar-nav{
+    height: 2.5rem;
+    padding:0 1rem;
+    display: flex;
+    align-items: center;
+}
+.mui-bar-nav~.mui-content{
+    padding-top: 2.5rem;
+}
+.packet-balance {
+    position: relative;
+    background: #f6f6f6;
+    height: 10rem;
+    border-radius: 0.3rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+span.packet-balance-icon {
+    line-height: 9rem;
+    font-size: 9rem;
+    color: #FFFFFF;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+}
+.packet-balance>p {
+    color: #FFFFFF;
+    position: relative;
+}
+.packet-balance>p:first-child {
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #000000;
+}
+.packet-balance>p:nth-child(2){
+    font-size: 2rem;
+    line-height: 2.2rem;
+}
+.packet-btn-group {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+button.btn-charge {
+    border-radius: 1rem;
+    font-size: 1rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+
+button.btn-charge.invalid{
+    background:#e5e5e5;
+    border: 1px solid #e5e5e5;
+}
+
+button.btn-charge.valid{
+    background:#9d7e60;
+    border: 1px solid #9d7e60;
+}
+
+button.btn-get-cash {
+    border: 1px solid #9d7e60;
+    border-radius: 1rem;
+    font-size: 1rem;
+    color: #9d7e60;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+.packet-balance>p {
+    color: #000000;
+    position: relative;
+    font-size: 3rem;
+    line-height: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+}
+input.input-cash {
+    height: 100%;
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    padding: 0;
+    padding-right: 1rem;
+    border-radius: 0;
+}
+p.get-cash-container {
+    border-bottom: 1px solid #FFFFFF;
+    margin-top: 1.6rem;
+    padding-bottom: 0.5rem;
+}
+p.current-balance {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    color:#9d7e60;
+    padding-left: 0.5rem;
+    font-size: 0.8rem;
+}
+p.current-balance>span:first-child{
+    color:#9d7e60;
+}
+p.current-balance>span:nth-child(2) {
+    color: #ff5e2c;
+    padding-left: 1rem;
+}
+.alipay-get-cash {
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f6f6f6;
+    margin-top: 1rem;
+    background-image: url(../imgs/arrow-right.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 0.6rem;
+}
+img.alipay-icon {
+    width: 2rem;
+}
+.alipay-get-cash>p {
+    font-size: 1rem;
+    color: #000000;
+    margin-left: 1rem;
+}
+p.warning {
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: 1rem 0;
+    color: red;
+}

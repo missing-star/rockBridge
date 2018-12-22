@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/attract-investment-detail.css">
+    <!--
+        招商招租详情页
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <img onclick="history.go(-1)" src="imgs/arrow-left.png" alt="" class="icon-back">
+        </header>
+        <p class="title">
+            招商招租详情
+        </p>
+        <div class="img-slider">
+            <img v-for="n in 5" src="imgs/business.png" alt="" class="img-slider-item">
+        </div>
+        <p class="desc">
+            房屋描述附近的拉风的来访记录都是饭店附近的恐龙当家
+        </p>
+        <p class="sub-title-btn">
+            <span class="sub-title">小标题</span>
+            <button class="revese">预约</button>
+        </p>
+        <p class="setting">
+            配置设施
+        </p>
+        <ul class="facilities-list">
+            <li v-for="n in 6" class="facilities-item">
+                <img src="imgs/business-logo.png" alt="" class="facilities-logo">
+                <span class="facilities-name">热水器</span>
+            </li>
+        </ul>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/attract-investment-detail.js"></script>
+</body>
+
+</html>

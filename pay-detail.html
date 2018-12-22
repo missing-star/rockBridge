@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/pay-detail.css">
+    <title>叠石桥</title>
+    <!--
+        缴费明细
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>缴费明细</p>
+                <p @click="getInvoice">发票</p>
+            </header>
+            <div class="date-picker">
+                <p class="show-date">
+                    2018年8月
+                </p>
+                <p class="show-detail">
+                    缴费总支出：¥359.35 缴费余额剩余：¥120.00
+                </p>
+            </div>
+            <ul v-if="paidList.length != 0" class="paid-list">
+                <li @click="getDetail" class="paid-item">
+                    <img src="imgs/electric.png" alt="" class="paid-item-icon">
+                    <div class="detail-container">
+                        <p class="top">
+                            <span class="title">电费</span>
+                            <span class="date-time">07-12 20:23</span>
+                        </p>
+                        <p class="bottom">
+                            <span class="phone-address">2032564|地址</span>
+                            <span class="money">-25.00</span>
+                        </p>
+                    </div>
+                </li>
+                <li @click="getDetail" class="paid-item">
+                    <img src="imgs/service.png" alt="" class="paid-item-icon">
+                    <div class="detail-container">
+                        <p class="top">
+                            <span class="title">服务费</span>
+                            <span class="date-time">07-12 20:23</span>
+                        </p>
+                        <p class="bottom">
+                            <span class="phone-address">2032564|地址</span>
+                            <span class="money">-25.00</span>
+                        </p>
+                    </div>
+                </li>
+                <li @click="getDetail" class="paid-item">
+                    <img src="imgs/property.png" alt="" class="paid-item-icon">
+                    <div class="detail-container">
+                        <p class="top">
+                            <span class="title">物业费</span>
+                            <span class="date-time">07-12 20:23</span>
+                        </p>
+                        <p class="bottom">
+                            <span class="phone-address">2032564|地址</span>
+                            <span class="money">-25.00</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <div v-if="paidList.length == 0" class="no-record-container">
+                <img class="no-record-icon" src="imgs/no-record.png" alt="">
+                <p class="desc">暂无缴费记录</p>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/pay-detail.js"></script>
+</body>
+
+</html>

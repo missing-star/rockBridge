@@ -1,0 +1,97 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+header.packet-title>p:last-child {
+    color: #888888;
+    font-size: 0.7rem;
+}
+.date-picker {
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
+    padding: 1rem 0.5rem;
+    margin-top: 1.5rem;
+    background: url(../imgs/arrow-right.png) no-repeat;
+    background-position: 95%;
+    background-size: 0.4rem;
+    border-radius: 0.2rem;
+}
+p.show-date {
+    color: #000000;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+p.show-detail {
+    color: #aaaaaa;
+    font-size: 0.7rem;
+    line-height: 1rem;
+}
+ul.paid-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+li.paid-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 0.8rem 0;
+}
+img.paid-item-icon {
+    width: 1.2rem;
+    margin-right: 1rem;
+}
+.detail-container {
+    flex: 1;
+}
+p.top ,p.bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+span.title {
+    color: #000000;
+    font-size: 0.9rem;
+    line-height: 1rem;
+}
+span.date-time ,span.phone-address{
+    color: #aaaaaa;
+    font-size: 0.7rem;
+    line-height: 1rem;
+}
+span.money {
+    font-size: 0.9rem;
+    color: #ff8b16;
+    line-height: 1.2rem;
+}
+img.no-record-icon {
+    width: 50%;
+}
+.no-record-container {
+    text-align: center;
+    padding-top: 6rem;
+}
+p.desc {
+    font-size: 0.8rem;
+    color: #888888;
+}

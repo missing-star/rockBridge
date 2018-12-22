@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/pay-detail-detail.css">
+    <title>叠石桥</title>
+    <!--
+        缴费明细详情
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>明细详情</p>
+                <p @click="goComplain">投诉</p>
+            </header>
+            <div class="trade-container">
+                <img src="imgs/electric.png" alt="" class="trade-icon">
+                <p class="title">南京供电公司</p>
+                <p class="trade-money">-25.00</p>
+                <p class="trade-status">交易成功</p>
+            </div>
+            <ul class="detail-list">
+                <li class="detail-item">
+                    <label for="" class="title">
+                        付款方式
+                    </label>
+                    <p class="content">支付宝</p>
+                </li>
+                <li class="detail-item">
+                    <label for="" class="title">
+                        缴费说明
+                    </label>
+                    <p class="content">电费-用户名-商家店名</p>
+                </li>
+                <li class="detail-item">
+                    <label for="" class="title space-between">
+                        <span>户</span>
+                        <span>号</span>
+                    </label>
+                    <p class="content">1023564 用户名</p>
+                </li>
+                <li class="detail-item">
+                    <label for="" class="title">
+                        使用日期
+                    </label>
+                    <p class="content">6月12日-8月12日</p>
+                </li>
+                <li class="detail-item">
+                        <label for="" class="title">
+                            创建日期
+                        </label>
+                        <p class="content">2018-02-22 20:22</p>
+                    </li>
+                <li class="detail-item">
+                    <label for="" class="title">
+                        订单号
+                    </label>
+                    <p class="content">236656545445442255</p>
+                </li>
+                <li class="detail-item">
+                    <label for="" class="title">
+                        有疑虑
+                    </label>
+                    <p class="content concat">联系客服</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/pay-detail-detail.js"></script>
+</body>
+
+</html>

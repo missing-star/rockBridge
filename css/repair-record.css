@@ -1,0 +1,98 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+
+button.submit-repair {
+    width: 100%;
+    background: #9d7e60;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+ul.repair-list {
+    border-radius: 0.2rem;
+    list-style: none;
+    padding: 0;
+}
+
+p.head {
+    border-bottom: 1px solid #f6f6f6;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #AAAAAA;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+p.repair-content {
+    padding: 0.5rem;
+    height: 4rem;
+    border-bottom: 1px solid #f6f6f6;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+span.title {
+    color: #333333;
+    font-size: 0.9rem;
+    line-height: 1rem;
+}
+
+span.date {
+    color: #888888;
+    font-size: 0.6rem;
+    line-height: 1.5rem;
+}
+
+p.charge {
+    height: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 0.9rem;
+    color: #000000;
+    line-height: 1rem;
+}
+
+
+li.repair-item {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+    margin-bottom: 1rem;
+    border-radius: 0.2rem;
+}
+span.status.warning {
+    color: #ff8b16;
+}
