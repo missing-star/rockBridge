@@ -106,7 +106,7 @@ function countTime(str) {
 }
 
 function validateUser() {
-    if(localStorage.getItem('user').status != -1) {
+    if(localStorage.getItem('user') != `""`) {
         return true;
     }
     else {
