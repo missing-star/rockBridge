@@ -108,7 +108,7 @@ var vm = new Vue({
         submit() {
             var regPhone = /^1[34578]\d{9}$/;
             var formData = {
-                title: this.userName,
+                person_name: this.userName,
                 phone: this.phone,
                 password: this.password,
                 address_id: this.addressPubId,
