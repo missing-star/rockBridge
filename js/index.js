@@ -87,6 +87,10 @@ var vm = new Vue({
                 case 'goods':
                     this.historyList.goods = [];
             }
+        },
+        //预约商品
+        reGoods() {
+            console.log('预约商品');
         }
     }
 });
