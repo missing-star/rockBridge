@@ -147,7 +147,7 @@ var vm = new Vue({
                         mui.confirm('资料已提交成功', '', ['确定'], function (e) {
                             window.location.reload();
                             //可以进行切换
-                            localStorage.setItem('switchRole',1);
+                            localStorage.setItem('switchRole', 1);
                         });
                     } else {
                         mui.toast(data.msg);
@@ -207,14 +207,13 @@ function parseImage(elem, key) {
     var arr = filePath.split('\\');
     var fileName = arr[arr.length - 1];
     fr.onload = function () {
-        vm.cardList[key].src = this.result;
-        uploadImgRealPath(imgObj, key);
+        uploadImgRealPath(imgObj, key, this.src);
         //置空文件上传框的值
         $(elem).val("");
     };
 }
 //上传图片到后台
-function uploadImgRealPath(fileObj, key) {
+function uploadImgRealPath(fileObj, key, src) {
     var formData = new FormData();
     formData.append('image', fileObj);
     $.ajax({
@@ -226,8 +225,11 @@ function uploadImgRealPath(fileObj, key) {
         data: formData,
         success: function (data) {
             mui.toast(data.msg);
-            //设置文件路径为服务器路径
-            vm.cardList[key].realPath = data.result;
+            if (dta.status == 1) {
+                vm.cardList[key].src = src;
+                //设置文件路径为服务器路径
+                vm.cardList[key].realPath = data.result;
+            }
         },
         error: function () {
             mui.toast('服务器异常!');
