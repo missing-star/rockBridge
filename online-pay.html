@@ -25,56 +25,65 @@
                 <p>缴费</p>
                 <p @click="goDetail">明细</p>
             </header>
-            <div class="online-pay" :class="{active:!isNext}">
+            <div class="online-pay active">
                 <ul class="pay-list">
                     <li id="classify" class="pay-item picker">
                         <label for="" class="title">缴费类型</label>
                         <input v-model="selectedClassify" type="text" class="classify" readonly>
                     </li>
-                    <li class="pay-item picker">
-                        <label for="" class="title">缴费单位</label>
-                        <input value="南京供电公司" type="text" class="address" readonly>
+                    <li  id="repair-list" v-show="isShowRepair" class="pay-item picker">
+                        <label for="" class="title">报修单</label>
+                        <input v-model="selectedRepairName" type="text" class="classify" readonly>
                     </li>
                     <li class="pay-item picker">
                         <label for="" class="title">户号</label>
-                        <input type="text" class="address">
-                    </li>
-                </ul>
-                <button @click="getNext" class="next">下一步</button>
-            </div>
-            <div class="online-pay" :class="{active:isNext}">
-                <ul class="pay-list">
-                    <li id="classify" class="pay-item">
-                        <label for="" class="title">缴费单位</label>
-                        <input value="南京供电公司" type="text" class="classify" readonly>
-                    </li>
-                    <li class="pay-item">
-                        <label for="" class="title space-between"><span>户</span><span>号</span></label>
-                        <input value="2015521" type="text" class="address" readonly>
-                    </li>
-                    <li class="pay-item">
-                        <label for="" class="title space-between"><span>户</span><span>名</span></label>
-                        <input value="看见快乐风阿拉丁发来的" type="text" class="address" readonly>
-                    </li>
-                    <li class="pay-item">
-                        <label for="" class="title">住址信息</label>
-                        <input value="看见快乐风阿拉丁发来的" type="text" class="address" readonly>
-                    </li>
-                    <li class="pay-item">
-                        <label for="" class="title">欠费日期</label>
-                        <input value="看见快乐风阿拉丁发来的" type="text" class="address" readonly>
-                    </li>
-                    <li class="pay-item">
-                        <label for="" class="title">欠费金额</label>
-                        <input value="看见快乐风阿拉丁发来的" type="text" class="address" readonly>
+                        <input readonly v-model="userNum" type="number" class="address">
                     </li>
                     <li class="pay-item">
                         <label for="" class="title">缴费金额</label>
-                        <input type="number" class="address" placeholder="请输入充值金额">
+                        <input :readonly="money != 0" v-model="inputMoney" type="number" class="address" placeholder="请输入充值金额">
                     </li>
-
+                    <li class="pay-item">
+                        <label for="" class="title">备注说明</label>
+                        <input @input="validateDesc" v-model="description" type="text" class="address" placeholder="请输入说明">
+                    </li>
+                    <li id="pay-way" class="pay-item">
+                        <label for="" class="title">支付方式</label>
+                        <input readonly v-model="payWay" type="text" class="address classify" placeholder="请选择支付方式">
+                    </li>
                 </ul>
-                <button class="next">立即缴费</button>
+                <button @click="next" class="next">下一步</button>
+            </div>
+            <!--预览界面-->
+            <div :class={active:isNext} class="preview-page">
+                <header class="top-title">
+                    <i @click="hidePreview" class="mui-icon mui-icon-arrowleft"></i>
+                </header>
+                <li id="classify" class="pay-item picker">
+                    <label for="" class="title">缴费类型</label>
+                    <input v-model="selectedClassify" type="text" readonly>
+                </li>
+                <li v-show="isShowRepair"  class="pay-item picker">
+                    <label for="" class="title">报修单</label>
+                    <input v-model="selectedRepairName" type="text" placeholder="请选择报修单" readonly>
+                </li>
+                <li class="pay-item picker">
+                    <label for="" class="title">户号</label>
+                    <input readonly v-model="userNum" type="number" class="address">
+                </li>
+                <li class="pay-item">
+                    <label for="" class="title">缴费金额</label>
+                    <input readonly v-model="inputMoney" type="number" class="address" placeholder="请输入充值金额">
+                </li>
+                <li class="pay-item">
+                    <label for="" class="title">备注说明</label>
+                    <input readonly @input="validateDesc" v-model="description" type="text" class="address" placeholder="请输入说明">
+                </li>
+                <li id="pay-way" class="pay-item">
+                    <label for="" class="title">支付方式</label>
+                    <input readonly v-model="payWay" type="text" class="address" placeholder="请选择支付方式">
+                </li>
+                <button @click="submit" class="submit pay">立即支付</button>
             </div>
         </div>
     </div>

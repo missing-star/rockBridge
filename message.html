@@ -47,13 +47,35 @@
         </div>
         <div class="line-bg"></div>
         <div class="msg-list">
-            <div v-for="n in 5" class="msg-list-item">
+            <div @click="getDetail(0,0)" class="msg-list-item">
                 <div class="msg-icon-container">
                     <img class="msg-icon" src="imgs/business-logo.png" alt="">
                     <span class="mui-badge mui-badge-danger">22</span>
                 </div>
                 <p class="from-user">
                     <span class="from-user-nickname">客服小秘</span>
+                    <span class="content-info">内容消息</span>
+                </p>
+                <span class="from-time">昨天</span>
+            </div>
+            <div @click="getDetail(1,0)" class="msg-list-item">
+                <div class="msg-icon-container">
+                    <img class="msg-icon" src="imgs/business-logo.png" alt="">
+                    <span class="mui-badge mui-badge-danger">22</span>
+                </div>
+                <p class="from-user">
+                    <span class="from-user-nickname">商铺小助手</span>
+                    <span class="content-info">内容消息</span>
+                </p>
+                <span class="from-time">昨天</span>
+            </div>
+            <div @click="getDetail(2,1)" class="msg-list-item">
+                <div class="msg-icon-container">
+                    <img class="msg-icon" src="imgs/business-logo.png" alt="">
+                    <span class="mui-badge mui-badge-danger">22</span>
+                </div>
+                <p class="from-user">
+                    <span class="from-user-nickname">订单通知</span>
                     <span class="content-info">内容消息</span>
                 </p>
                 <span class="from-time">昨天</span>

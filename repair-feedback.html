@@ -29,9 +29,36 @@
                     <textarea v-model="quesDesc" @input="limitLength" placeholder="简单描述您的报修问题" name="" id=""></textarea>
                     <span class="show-number">{{inputCount}}/300</span>
                 </li>
+            </ul>
+            <p class="repair-title">服务评价</p>
+            <!-- data-service="1" -->
+            <ul class="service-list">
+                <li data-service="1" class="service-item active">
+                    <div class="left-section">
+                        <img src="imgs/good-comments.png" alt="" class="sercice-icon">
+                        <p class="service-title">满意</p>
+                    </div>
+                    <span class="checkbox"></span>
+                </li>
+                <li data-service="2" class="service-item">
+                    <div class="left-section">
+                        <img src="imgs/normal-comments.png" alt="" class="sercice-icon">
+                        <p class="service-title">一般</p>
+                    </div>
+                    <span class="checkbox"></span>
+                </li>
+                <li data-service="3" class="service-item">
+                    <div class="left-section">
+                        <img src="imgs/bad-comments.png" alt="" class="sercice-icon">
+                        <p class="service-title">不满意</p>
+                    </div>
+                    <span class="checkbox"></span>
+                </li>
+            </ul>
+            <ul class="repair-info">
                 <li class="repair-item upload">
                     <div v-for="(item,index) in uploadedImgs" class="upload-item">
-                        <img :src="item" alt="" class="upload-img-item">
+                        <img :src="item.src" alt="" class="upload-img-item">
                         <span @click="deleteImg(index)" class="delete-icon">
                         </span>
                     </div>
@@ -44,21 +71,7 @@
                     </div>
                 </li>
             </ul>
-            <div class="sevice-comments">
-                <div class="service-item">
-                    <div class="mask-click"></div>
-                    <p class="service-name">满意</p>
-                </div>
-                <div class="service-item">
-                    <div class="mask-click"></div>
-                    <p class="service-name">一般</p>
-                </div>
-                <div class="service-item">
-                    <div class="mask-click"></div>
-                    <p class="service-name">不满意</p>
-                </div>
-            </div>
-            <button class="submit-repair">
+            <button @click="submitQues" class="submit-repair">
                 提交反馈
             </button>
         </div>

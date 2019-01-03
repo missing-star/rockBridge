@@ -23,66 +23,42 @@
         <div class="mui-content">
             <header class="packet-title">
                 <p>缴费明细</p>
-                <p @click="getInvoice">发票</p>
+                <p>
+                    <span id="footprint-date" class="date-time">{{printDate}}</span>
+                    <span class="arrow-down">
+                        <img class="icon-down" src="imgs/arrow-down-black.png" alt="">
+                    </span>
+                </p>
             </header>
-            <div class="date-picker">
-                <p class="show-date">
-                    2018年8月
-                </p>
-                <p class="show-detail">
-                    缴费总支出：¥359.35 缴费余额剩余：¥120.00
-                </p>
-            </div>
-            <ul v-if="paidList.length != 0" class="paid-list">
-                <li @click="getDetail" class="paid-item">
-                    <img src="imgs/electric.png" alt="" class="paid-item-icon">
-                    <div class="detail-container">
-                        <p class="top">
-                            <span class="title">电费</span>
-                            <span class="date-time">07-12 20:23</span>
-                        </p>
-                        <p class="bottom">
-                            <span class="phone-address">2032564|地址</span>
-                            <span class="money">-25.00</span>
-                        </p>
-                    </div>
-                </li>
-                <li @click="getDetail" class="paid-item">
-                    <img src="imgs/service.png" alt="" class="paid-item-icon">
-                    <div class="detail-container">
-                        <p class="top">
-                            <span class="title">服务费</span>
-                            <span class="date-time">07-12 20:23</span>
-                        </p>
-                        <p class="bottom">
-                            <span class="phone-address">2032564|地址</span>
-                            <span class="money">-25.00</span>
-                        </p>
-                    </div>
-                </li>
-                <li @click="getDetail" class="paid-item">
-                    <img src="imgs/property.png" alt="" class="paid-item-icon">
-                    <div class="detail-container">
-                        <p class="top">
-                            <span class="title">物业费</span>
-                            <span class="date-time">07-12 20:23</span>
-                        </p>
-                        <p class="bottom">
-                            <span class="phone-address">2032564|地址</span>
-                            <span class="money">-25.00</span>
-                        </p>
-                    </div>
-                </li>
+            <ul class="cost-category-list">
+                <li @click="switchTab($event,item.id)" v-for="(item,index) in categoryIdList" :data-type="item.id" class="cost-category-item" :class="{active:index == 0}">{{item.name}}</li>
             </ul>
-            <div v-if="paidList.length == 0" class="no-record-container">
-                <img class="no-record-icon" src="imgs/no-record.png" alt="">
-                <p class="desc">暂无缴费记录</p>
+            <!--水费-->
+            <div class="history-pay-list active">
+                <div @click="getDetail(item.id)" v-for="item in contentList" class="history-pay-item">
+                    <div class="pay-category">
+                        <img src="imgs/electric.png" alt="" class="pay-icon">
+                        <div class="title-address">
+                            <p class="pay-title">{{item.name}}</p>
+                            <!-- <p class="address">{{item.number}} | {{item.address}}</p> -->
+                        </div>
+                    </div>
+                    <div class="pay-date">
+                        <p class="date-time">{{item.add_time}}</p>
+                        <p class="cost">{{parseFloat(item.actual_payment).toFixed(2)}}</p>
+                    </div>
+                </div>
+                <div v-if="contentList.length != 0" class="no-more">---没有更多了---</div>
             </div>
+            <p class="tips">仅展示1年记录，更多记录可通过选择时间查找</p>
         </div>
     </div>
     <script src="assets/vue/vue.min.js"></script>
     <script src="assets/jquery/jquery.min.js"></script>
     <script src="assets/mui/js/mui.min.js"></script>
+    <script src="assets/mui/picker/js/mui.picker.js"></script>
+    <script src="assets/mui/picker/js/mui.poppicker.js"></script>
+    <script src="assets/mui/picker/js/mui.dtpicker.js"></script>
     <script src="js/common.js"></script>
     <script src="js/pay-detail.js"></script>
 </body>

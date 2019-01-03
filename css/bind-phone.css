@@ -1,0 +1,70 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+ul.bind-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+li.bind-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    position: relative;
+}
+li.bind-item>input{
+    flex: 1;
+}
+input.content {
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+span.send-code {
+    color: #ff7c3c;
+    font-size: 0.6rem;
+}
+button.bind-btn {
+    background: #e5e5e5;
+    width: 100%;
+    border: none;
+    color: #ffffff;
+    border-radius: 1rem;
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+button.bind-phone{
+    background:#9d7e60;
+}
+
+img {
+    width: 0.8rem;
+}

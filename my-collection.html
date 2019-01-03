@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/my-collection.css">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+            <p class="collection">收藏</p>
+        </header>
+        <div class="mui-content">
+            <!--分类-->
+            <ul class="tab-bar">
+                <li @click="switchTab(0,$event)" class="tab-bar-item active">商品</li>
+                <li @click="switchTab(1,$event)" class="tab-bar-item">商铺</li>
+            </ul>
+            <!--商品tab页内容-->
+            <div class="tab-content goods" :class="{active:isShowGoods}">
+                <div @click="getDetail('goods-detail.html',0)" v-for="n in 11" :class={'goods-item':isDefGoodsLayout,'goods-item-line':!isDefGoodsLayout}>
+                    <img class="goods-img" src="imgs/bed1.png" />
+                    <div class="goods-info">
+                        <p>
+                            <span>商品名称</span>
+                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
+                        </p>
+                        <p>
+                            <span class="goods-price">￥200</span>
+                            <button class="reserve">预约</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="bottom-line">
+                    ······ 已见底了 ······
+                </div>
+            </div>
+            <!--商家tab页内容-->
+            <div class="tab-content business" :class="{active:!isShowGoods}">
+                <div v-for="n in 5" :class={'business-item':isDefBusLayout,'business-item-line':!isDefBusLayout}>
+                    <div class="top">
+                        <div class="business-info">
+                            <img src="imgs/business-logo.png" class="business-logo" />
+                            <p class="business-detail">
+                                <span class="business-name">店铺名称<img v-for="n in 4" src="imgs/star.png" class="business-level" /></span>
+                                <span>销量 22万 | 收藏 36</span>
+                            </p>
+                        </div>
+                        <button @click="getDetail('shop-detail.html',0)" class="go-business-btn">
+                            进店
+                        </button>
+                    </div>
+                    <div class="bottom">
+                        <template v-if="isDefBusLayout">
+                            <img v-for="n in 3" src="imgs/bed1.png" class="business-img-item" />
+                        </template>
+                        <template v-else>
+                            <img src="imgs/bed1.png" class="business-img-item" />
+                            <div class="goods-desc">
+                                <p class="goods-title">商品名称</p>
+                                <p class="goods-detail">
+                                    销量 36万 | 收藏 12351
+                                </p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="bottom-line">
+                    ······ 已见底了 ······
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/my-collection.js"></script>
+</body>
+
+</html>

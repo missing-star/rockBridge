@@ -25,60 +25,67 @@
             </header>
             <!--大分类-->
             <div class="classify">
-                <div class="classify-item active">
-                    <div class="mask-click"></div>
-                    <span class="checkbox"></span>
-                    <span class="title">我有建议</span>
+                <div data-type="proposal" class="classify-item active">
+                    <p class="title">你的建议是我们的机会</p>
+                    <div class="bottom-icon">
+                        <span class="title">我有建议</span>
+                        <img v-show="currentTab == 'proposal'" class="classify-icon" src="imgs/proposal-active.png" alt="">
+                        <img v-show="currentTab == 'complaint'" class="classify-icon" src="imgs/proposal.png" alt="">
+                    </div>
                 </div>
-                <div class="classify-item">
-                    <div class="mask-click"></div>
-                    <span class="checkbox"></span>
-                    <span class="title">我要投诉</span>
+                <div data-type="complaint" class="classify-item">
+                    <p class="title">解决你的问题是我们的职责</p>
+                    <div class="bottom-icon">
+                        <span class="title">我要投诉</span>
+                        <img v-show="currentTab == 'proposal'" class="classify-icon" src="imgs/complaint.png" alt="">
+                        <img v-show="currentTab == 'complaint'" class="classify-icon" src="imgs/complaint-active.png" alt="">
+                    </div>
                 </div>
             </div>
             <!--小分类-->
             <p class="classify-title">选择类型</p>
-            <div class="classify sub active">
-                <div class="classify-item active">
-                    <div class="mask-click-sub"></div>
+            <ul class="ques-classify active">
+                <li class="ques-item active">
                     <span class="checkbox"></span>
-                    <span class="title">线上体验优化</span>
-                </div>
-                <div class="classify-item">
-                    <div class="mask-click-sub"></div>
+                    <p class="ques-desc">线上体验优化</p>
+                </li>
+                <li class="ques-item">
                     <span class="checkbox"></span>
-                    <span class="title">线下产品建议</span>
-                </div>
-            </div>
-            <div class="classify sub">
-                <div class="classify-item active">
-                    <div class="mask-click-sub"></div>
+                    <p class="ques-desc">线下产品建议</p>
+                </li>
+            </ul>
+            <ul class="ques-classify">
+                <li class="ques-item active">
                     <span class="checkbox"></span>
-                    <span class="title">功能异常</span>
-                </div>
-                <div class="classify-item">
-                    <div class="mask-click-sub"></div>
+                    <p class="ques-desc">功能异常</p>
+                </li>
+                <li class="ques-item">
                     <span class="checkbox"></span>
-                    <span class="title">使用问题</span>
-                </div>
-                <div class="classify-item">
-                    <div class="mask-click-sub"></div>
+                    <p class="ques-desc">使用问题</p>
+                </li>
+                <li class="ques-item">
                     <span class="checkbox"></span>
-                    <span class="title">其他</span>
-                </div>
-            </div>
+                    <p class="ques-desc">其他</p>
+                </li>
+            </ul>
+            <p class="title-ques">建议描述</p>
             <div class="question-desc">
-                <p class="title">描述</p>
-                <textarea @input="limitLength" v-model="inputContent" name="" id="" cols="30" rows="10"></textarea>
+                <textarea placeholder="输入您的描述" @input="limitLength" v-model="inputContent" name="" id="" cols="30" rows="10"></textarea>
                 <span class="amount">{{inputContent.length}} / 200</span>
             </div>
-            <div class="upload-img">
-                <p class="title-upload">上传图片</p>
-                <div class="upload-container" :class="{'no-bg':uploadedImg != ''}">
-                    <div @click="uploadImg($event)" class="mask-upload">
+            <p class="title-upload">上传图片</p>
+            <div class="repair-item upload">
+                <div v-for="(item,index) in uploadedImgs" class="upload-item">
+                    <img :src="item" alt="" class="upload-img-item">
+                    <span @click="deleteImg(index)" class="delete-icon">
+                    </span>
+                </div>
+                <div :class="{active:uploadedImgs.length < 3}" class="upload-item upload">
+                    <div @click="uploadImg($event)" class="mask-click">
                         <input class="upload-input" hidden type="file" accept="image/*">
                     </div>
-                    <img v-show="uploadedImg != ''" :src="uploadedImg" alt="" class="upload-img">
+                    <img src="imgs/camera.png" alt="" class="camera">
+                    <span class="imgs-num">{{uploadedImgs.length}} / 3</span>
                 </div>
             </div>
             <button class="button-apply">

@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/shop-detail.css">
     <title>叠石桥</title>
+    <!--
+        店铺详情
+    -->
 </head>
 
 <body>
@@ -44,12 +47,12 @@
             </div>
         </header>
         <div class="mui-content">
-            <!--招商招租-->
+            <!--人气推荐-->
             <p class="business-top-title">
                 人气推荐
             </p>
             <div class="slider-business">
-                <div v-for="n in 5" class="slider-business-item">
+                <div @click="getDetail(1)" v-for="n in 5" class="slider-business-item">
                     <img src="imgs/bed1.png" />
                     <p class="business-item-title">羽绒蚕丝被</p>
                     <p class="business-item-content">1200起</p>
@@ -58,12 +61,12 @@
             <!--全部商品-->
             <p class="class-title">全部商品</p>
             <div class="have-good-goods">
-                <div v-for="n in 3" class="goods-item">
-                    <img class="goods-img" src="imgs/bed1.png"/>
+                <div @click="getDetail(9)" v-for="n in 3" class="goods-item">
+                    <img class="goods-img" src="imgs/bed1.png" />
                     <div class="goods-info">
                         <p>
                             <span>商品名称</span>
-                            <span class="eye-container"><img class="view-num" src="imgs/eye.png"/>123</span>
+                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
                         </p>
                         <p>
                             <span class="goods-price">￥200</span>
@@ -74,6 +77,52 @@
             </div>
             <div class="bottom-line">
                 ······ 已见底了 ······
+            </div>
+        </div>
+        <div class="search-page" :class={active:isFadeIn,'slide-out':isFadeOut}>
+            <header>
+                <img @click="hideSearch" src="imgs/icon-back.png" class="icon-back" />
+                <form class="input-group">
+                    <input placeholder="输入商品或商店名称" v-model="searchContent" id="search" class="search-page-input" type="text">
+                    <img v-show="searchContent.length != 0" @click="clearInput" class="clear-icon" src="imgs/clear.png" />
+                </form>
+                <span @click="hideSearch" class="cancel-search">取消</span>
+            </header>
+            <ul class="tab-bar">
+                <li history="all" class="tab-bar-item active">全部</li>
+                <li history="goods" class="tab-bar-item">商品</li>
+                <li history="shops" class="tab-bar-item">商铺</li>
+            </ul>
+            <!--历史搜索-->
+            <div class="search-history">
+                <header class="history-header">
+                    <p class="search-history-title">历史搜索</p>
+                    <img @click="clearHistory(currentTab)" src="imgs/delete.png" class="icon-delete" />
+                </header>
+                <ul class="history-list">
+                    <template v-if="currentTab == 'all'">
+                        <li v-for="item in historyList.goods" class="list-item">{{item}}</li>
+                        <li v-for="item in historyList.shops" class="list-item">{{item}}</li>
+                    </template>
+                    <template v-if="currentTab == 'shops'">
+                        <li v-for="item in historyList.shops" class="list-item">{{item}}</li>
+                    </template>
+                    <template v-if="currentTab == 'goods'">
+                        <li v-for="item in historyList.goods" class="list-item">{{item}}</li>
+                    </template>
+                </ul>
+            </div>
+            <!--热门搜索-->
+            <div class="hot-search">
+                <header class="hot-header">
+                    <p class="search-hot-title">热门搜索</p>
+                </header>
+                <ul class="hot-list">
+                    <template v-for="n in 3">
+                        <li class="list-item">手机</li>
+                        <li class="list-item">羽绒服</li>
+                    </template>
+                </ul>
             </div>
         </div>
     </div>

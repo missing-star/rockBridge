@@ -29,7 +29,7 @@ header.packet-title>p:first-child {
 }
 button.button-apply {
     width: 100%;
-    background:#cdcdcd;
+    background:#9D7E60;
     border: none;
     border-radius: 1rem;
     padding: 0.5rem;
@@ -45,14 +45,18 @@ button.submit-repair.submit-repair{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 3rem;
+    height: 4rem;
+    margin-bottom: 1rem; 
 }
-.classify span {
+.classify-item span.title {
     color: #888888;
-    font-size: 0.8rem;
+    font-size: 1rem;
     line-height: 1rem;
 }
-.classify-item span.checkbox {
+.classify-item.active span.title{
+    color: #ff7c3c;
+}
+.ques-item span.checkbox {
     border-radius: 0.1rem;
     background-color:#dedede;
     background-image: url(../imgs/checked.png);
@@ -64,17 +68,22 @@ button.submit-repair.submit-repair{
     display: block;
     margin-right: 0.8rem;
 }
-
 .classify-item {
+    position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
     position: relative;
+    border: 1px solid rgba(237,237,237,1);
+    border-radius: 0.5rem;
+    width: 48%;
+    height: 4rem;
+
 }
-.classify-item.active span.checkbox {
+.ques-item.active span.checkbox {
     background-color: #ff7c3c;
 }
-.classify-item.active span{
+.ques-item.active p{
     color: #ff7c3c;
 }
 .mask-click,.mask-click-sub {
@@ -85,26 +94,21 @@ button.submit-repair.submit-repair{
     height: 100%;
     background: transparent;
 }
-.classify.sub {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
+.ques-classify {
     display: none;
 }
-.classify.sub.active{
+.ques-classify.active{
     display: flex;
 }
 .classify.sub>.classify-item {
     margin-bottom: 1.5rem;
 }
-p.classify-title,p.title-upload {
+p.classify-title,p.title-upload,p.title-ques {
     color: #333;
     font-size: 1rem;
     padding: 1rem 0;
 }
 .question-desc {
-    box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
-    border-radius: 0.2rem;
     position: relative;
 }
 p.title {
@@ -125,13 +129,24 @@ textarea {
     line-height: 1.2rem;
     padding: 0.5rem;
     color: #888888;
+    background: #F8F8F8;
+    padding-bottom: 1rem;
+}
+textarea::-webkit-scrollbar{
+    width: 0;
+    height: 0;
 }
 span.amount {
     display: block;
     text-align: right;
-    padding: 0.2rem 0.5rem;
     color: #888888;
     font-size: 0.6rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #ffffff;
+    height: 1rem;
+    border-radius: 0.2rem;
 }
 .upload-container {
     position: relative;
@@ -153,4 +168,93 @@ img.upload-img {
 }
 .upload-container.no-bg {
     background: none;
+}
+img.classify-icon {
+    width: 1rem;
+}
+
+.classify-item>p.title{
+    font-size: 0.6rem;
+    line-height: 1rem;
+    color: #b3b3b3;
+    border: none;
+}
+.classify-item.active>p.title {
+    color: #9D7E60;
+}
+.bottom-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+ul.ques-classify.active {
+    margin: 0;
+    list-style: none;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+li.ques-item {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    margin-bottom: 1.5rem;
+}
+div.repair-item {
+    border-bottom: 1px solid #f6f6f6;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+.upload-item.upload.active {
+    display: flex;
+}
+.upload-item.upload {
+    display: none;
+}
+.upload-item {
+    position: relative;
+    width: 25vw;
+    height: 25vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 5vw;
+}
+.mask-click {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+}
+img.camera {
+    width: 50%;
+}
+span.imgs-num {
+    font-size: 0.8rem;
+    color: #888888;
+}
+.upload-img-item {
+    width: 100%;
+    height: 100%;
+}
+span.delete-icon {
+    background-color: #f52d1e;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: -0.5rem;
+    top: -0.5rem;
+    border-radius: 50%;
+    background-image: url(../imgs/delete-icon.png);
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: center;
 }

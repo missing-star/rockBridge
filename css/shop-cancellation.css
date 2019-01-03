@@ -1,0 +1,160 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+p.sub-title {
+    font-size: 0.6rem;
+    line-height: 1rem;
+    margin-top: 0.2rem;
+}
+p.choose-cause,p.detail-desc {
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1rem;
+    margin-top: 1.5rem;
+}
+ul.cause-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+span.checkbox{
+    width: 1rem;
+    height: 1rem;
+    background-color: #DEDEDE;
+    background-image: url(../imgs/checked.png);
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+}
+li.cause-item {
+    display: flex;
+    align-items: center;
+    width: 48%;
+    margin-bottom: 1rem;
+}
+li.cause-item span.checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #DEDEDE;
+    background-image: url(../imgs/checked.png);
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position: center;
+    border-radius: 0.1rem;
+}
+li.cause-item.active span.checkbox{
+    background-color: #FF7C3C;
+}
+li.cause-item p.desc {
+    color: #888888;
+    font-size: 1rem;
+    margin-left: 0.6rem;
+}
+li.cause-item.active p.desc{
+    color: #FF7C3C;
+}
+textarea {
+    height: 8rem;
+    width: 100%;
+    background: #f8f8f8;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+    padding-bottom: 1.2rem;
+}
+.question-container {
+    margin-top: 1rem;
+    position: relative;
+}
+span.show-number {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.6rem;
+    color: #888888;
+    background: rgba(255,255,255);
+    border-radius: 0.2rem;
+}
+
+.upload-item.upload.active {
+    display: flex;
+}
+.upload-item.upload {
+    display: none;
+}
+.upload-item {
+    position: relative;
+    width: 25vw;
+    height: 25vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 5vw;
+}
+.mask-click {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+}
+img.camera {
+    width: 50%;
+}
+span.imgs-num {
+    font-size: 0.8rem;
+    color: #888888;
+}
+.upload-img-item {
+    width: 100%;
+    height: 100%;
+}
+span.delete-icon {
+    background-color: #f52d1e;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: -0.5rem;
+    top: -0.5rem;
+    border-radius: 50%;
+    background-image: url(../imgs/delete-icon.png);
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: center;
+}
+div.repair-item {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+}

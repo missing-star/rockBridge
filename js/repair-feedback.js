@@ -1,9 +1,11 @@
+var param = getParams();
 var vm = new Vue({
     el: '#app',
     data: {
         inputCount: 0,
         quesDesc: '',
-        uploadedImgs: []
+        uploadedImgs: [],
+        serviceComm: 1
     },
     methods: {
         limitLength() {
@@ -19,6 +21,39 @@ var vm = new Vue({
         },
         deleteImg(index) {
             this.uploadedImgs.splice(index, 1);
+        },
+        submitQues() {
+            var imgs = '';
+            this.uploadedImgs.forEach(function (img, index) {
+                imgs += img.realPath + ',';
+            });
+            var formData = {
+                repair_id: param.repair_id,
+                repair_review_status: param.repair_review_status,
+                repair_revire_content: this.quesDesc,
+                revire_service: this.serviceComm,
+                images: imgs
+            }
+            console.log(this.serviceComm);
+            console.log(formData);
+            $.ajax({
+                url: `${rootUrl}/index/api/getAddRepairReview`,
+                type: 'post',
+                dataType: 'json',
+                data: formData,
+                success: function (data) {
+                    if (data.status == 1) {
+                        mui.confirm('反馈已提交！', '', ['确定'], function (e) {
+                            window.location.reload();
+                        });
+                    } else {
+                        mui.toast(data.msg);
+                    }
+                },
+                error: function () {
+                    mui.toast('服务器异常！');
+                }
+            })
         }
     }
 });
@@ -38,15 +73,43 @@ $('input.upload-input').change(function () {
 
     $(this).parent().next().show();
     fr.onload = function () {
-        vm.uploadedImgs.push(this.result);
+        uploadImgRealPath(imgObj, this.result);
         //置空文件上传框的值
         $('input.upload-input').val("");
     };
 });
 
-$(function() {
-    $("div.mask-click").click(function() {
-        $(this).parent().addClass('active');
-        $(this).parent().siblings().removeClass('active');
+$(function () {
+    $("li.service-item").click(function () {
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+        vm.serviceComm = $(this).attr('data-service');
     });
 });
+
+//上传图片到后台
+function uploadImgRealPath(fileObj, src) {
+    var formData = new FormData();
+    formData.append('image', fileObj);
+    $.ajax({
+        url: 'http://dieshiqiao.pzhkj.cn/index/Uploadify/api_imgUp',
+        type: 'post',
+        dataType: 'json',
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (data) {
+            mui.toast(data.msg);
+            //设置文件路径为服务器路径
+            if (data.status == 1) {
+                vm.uploadedImgs.push({
+                    src: src,
+                    realPath: data.result
+                });
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常!');
+        }
+    })
+}

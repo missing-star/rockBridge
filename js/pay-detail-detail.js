@@ -1,14 +1,34 @@
+var param = getParams();
 var vm = new Vue({
-    el:'#app',
-    data:{
-
+    el: '#app',
+    data: {
+        detail: ''
     },
-    methods:{
-        goComplain() {
-            //投诉页面
+    methods: {
+        getInvoice(id) {
+            //发票
             mui.openWindow({
-                url:'complaint.html'
+                url: 'apply-invoice.html?id=' + id
             })
         }
     }
 })
+
+function getDetail(id) {
+    $.ajax({
+        url: `${rootUrl}/index/api/getPayChargeInfo`,
+        type: 'post',
+        data: {
+            id: id
+        },
+        dataType: 'json',
+        success: function (data) {
+            vm.detail = data.result;
+        },
+        error: function () {
+            mui.toast('服务器异常！');
+        }
+    })
+}
+
+getDetail(param.id);

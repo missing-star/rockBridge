@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/my-reverse.css">
+    <title>叠石桥</title>
+    <!--
+        商品预约
+    -->
+</head>
+
+<body>
+    <div id="app" class="mui-content">
+        <!--标题-->
+        <header class="top-upload">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+            <p class="title">商品预约</p>
+        </header>
+        <!--tab页头-->
+        <ul class="goods-tab-bar">
+            <li class="goods-tab-bar-item active">
+                预约中
+            </li>
+            <li class="goods-tab-bar-item">
+                已受理
+            </li>
+            <li class="goods-tab-bar-item">
+                已取消
+            </li>
+        </ul>
+        <div class="goods-tab-content">
+            <!--预约中-->
+            <div data-type="0" class="goods-tab-content-item active">
+                <div v-for="item in upperList" class="goods-item upper">
+                    <div class="goods-info upper">
+                        <p class="goods-order">商品编号：{{item.order}}</p>
+                        <span class="is-upper lower">预约中</span>
+                    </div>
+                    <div class="goods-img-container">
+                        <img :src="item.thumb" alt="" class="goods-img">
+                        <div class="goods-desc">
+                            <p class="goods-title">
+                                <span class="title">{{item.title}}</span>
+                                <span class="eye-number">
+                                    <img src="imgs/eye.png" alt="">
+                                    <span>{{item.watched}}</span>
+                                </span>
+                            </p>
+                            <p class="stock">
+                                库存：{{item.stock}}件
+                            </p>
+                            <p class="reverse">
+                                预约：{{item.reverse}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="operation-group">
+                        <button class="get-detail">查看详情</button>
+                    </div>
+                </div>
+            </div>
+            <!--已受理-->
+            <div data-type="1" class="goods-tab-content-item">
+                <div v-for="item in stockList" class="goods-item stock">
+                    <div class="goods-info stock">
+                        <p class="goods-order">商品编号：{{item.order}}</p>
+                        <span class="is-upper lower">已受理</span>
+                    </div>
+                    <div class="goods-img-container">
+                        <img :src="item.thumb" alt="" class="goods-img">
+                        <div class="goods-desc">
+                            <p class="goods-title">
+                                <span class="title">{{item.title}}</span>
+                                <span class="eye-number">
+                                    <img src="imgs/eye.png" alt="">
+                                    <span>{{item.watched}}</span>
+                                </span>
+                            </p>
+                            <p class="stock">
+                                库存：{{item.stock}}件
+                            </p>
+                            <p class="reverse">
+                                预约：{{item.reverse}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="operation-group">
+                        <button class="get-detail">查看详情</button>
+                    </div>
+                </div>
+            </div>
+            <!--已取消-->
+            <div class="goods-tab-content-item">
+                <div v-for="item in lowerList" class="goods-item stock">
+                    <div class="goods-info stock">
+                        <p class="goods-order">商品编号：{{item.order}}</p>
+                        <span class="is-upper lower">已取消</span>
+                    </div>
+                    <div class="goods-img-container">
+                        <img :src="item.thumb" alt="" class="goods-img">
+                        <div class="goods-desc">
+                            <p class="goods-title">
+                                <span class="title">{{item.title}}</span>
+                                <span class="eye-number">
+                                    <img src="imgs/eye.png" alt="">
+                                    <span>{{item.watched}}</span>
+                                </span>
+                            </p>
+                            <p class="stock">
+                                库存：{{item.stock}}件
+                            </p>
+                            <p class="reverse">
+                                预约：{{item.reverse}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="operation-group">
+                        <button class="get-detail">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/my-reverse.js"></script>
+</body>
+
+</html>

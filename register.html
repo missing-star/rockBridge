@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/register.css">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>注册</p>
+            </header>
+            <ul class="login-list">
+                <li class="login-item">
+                    <label for="" class="title">+86</label>
+                    <input @input="validatePhone" v-model="phone" type="number" class="content">
+                    <img @click="clearPhone" v-show="phone.length != 0" src="imgs/clear-login.png" alt="" class="clear-phone">
+                </li>
+                <li class="login-item">
+                    <input v-model="code" @input="validateCode" type="number" placeholder="输入验证码" type="text" class="content">
+                    <span @click="getCode" class="forget-password code">{{msg}}</span>
+                </li>
+                <li class="login-item">
+                    <input @input="limitPassword" v-model="password" type="password" placeholder="请输入6-18位密码" type="text" class="content password">
+                </li>
+            </ul>
+            <div class="agree-protocol">
+                <span class="checkbox">
+                    <span></span>
+                </span>
+                <p class="agree-desc">
+                    注册后将默认为已阅读、理解并同意
+                    <span class="link">《偶昌用户协议》</span>
+                </p>
+            </div>
+            <button @click="submitRegister" class="register">注册</button>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/register.js"></script>
+</body>
+
+</html>

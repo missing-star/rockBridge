@@ -22,7 +22,7 @@ p.title{
 .img-slider::-webkit-scrollbar,ul.facilities-list::-webkit-scrollbar{
     height: 0;
 }
-p.desc {
+p.desc,p.investment-title {
     color: #000000;
     padding-top: 0.5rem;
     font-size: 0.9rem;
@@ -77,4 +77,12 @@ span.facilities-name {
     font-size: 0.8rem;
     line-height: 1rem;
     padding-top: 0.6rem;
+}
+.investment-detail {
+    color: #aaaaaa;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+}
+.investment-detail img {
+    width: 100%;
 }

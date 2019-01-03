@@ -1,0 +1,59 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+ul.setting-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+li.setting-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f6f6f6;
+}
+li.setting-item>label.title{
+    width: 30%;
+    font-size: 0.9rem;
+    line-height: 1rem;
+}
+li.setting-item>input{
+    flex:1;
+    background: url(../imgs/arrow-right-black.png) no-repeat;
+    background-position: right;
+    background-size: 0.5rem;
+}
+button.exit-login {
+    background: #e5e5e5;
+    width: 100%;
+    border-radius: 1rem;
+    border: none;
+    color: #888888;
+    font-size: 1rem;
+}

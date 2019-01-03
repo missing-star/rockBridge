@@ -34,7 +34,7 @@ ul.pay-list {
 }
 li.pay-item>label.title {
     font-size: 0.9rem;
-    width: 20%;
+    width: 4.5rem;
 }
 li.pay-item {
     display: flex;
@@ -56,6 +56,7 @@ button.next {
     border: none;
     color: #ffffff;
     font-size: 1rem;
+    margin-top: 2rem;
 }
 /* button.next {
     position: absolute;
@@ -74,4 +75,28 @@ label.title.space-between {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.preview-page {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background: #ffffff;
+    left: 100%;
+    z-index: 12;
+    padding: 1rem;
+    transition: all 0.2s ease;
+}
+.preview-page.active {
+    left: 0;
+}
+button.submit.pay{
+    margin-top: 2rem;
+}
+header.top-title .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
 }

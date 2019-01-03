@@ -1,0 +1,173 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+ul.info-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+input.content{
+    background: url(../imgs/arrow-right-black.png) no-repeat;
+    background-position: right;
+    background-size: 0.5rem;
+    flex: 1;
+    text-align:left;
+    padding-right: 1rem;
+}
+li.info-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 0.5rem 0;
+    position: relative;
+}
+img.user-logo {
+    width: 3.5rem;
+    border-radius: 50%;
+}
+label.title {
+    font-size: 0.9rem;
+    line-height: 1rem;
+}
+label.title.gray {
+    color: #aaaaaa;
+}
+.mask-upload {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+.user-logo-editor {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.editor-nickname {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+p.nickname {
+    color: #333333;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+}
+p.sub-title {
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+.editor-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+p.title {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 2rem;
+    line-height: 1rem;
+}
+
+div.mui-loading {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #00000012;
+    display: none;
+    align-items: center;
+    z-index: 999;
+}
+#clipArea {
+    margin: 20px;
+    height: 300px;
+}
+button#cancel-btn {
+    float: left;
+    margin-left: 15px;
+}
+button#confirm-btn {
+    float: right;
+    margin-right: 15px;
+}
+button#cancel-btn, button#confirm-btn {
+    border-radius: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.editName {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-right: 1rem;
+    position: relative;
+}
+button.cancel-btn {
+    height: 2rem;
+    font-size: 0.8rem;
+    background: #ffffff;
+    border: none;
+    color: #aaaaaa;
+    border-color: #aaaaaa;
+}
+button.confirm {
+    height: 2rem;
+    font-size: 0.8rem;
+    background: #9D7E60;
+    color: #ffffff;
+    border: none;
+}
+input.editor {
+    border: 1px dashed #DADADA;
+    height: 2rem;
+}
+span.inpupt-number {
+    text-align: right;
+    font-size: 0.6rem;
+    line-height: 1rem;
+    color: #aaaaaa;
+}
+span.clear-input {
+    position: absolute;
+    right: 1.5rem;
+    display: flex;
+    height: 2rem;
+    align-items: center;
+}
+span.clear-input>img {
+    width: 1rem;
+}

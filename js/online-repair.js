@@ -1,73 +1,166 @@
+var page1 = page2 = page3 = page4 = 1;
 var vm = new Vue({
     el: '#app',
     data: {
-        inputCount: 0,
-        quesDesc: '',
-        uploadedImgs: [],
-        selectedSection:''
+        reverseing: {
+            loadMore: true,
+            list: []
+        },
+        assigning: {
+            loadMore: true,
+            list: []
+        },
+        finished: {
+            loadMore: true,
+            list: []
+        },
+        refused: {
+            loadMore: true,
+            list: []
+        },
     },
     methods: {
-        getRecord() {
+        goRepair() {
             mui.openWindow({
-                url:'repair-record.html'
+                url: 'reverse-repair.html'
+            });
+        },
+        getDetail(status, id, order_status) {
+            //查看报修详情
+            mui.openWindow({
+                url: 'repair-detail.html?status=' + status + '&id=' + id + '&order_status=' + order_status
             })
         },
-        limitLength() {
-            if (this.quesDesc.length <= 300) {
-                this.inputCount = this.quesDesc.length;
-            } else {
-                this.inputCount = 300;
-                this.quesDesc = this.quesDesc.substring(0, 300);
-            }
-        },
-        uploadImg(event) {
-            $(event.target).find('input').click();
-        },
-        deleteImg(index) {
-            this.uploadedImgs.splice(index, 1);
-        },
-        getShopInfo() {
-            //获得商家信息
+        goPay(status, id, order_status) {
+            //缴费
             mui.openWindow({
-                url:'repair-shop-info.html'
-            })
+                url: 'online-pay.html?status=' + status + '&id=' + id + '&order_status=' + order_status
+            });
+        },
+        cancelReverse(id) {
+            //取消预约
+            $.ajax({
+                url: `${rootUrl}/index/api/getCancelRepair`,
+                type: 'post',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function (data) {
+                    mui.toast(data.msg);
+                    if (data.status == 1) {
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    }
+                },
+                error: function () {
+                    mui.toast('服务器异常！');
+                }
+            });
+        },
+        getCause(cause) {
+            var msg = cause == null ? '无' : cause;
+            mui.confirm(`${msg}`, '拒绝原因', ['确定'], function (e) {
+
+            });
         }
     }
 });
-//监听图片上传
-$('input.upload-input').change(function () {
-
-    var filePath = $(this).val(); //读取图片路径
-
-    var fr = new FileReader(); //创建new FileReader()对象
-    var imgObj = this.files[0]; //获取图片
-
-    fr.readAsDataURL(imgObj); //将图片读取为DataURL
-
-
-    var arr = filePath.split('\\');
-    var fileName = arr[arr.length - 1];
-
-    $(this).parent().next().show();
-    fr.onload = function () {
-        vm.uploadedImgs.push(this.result);
-        //置空文件上传框的值
-        $('input.upload-input').val("");
-    };
-});
-//picker组件
-(function ($, doc) {
-    $.init();
-    $.ready(function () {
-        console.log(13213);
-        //部门选择
-        var classifyPicker = new $.PopPicker();
-        classifyPicker.setData(['部门1', '部门2']);
-        var eventBtn = doc.getElementById('section');
-        eventBtn.addEventListener('tap', function (event) {
-            classifyPicker.show(function (items) {
-                vm.selectedSection = items[0];
-            });
-        }, false);
+$(function () {
+    $('li.goods-tab-bar-item').click(function () {
+        //切换tab页
+        if (!$(this).hasClass('active')) {
+            var index = Array.prototype.slice.call(document.querySelectorAll('li.goods-tab-bar-item')).indexOf(this);
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+            $('div.goods-tab-content-item').eq(index).addClass('active');
+            $('div.goods-tab-content-item').eq(index).siblings().removeClass('active');
+            loadMore();
+        }
     });
-})(mui, document);
+    //获得报修记录1 处理中 2 维修中 3拒绝维修 4 维修完成
+    getRepairRecord(1, page1, true);
+    getRepairRecord(2, page2, true);
+    getRepairRecord(3, page3, true);
+    getRepairRecord(4, page4, true);
+    loadMore();
+});
+
+function pageLink(url) {
+    mui.openWindow({
+        url: url
+    });
+};
+
+function getRepairRecord(type, page, loadMore) {
+    if (!loadMore) {
+        return false;
+    }
+    $.ajax({
+        url: `${rootUrl}/index/api/getMyRepairRecord`,
+        type: 'post',
+        datType: 'json',
+        data: {
+            handle_status: type,
+            page: page
+        },
+        dataType: 'json',
+        success: function (data) {
+            var list = data.result;
+            list.forEach(function (item, index) {
+                if (item.repait_content_images.indexOf(',') != -1) {
+                    list[index].repait_content_images = rootUrl + item.repait_content_images.substring(0, item.repait_content_images.indexOf(','));
+                } else {
+                    list[index].repait_content_images = rootUrl + item.repait_content_images;
+                }
+            });
+            switch (parseInt(type)) {
+                case 1:
+                    if (list.length == 0) {
+                        vm.reverseing.loadMore = false;
+                        break;
+                    }
+                    vm.reverseing.list = vm.reverseing.list.concat(list);
+                    break;
+                case 2:
+                    if (list.length == 0) {
+                        vm.assigning.loadMore = false;
+                        break;
+                    }
+                    vm.assigning.list = vm.assigning.list.concat(list);
+                    break;
+                case 3:
+                    if (list.length == 0) {
+                        vm.refused.loadMore = false;
+                        break;
+                    }
+                    vm.refused.list = vm.refused.list.concat(list);
+                    break;
+                case 4:
+                    if (list.length == 0) {
+                        vm.finished.loadMore = false;
+                        break;
+                    }
+                    vm.finished.list = vm.finished.list.concat(list);
+                    break;
+            }
+        },
+        error: function () {
+
+        }
+    })
+}
+
+//滚动加载
+function loadMore() {
+    if (document.querySelector('.goods-tab-content-item.active .no-more').getBoundingClientRect().top < document.documentElement.clientHeight) {
+        var type = document.querySelector('.goods-tab-content-item.active').dataset.type;
+        var page = type == 1 ? ++page1 : (type == 2 ? ++page2 : (type == 3 ? ++page3 : ++page4));
+        var loadMore = type == 1 ? vm.reverseing.loadMore : (type == 2 ? vm.assigning.loadMore : (type == 3 ? vm.refused.loadMore : vm.finished.loadMore));
+        getRepairRecord(type, page, loadMore);
+    }
+}
+$('div.goods-tab-content-item').scroll(function () {
+    loadMore();
+});

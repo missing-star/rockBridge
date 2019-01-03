@@ -1,0 +1,134 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+header.packet-title>p:last-child {
+    color: #9D7E60;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+p.sub-title {
+    color: #AAAAAA;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    line-height: 1rem;
+}
+ul.shop-classify {
+    list-style: none;
+    padding: 0;
+}
+li.classify-item .checkbox {
+    background-color: #DEDEDE;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 0.2rem;
+    background-image: url(../imgs/checked.png);
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position: center center;
+}
+li.classify-item.active .checkbox {
+    background-color: #FF7C3C;
+}
+li.classify-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 1rem 0;
+}
+label.title {
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+p.tips {
+    color: #AAAAAA;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
+p.regular-desc {
+    color: #FF7C3C;
+    font-size: 1rem;
+    margin-top: 1rem;
+    line-height: 1rem;
+}
+button.next {
+    background: #9D7E60;
+    width: 100%;
+    border-radius: 1rem;
+    border: none;
+    color: #ffffff;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+p.pay {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+    color: #333333;
+}
+p.pay>span:last-child {
+    color: #FF7C3C;
+}
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+label.title.title-left {
+    margin-left: 0.5rem;
+}
+p.price {
+    color: #FF7C3C;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+ul.data-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+li.data-list-item {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f6f6f6;
+    display: flex;
+    align-items: center;
+}
+li.data-list-item.title {
+    border: none;
+}
+input.content {
+    flex: 1;
+    background: url(../imgs/arrow-right.png) no-repeat;
+    background-size: 0.5rem;
+    background-position: right;
+    color: #333333;
+}

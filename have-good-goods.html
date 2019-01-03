@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/have-good-goods.css">
+    <title>叠石桥</title>
+    <!--
+        申请发票
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>有好物</p>
+            </header>
+            <div class="have-good-goods">
+                <div @click="goDetail('goods-detail.html',0)" v-for="n in 13" class="goods-item">
+                    <img class="goods-img" src="imgs/bed1.png" />
+                    <div class="goods-info">
+                        <p>
+                            <span>商品名称</span>
+                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
+                        </p>
+                        <p>
+                            <span class="goods-price">￥200</span>
+                            <button class="reserve">预约</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/have-good-goods.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+var vm = new Vue({
+    el:'#app',
+    data:{
+        isInputAll:false,
+        phone:'',
+        phoneValidate:false,
+        code:'',
+        codeValidate:false,
+        password:'',
+        passwrodValidate:false,
+        sendCode:false,
+        waitTime:60,
+        msg:'获取验证码'
+    },
+    methods:{
+        validatePhone() {
+            this.phone = this.phone.slice(0,11);
+            if(parseInt(this.phone) && this.phone.length == 11) {
+                this.phoneValidate = true;
+                this.sendCode = true;
+            }
+            else {
+                this.sendCode = false;
+                this.phoneValidate = false;
+            }
+        },
+        getCode() {
+            if(this.sendCode && this.waitTime == 60) {
+                this.msg = this.waitTime+'s';
+                var interval = setInterval(function() {
+                    if(vm.waitTime == 1) {
+                        vm.msg = '获取验证码';
+                        vm.waitTime = 60;
+                        clearInterval(interval);
+                        return false;
+                    }
+                    vm.waitTime -= 1;
+                    vm.msg = vm.waitTime + 's';
+                }, 1000);
+            }
+            else if(!this.phoneValidate){
+                mui.toast('手机号不合法!');
+            }
+        },
+        validateCode() {
+            this.code = this.code.slice(0,6);
+            if(parseInt(this.code) && this.code.length == 6) {
+                this.codeValidate = true;
+            }
+            else {
+                this.codeValidate = false;
+            }
+        },
+        validatePass() {
+            this.password = this.password.replace(/\s/g,"");
+            this.password = this.password.slice(0,18);
+            if(this.password.length >= 6) {
+                this.passwrodValidate = true;
+            }
+            else {
+                this.passwrodValidate = false;
+            }
+        },
+        validateAll() {
+            if(this.phoneValidate && this.codeValidate && this.passwrodValidate) {
+                this.isInputAll = true;
+            }
+            else {
+                this.isInputAll = false;
+            }
+        },
+        clearPhone() {
+            this.phone = '';
+        }
+    },
+    watch:{
+        phone:function() {
+            this.validateAll();
+        },
+        code:function() {
+            this.validateAll();
+        },
+        password:function() {
+            this.validateAll();
+        }
+    }
+});

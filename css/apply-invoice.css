@@ -1,8 +1,12 @@
 header.mui-bar.mui-bar-nav {
     height: 2.5rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .mui-bar-nav~.mui-content {
@@ -10,9 +14,15 @@ header.mui-bar.mui-bar-nav {
 }
 
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 
@@ -42,12 +52,18 @@ ul.repair-info.active{
 li.repair-item {
     border-bottom: 1px solid #f6f6f6;
     padding: 0.5rem 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 input.content.arrow-right {
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     background: url(../imgs/arrow-right.png) no-repeat;
     background-size: 0.5rem;
     background-position: 95%;
@@ -59,8 +75,13 @@ label.title {
 }
 
 li.repair-item.question {
-    flex-direction: column;
-    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     position: relative;
     padding: 1rem 0;
     border: none;
@@ -102,10 +123,18 @@ span.show-number {
     position: relative;
     width: 25vw;
     height: 25vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     margin-right: 5vw;
 }
 
@@ -169,18 +198,31 @@ span.delete-icon {
 }
 
 .upload-item.upload.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
 li.repair-item.setting {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 label.setting-often {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 span.title {
@@ -204,7 +246,8 @@ span.sub-title {
 .switch {
     border: 1px solid #dddddd;
     position: relative;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     background: #FFFFFF;
     width: 3rem;
     height: 1.5rem;
@@ -216,12 +259,14 @@ span.sub-title {
     background: #9d7e60;
 }
 .switch-round {
-    box-shadow: 0 2px 5px rgba(0,0,0,.4);
+    -webkit-box-shadow: 0 2px 5px rgba(0,0,0,.4);
+            box-shadow: 0 2px 5px rgba(0,0,0,.4);
     position: absolute;
     width: calc(1.5rem - 2px);
     height: calc(1.5rem - 2px);
     background: #fff;
     border-radius: 50%;
+    -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
     right: calc(100% - 1.4rem);
 }
@@ -240,8 +285,12 @@ span.sub-title {
 ul.tab-bar {
     list-style: none;
     padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 li.tab-bar-item {
     margin-right: 1rem;
@@ -264,4 +313,7 @@ li.tab-bar-item.active:after{
     background: #825224;
     bottom: 0;
     left: 0;
+}
+input.content {
+    line-height: 1rem;
 }

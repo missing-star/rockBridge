@@ -1,0 +1,150 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+.hello {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f6f6f6;
+}
+img.business-logo {
+    width: 4rem;
+}
+p.hello-info {
+    color: #333333;
+    font-size: 1.2rem;
+}
+p.sub-title {
+    color: #aaaaaa;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    line-height: 1rem;
+}
+p.base-info {
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1rem;
+    margin-top: 1rem;
+}
+ul.info-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+li.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 0.5rem 0;
+}
+label.title {
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+p.level-up.arrow-right {
+    background: url(../imgs/arrow-right-black.png) no-repeat;
+    background-size: 0.5rem;
+    background-position: right;
+    padding-right: 1rem;
+    color: #FF8B16;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+input.content.arrow-right {
+    font-size: 0.8rem;
+    color: #aaaaaa;
+}
+input.content.arrow-right {
+    color: #333333;
+    background: url(../imgs/arrow-right-black.png) no-repeat;
+    background-size: 0.5rem;
+    background-position: right;
+}
+input.content.arrow-right.no-bg {
+    background: none;
+}
+button.apply-destory {
+    width: 100%;
+    border-radius: 1.2rem;
+    border: 1px solid #9D7E60;
+    color: #9D7E60;
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+.editName {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-right: 1rem;
+    position: relative;
+}
+input.editor {
+    border: 1px dashed #DADADA;
+    height: 2rem;
+}
+button.cancel-btn{
+    height: 2rem;
+    font-size: 0.8rem;
+    background: #ffffff;
+    border: none;
+    color: #aaaaaa;
+    border-color: #aaaaaa;
+}
+button.confirm {
+    height: 2rem;
+    font-size: 0.8rem;
+    background: #9D7E60;
+    color: #ffffff;
+    border: none;
+}
+span.inpupt-number {
+    text-align: right;
+    font-size: 0.6rem;
+    line-height: 1rem;
+    color: #aaaaaa;
+}
+span.clear-input {
+    position: absolute;
+    right: 1.5rem;
+    display: flex;
+    height: 2rem;
+    align-items: center;
+}
+span.clear-input>img {
+    width: 1rem;
+}
+input.content.limit {
+    width: 50%;
+}

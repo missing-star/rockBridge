@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/bind-phone.css">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>手机绑定</p>
+            </header>
+            <ul class="bind-list">
+                <li class="bind-item">
+                    <label for="" class="title">+86</label>
+                    <input v-model="phone" @input="validatePhone" type="number" class="content">
+                    <span v-show="phone.length != 0" @click="clearPhone" class="clear-phone"><img src="imgs/clear-phone.png" alt=""></span>
+                </li>
+                <li class="bind-item">
+                    <input @input="validateCode" v-model="code" placeholder="输入验证码" type="number" class="content">
+                    <span @click="getCode" class="send-code">{{msg}}</span>
+                </li>
+                <li class="bind-item">
+                    <input v-model="password" @input="validatePass" placeholder="设置密码" type="password" class="content">
+                </li>
+            </ul>
+            <button :class="{'bind-phone':isInputAll,'bind-btn':true}" :disabled="!isInputAll">
+                立即绑定
+            </button>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/bind-phone.js"></script>
+</body>
+
+</html>

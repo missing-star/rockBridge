@@ -26,60 +26,72 @@
             <ul class="tab-content active">
                 <li class="tab-contetn-item">
                     <label for="" class="title edit">
-                        用户名<i v-if="isPub" class="must-icon">*</i>
+                        商户名<i class="must-icon">*</i>
                     </label>
-                    <input type="text" class="username">
+                    <input v-model="userName" @input="validateName" type="text" class="username">
                 </li>
                 <li class="tab-contetn-item">
                     <label for="" class="title edit">
-                        联系电话<i v-if="isPub" class="must-icon">*</i>
+                        联系电话<i class="must-icon">*</i>
                     </label>
                     <input v-model="phone" @input="limitPhone" type="number" class="username">
                 </li>
+                <li v-show="!isRegister" class="tab-contetn-item">
+                    <label for="" class="title edit">密码<i class="must-icon">*</i></label>
+                    <input v-model="password" @input="limitPassword" type="password" class="password" placeholder="请输入6-18位密码">
+                </li>
                 <li v-show="isPub" class="tab-contetn-item arrow-right">
-                    <label for="" class="title">
+                    <label for="" class="title edit">
                         所在地址<i v-if="isPub" class="must-icon">*</i>
                     </label>
                     <input id="address-public-shop" readonly v-model="addressPub" type="text" class="username">
                 </li>
                 <li v-show="!isPub" class="tab-contetn-item arrow-right">
-                    <label for="" class="title">
-                        所在地区<i v-if="isPub" class="must-icon">*</i>
+                    <label for="" class="title edit">
+                        所在地区<i class="must-icon">*</i>
                     </label>
                     <input id="address-public-other" v-model="otherCitySelected" readonly type="text" class="username">
                 </li>
                 <li v-if="!isPub" class="tab-contetn-item">
-                        <label for="" class="title">
-                            详细地址
+                        <label for="" class="title edit">
+                            详细地址<i class="must-icon">*</i>
                         </label>
-                        <input id="detail-address" type="text" class="username">
+                        <input @input="limitAddress" v-model="detailAddress" id="detail-address" type="text" class="username">
                     </li>
                 <li class="tab-contetn-item id-card">
                     <label for="" class="title">
                         身份证<i class="must-icon">*</i>
                     </label>
                     <div class="id-card-container">
-                        <img class="id-card" src="imgs/id-card-1.png" alt="">
-                        <img class="id-card" src="imgs/id-card-2.png" alt="">
+                        <img @click="uploadEmblem" class="id-card" :src="cardList.emblem.src" alt="">
+                        <input type="file" accept="image/*" id="emblem" hidden/>
+                        <img @click="uploadPortrait" class="id-card" :src="cardList.portrait.src" alt="">
+                        <input type="file" id="portrait" hidden accept="image/*">
                     </div>
                 </li>
-                <li class="tab-contetn-item arrow-right">
+                <li @click="uploadLicense" class="tab-contetn-item arrow-right">
                     <label for="" class="title">
                         营业执照（选填）
                     </label>
+                    <span class="upload-status">{{cardList.license.realPath != '' ? '已选择' : '请上传'}}</span>
+                    <input type="file" accept="image/*" hidden id="license">
                 </li>
-                <li class="tab-contetn-item arrow-right">
+                <li @click="uploadRent" class="tab-contetn-item arrow-right">
                     <label for="" class="title">
                         租房合同（选填）
                     </label>
+                    <span class="upload-status">{{cardList.renting.realPath != '' ? '已选择' : '请上传'}}</span>
+                    <input type="file" accept="image/*" hidden id="renting">
                 </li>
-                <li class="tab-contetn-item arrow-right">
+                <li @click="uploadOther" class="tab-contetn-item arrow-right">
                     <label for="" class="title">
                         其他补充材料（选填）
                     </label>
+                    <span class="upload-status">{{cardList.other.realPath != '' ? '已选择' : '请上传'}}</span>
+                    <input type="file" accept="image/*" hidden id="other">
                 </li>
             </ul>
-            <button id="test" class="submit">提交</button>
+            <button @click="submit" id="test" class="submit">提交</button>
         </div>
     </div>
     <script src="assets/vue/vue.min.js"></script>

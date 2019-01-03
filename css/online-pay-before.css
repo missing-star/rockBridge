@@ -1,0 +1,133 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+p.sub-title {
+    color: #888888;
+    font-size: 0.6rem;
+    line-height: 1rem;
+    margin-top: 0.5rem;
+}
+.cost-preview {
+    height: 8rem;
+    background: linear-gradient(90deg,rgba(254,205,148,1) 0%,rgba(250,131,131,1) 100%);
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 2px 0px rgba(201,77,40,0.5);
+    padding: 0.5rem;
+}
+p.title {
+    color: #ffffff;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    height: 2rem;
+}
+p.show-money {
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+span.money {
+    font-size: 2rem;
+    color: #ffffff;
+    line-height: 2.2rem;
+}
+button.pay-now {
+    height: 1.8rem;
+    width: 4rem;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 1rem;
+    color: #ffffff;
+    border: none;
+    font-size: 0.6rem;
+    padding: 0.5rem;
+}
+p.desc {
+    color: #ffffff;
+    font-size: 0.6rem;
+    line-height: 1rem;
+}
+.cost-detail {
+    margin-top: 0.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: flex-end;
+    border-top: 1px solid #ffffff;
+}
+ul.history-pay-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+li.history-pay-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3rem;
+    border-bottom: 1px solid #F6F6F6;
+    margin-bottom: 1rem;
+}
+img.pay-icon {
+    width: 2.5rem;
+    border-radius: 50%;
+    background: #9D7E60;
+    height: 2.5rem;
+    padding: 0.3rem;
+}
+.pay-category {
+    display: flex;
+    align-items: center;
+}
+.title-address {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+}
+.pay-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+p.pay-title {
+    color: #000000;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+p.address {
+    color: #AAAAAA;
+    font-size: 0.7rem;
+    line-height: 1.2rem;
+}
+p.date-time {
+    font-size: 0.7rem;
+    color: #aaaaaa;
+    line-height: 1rem;
+}
+p.cost {
+    color: #FF8B16;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}

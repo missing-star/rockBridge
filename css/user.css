@@ -38,6 +38,7 @@ span.mui-badge.mui-badge-danger {
 }
 img.user-logo {
     width: 4rem;
+    border-radius: 50%;
 }
 p.user-detail>span {
     display: block;

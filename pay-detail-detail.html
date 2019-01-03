@@ -22,12 +22,12 @@
         <div class="mui-content">
             <header class="packet-title">
                 <p>明细详情</p>
-                <p @click="goComplain">投诉</p>
+                <p @click="getInvoice(detail.id)">发票</p>
             </header>
             <div class="trade-container">
                 <img src="imgs/electric.png" alt="" class="trade-icon">
-                <p class="title">南京供电公司</p>
-                <p class="trade-money">-25.00</p>
+                <!-- <p class="title">南京供电公司</p> -->
+                <p class="trade-money">-{{detail.actual_payment}}</p>
                 <p class="trade-status">交易成功</p>
             </div>
             <ul class="detail-list">
@@ -41,32 +41,32 @@
                     <label for="" class="title">
                         缴费说明
                     </label>
-                    <p class="content">电费-用户名-商家店名</p>
+                    <p class="content">{{detail.content}}</p>
                 </li>
                 <li class="detail-item">
                     <label for="" class="title space-between">
                         <span>户</span>
                         <span>号</span>
                     </label>
-                    <p class="content">1023564 用户名</p>
+                    <p class="content">{{detail.shop_id}}</p>
                 </li>
-                <li class="detail-item">
+                <!-- <li class="detail-item">
                     <label for="" class="title">
                         使用日期
                     </label>
                     <p class="content">6月12日-8月12日</p>
-                </li>
+                </li> -->
                 <li class="detail-item">
                         <label for="" class="title">
                             创建日期
                         </label>
-                        <p class="content">2018-02-22 20:22</p>
+                        <p class="content">{{detail.add_time}}</p>
                     </li>
                 <li class="detail-item">
                     <label for="" class="title">
                         订单号
                     </label>
-                    <p class="content">236656545445442255</p>
+                    <p class="content">{{detail.pay_order}}</p>
                 </li>
                 <li class="detail-item">
                     <label for="" class="title">

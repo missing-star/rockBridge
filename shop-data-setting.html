@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/shop-data-setting.css">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <div v-show="!isEditName" class="hello">
+                <div @click="editShopName" class="left">
+                    <p class="hello-info">你好！{{inputName}}</p>
+                    <p class="sub-title">点击编辑您的店铺名称</p>
+                </div>
+                <img src="imgs/user-logo.png" alt="" class="business-logo">
+            </div>
+            <div v-show="isEditName" class="editName">
+                <div class="input-group">
+                    <input v-model="editName" @input="limitName" type="text" class="editor">
+                    <span class="inpupt-number">{{editName.length}} / 8</span>
+                    <span @click="clearInput" v-show="editName.length != 0" class="clear-input">
+                        <img src="imgs/clear.png" alt="">
+                    </span>
+                </div>
+                <button @click="hideInput" class="cancel-btn">取消</button>
+                <button @click="confirmName" class="confirm">确定</button>
+            </div>
+            <p class="base-info">
+                基本信息
+            </p>
+            <ul class="info-list">
+                <li class="info-item">
+                    <label for="" class="title">店铺类型</label>
+                    <input readonly type="text" class="content limit" value="试营店铺">
+                    <p class="level-up arrow-right">可升级</p>
+                </li>
+                <li class="info-item">
+                    <label for="" class="title">商家电话</label>
+                    <input readonly type="text" class="content arrow-right" value="025-85461354">
+                </li>
+                <li class="info-item">
+                    <label for="" class="title">开业时间</label>
+                    <input readonly type="text" class="content arrow-right no-bg" value="025-85461354">
+                </li>
+            </ul>
+            <button @click="applyCancel" class="apply-destory">申请注销店铺</button>
+        </div>
+
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/shop-data-setting.js"></script>
+</body>
+
+</html>

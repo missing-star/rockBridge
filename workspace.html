@@ -127,22 +127,20 @@
                     <p class="apply-desc">扩充上架商品量，让更多人看到你的商品</p>
                 </div>
                 <!--有好货-->
-                <p class="class-title">有好货</p>
-                <div class="have-good-goods">
-                    <div v-for="n in 3" class="goods-item">
-                        <img class="goods-img" src="imgs/bed1.png" />
-                        <div class="goods-info">
-                            <p>
-                                <span>商品名称</span>
-                                <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
+                <p class="class-title">一星期内预约商品（3）</p>
+                <ul class="reverse-list">
+                    <li v-for="n in 3" class="reverse-item">
+                        <img src="imgs/bed1.png" alt="" class="goods-icon">
+                        <div class="goods-desc">
+                            <p class="goods-name">商品名称</p>
+                            <p class="time-status">
+                                <span class="reverse-time">预约时间：2018年2月15日 12:00</span>
+                                <span class="reverse-status">预约状态：预约成功</span>
                             </p>
-                            <p>
-                                <span class="goods-price">￥200</span>
-                                <button class="reserve">预约</button>
-                            </p>
+                            <p class="surplus-time">剩余2天12小时23分钟预约时间将到期</p>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                </ul>
                 <div class="bottom-line">
                     ······ 已见底了 ······
                 </div>

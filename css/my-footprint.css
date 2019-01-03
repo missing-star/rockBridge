@@ -1,0 +1,88 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+header.packet-title>p:last-child {
+    background: #f0f0f0;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2rem 0.5rem;
+}
+img.icon-down {
+    width: 1rem;
+}
+span.date-time {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    margin-right: 0.5rem;
+}
+.goods-item {
+    width: 48%;
+    margin-bottom: 1rem;
+}
+img.goods-img {
+    width: 100%;
+}
+.goods-info>p:first-child {
+    margin: 0.2rem 0;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+}
+.goods-info>p {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+span.eye-container {
+    display: inline-flex;
+    align-items: center;
+}
+img.view-num {
+    width: 1rem;
+    margin-right: 0.2rem;
+}
+button.reserve {
+    background: #9d7e60;
+    border: none;
+    border-radius: 1rem;
+    color: #fff;
+    padding: 0 0.3rem;
+    font-size: 0.6rem;
+    line-height: 1rem;
+}
+div.have-good-goods {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1rem;
+}

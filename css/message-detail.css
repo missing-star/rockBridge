@@ -1,0 +1,77 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+img.message-icon {
+    width: 15%;
+    border-radius: 50%;
+}
+ul.message-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+li.message-item {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+span.message-time {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #FF7C3C;
+    font-size: 0.6rem;
+    line-height: 1rem;
+}
+.message-content {
+    flex: 1;
+    border-bottom: 1px solid #f8f8f8;
+    padding-bottom: 1rem;
+    margin-left: 1rem;
+}
+p.message-title {
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+p.message-desc {
+    color: #888888;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
