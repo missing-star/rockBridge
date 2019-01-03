@@ -147,7 +147,7 @@ function getRepairRecord(type, page, loadMore) {
             }
         },
         error: function () {
-
+            mui.toast('服务器异常!');
         }
     })
 }

@@ -208,7 +208,7 @@ function getInfo() {
             vm.str = data.info;
         },
         error: function () {
-
+            mui.toast('服务器异常!');
         }
     });
 }
