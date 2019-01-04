@@ -4,7 +4,7 @@ var vm = new Vue({
         loginWay: 0,
         msg: '获取验证码',
         sendCode: true,
-        phone: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).phone : '',
+        phone: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).users.phone : '',
         waitTime: 60,
         password: '',
         code: '',
@@ -78,7 +78,8 @@ var vm = new Vue({
                 mui.toast('手机号不合法！');
                 return false;
             } else if (this.code.length != 6 || isNaN(parseInt(this.code))) {
-
+                mui.toast('请输入6位验证码！');
+                return false;
             } else if (this.password.length < 6) {
                 mui.toast('密码长度至少为6位！');
                 return false;
