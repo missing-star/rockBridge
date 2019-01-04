@@ -23,16 +23,34 @@ var vm = new Vue({
         },
         getCode() {
             if (this.sendCode && this.waitTime == 60) {
-                this.msg = this.waitTime + 's';
-                var interval = setInterval(function () {
-                    if (vm.waitTime == 1) {
-                        vm.msg = '获取验证码';
-                        clearInterval(interval);
-                        return false;
+                $.ajax({
+                    url: `${rootUrl}/index/api/sendSms`,
+                    data: {
+                        phone: this.phone
+                    },
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        mui.toast(dta.msg);
+                        if (data.status == 1) {
+                            this.msg = this.waitTime + 's';
+                            var interval = setInterval(function () {
+                                if (vm.waitTime == 1) {
+                                    vm.waitTime = 60;
+                                    vm.msg = '获取验证码';
+                                    clearInterval(interval);
+                                    return false;
+                                }
+                                vm.waitTime -= 1;
+                                vm.msg = vm.waitTime + 's';
+                            }, 1000);
+                        } 
+                    },
+                    error: function () {
+
                     }
-                    vm.waitTime -= 1;
-                    vm.msg = vm.waitTime + 's';
-                }, 1000);
+                });
+
             } else if (!this.sendCode) {
                 mui.toast('手机号不合法!');
             }
