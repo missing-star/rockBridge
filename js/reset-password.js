@@ -4,7 +4,7 @@ var vm = new Vue({
         loginWay: 0,
         msg: '获取验证码',
         sendCode: true,
-        phone: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).users.phone : '',
+        phone: localStorage.getItem('user') != `""` ? JSON.parse(localStorage.getItem('user')).users.phone : '',
         waitTime: 60,
         password: '',
         code: '',
@@ -88,7 +88,7 @@ var vm = new Vue({
                 return false;
             }
             $.ajax({
-                url: `${rootUrl}/index/api/updateUserInfo`,
+                url: `${rootUrl}/index/api/updateUserPassword`,
                 type: 'post',
                 dataType: 'json',
                 data: {
