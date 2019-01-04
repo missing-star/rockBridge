@@ -121,7 +121,7 @@ var vm = new Vue({
                 city: vm.city,
                 district: vm.district
             };
-            if (formData.username == '') {
+            if (formData.person_name == '') {
                 mui.toast('请输入商户名！');
                 return false;
             } else if (!regPhone.test(formData.phone)) {

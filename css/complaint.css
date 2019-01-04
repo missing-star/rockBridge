@@ -76,8 +76,8 @@ button.submit-repair.submit-repair{
     position: relative;
     border: 1px solid rgba(237,237,237,1);
     border-radius: 0.5rem;
-    width: 48%;
-    height: 4rem;
+    width: 49%;
+    height: 5rem;
 
 }
 .ques-item.active span.checkbox {
@@ -178,6 +178,9 @@ img.classify-icon {
     line-height: 1rem;
     color: #b3b3b3;
     border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .classify-item.active>p.title {
     color: #9D7E60;
