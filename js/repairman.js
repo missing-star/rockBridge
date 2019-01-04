@@ -77,12 +77,11 @@ function getRepairRecord(type, page, loadMore) {
         return false;
     }
     $.ajax({
-        // url: `${rootUrl}/index/api/getMyRepairRecord`,
-        url:'http://result.eolinker.com/FfX1CPg128451982317c38a8fb685a6a6f8994747021e62?uri=/index/api/getMyRepairRecord',
+        url: `${rootUrl}/index/api/getMyRepairRecord`,
         type: 'post',
         datType: 'json',
         data: {
-            getMyRepairRecord: type,
+            handle_status: type,
             page: page
         },
         dataType: 'json',
@@ -127,8 +126,7 @@ $('div.goods-tab-content-item').scroll(function () {
 
 function submitRepair(id,money) {
     $.ajax({
-        // url: `${rootUrl}/index/api/getUpdateMoney`,
-        url:'http://result.eolinker.com/FfX1CPg128451982317c38a8fb685a6a6f8994747021e62?uri=/index/api/getUpdateMoney',
+        url: `${rootUrl}/index/api/getUpdateMoney`,
         data: {
             id: id,
             money: money
@@ -136,7 +134,6 @@ function submitRepair(id,money) {
         type: 'post',
         datType: 'json',
         success: function (data) {
-            console.log(data);
             if (data.status == 1) {
                 mui.confirm('提交成功！', '', ['确定'], function (e) {
                     location.reload();

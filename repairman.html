@@ -41,6 +41,7 @@
                             <p class="desc-title">{{item.repair_title}}</p>
                             <!-- <p class="desc-detail">{{item.detail}}</p> -->
                             <p class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p v-if="item.re_money > 0" class="pay-re-money">需支付：￥{{item.re_money}}</p>
                         </div>
                     </div>
                     <div class="operation-group">

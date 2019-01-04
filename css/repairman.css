@@ -151,6 +151,7 @@ span.is-upper {
 img.goods-img {
     width: 30%;
     border-radius: 0.2rem;
+    height: 4rem;
 }
 
 .goods-desc {
@@ -158,6 +159,11 @@ img.goods-img {
     flex: 1;
     padding-left: 0.5rem;
     position: relative;
+}
+p.pay-re-money{
+    color: #FF8B16;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
 }
 
 .eye-number>img {
