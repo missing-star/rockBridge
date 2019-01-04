@@ -207,7 +207,7 @@ function parseImage(elem, key) {
     var arr = filePath.split('\\');
     var fileName = arr[arr.length - 1];
     fr.onload = function () {
-        uploadImgRealPath(imgObj, key, this.src);
+        uploadImgRealPath(imgObj, key, this.result);
         //置空文件上传框的值
         $(elem).val("");
     };
@@ -225,7 +225,7 @@ function uploadImgRealPath(fileObj, key, src) {
         data: formData,
         success: function (data) {
             mui.toast(data.msg);
-            if (dta.status == 1) {
+            if (data.status == 1) {
                 vm.cardList[key].src = src;
                 //设置文件路径为服务器路径
                 vm.cardList[key].realPath = data.result;

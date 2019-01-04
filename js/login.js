@@ -31,7 +31,7 @@ var vm = new Vue({
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
-                        mui.toast(dta.msg);
+                        mui.toast(data.msg);
                         if (data.status == 1) {
                             this.msg = this.waitTime + 's';
                             var interval = setInterval(function () {
