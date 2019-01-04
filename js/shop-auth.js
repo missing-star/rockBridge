@@ -7,7 +7,7 @@ var vm = new Vue({
         addressPubId: '',
         addressPub: '',
         otherCitySelected: '',
-        phone: '',
+        phone: JSON.parse(localStorage.getItem('user')).users.phone,
         password: '',
         //手机号是否注册
         isRegister: true,

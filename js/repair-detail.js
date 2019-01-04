@@ -18,6 +18,9 @@ var vm = new Vue({
     el: '#app',
     data: {
         repairInfo: {
+            id:param.id,
+            status:param.status,
+            order_status:param.order_status,
             shopName: '',
             repairNo: '',
             submitSection: '部门1',
@@ -30,7 +33,8 @@ var vm = new Vue({
             submitTime:'',
             isTimeUp:true,
             //倒计时
-            remindTime:''
+            remindTime:'',
+            needPay:''
         }
     },
     methods: {
@@ -64,7 +68,13 @@ var vm = new Vue({
             mui.openWindow({
                 url: 'repair-record.html'
             })
-        }
+        },
+        goPay(status, id, order_status) {
+            //缴费
+            mui.openWindow({
+                url: 'online-pay.html?status=' + status + '&id=' + id + '&order_status=' + order_status
+            });
+        },
     }
 });
 
@@ -85,7 +95,7 @@ function getRecordDetail(id) {
             data.result.repait_content_images.forEach(function(item,index) {
                 vm.repairInfo.imgs.push(rootUrl + item);
             });
-            
+            vm.repairInfo.needPay = data.result.re_money;
             vm.repairInfo.repairNo = data.result.re_code;
             vm.repairInfo.quesDesc = data.result.repair_content;
             vm.repairInfo.shopName = data.result.shop_phone;

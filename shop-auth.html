@@ -34,7 +34,7 @@
                     <label for="" class="title edit">
                         联系电话<i class="must-icon">*</i>
                     </label>
-                    <input v-model="phone" @input="limitPhone" type="number" class="username">
+                    <input readonly v-model="phone" @input="limitPhone" type="number" class="username">
                 </li>
                 <li v-show="!isRegister" class="tab-contetn-item">
                     <label for="" class="title edit">密码<i class="must-icon">*</i></label>

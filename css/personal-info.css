@@ -50,6 +50,7 @@ li.info-item {
 img.user-logo {
     width: 3.5rem;
     border-radius: 50%;
+    height: 3.5rem;
 }
 label.title {
     font-size: 0.9rem;
