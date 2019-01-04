@@ -4,7 +4,7 @@ var vm = new Vue({
         loginWay: 0,
         msg: '获取验证码',
         sendCode: false,
-        phone: '',
+        phone: JSON.parse(localStorage.getItem('user').users.phone),
         waitTime: 60,
         password: '',
         code: '',

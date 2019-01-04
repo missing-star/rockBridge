@@ -115,7 +115,7 @@ function validateUser() {
 }
 
 function validateUserPhone() {
-    if(JSON.parse(localStorage.getItem('user')).phone) {
+    if(JSON.parse(localStorage.getItem('user')).users.phone) {
         return true;
     }
     else {

@@ -145,9 +145,6 @@ var vm = new Vue({
     payPicker.setData([{
         value: 1,
         text: '微信支付'
-    }, {
-        value: 2,
-        text: '余额支付'
     }]);
     var eventBtn = doc.getElementById('pay-way');
     eventBtn.addEventListener('tap', function (event) {
