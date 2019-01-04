@@ -47,7 +47,7 @@ var vm = new Vue({
                         }
                     },
                     error: function () {
-
+                        mui.toast('服务器异常');
                     }
                 });
 

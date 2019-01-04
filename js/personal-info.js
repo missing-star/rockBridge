@@ -5,10 +5,11 @@ var vm = new Vue({
         city: '',
         birthdate: '',
         address: '',
-        userLogo:'imgs/business-logo.png',
-        isEditName:false,
-        editName:'',
-        nickname:'Monkey'
+        userLogo: 'imgs/business-logo.png',
+        isEditName: false,
+        editName: '',
+        nickname: 'Monkey',
+        imgObj: ''
     },
     methods: {
         uploadLogo(event) {
@@ -19,7 +20,7 @@ var vm = new Vue({
         },
         limitName() {
             this.editName = this.editName.replace(/\s+/g, "");
-            this.editName = this.editName.slice(0,8);
+            this.editName = this.editName.slice(0, 8);
         },
         clearInput() {
             this.editName = '';
@@ -28,11 +29,10 @@ var vm = new Vue({
             this.isEditName = false;
         },
         confirmName() {
-            if(this.editName.length != 0) {
+            if (this.editName.length != 0) {
                 this.inputName = this.editName;
                 this.isEditName = false;
-            }
-            else {
+            } else {
                 mui.toast('请输入名称!');
             }
         }
@@ -90,7 +90,8 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
     file: "#file",
     view: "#view",
     ok: "#confirm-btn",
-    loadStart: function () {
+    loadStart: function (files) {
+        vm.imgObj = files;
         $("#wait-loading").css("display", "flex");
     },
     loadComplete: function () {
@@ -98,9 +99,8 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
         mui('#sheet').popover('toggle');
     },
     clipFinish: function (dataURL) {
-        mui('#sheet').popover('toggle');
-        vm.userLogo = dataURL;
         //上传图片
+        uploadImgRealPath(vm.imgObj, dataURL);
     }
 });
 //关闭actionsheet
@@ -110,4 +110,40 @@ function closeSheet() {
 //保存头像
 function saveImg() {
     console.log('111');
+}
+
+function uploadImgRealPath(fileObj, dataURL) {
+    var formData = new FormData();
+    formData.append('image', fileObj);
+    $.ajax({
+        url: 'http://dieshiqiao.pzhkj.cn/index/Uploadify/api_imgUp',
+        type: 'post',
+        dataType: 'json',
+        async: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (data) {
+            mui.toast(data.msg);
+            if (data.status == 1) {
+                //图片上传成功,开始更新个人信息
+                if (updateUserInfo()) {
+                    mui('#sheet').popover('toggle');
+                    vm.userLogo = dataURL;
+                }
+                else {
+                    mui.toast('修改成功');
+                }
+            } else {
+                mui.toast('上传失败');
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常!');
+        }
+    })
+}
+
+function updateUserInfo() {
+
 }

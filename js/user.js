@@ -75,9 +75,18 @@ mui('body').on('tap', 'a', function () {
  */
 function enterItem(url) {
     if (validateUser()) {
-        mui.openWindow({
-            url: url
-        });
+        if(validateUserPhone()) {
+            //已绑定手机号
+            mui.openWindow({
+                url: url
+            });
+        }
+        else {
+            //未绑定手机号
+            mui.openWindow({
+                url: 'bind-phone.html'
+            });
+        }
     } else {
         mui.toast('请登录后操作！');
     }

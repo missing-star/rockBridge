@@ -58,11 +58,39 @@
             </div>
             <!--滑动项目-->
             <div class="slider">
-                <div @click="jumpLink(item.url)" class="slider-item" v-for="item in itemList">
-                    <img class="item-icon" :src="item.icon" />
+                <div @click="jumpLink('shop-auth.html',true)" class="slider-item">
+                    <img class="item-icon" src="imgs/safe.png" />
                     <p class="item-desc">
-                        <span class="item-desc-title">{{item.title}}</span>
-                        <span class="item-desc-content">{{item.desc}}</span>
+                        <span class="item-desc-title">商家认证</span>
+                        <span class="item-desc-content">商品安全保障</span>
+                    </p>
+                </div>
+                <!-- <div @click="jumpLink('shop-settled.html')" class="slider-item">
+                    <img class="item-icon" src="imgs/home-line.png" />
+                    <p class="item-desc">
+                        <span class="item-desc-title">商铺入驻</span>
+                        <span class="item-desc-content">线上线下一体化</span>
+                    </p>
+                </div>
+                <div @click="jumpLink('shop-data-setting.html')" class="slider-item">
+                    <img class="item-icon" src="imgs/home-line.png" />
+                    <p class="item-desc">
+                        <span class="item-desc-title">商铺入驻</span>
+                        <span class="item-desc-content">线上线下一体化</span>
+                    </p>
+                </div> -->
+                <div @click="jumpLink('online-pay.html',true)" class="slider-item">
+                    <img class="item-icon" src="imgs/setting.png" />
+                    <p class="item-desc">
+                        <span class="item-desc-title">在线缴费</span>
+                        <span class="item-desc-content">商铺线上管理</span>
+                    </p>
+                </div>
+                <div @click="jumpLink('contact-us.html',false)" class="slider-item">
+                    <img class="item-icon" src="imgs/phone.png" />
+                    <p class="item-desc">
+                        <span class="item-desc-title">联系我们</span>
+                        <span class="item-desc-content">随时随地资讯</span>
                     </p>
                 </div>
             </div>

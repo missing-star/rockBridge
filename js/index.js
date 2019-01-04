@@ -6,7 +6,7 @@ var vm = new Vue({
         searchContent: '',
         currentTab: 'all',
         //是否已入驻
-        isSettled:false,
+        isSettled: false,
         historyList: {
             goods: ['手机', '羽绒服', '笔记本电脑'],
             shops: ['联想旗舰店', '金士顿旗舰店', '天猫超市']
@@ -54,11 +54,23 @@ var vm = new Vue({
             //清空搜索框
             this.searchContent = '';
         },
-        jumpLink(url) {
+        jumpLink(url, flag) {
             //认证，缴费，入驻，联系我们跳转
-            mui.openWindow({
-                url: url
-            });
+            if (flag) {
+                //需要登录操作
+                if (validateUser()) {
+                    mui.openWindow({
+                        url: url
+                    });
+                } else {
+                    mui.toast('请登录后操作!');
+                }
+            } else {
+                //无需登录操作
+                mui.openWindow({
+                    url: url
+                });
+            }
         },
         goDetail(url, id) {
             //详情页

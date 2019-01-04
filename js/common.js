@@ -113,3 +113,12 @@ function validateUser() {
         return false;
     }
 }
+
+function validateUserPhone() {
+    if(JSON.parse(localStorage.getItem('user')).phone) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
