@@ -68,10 +68,10 @@
                         <template v-if="currentRole == 1">切换买家</template>
                     </span>
                 </p>
-                <div class="notice-container">
+                <!-- <div class="notice-container">
                     <img src="imgs/notice.png" class="notice-icon" />
                     <span class="mui-badge mui-badge-danger">22</span>
-                </div>
+                </div> -->
             </header>
             <div class="user-info" @click="login">
                 <template v-if="userData">
@@ -163,12 +163,12 @@
                 </template>
             </ul>
             <ul class="operation-list">
-                <a href="javascript:;" onclick="enterItem('my-packet.html')">
+                <!-- <a href="javascript:;" onclick="enterItem('my-packet.html')">
                     <li v-if="currentRole == 0" class="operation-item">
                         <img class="operation-item-icon" src="imgs/user-notice.png" />
                         <p class="operation-item-name">通知</p>
                     </li>
-                </a>
+                </a> -->
                 <a href="javascript:;" onclick="enterItem('my-packet.html')">
                     <li v-else class="operation-item">
                         <img class="operation-item-icon" src="imgs/user-footmark.png" />
