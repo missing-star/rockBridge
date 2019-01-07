@@ -279,6 +279,7 @@ li.reverse-item {
     justify-content: space-between;
     flex-direction: column;
     padding-left: 0.5rem;
+    flex: 1;
 }
 p.goods-name {
     color: #333333;
@@ -289,6 +290,10 @@ p.surplus-time {
     font-size: 0.6rem;
     line-height: 1rem;
     color: #FF5816;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 0.5rem);
 }
 p.time-status {
     display: flex;
