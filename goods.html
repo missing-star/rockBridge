@@ -17,7 +17,6 @@
             <form class="input-group">
                 <input readonly @focus="showSearch" placeholder="输入商品或商店名称" v-model="searchContent" id="search" class="search-page-input"
                     type="text">
-                <img @click="clearInput" class="clear-icon" src="imgs/clear.png" />
             </form>
             <template v-if="isShowGoods">
                 <img @click="switchGoodsLayout" class="switch-layout" :class="{active:!isDefGoodsLayout}" src="imgs/layout-default.png" />
@@ -61,19 +60,23 @@
             <ul class="sort-header fixed">
                 <li class="sort-item active">
                     <p class="sort-item-title">综合</p>
-                    <img class="sort-icon" src="imgs/sort-down-active.png" />
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
                 </li>
                 <li class="sort-item">
                     <p class="sort-item-title">销量</p>
-                    <img class="sort-icon" src="imgs/sort-down.png" />
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
                 </li>
                 <li class="sort-item">
                     <p class="sort-item-title">价格</p>
-                    <img class="sort-icon" src="imgs/sort-down.png" />
+                    <img class="sort-icon  no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon  active" src="imgs/sort-down-active.png" />
                 </li>
                 <li class="sort-item">
                     <p class="sort-item-title">筛选</p>
-                    <img class="sort-icon" src="imgs/sort-down.png" />
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
                 </li>
             </ul>
             <!--商品tab页内容-->

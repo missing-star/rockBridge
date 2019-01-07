@@ -99,4 +99,11 @@ $(function () {
             }
         }
     });
+    //分类tab页切换
+    $('li.sort-item').click(function() {
+        if(!$(this).hasClass('active')) {
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        }
+    });
 });

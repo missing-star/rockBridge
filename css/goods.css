@@ -78,7 +78,15 @@ li.tab-bar-item.active:after {
     left: 0;
     background: #5e452d;
 }
-
+li.sort-item.active img.sort-icon.no-active {
+    display: none;
+}
+li.sort-item img.sort-icon.active {
+    display: none;
+}
+li.sort-item.active img.sort-icon.active {
+    display: block;
+}
 ul.sort-header {
     list-style: none;
     display: flex;
