@@ -99,7 +99,7 @@
                 </template>
             </div>
             <!--角色为商家时显示交易金额信息-->
-            <div v-if="currentRole == 1" class="business-deal-info">
+            <!-- <div v-if="currentRole == 1" class="business-deal-info">
                 <div class="tody-deal-amount">
                     <p class="amount-title">今日成交总额</p>
                     <img class="amount-icon" src="imgs/amount.png" />
@@ -110,15 +110,15 @@
                     <img class="balance-icon" src="imgs/balance.png" />
                     <p class="balance-num">99999.00元</p>
                 </div>
-            </div>
+            </div> -->
             <!--列表项目-->
             <ul class="operation-list">
-                <a href="javascript:;" onclick="enterItem('my-packet.html')">
+                <!-- <a href="javascript:;" onclick="enterItem('my-packet.html')">
                     <li class="operation-item">
                         <img class="operation-item-icon" src="imgs/user-packet.png" />
                         <p class="operation-item-name">我的钱包</p>
                     </li>
-                </a>
+                </a> -->
                 <a href="javascript:;" onclick="enterItem('my-collection.html')">
                     <li class="operation-item">
                         <img class="operation-item-icon" src="imgs/user-collection.png" />
@@ -134,7 +134,7 @@
             </ul>
             <ul class="operation-list">
                 <template v-if="currentRole == 0">
-                    <a href="javascript:;" onclick="enterItem('shop-auth.html')">
+                    <a href="javascript:;" onclick="enterItem('shop-auth.html',true)">
                         <li class="operation-item">
                             <img class="operation-item-icon" src="imgs/user-auth.png" />
                             <p class="operation-item-name">商铺认证</p>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css">
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/my-packet.css">
+    <link rel="stylesheet" href="css/charge.css">
     <title>叠石桥</title>
 </head>
 <body>
@@ -16,17 +16,25 @@
         </header>
         <div class="mui-content">
             <header class="packet-title">
-                <p>我的钱包</p>
-                <p @click="getDetail">明细</p>
+                <p>余额充值</p>
             </header>
             <div class="packet-balance">
-                <p>我的余额</p>
-                <p>￥88.00</p>
-                <span class="packet-balance-icon">￥</span>
+                <p>充值金额</p>
+                <span class="packet-balance-icon">
+                    ￥
+                </span>
+                <p class="get-cash-container">
+                    <span class="icon-get-cash">￥</span>
+                    <input v-model="inputMoney" type="number" class="input-cash"/>
+                </p>
+            </div>
+            <!-- <p class="warning">{{warning}}</p> -->
+            <div class="alipay-get-cash">
+                <img class="alipay-icon" src="imgs/alipay.png"/>
+                <p>支付宝</p>
             </div>
             <div class="packet-btn-group">
-                <button type="button" onclick="pageLink('charge.html')" class="btn-charge">充值</button>
-                <button type="button" onclick="pageLink('get-cash.html')" class="btn-get-cash">提现</button>
+                <button :disabled="!isValid" class="btn-charge" :class="{'invalid':!isValid,'valid':isValid}">确定充值</button>
             </div>
         </div>
     </div>
@@ -34,6 +42,6 @@
     <script src="assets/jquery/jquery.min.js"></script>
     <script src="assets/mui/js/mui.min.js"></script>
     <script src="js/common.js"></script>
-    <script src="js/my-packet.js"></script>
+    <script src="js/charge.js"></script>
 </body>
 </html>

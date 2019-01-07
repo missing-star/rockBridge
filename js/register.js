@@ -69,6 +69,12 @@ var vm = new Vue({
                 this.codeValidate = false;
             }
         },
+        readProtocol() {
+            //查看协议
+            mui.openWindow({
+                url:'protocol.html'
+            });
+        },
         submitRegister() {
             if (!validatePhone(this.phone)) {
                 mui.toast('手机号不合法！');

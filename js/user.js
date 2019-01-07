@@ -73,9 +73,13 @@ mui('body').on('tap', 'a', function () {
 /**
  * 项目入口（钱包，收藏等）
  */
-function enterItem(url) {
+function enterItem(url,flag) {
     if (validateUser()) {
         if(validateUserPhone()) {
+            if(flag) {
+                mui.toast('您已进行过商户认证');
+                return false;
+            }
             //已绑定手机号
             mui.openWindow({
                 url: url
