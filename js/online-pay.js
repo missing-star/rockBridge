@@ -79,9 +79,6 @@ var vm = new Vue({
             this.isNext = false;
         },
         submit() {
-            if (vm.isShowRepair) {
-                formData.pay_order = vm.selectedRepairId;
-            }
             if (typeof WeixinJSBridge == "undefined") {
                 if (document.addEventListener) {
                     document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
