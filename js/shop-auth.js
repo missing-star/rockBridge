@@ -3,6 +3,8 @@ var vm = new Vue({
     data: {
         //用户名
         userName: '',
+        //商铺名称
+        shopName: '',
         //公房地址选择
         addressPubId: '',
         addressPub: '',
@@ -101,6 +103,11 @@ var vm = new Vue({
             this.userName = this.userName.replace(/\s+/g, "");
             this.userName = this.userName.slice(0, 6);
         },
+        validateTitle() {
+            //限制用户名
+            this.shopName = this.shopName.replace(/\s+/g, "");
+            this.shopName = this.shopName.slice(0, 10);
+        },
         limitAddress() {
             //限制详细地址
             this.detailAddress = this.detailAddress.replace(/\s+/g, "");
@@ -109,6 +116,7 @@ var vm = new Vue({
             var regPhone = /^1[34578]\d{9}$/;
             var formData = {
                 person_name: this.userName,
+                title: this.shopName,
                 phone: this.phone,
                 password: this.password,
                 address_id: this.addressPubId,
@@ -127,6 +135,8 @@ var vm = new Vue({
             } else if (!regPhone.test(formData.phone)) {
                 mui.toast('手机号有误！');
                 return false;
+            } else if (formData.title == '') {
+
             } else if (!vm.isRegister && formData.password.length < 6) {
                 mui.toast('请输入6-18位密码！');
                 return false;

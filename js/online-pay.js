@@ -7,6 +7,8 @@ var vm = new Vue({
         userNum: 12345,
         //需要交纳的费用
         money: '',
+        //支付费率
+        payFate:'0.5元',
         //用户输入的费用
         inputMoney: '',
         description: '',
@@ -35,9 +37,6 @@ var vm = new Vue({
                 return false;
             } else if (!parseFloat(this.inputMoney) || this.inputMoney == '') {
                 mui.toast('请输入缴费金额！');
-                return false;
-            } else if (this.description == '') {
-                mui.toast('请输入缴费描述');
                 return false;
             } else if (this.payWay == '') {
                 mui.toast('请选择支付方式！');
@@ -222,6 +221,10 @@ function jsApiCall() {
                         url:'pay-detail.html'
                     });
                 }, 200);
+            }
+            else {
+                //支付失败/用户取消支付
+                
             }
         }
     );

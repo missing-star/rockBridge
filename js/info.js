@@ -1,13 +1,15 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        list: [1, 2, 3, 4, 5, 6, 76, 7342, 234, 123, 34]
+        list: [1],
+        tab: ['重大新闻', '今日头条', '娱乐', '体育', '生活', '财经', '新鲜事'],
+        tabContent: []
     },
     methods: {
         getInfoDetail(id) {
             mui.openWindow({
-                url:'info-detail.html'
-            })
+                url: 'info-detail.html'
+            });
         }
     }
 })
@@ -27,12 +29,11 @@ window.onload = function () {
         var columns = 2;
         var arr = [];
         for (var i = 0; i < items.length; i++) {
-            if (i < columns) {
+            if (i < columns && !(items.length == 2 && i == 1)) {
                 // 2- 确定第一行
                 items[i].style.top = 0;
                 items[i].style.left = (itemWidth + gap) * i + 'px';
                 arr.push(items[i].offsetHeight);
-
             } else {
                 // 其他行
                 // 3- 找到数组中最小高度  和 它的索引
@@ -54,7 +55,11 @@ window.onload = function () {
                     // 最小列的高度 = 当前自己的高度 + 拼接过来的高度 + 间隙的高度
                     arr[index] = arr[index] + items[i].offsetHeight + gap;
                 } else {
-                    items[i].style.top = arr[1 - index] + 'px';
+                    if (i == 1) {
+                        items[i].style.top = arr[index] + 'px';
+                    } else {
+                        items[i].style.top = arr[1 - index] + 'px';
+                    }
                     items[i].style.marginTop = '1rem';
                     items[i].style.marginBottom = '3rem';
                 }
@@ -79,6 +84,20 @@ window.onload = function () {
         }
 
     };
+
+    $("li.tab-bar-item").click(function () {
+        if (!$(this).hasClass('active')) {
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+            //模拟重新获取数据
+            vm.list = reGetList();
+            //滚动到顶部
+            $(window).scrollTop(0);
+            vm.$nextTick(function () {
+                waterFall();
+            });
+        }
+    });
 };
 
 // clientWidth 处理兼容性
@@ -91,4 +110,15 @@ function getClient() {
 // scrollTop兼容性处理
 function getScrollTop() {
     return window.pageYOffset || document.documentElement.scrollTop;
+}
+
+function reGetList() {
+    let count = Math.random() * 100 + 1;
+    let list = [];
+    for (let i = 1; i < count; i++) {
+        list.push(i);
+    }
+    console.log(list);
+    return list;
+
 }
