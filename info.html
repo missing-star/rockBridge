@@ -65,10 +65,10 @@
                 <p class="sub-title">每日一读，知天下事</p>
             </header>
             <ul class="tab-bar">
-                <li :class="{active:index == 0}" v-for="(item,index) in tab" class="tab-bar-item">{{item}}</li>
+                <li :class="{active:index == 0}" v-for="(item,index) in tab" :cat-id="item.id" class="tab-bar-item">{{item.cat_name}}</li>
             </ul>
             <ul class="info-list">
-                <li @click="getInfoDetail(0)" v-for="item in list" class="info-item">
+                <li @click="getInfoDetail(0)" v-for="item in tabContent" class="info-item">
                     <div class="box-shadow">
                         <img src="imgs/info-item.png" class="info-item-img" />
                         <p class="info-item-desc">

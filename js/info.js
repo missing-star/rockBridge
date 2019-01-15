@@ -1,20 +1,25 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        list: [1],
-        tab: ['重大新闻', '今日头条', '娱乐', '体育', '生活', '财经', '新鲜事'],
-        tabContent: []
+        currentRole: localStorage.getItem('currentRole'),
+        tab: [],
+        tabContent: [],
+        currentTab:'',
+        isMore:true
     },
     methods: {
         getInfoDetail(id) {
             mui.openWindow({
-                url: 'info-detail.html'
+                url: 'info-detail.html?id=' + id
             });
         }
     }
 })
 
 window.onload = function () {
+    /**
+     * 瀑布流布局
+     */
     var box = document.querySelector('ul.info-list');
     var items = box.children;
     // 定义每一列之间的间隙 为10像素
@@ -72,25 +77,26 @@ window.onload = function () {
         waterFall();
     };
 
+    /**
+     * 滚动加载
+     */
+    var page = 1;
     window.onscroll = function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
-            if (vm.list.length < 24) {
-                vm.list = vm.list.concat([2]);
-
-                vm.$nextTick(function () {
-                    waterFall();
-                });
-            }
+            if(!vm.isMore) return; 
+            getNewsByCat(++page,vm.currentTab);
         }
 
     };
-
+    /**
+     * tab页切换
+     */
     $("li.tab-bar-item").click(function () {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active');
             $(this).siblings().removeClass('active');
             //模拟重新获取数据
-            vm.list = reGetList();
+            vm.tabContent = reGetList();
             //滚动到顶部
             $(window).scrollTop(0);
             vm.$nextTick(function () {
@@ -98,6 +104,9 @@ window.onload = function () {
             });
         }
     });
+
+    //入口函数
+    getCategory();
 };
 
 // clientWidth 处理兼容性
@@ -112,13 +121,55 @@ function getScrollTop() {
     return window.pageYOffset || document.documentElement.scrollTop;
 }
 
-function reGetList() {
-    let count = Math.random() * 100 + 1;
-    let list = [];
-    for (let i = 1; i < count; i++) {
-        list.push(i);
-    }
-    console.log(list);
-    return list;
+/**
+ * 获得新闻分类列表
+ */
+function getCategory() {
+    $.ajax({
+        url: `${rootUrl}/index/api/getArticleCate`,
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == 1) {
+                vm.tab = data.result;
+                //获得第一个tab内容
+                getNewsByCat(1, data.result[0].id);
+                vm.currentTab = data.result[0].id;
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常');
+        }
+    })
+}
 
+/**
+ * 获得新闻列表
+ */
+function getNewsByCat(page, cat_id) {
+    $.ajax({
+        url: `${rootUrl}/index/api/getArticleList`,
+        type: 'post',
+        async: false,
+        data: {
+            page: page,
+            cat_id: cat_id
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == 1) {
+                if(data.result.length == 0) {
+                    vm.isMore = false;
+                    return false;
+                }
+                vm.tabContent = vm.tabContent.concat(data.result);
+                vm.$nextTick(function () {
+                    waterFall();
+                });
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常');
+        }
+    })
 }
