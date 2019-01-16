@@ -39,6 +39,12 @@ var vm = new Vue({
         ],
         homeInfo: ''
     },
+    filters: {
+        //拼接图片地址
+        filterImg(thumb) {
+            return `${rootUrl}${thumb}`;
+        }
+    },
     methods: {
         showSearch() {
             //打开搜索页
@@ -72,6 +78,11 @@ var vm = new Vue({
                     url: url
                 });
             }
+        },
+        goInner(url) {
+            mui.openWindow({
+                url:url
+            });
         },
         goDetail(url, id) {
             //详情页
@@ -109,6 +120,7 @@ var vm = new Vue({
 });
 
 $(function () {
+    getData();
     $('li.tab-bar-item').click(function () {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active');

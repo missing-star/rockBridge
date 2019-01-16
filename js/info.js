@@ -14,7 +14,7 @@ var vm = new Vue({
             });
         }
     },
-    filters:{
+    filters: {
         //拼接图片地址
         filterImg(thumb) {
             return `${rootUrl}${thumb}`;
@@ -23,10 +23,6 @@ var vm = new Vue({
 })
 
 window.onload = function () {
-    // 页面尺寸改变时实时触发
-    window.onresize = function () {
-        waterFall();
-    };
 
     /**
      * 滚动加载
@@ -108,6 +104,7 @@ function waterFall() {
 
         }
     }
+
 }
 // clientWidth 处理兼容性
 function getClient() {

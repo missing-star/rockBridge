@@ -91,7 +91,6 @@ ul.sort-header {
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0;
     border-bottom: 1px solid #f6f6f6;
     padding-bottom: 0.6rem;
@@ -99,6 +98,7 @@ ul.sort-header {
 li.sort-item {
     display: flex;
     align-items: center;
+    margin-right: 1.5rem;
 }
 img.sort-icon {
     width: 0.6rem;
@@ -527,10 +527,17 @@ ul.sort-header.fixed {
     left: 0;
     padding: 0 1rem;
     z-index: 1;
+    display: none;
+}
+ul.sort-header.fixed.active {
+    display: flex;
 }
 .mui-bar-tab~.mui-content{
     padding-top: 7rem;
 }
 .tab-content.business.active {
     margin-top: 1rem;
+}
+li.sort-item.active.asc>img{
+    transform: rotate(180deg);
 }

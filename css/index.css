@@ -20,7 +20,11 @@ input.search-input{
     font-size: 0.8rem;
     height: 100%;
 }
-
+.goods-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
 .slider,.slider-business {
     white-space: nowrap;
 	overflow: hidden;
@@ -179,7 +183,7 @@ div.card-view-con{
     justify-content: space-between;
 }
 .news-card {
-    background-image: url(../imgs/news.png), linear-gradient(90deg, #bfe7e7 0%, #94c2e6 100%);
+    background-image:linear-gradient(90deg, #bfe7e7 0%, #94c2e6 100%);
     background-size: 40%,100%;
     border-radius: 6px;
     background-repeat: no-repeat;
@@ -232,7 +236,6 @@ p.card-content-con>span.desc{
 }
 .good-goods-con {
     padding: 15px;
-    height: 18rem;
     margin-top: 1rem;
     background-image: linear-gradient(-1deg, #fecd94 0%, #fa8383 100%);
     border-radius: 6px;
@@ -280,7 +283,7 @@ p.title>span:last-child{
     margin-top: 1rem;
 }
 .business-item{
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 .business-item>.top {
     display: flex;

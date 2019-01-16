@@ -15,14 +15,10 @@
 <body>
     <div id="app">
         <!--顶部搜索栏-->
-        <header class="mui-bar mui-bar-nav">
+        <!-- <header class="mui-bar mui-bar-nav">
             <img src="imgs/search-left-icon.png" class="search-left-icon" />
             <input readonly @focus="showSearch" type="text" class="search-input" placeholder="四件套|寻找优质羽绒蚕丝" />
-            <div class="notice-container">
-                <img src="imgs/notice.png" class="notice-icon" />
-                <span class="mui-badge mui-badge-danger">22</span>
-            </div>
-        </header>
+        </header> -->
         <!--底部导航栏-->
         <nav class="mui-bar mui-bar-tab">
             <a class="mui-tab-item mui-active" href="javascript:;">
@@ -51,8 +47,8 @@
             <!--图片展示-->
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div v-for="n in 6" class="swiper-slide">
-                        <img src="imgs/bg-temp.png" alt="">
+                    <div v-for="img in homeInfo.ad_list" class="swiper-slide">
+                        <img :src="img.ad_code | filterImg" alt="">
                     </div>
                 </div>
             </div>
@@ -101,21 +97,28 @@
                 <span class="end-title">优选店面</span>
             </p>
             <div class="slider-business">
-                <div @click="goDetail('attract-investment-detail.html',0)" v-for="n in 5" class="slider-business-item">
-                    <img src="imgs/rent.png" />
-                    <p class="business-item-title">终于等到你</p>
-                    <p class="business-item-content">优选店面</p>
+                <div @click="goDetail('attract-investment-detail.html',item.id)" v-for="item in homeInfo.property_let_list"
+                    class="slider-business-item">
+                    <img :src="item.thumb | filterImg" />
+                    <p class="business-item-title">{{item.title}}</p>
+                    <p class="business-item-content">{{item.title2}}</p>
                 </div>
             </div>
             <!--卡片：新闻，领券，通知-->
             <div class="card-view-con">
-                <div onclick="pageLink('info.html')" class="news-card">
+                <div @click="goInner(homeInfo.ad_left.ad_link)" class="news-card">
                     <p class="card-content-con">
-                        <span class="title">新闻资讯</span>
-                        <span class="desc">每日更新资讯知天下事</span>
+                        <img src="homeInfo.ad_left.ad_code | filterImg" alt="">
+                        <span class="title">{{homeInfo.ad_left.ad_name}}</span>
                     </p>
                 </div>
-                <div class="right-container">
+                <div @click="goInner(homeInfo.ad_right.ad_link)"  class="news-card">
+                    <p class="card-content-con">
+                            <img src="homeInfo.ad_right.ad_code | filterImg" alt="">
+                        <span class="title">{{homeInfo.ad_right.ad_name}}</span>
+                    </p>
+                </div>
+                <!-- <div class="right-container">
                     <div class="quan-card">
                         <p class="card-content-con">
                             <span class="title">天天领券</span>
@@ -128,59 +131,54 @@
                             <span class="desc">平台重大消息及时通知</span>
                         </p>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!--人气好物-->
             <div class="good-goods-con">
-                <p onclick="pageLink('popular-goods.html')" class="title">
+                <p class="title">
                     <span>人气好物 | </span>
                     <span>回头率超高</span>
                 </p>
                 <div class="goods-container">
-                    <div class="bottom">
-                        <div class="bottom-item" v-for="n in 6">
-                            <img @click="goDetail('goods-detail.html',0)" src="imgs/bed1.png" />
-                            <p class="name">羽绒蚕丝被</p>
-                            <p class="price">￥899起</p>
-                        </div>
+                    <div class="bottom-item" v-for="goods in homeInfo.goods_list">
+                        <img @click="goDetail('goods-detail.html',goods.id)" :src="goods.images | filterImg" />
+                        <p class="name">{{goods.title}}</p>
+                        <p class="price">￥{{goods.price}}</p>
                     </div>
                 </div>
             </div>
             <!--商家推荐-->
             <p class="class-title">商家推荐</p>
             <div class="business-recommond">
-                <div v-for="n in 2" class="business-item">
+                <div v-for="shop in homeInfo.shops_list" class="business-item">
                     <div class="top">
                         <div class="business-info">
                             <img src="imgs/business-logo.png" class="business-logo" />
                             <p class="business-detail">
-                                <span class="business-name">店铺名称<img v-for="n in 4" src="imgs/star.png" class="business-level" /></span>
-                                <span>销量 22万 | 收藏 36</span>
+                                <span class="business-name">{{shop.title}}<img v-for="n in 4" src="imgs/star.png" class="business-level" /></span>
+                                <span>浏览 {{shop.shop_review}} | 收藏 {{shop.shop_collection}}</span>
                             </p>
                         </div>
-                        <button @click="enterShop(0)" class="go-business-btn">
+                        <button @click="enterShop(shop.id)" class="go-business-btn">
                             进店
                         </button>
-                    </div>
-                    <div class="bottom">
-                        <img @click="goDetail('goods-detail.html',0)" v-for="n in 3" src="imgs/bed1.png" class="business-img-item" />
                     </div>
                 </div>
             </div>
             <!--有好物-->
             <p class="class-title">有好物</p>
             <div class="have-good-goods">
-                <div @click="goDetail('goods-detail.html',0)" v-for="n in 3" class="goods-item">
-                    <img class="goods-img" src="imgs/bed1.png" />
+                <div @click="goDetail(goods.ad_link,0)" v-for="goods in homeInfo.ad_goods_list" class="goods-item">
+                    <img class="goods-img" :src="goods.ad_code | filterImg" />
                     <div class="goods-info">
                         <p>
-                            <span>商品名称</span>
-                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
+                            <span>{{goods.ad_name}}</span>
+                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_count}}</span>
                         </p>
-                        <p>
-                            <span class="goods-price">￥200</span>
+                        <!-- <p>
+                            <span class="goods-price">￥{{goods.</span>
                             <button @click.stop="reGoods" class="reserve">查看</button>
-                        </p>
+                        </p> -->
                     </div>
                 </div>
             </div>
@@ -196,7 +194,7 @@
                     <input placeholder="输入商品或商店名称" v-model="searchContent" id="search" class="search-page-input" type="text">
                     <img v-show="searchContent.length != 0" @click="clearInput" class="clear-icon" src="imgs/clear.png" />
                 </form>
-                <span @click="hideSearch" class="cancel-search">取消</span>
+                <span @click="hideSearch" class="cancel-search">搜索</span>
             </header>
             <ul class="tab-bar">
                 <li history="all" class="tab-bar-item active">全部</li>
