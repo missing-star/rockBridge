@@ -123,8 +123,8 @@ var vm = new Vue({
 var page1 = 1;
 var page2 = 1;
 $(function () {
-    getGoodsList('', '', 'desc', page1);
-    getShopList('', '', 0, pag2);
+    getGoodsList('', 'click_num', 'desc', page1);
+    getShopList('', 'SORT_DESC', 0, page2);
     $('li.tab-bar-item').click(function () {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active');
@@ -164,6 +164,7 @@ function getGoodsList(keyword, fields, type, page) {
             type: type,
             page: page
         },
+        dataType:'json',
         type: 'post',
         success: function (data) {
             if (data.status == 1) {
@@ -185,6 +186,8 @@ function getShopList(keyword, sort, type, page) {
             type: type,
             page: page
         },
+        type:'post',
+        dataType:'json',
         success: function (data) {
             if (data.status == 1) {
                 vm.shopList = data.result;
