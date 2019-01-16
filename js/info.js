@@ -4,8 +4,8 @@ var vm = new Vue({
         currentRole: localStorage.getItem('currentRole'),
         tab: [],
         tabContent: [],
-        currentTab:'',
-        isMore:true
+        currentTab: '',
+        isMore: true
     },
     methods: {
         getInfoDetail(id) {
@@ -13,65 +13,16 @@ var vm = new Vue({
                 url: 'info-detail.html?id=' + id
             });
         }
+    },
+    filters:{
+        //拼接图片地址
+        filterImg(thumb) {
+            return `${rootUrl}${thumb}`;
+        }
     }
 })
 
 window.onload = function () {
-    /**
-     * 瀑布流布局
-     */
-    var box = document.querySelector('ul.info-list');
-    var items = box.children;
-    // 定义每一列之间的间隙 为10像素
-    var gap = 0;
-    // 一进来就调用一次
-    waterFall();
-    // 封装成一个函数
-    function waterFall() {
-        // 1- 确定列数  = 页面的宽度 / 图片的宽度
-        var pageWidth = getClient().width;
-        var itemWidth = items[0].offsetWidth;
-        var columns = 2;
-        var arr = [];
-        for (var i = 0; i < items.length; i++) {
-            if (i < columns && !(items.length == 2 && i == 1)) {
-                // 2- 确定第一行
-                items[i].style.top = 0;
-                items[i].style.left = (itemWidth + gap) * i + 'px';
-                arr.push(items[i].offsetHeight);
-            } else {
-                // 其他行
-                // 3- 找到数组中最小高度  和 它的索引
-                var minHeight = arr[0];
-                var index = 0;
-                for (var j = 0; j < arr.length; j++) {
-                    if (minHeight > arr[j]) {
-                        minHeight = arr[j];
-                        index = j;
-                    }
-                }
-                // 4- 设置下一行的第一个盒子位置
-                // top值就是最小列的高度 + gap
-                if (items[i].classList[0] != 'bottom-line') {
-                    items[i].style.top = arr[index] + 'px';
-                    // left值就是最小列距离左边的距离
-                    items[i].style.left = items[index].offsetLeft + 'px';
-                    // 5- 修改最小列的高度 
-                    // 最小列的高度 = 当前自己的高度 + 拼接过来的高度 + 间隙的高度
-                    arr[index] = arr[index] + items[i].offsetHeight + gap;
-                } else {
-                    if (i == 1) {
-                        items[i].style.top = arr[index] + 'px';
-                    } else {
-                        items[i].style.top = arr[1 - index] + 'px';
-                    }
-                    items[i].style.marginTop = '1rem';
-                    items[i].style.marginBottom = '3rem';
-                }
-
-            }
-        }
-    }
     // 页面尺寸改变时实时触发
     window.onresize = function () {
         waterFall();
@@ -83,8 +34,8 @@ window.onload = function () {
     var page = 1;
     window.onscroll = function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
-            if(!vm.isMore) return; 
-            getNewsByCat(++page,vm.currentTab);
+            if (!vm.isMore) return;
+            getNewsByCat(++page, vm.currentTab);
         }
 
     };
@@ -108,7 +59,56 @@ window.onload = function () {
     //入口函数
     getCategory();
 };
+// 封装成一个函数
+function waterFall() {
+    var box = document.querySelector('ul.info-list');
+    var items = box.children;
+    // 定义每一列之间的间隙 为10像素
+    var gap = 0;
+    // 1- 确定列数  = 页面的宽度 / 图片的宽度
+    var pageWidth = getClient().width;
+    var itemWidth = items[0].offsetWidth;
+    var columns = 2;
+    var arr = [];
+    for (var i = 0; i < items.length; i++) {
+        if (i < columns && !(items.length == 2 && i == 1)) {
+            // 2- 确定第一行
+            items[i].style.top = 0;
+            items[i].style.left = (itemWidth + gap) * i + 'px';
+            arr.push(items[i].offsetHeight);
+        } else {
+            // 其他行
+            // 3- 找到数组中最小高度  和 它的索引
+            var minHeight = arr[0];
+            var index = 0;
+            for (var j = 0; j < arr.length; j++) {
+                if (minHeight > arr[j]) {
+                    minHeight = arr[j];
+                    index = j;
+                }
+            }
+            // 4- 设置下一行的第一个盒子位置
+            // top值就是最小列的高度 + gap
+            if (items[i].classList[0] != 'bottom-line') {
+                items[i].style.top = arr[index] + 'px';
+                // left值就是最小列距离左边的距离
+                items[i].style.left = items[index].offsetLeft + 'px';
+                // 5- 修改最小列的高度 
+                // 最小列的高度 = 当前自己的高度 + 拼接过来的高度 + 间隙的高度
+                arr[index] = arr[index] + items[i].offsetHeight + gap;
+            } else {
+                if (i == 1) {
+                    items[i].style.top = arr[index] + 'px';
+                } else {
+                    items[i].style.top = arr[1 - index] + 'px';
+                }
+                items[i].style.marginTop = '1rem';
+                items[i].style.marginBottom = '3rem';
+            }
 
+        }
+    }
+}
 // clientWidth 处理兼容性
 function getClient() {
     return {
@@ -158,7 +158,7 @@ function getNewsByCat(page, cat_id) {
         dataType: 'json',
         success: function (data) {
             if (data.status == 1) {
-                if(data.result.length == 0) {
+                if (data.result.length == 0) {
                     vm.isMore = false;
                     return false;
                 }

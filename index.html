@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="assets/swiper/css/swiper.min.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
     <title>叠石桥</title>
@@ -48,11 +49,10 @@
         <div class="mui-content">
             <!--页面主体内容-->
             <!--图片展示-->
-            <div class="banner">
-                <div class="banner-content-bg">
-                    <div class="banner-content">
-                        <p class="content-title">只为最纯净的柔软</p>
-                        <p class="content-desc">品质 绿色 纯净</p>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div v-for="n in 6" class="swiper-slide">
+                        <img src="imgs/bg-temp.png" alt="">
                     </div>
                 </div>
             </div>
@@ -137,11 +137,8 @@
                     <span>回头率超高</span>
                 </p>
                 <div class="goods-container">
-                    <div @click="goDetail('goods-detail.html',0)" class="top">
-
-                    </div>
                     <div class="bottom">
-                        <div class="bottom-item" v-for="n in 3">
+                        <div class="bottom-item" v-for="n in 6">
                             <img @click="goDetail('goods-detail.html',0)" src="imgs/bed1.png" />
                             <p class="name">羽绒蚕丝被</p>
                             <p class="price">￥899起</p>
@@ -150,7 +147,7 @@
                 </div>
             </div>
             <!--商家推荐-->
-            <p @click="jumpLink('business-recommend.html')" class="class-title">商家推荐</p>
+            <p class="class-title">商家推荐</p>
             <div class="business-recommond">
                 <div v-for="n in 2" class="business-item">
                     <div class="top">
@@ -171,7 +168,7 @@
                 </div>
             </div>
             <!--有好物-->
-            <p onclick="pageLink('have-good-goods.html')" class="class-title">有好物</p>
+            <p class="class-title">有好物</p>
             <div class="have-good-goods">
                 <div @click="goDetail('goods-detail.html',0)" v-for="n in 3" class="goods-item">
                     <img class="goods-img" src="imgs/bed1.png" />
@@ -182,7 +179,7 @@
                         </p>
                         <p>
                             <span class="goods-price">￥200</span>
-                            <button @click.stop="reGoods" class="reserve">预约</button>
+                            <button @click.stop="reGoods" class="reserve">查看</button>
                         </p>
                     </div>
                 </div>
@@ -242,6 +239,7 @@
     <script src="assets/vue/vue.min.js"></script>
     <script src="assets/jquery/jquery.min.js"></script>
     <script src="assets/mui/js/mui.min.js"></script>
+    <script src="assets/swiper/js/swiper.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/index.js"></script>
 </body>

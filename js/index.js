@@ -36,7 +36,8 @@ var vm = new Vue({
                 desc: '随时随地资讯',
                 url: 'contact-us.html'
             }
-        ]
+        ],
+        homeInfo: ''
     },
     methods: {
         showSearch() {
@@ -116,3 +117,39 @@ $(function () {
         }
     });
 });
+
+/**
+ * 获得首页数据
+ */
+
+function getData() {
+    $.ajax({
+        url: `${rootUrl}/index/api/getIndex`,
+        type: 'post',
+        success: function (data) {
+            if (data.status == 1) {
+                vm.homeInfo = data.result;
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常');
+        }
+    })
+}
+
+
+function initBanner() {
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination'
+        },
+        autoHeight: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        loop: true
+    });
+}
+
+initBanner();

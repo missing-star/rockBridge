@@ -40,6 +40,9 @@ p.info-item-desc {
     padding: 0.2rem;
     line-height: 1rem;
     font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 p.info-source {
     color: #888888;
@@ -106,4 +109,10 @@ li.tab-bar-item.active:after {
     height: 2px;
     left: 0;
     background: #5e452d;
+}
+p.info-source>span {
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

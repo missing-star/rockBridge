@@ -37,13 +37,13 @@
             </a>
         </nav>
         <!--商户导航栏-->
-        <nav class="mui-bar mui-bar-tab">
+        <nav v-else class="mui-bar mui-bar-tab">
             <a class="mui-tab-item" href="workspace.html">
                 <img src="imgs/seller-workspace.png" class="mui-icon nav-bar-icon active" />
                 <img src="imgs/seller-workspace-active.png" class="mui-icon nav-bar-icon" />
                 <span class="mui-tab-label">工作区</span>
             </a>
-            <a class="mui-tab-item" href="javascript:;">
+            <a class="mui-tab-item" href="goods-management.html">
                 <img src="imgs/goods.png" class="mui-icon nav-bar-icon active" />
                 <img src="imgs/goods-active.png" class="mui-icon nav-bar-icon" />
                 <span class="mui-tab-label">商品</span>
@@ -68,15 +68,15 @@
                 <li :class="{active:index == 0}" v-for="(item,index) in tab" :cat-id="item.id" class="tab-bar-item">{{item.cat_name}}</li>
             </ul>
             <ul class="info-list">
-                <li @click="getInfoDetail(0)" v-for="item in tabContent" class="info-item">
+                <li @click="getInfoDetail(item.id)" v-for="item in tabContent" class="info-item">
                     <div class="box-shadow">
-                        <img src="imgs/info-item.png" class="info-item-img" />
+                        <img :src="item.thumb | filterImg" class="info-item-img" />
                         <p class="info-item-desc">
-                            <template>内容</template>
+                            <template>{{item.description}}</template>
                         </p>
                         <p class="info-source">
-                            <span>某新闻</span>
-                            <span>2小时前</span>
+                            <span>{{item.title}}</span>
+                            <span>{{item.update_time.substring(0,10)}}</span>
                         </p>
                     </div>
                 </li>

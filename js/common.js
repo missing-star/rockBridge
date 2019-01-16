@@ -3,8 +3,8 @@ if (!parseInt(localStorage.getItem('currentRole'))) {
     localStorage.setItem('currentRole', 0);
 }
 //用户是否可以切换角色
-if(!localStorage.getItem('switchRole')) {
-    localStorage.setItem('switchRole',0);
+if (!localStorage.getItem('switchRole')) {
+    localStorage.setItem('switchRole', 0);
 }
 
 //保存历史记录
@@ -99,26 +99,32 @@ function countTime(str) {
         m = Math.floor(leftTime / 1000 / 60 % 60);
         s = Math.floor(leftTime / 1000 % 60);
         return `${d}天${h}小时${m}分${s}秒`;
-    }
-    else {
+    } else {
         return '';
     }
 }
 
 function validateUser() {
-    if(localStorage.getItem('user') != `""`) {
+    if (localStorage.getItem('user') != `""`) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
 
 function validateUserPhone() {
-    if(JSON.parse(localStorage.getItem('user')).users.phone) {
+    if (JSON.parse(localStorage.getItem('user')).users.phone) {
         return true;
-    }
-    else {
+    } else {
         return false;
+    }
+}
+
+function sortByPro(pro, flag) {
+    //flag:true=>升序 false:降序
+    return function (a, b) {
+        return function (a, b) {
+            return flag ? a[prop] - b[prop] : b[prop] - a[prop];
+        }
     }
 }

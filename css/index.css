@@ -232,7 +232,7 @@ p.card-content-con>span.desc{
 }
 .good-goods-con {
     padding: 15px;
-    height: 16rem;
+    height: 18rem;
     margin-top: 1rem;
     background-image: linear-gradient(-1deg, #fecd94 0%, #fa8383 100%);
     border-radius: 6px;
@@ -250,16 +250,18 @@ p.title>span:last-child{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .bottom-item{
     padding: 0.5rem;
+    width: 33%;
 }
-.bottom-item:first-child{
+/* .bottom-item:first-child{
     padding-left: 0;
-}
-.bottom-item:last-child{
+} */
+/* .bottom-item:last-child{
     padding-right: 0;
-}
+} */
 .bottom-item img {
     width: 100%;
     border-radius: 6px;
@@ -531,4 +533,11 @@ p.price {
     text-align: center;
     font-size: 0.6rem;
     line-height: 1rem;
+}
+.swiper-container{
+    border-radius: 0.5rem;
+}
+.swiper-slide>img {
+    width: 100%;
+    border-radius: 0.5rem;
 }

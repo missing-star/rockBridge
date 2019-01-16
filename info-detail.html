@@ -21,20 +21,14 @@
                 <p>资讯详情</p>
             </header>
             <div class="info-container">
-                <img src="imgs/bed1.png" alt="" class="info-cover">
-                <p class="info-title">大标题</p>
-                <p class="info-source-time">
-                    某新闻 | 3小时前
+                <img :src="news.thumb | filterImg" alt="" class="info-cover">
+                <p v-cloak class="info-title">{{news.title}}</p>
+                <p v-cloak class="info-source-time">
+                    {{news.author}} | {{news.update_time}}
                 </p>
-                <p class="middle-title">中标题</p>
-                <p class="info-content">
-                    内容的开发进度款发了疯讲道理看打分类甲氨蝶呤副科级
-                    内容的开发进度款发了疯讲道理看打分类甲氨蝶呤副科级
-                    内容的开发进度款发了疯讲道理看打分类甲氨蝶呤副科级
-                    内容的开发进度款发了疯讲道理看打分类甲氨蝶呤副科级
-                    内容的开发进度款发了疯讲道理看打分类甲氨蝶呤副科级
-                    内容的开发进度款发了疯讲道理看打分类甲氨蝶呤副科级
-                    内容的开发进度款发了疯讲道理看打分类甲氨蝶呤副科级
+                <p v-cloak class="middle-title">{{news.description}}</p>
+                <p v-cloak class="info-content">
+                    {{news.content}}
                 </p>
             </div>
         </div>
@@ -43,7 +37,7 @@
     <script src="assets/jquery/jquery.min.js"></script>
     <script src="assets/mui/js/mui.min.js"></script>
     <script src="js/common.js"></script>
-    <script src="js/popular-goods.js"></script>
+    <script src="js/info-detail.js"></script>
 </body>
 
 </html>
