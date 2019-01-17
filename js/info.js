@@ -5,7 +5,8 @@ var vm = new Vue({
         tab: [],
         tabContent: [],
         currentTab: '',
-        isMore: true
+        isMore: true,
+        showCounts: 0
     },
     methods: {
         getInfoDetail(id) {
@@ -20,7 +21,7 @@ var vm = new Vue({
             return `${rootUrl}${thumb}`;
         }
     }
-})
+});
 
 window.onload = function () {
 
@@ -160,8 +161,10 @@ function getNewsByCat(page, cat_id) {
                     return false;
                 }
                 vm.tabContent = vm.tabContent.concat(data.result);
+
                 vm.$nextTick(function () {
-                    waterFall();
+                    //渲染后重新布局
+                    loadedImgs();
                 });
             }
         },
@@ -169,4 +172,25 @@ function getNewsByCat(page, cat_id) {
             mui.toast('服务器异常');
         }
     })
+}
+/**
+ * 判断是否加载完图片
+ */
+
+function loadedImgs() {
+    vm.showCounts = 0;
+    //图片加载完成后开始进行重新布局
+    var imgList = document.querySelectorAll('img.info-item-img');
+    for (var i = 0; i < imgList.length; i++) {
+        imgList[i].onload = function () {
+            vm.showCounts += 1;
+            if (vm.showCounts == imgList.length) {
+                waterFall();
+            }
+        }
+        imgList[i].onerror = function () {
+            vm.tabContent[i].thumb = 'imgs/info-item.png';
+        }
+
+    }
 }

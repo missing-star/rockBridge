@@ -124,7 +124,7 @@ var page1 = 1;
 var page2 = 1;
 $(function () {
     getGoodsList('', 'click_num', 'desc', page1);
-    getShopList('', 'SORT_DESC', 0, page2);
+    getShopList('', 1, 0, page2);
     $('li.tab-bar-item').click(function () {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active');

@@ -108,13 +108,13 @@
             <div class="card-view-con">
                 <div @click="goInner(homeInfo.ad_left.ad_link)" class="news-card">
                     <p class="card-content-con">
-                        <img src="homeInfo.ad_left.ad_code | filterImg" alt="">
+                        <img :src="homeInfo.ad_left.ad_code | filterImg" alt="">
                         <span class="title">{{homeInfo.ad_left.ad_name}}</span>
                     </p>
                 </div>
                 <div @click="goInner(homeInfo.ad_right.ad_link)"  class="news-card">
                     <p class="card-content-con">
-                            <img src="homeInfo.ad_right.ad_code | filterImg" alt="">
+                            <img :src="homeInfo.ad_right.ad_code | filterImg" alt="">
                         <span class="title">{{homeInfo.ad_right.ad_name}}</span>
                     </p>
                 </div>
@@ -153,7 +153,7 @@
                 <div v-for="shop in homeInfo.shops_list" class="business-item">
                     <div class="top">
                         <div class="business-info">
-                            <img src="imgs/business-logo.png" class="business-logo" />
+                            <img :src="shop.images" class="business-logo" />
                             <p class="business-detail">
                                 <span class="business-name">{{shop.title}}<img v-for="n in 4" src="imgs/star.png" class="business-level" /></span>
                                 <span>浏览 {{shop.shop_review}} | 收藏 {{shop.shop_collection}}</span>
