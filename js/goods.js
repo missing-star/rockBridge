@@ -19,11 +19,10 @@ var vm = new Vue({
         //搜索内容
         keyword: '',
         //排序方式
-        goodsSortType: 'desc',
         goodsSortName:'click_name',
-        shopSortType: 'SORT_DESC',
-        shopSortName:1
-
+        goodsSortType: 'desc',
+        shopSortName:0,
+        shopSortType: 1
 
     },
     filters: {
@@ -106,10 +105,10 @@ var vm = new Vue({
             //开始搜索
             if (vm.isShowGoods) {
                 page1 = 1;
-                getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSortName, page1);
+                getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
             } else {
                 page2 = 1;
-                getShopList(vm.keyword, vm.shopSortName, vm.shopSortType, page2);
+                getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
             }
             this.hideSearch();
         }
@@ -118,8 +117,8 @@ var vm = new Vue({
 var page1 = 1;
 var page2 = 1;
 $(function () {
-    getGoodsList('', 'click_num', 'desc', page1);
-    getShopList('', 1, 0, page2);
+    getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
+    getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
     $('li.tab-bar-item').click(function () {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active');
@@ -130,7 +129,7 @@ $(function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
             if (vm.isShowGoods) {
                 //滚动加载商品
-                getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, ++page1);
+                getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSortName, ++page1);
             } else {
                 //滚动加载商家
                 getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
@@ -154,12 +153,12 @@ $(function () {
         if(vm.isShowGoods) {
             vm.goodsSortName = fields;
             vm.goodsSortType = type;
-            getGoodsList(vm.keyword,vm.goodsSortName,vm.goodsSortType,page1);
+            getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
         }
         else {
             vm.shopSortName = fields;
             vm.shopSortType = type == 'asc' ? 2 : 1;
-            getShopList(vm.keyword,vm.shopSortType,vm.shopSortName,page2);
+            getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
         }
     });
 });
