@@ -129,6 +129,7 @@ div.goods {
 .goods-item {
     width: 48%;
     margin-bottom: 1rem;
+    min-height: 4rem;
 }
 .goods-item img.goods-img {
     width: 100%;
@@ -193,6 +194,7 @@ div.goods {
     justify-content: space-between;
     margin-bottom: 1rem;
     position: relative;
+    min-height: 4rem;
 }
 
 .goods-item-line img.goods-img {

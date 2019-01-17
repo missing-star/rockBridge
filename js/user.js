@@ -1,4 +1,3 @@
-
 getUserInfo();
 
 /**
@@ -12,11 +11,11 @@ function getUserInfo(temp) {
         datType: 'json',
         success: function (data) {
             localStorage.setItem('user', JSON.stringify(data.result));
-            if(data.result.shop_id > 0) {
-                localStorage.setItem('switchRole',1);
-            }
-            else {
-                localStorage.setItem('switchRole',0);
+            vm.userData = data.result;
+            if (data.result.shop_id > 0) {
+                localStorage.setItem('switchRole', 1);
+            } else {
+                localStorage.setItem('switchRole', 0);
             }
         },
         error: function () {
@@ -25,7 +24,7 @@ function getUserInfo(temp) {
     })
 }
 
-new Vue({
+var vm = new Vue({
     el: '#app',
     data: {
         currentRole: localStorage.getItem('currentRole'),
@@ -59,6 +58,30 @@ new Vue({
                     url: 'login.html'
                 })
             }
+        },
+        /**
+         * 项目入口（钱包，收藏等）
+         */
+        enterItem(url, flag) {
+            if (validateUser()) {
+                if (validateUserPhone()) {
+                    if (flag) {
+                        mui.toast('您已进行过商户认证');
+                        return false;
+                    }
+                    //已绑定手机号
+                    mui.openWindow({
+                        url: url
+                    });
+                } else {
+                    //未绑定手机号
+                    mui.openWindow({
+                        url: 'bind-phone.html'
+                    });
+                }
+            } else {
+                mui.toast('请登录后操作！');
+            }
         }
     },
     created() {}
@@ -70,28 +93,3 @@ new Vue({
 mui('body').on('tap', 'a', function () {
     this.click();
 });
-/**
- * 项目入口（钱包，收藏等）
- */
-function enterItem(url,flag) {
-    if (validateUser()) {
-        if(validateUserPhone()) {
-            if(flag) {
-                mui.toast('您已进行过商户认证');
-                return false;
-            }
-            //已绑定手机号
-            mui.openWindow({
-                url: url
-            });
-        }
-        else {
-            //未绑定手机号
-            mui.openWindow({
-                url: 'bind-phone.html'
-            });
-        }
-    } else {
-        mui.toast('请登录后操作！');
-    }
-}

@@ -104,33 +104,19 @@
             <header>
                 <img @click="hideSearch" src="imgs/icon-back.png" class="icon-back" />
                 <form class="input-group">
-                    <input placeholder="输入商品或商店名称" v-model="searchContent" id="search" class="search-page-input" type="text">
-                    <img v-show="searchContent.length != 0" @click="clearInput" class="clear-icon" src="imgs/clear.png" />
+                    <input placeholder="输入商品或商店名称" v-model="keyword" id="search" class="search-page-input" type="text">
+                    <img v-show="keyword.length != 0" @click="clearInput" class="clear-icon" src="imgs/clear.png" />
                 </form>
-                <span @click="hideSearch" class="cancel-search">取消</span>
+                <span @click="hideSearch" class="cancel-search">搜索</span>
             </header>
-            <ul class="tab-bar">
-                <li history="all" class="tab-bar-item active">全部</li>
-                <li history="goods" class="tab-bar-item">商品</li>
-                <li history="shops" class="tab-bar-item">商铺</li>
-            </ul>
             <!--历史搜索-->
             <div class="search-history">
                 <header class="history-header">
                     <p class="search-history-title">历史搜索</p>
-                    <img @click="clearHistory(currentTab)" src="imgs/delete.png" class="icon-delete" />
+                    <img @click="clearHistory" src="imgs/delete.png" class="icon-delete" />
                 </header>
                 <ul class="history-list">
-                    <template v-if="currentTab == 'all'">
-                        <li v-for="item in historyList.goods" class="list-item">{{item}}</li>
-                        <li v-for="item in historyList.shops" class="list-item">{{item}}</li>
-                    </template>
-                    <template v-if="currentTab == 'shops'">
-                        <li v-for="item in historyList.shops" class="list-item">{{item}}</li>
-                    </template>
-                    <template v-if="currentTab == 'goods'">
-                        <li v-for="item in historyList.goods" class="list-item">{{item}}</li>
-                    </template>
+                    <li v-for="item in historyList" class="list-item">{{item}}</li>
                 </ul>
             </div>
             <!--热门搜索-->

@@ -4,17 +4,14 @@ var vm = new Vue({
         isFadeIn: false,
         isFadeOut: false,
         //搜索内容
-        searchContent: '',
-        historyList: {
-            goods: ['手机', '羽绒服', '笔记本电脑'],
-            shops: ['联想旗舰店', '金士顿旗舰店', '天猫超市']
-        },
+        keyword: '',
+        historyList: [],
         currentTab: 'all',
-        showTab:0,
-        shopInfo:'',
-        hotList:[],
-        allList:[],
-        searchList:[]
+        showTab: 0,
+        shopInfo: '',
+        hotList: [],
+        allList: [],
+        searchList: []
     },
     filters: {
         //拼接图片地址
@@ -58,6 +55,14 @@ var vm = new Vue({
                 case 'goods':
                     this.historyList.goods = [];
             }
+        },
+        searchHistory(name) {
+            //从历史记录里点击搜索
+            vm.keyword = name;
+            this.startSearch();
+        },
+        startSearch() {
+            
         }
     }
 });
@@ -86,19 +91,19 @@ $(function () {
 
 function getShopInfo() {
     $.ajax({
-        url:`${rootUrl}/index/api/getShopsInfo`,
-        data:{
-            id:getParams().id
+        url: `${rootUrl}/index/api/getShopsInfo`,
+        data: {
+            id: getParams().id
         },
-        type:'json',
-        dataType:'json',
-        success:function(data) {
+        type: 'json',
+        dataType: 'json',
+        success: function (data) {
             vm.shopInfo = data.result[0];
             vm.hotList = data.result.click_goods_list;
             vm.allList = data.result.goods_list;
             vm.searchList = data.result.goods_list;
         },
-        error:function() {
+        error: function () {
             mui.toast('服务器异常');
         }
     });

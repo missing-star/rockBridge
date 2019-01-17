@@ -15,10 +15,10 @@
 <body>
     <div id="app">
         <!--顶部搜索栏-->
-        <!-- <header class="mui-bar mui-bar-nav">
+        <header class="mui-bar mui-bar-nav">
             <img src="imgs/search-left-icon.png" class="search-left-icon" />
             <input readonly @focus="showSearch" type="text" class="search-input" placeholder="四件套|寻找优质羽绒蚕丝" />
-        </header> -->
+        </header>
         <!--底部导航栏-->
         <nav class="mui-bar mui-bar-tab">
             <a class="mui-tab-item mui-active" href="javascript:;">
@@ -112,9 +112,9 @@
                         <span class="title">{{homeInfo.ad_left.ad_name}}</span>
                     </p>
                 </div>
-                <div @click="goInner(homeInfo.ad_right.ad_link)"  class="news-card">
+                <div @click="goInner(homeInfo.ad_right.ad_link)" class="news-card">
                     <p class="card-content-con">
-                            <img :src="homeInfo.ad_right.ad_code | filterImg" alt="">
+                        <img :src="homeInfo.ad_right.ad_code | filterImg" alt="">
                         <span class="title">{{homeInfo.ad_right.ad_name}}</span>
                     </p>
                 </div>
@@ -162,6 +162,15 @@
                         <button @click="enterShop(shop.id)" class="go-business-btn">
                             进店
                         </button>
+                    </div>
+                    <div class="bottom">
+                        <img src="imgs/bed1.png" class="business-img-item" />
+                        <div class="goods-desc">
+                            <p class="goods-title">商品名称</p>
+                            <p class="goods-detail">
+                                销量 36万 | 收藏 12351
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
