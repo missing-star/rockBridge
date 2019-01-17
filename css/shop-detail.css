@@ -359,3 +359,12 @@ p.price {
     font-size: 0.6rem;
     line-height: 1rem;
 }
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+.tab-content.goods.active {
+    padding-top: 1rem;
+}

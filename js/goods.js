@@ -9,22 +9,20 @@ var vm = new Vue({
         isDefBusLayout: true,
         //tab页是否显示商品
         isShowGoods: true,
-        historyList: {
-            goods: ['手机', '羽绒服', '笔记本电脑'],
-            shops: ['联想旗舰店', '金士顿旗舰店', '天猫超市']
-        },
+        historyList: [],
         goodsList: [],
         shopList: [],
-        currentTab: 'all',
         //商品排序类型
         goodsSort: '',
         //商家排序类型
         shopSort: '',
         //搜索内容
-        searchContent: '',
+        keyword: '',
         //排序方式
         goodsSortType: 'desc',
-        shopSortType: 'SORT_DESC'
+        goodsSortName:'click_name',
+        shopSortType: 'SORT_DESC',
+        shopSortName:1
 
 
     },
@@ -36,7 +34,7 @@ var vm = new Vue({
     },
     methods: {
         limitContent() {
-            this.searchContent = this.searchContent.replace(/\s+/g, "");
+            this.keyword = this.keyword.replace(/\s+/g, "");
         },
         showSearch() {
             //打开搜索页
@@ -51,7 +49,7 @@ var vm = new Vue({
         },
         clearInput() {
             //清空搜索框
-            this.searchContent = '';
+            this.keyword = '';
         },
         switchGoodsLayout() {
             //切换商品布局
@@ -70,7 +68,7 @@ var vm = new Vue({
                 switch (type) {
                     case 0:
                         this.isShowGoods = true;
-                        if (vm.searchContent != '') {
+                        if (vm.keyword != '') {
                             page1 = 1;
                             getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSort, page1);
                         }
@@ -78,7 +76,7 @@ var vm = new Vue({
                         break;
                     case 1:
                         this.isShowGoods = false;
-                        if (vm.searchContent != '') {
+                        if (vm.keyword != '') {
                             page2 = 1;
                             getShopList(vm.keyword, vm.shopSort, vm.shopSortType, page2);
                         }
@@ -92,23 +90,19 @@ var vm = new Vue({
                 url: url
             });
         },
-        clearHistory(name) {
+        clearHistory() {
             //清空历史记录
-            switch (name) {
-                case 'all':
-                    this.historyList = {
-                        goods: [],
-                        shops: []
-                    };
-                    break;
-                case 'shops':
-                    this.historyList.shops = [];
-                    break;
-                case 'goods':
-                    this.historyList.goods = [];
-            }
+            this.historyList = [];
+        },
+        searchHistory(name) {
+            //从历史记录里点击搜索
+            vm.keyword = name;
+            this.startSearch();
         },
         startSearch() {
+            if(vm.historyList.join('-').indexOf(name) == -1) {
+                vm.historyList = vm.historyList.push(vm.keyword);
+            }
             //开始搜索
             if (vm.isShowGoods) {
                 page1 = 1;
@@ -117,6 +111,7 @@ var vm = new Vue({
                 page2 = 1;
                 getShopList(vm.keyword, vm.shopSort, vm.shopSortType, page2);
             }
+            this.hideSearch();
         }
     }
 });
@@ -129,7 +124,6 @@ $(function () {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active');
             $(this).siblings().removeClass('active');
-            vm.currentTab = $(this).attr('history');
         }
     });
     $(document).scroll(function () {
@@ -145,12 +139,27 @@ $(function () {
     });
     //分类tab页切换
     $('li.sort-item').click(function () {
+        var fields = $(this).attr('data-sort-type');
+        var type = 'desc';
         if (!$(this).hasClass('active')) {
             $(this).addClass('active');
             $(this).siblings().removeClass('active');
         } else {
-            $(this).addClass('asc');
+            $(this).toggleClass('asc');
             $(this).siblings().removeClass('asc');
+            if($(this).hasClass('asc')) {
+                type = 'asc';
+            }
+        }
+        if(vm.isShowGoods) {
+            vm.goodsSortName = fields;
+            vm.goodsSortType = type;
+            getGoodsList(vm.keyword,cm.goodsSortName,vm.goodsSortType,page1);
+        }
+        else {
+            vm.shopSortName = fields;
+            vm.shopSortType = type == 'asc' ? 2 : 1;
+            getShopList(vm.keyword,vm.shopSortType,vm.shopSortName,page2);
         }
     });
 });

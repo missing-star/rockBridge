@@ -15,7 +15,7 @@
     <div id="app">
         <header class="page1">
             <form class="input-group">
-                <input readonly @focus="showSearch" placeholder="输入商品或商店名称" v-model="searchContent" id="search" class="search-page-input"
+                <input readonly @focus="showSearch" placeholder="输入商品或商店名称" v-model="keyword" id="search" class="search-page-input"
                     type="text">
             </form>
             <template v-if="isShowGoods">
@@ -60,33 +60,37 @@
             <ul class="sort-header fixed" :class="{active:isShowGoods}">
                 <li class="sort-item active">
                     <p class="sort-item-title">综合</p>
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
                 </li>
-                <li class="sort-item">
+                <li data-sort-type="click_num" class="sort-item">
                     <p class="sort-item-title">销量</p>
                     <img class="sort-icon no-active" src="imgs/sort-down.png" />
                     <img class="sort-icon active" src="imgs/sort-down-active.png" />
                 </li>
-                <li class="sort-item">
+                <li data-sort-type="price" class="sort-item">
                     <p class="sort-item-title">价格</p>
                     <img class="sort-icon  no-active" src="imgs/sort-down.png" />
                     <img class="sort-icon  active" src="imgs/sort-down-active.png" />
                 </li>
             </ul>
             <ul class="sort-header fixed" :class="{active:!isShowGoods}">
-                    <li class="sort-item active">
-                        <p class="sort-item-title">综合</p>
-                    </li>
-                    <li class="sort-item">
-                        <p class="sort-item-title">收藏</p>
-                        <img class="sort-icon no-active" src="imgs/sort-down.png" />
-                        <img class="sort-icon active" src="imgs/sort-down-active.png" />
-                    </li>
-                    <li class="sort-item">
-                        <p class="sort-item-title">评分</p>
-                        <img class="sort-icon  no-active" src="imgs/sort-down.png" />
-                        <img class="sort-icon  active" src="imgs/sort-down-active.png" />
-                    </li>
-                </ul>
+                <li data-sort-type="0" class="sort-item active">
+                    <p class="sort-item-title">综合</p>
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
+                </li>
+                <li data-sort-type="0" class="sort-item">
+                    <p class="sort-item-title">收藏</p>
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
+                </li>
+                <li data-sort-type="1" class="sort-item">
+                    <p class="sort-item-title">评分</p>
+                    <img class="sort-icon  no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon  active" src="imgs/sort-down-active.png" />
+                </li>
+            </ul>
             <!--商品tab页内容-->
             <div class="tab-content goods" :class="{active:isShowGoods}">
                 <div @click="getDetail('goods-detail.html',goods.id)" v-for="goods in goodsList" :class={'goods-item':isDefGoodsLayout,'goods-item-line':!isDefGoodsLayout}>
@@ -117,9 +121,23 @@
                                 <span>浏览 {{shop.shop_review}} | 收藏 {{shop.shop_collection}}</span>
                             </p>
                         </div>
-                        <button @click="getDetail('shop-detail.html',0)" class="go-business-btn">
+                        <button @click="getDetail('shop-detail.html',shop.id)" class="go-business-btn">
                             进店
                         </button>
+                    </div>
+                    <div class="bottom">
+                        <template v-if="isDefBusLayout">
+                            <img v-for="n in 3" src="imgs/bed1.png" class="business-img-item" />
+                        </template>
+                        <template v-else>
+                            <img src="imgs/bed1.png" class="business-img-item" />
+                            <div class="goods-desc">
+                                <p class="goods-title">商品名称</p>
+                                <p class="goods-detail">
+                                    销量 36万 | 收藏 12351
+                                </p>
+                            </div>
+                        </template>
                     </div>
                 </div>
                 <div class="bottom-line">
@@ -132,8 +150,9 @@
             <header>
                 <img @click="hideSearch" src="imgs/icon-back.png" class="icon-back" />
                 <form class="input-group">
-                    <input placeholder="输入商品或商店名称" @input="limitContent" v-model="searchContent" id="search" class="search-page-input" type="text">
-                    <img v-show="searchContent.length != 0" @click="clearInput" class="clear-icon" src="imgs/clear.png" />
+                    <input placeholder="输入商品或商店名称" @input="limitContent" v-model="keyword" id="search" class="search-page-input"
+                        type="text">
+                    <img v-show="keyword.length != 0" @click="clearInput" class="clear-icon" src="imgs/clear.png" />
                 </form>
                 <span @click="hideSearch" class="cancel-search">搜索</span>
             </header>
@@ -146,10 +165,11 @@
             <div class="search-history">
                 <header class="history-header">
                     <p class="search-history-title">历史搜索</p>
-                    <img @click="clearHistory(currentTab)" src="imgs/delete.png" class="icon-delete" />
+                    <img @click="clearHistory" src="imgs/delete.png" class="icon-delete" />
                 </header>
                 <ul class="history-list">
-                    <template v-if="currentTab == 'all'">
+                    <li @click="searchHistory(item)" v-for="item in historyList" class="list-item">{{item}}</li>
+                    <!-- <template v-if="currentTab == 'all'">
                         <li v-for="item in historyList.goods" class="list-item">{{item}}</li>
                         <li v-for="item in historyList.shops" class="list-item">{{item}}</li>
                     </template>
@@ -158,11 +178,11 @@
                     </template>
                     <template v-if="currentTab == 'goods'">
                         <li v-for="item in historyList.goods" class="list-item">{{item}}</li>
-                    </template>
+                    </template> -->
                 </ul>
             </div>
             <!--热门搜索-->
-            <div class="hot-search">
+            <!-- <div class="hot-search">
                 <header class="hot-header">
                     <p class="search-hot-title">热门搜索</p>
                 </header>
@@ -172,7 +192,7 @@
                         <li class="list-item">羽绒服</li>
                     </template>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
     <script src="assets/vue/vue.min.js"></script>
