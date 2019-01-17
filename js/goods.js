@@ -70,7 +70,7 @@ var vm = new Vue({
                         this.isShowGoods = true;
                         if (vm.keyword != '') {
                             page1 = 1;
-                            getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSort, page1);
+                            getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
                         }
                         //切换到商品
                         break;
@@ -78,7 +78,7 @@ var vm = new Vue({
                         this.isShowGoods = false;
                         if (vm.keyword != '') {
                             page2 = 1;
-                            getShopList(vm.keyword, vm.shopSort, vm.shopSortType, page2);
+                            getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
                         }
                         //切换到商铺
                         break;
@@ -106,10 +106,10 @@ var vm = new Vue({
             //开始搜索
             if (vm.isShowGoods) {
                 page1 = 1;
-                getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSort, page1);
+                getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSortName, page1);
             } else {
                 page2 = 1;
-                getShopList(vm.keyword, vm.shopSort, vm.shopSortType, page2);
+                getShopList(vm.keyword, vm.shopSortName, vm.shopSortType, page2);
             }
             this.hideSearch();
         }
@@ -130,10 +130,10 @@ $(function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
             if (vm.isShowGoods) {
                 //滚动加载商品
-                getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSort, ++page1);
+                getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, ++page1);
             } else {
                 //滚动加载商家
-                getShopList(vm.keyword, vm.shopSort, vm.shopSortType, page2);
+                getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
             }
         }
     });
