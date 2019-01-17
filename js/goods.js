@@ -154,7 +154,7 @@ $(function () {
         if(vm.isShowGoods) {
             vm.goodsSortName = fields;
             vm.goodsSortType = type;
-            getGoodsList(vm.keyword,cm.goodsSortName,vm.goodsSortType,page1);
+            getGoodsList(vm.keyword,vm.goodsSortName,vm.goodsSortType,page1);
         }
         else {
             vm.shopSortName = fields;
