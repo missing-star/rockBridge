@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/comments.css">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <nav class="mui-bar mui-bar-tab">
+            <a class="mui-tab-item" href="index.html">
+                <img src="imgs/seller-workspace.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/seller-workspace-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">工作区</span>
+            </a>
+            <a class="mui-tab-item" href="goods-management.html">
+                <img src="imgs/goods.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/goods-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">商品管理</span>
+            </a>
+            <a class="mui-tab-item mui-active" href="javascript:;">
+                <img src="imgs/seller-notice.png" class="mui-icon nav-bar-icon" />
+                <img src="imgs/seller-notice-active.png" class="mui-icon nav-bar-icon active" />
+                <span class="mui-tab-label">评价</span>
+            </a>
+            <a class="mui-tab-item" href="user.html">
+                <img src="imgs/user.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/user-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">我的</span>
+            </a>
+        </nav>
+        <div class="mui-content">
+            <header class="top-upload">
+                <p class="title">评价</p>
+            </header>
+            <div class="goods-tab-content-item">
+                <ul class="score-list">
+                    <li class="score-item">
+                        <p class="title">商品描述</p>
+                        <p class="score high">4.0</p>
+                    </li>
+                    <li class="score-item">
+                        <p class="title">产品供货</p>
+                        <p class="score low">3.0</p>
+                    </li>
+                    <li class="score-item">
+                        <p class="title">商品服务</p>
+                        <p class="score high">5.0</p>
+                    </li>
+                </ul>
+                <div class="bg-bar"></div>
+                <ul class="comments-list">
+                    <li @click="getComments(0)" class="comments-item">
+                        <img src="imgs/good-comments.png" alt="" class="comments-icon">
+                        <p class="comments-title">收到好评</p>
+                        <span class="comments-num">22</span>
+                    </li>
+                    <li @click="getComments(0)" class="comments-item">
+                        <img src="imgs/normal-comments.png" alt="" class="comments-icon">
+                        <p class="comments-title">收到中评</p>
+                        <span class="comments-num warning">22</span>
+                    </li>
+                    <li @click="getComments(0)" class="comments-item">
+                        <img src="imgs/bad-comments.png" alt="" class="comments-icon">
+                        <p class="comments-title">收到差评</p>
+                        <span class="comments-num warning">22</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/comments.js"></script>
+</body>
+
+</html>

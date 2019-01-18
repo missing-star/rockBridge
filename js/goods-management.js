@@ -117,6 +117,11 @@ var vm = new Vue({
                 $('.goods-item.stock').find('span.checkbox').removeClass('active');
                 this.stockSelectedCount = 0;
             }
+        },
+        uplodGoods() {
+            mui.openWindow({
+                url:'upload-goods.html'
+            })
         }
     }
 });

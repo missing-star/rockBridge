@@ -1,0 +1,178 @@
+
+.mui-bar-tab~.mui-content {
+    padding-top: 1rem;
+}
+
+p.title {
+    font-size: 1.5rem;
+    color: #333333;
+    line-height: 1.6rem;
+}
+header.top-upload {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6rem;
+}
+p.sub-title {
+    font-size: 0.6rem;
+    color: #888888;
+    line-height: 1rem;
+}
+i.mui-icon.mui-icon-arrowleft {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+.goods-name-container,.goods-desc-container {
+    margin-top: 1rem;
+    position: relative;
+}
+p.goods-name-title {
+    color: #333333;
+    font-size: 0.9rem;
+    line-height: 1rem;
+}
+input.goods-name-input {
+    width: 100%;
+    background: #f6f6f6f6;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    line-height: 1rem;
+}
+textarea.goods-desc-content {
+    width: 100%;
+    background: #f6f6f6f6;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    height: 6rem;
+    padding: 0.5rem;
+    padding-bottom: 1rem;
+}
+textarea.goods-desc-content::-webkit-input-placeholder {
+    color:#aaaaaa; 
+}
+textarea.goods-desc-content::-webkit-scrollbar{
+    height: 0;
+    width: 0;
+}
+span.limit-num {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.6rem;
+    background: #ffffff;
+}
+.price-container {
+    margin-top: 1rem;
+}
+.price-container {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+}
+p.calculator {
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
+    width: 55%;
+    margin: 0 0.5rem;
+    height: 1.8rem;
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+span.reduce,span.add {
+    width: 20%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+span.reduce{
+    border-right: 1px solid #eeeeee;
+}
+span.add{
+    border-left: 1px solid #eeeeee;
+    color:#9d7e60;
+}
+.price-container>label.title {
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+span.unit {
+    font-size: 0.6rem;
+    color: #9d7e60;
+    height: 1.8rem;
+    display: inline-flex;
+    align-items: flex-end;
+}
+input.goods-price {
+    border: none;
+    width: 60%;
+    text-align: center;
+    height: 100%;
+    color: #9d7e60;
+    font-size: 0.7rem;
+    line-height: 1rem;
+}
+span.warning {
+    color: red;
+    font-size: 0.5rem;
+    display: inline-block;
+    line-height: 1rem;
+}
+.repair-item {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.upload-item.upload.active {
+    display: flex;
+}
+.upload-item {
+    position: relative;
+    width: 25vw;
+    height: 25vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 5vw;
+}
+.mask-click {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+}
+img.camera {
+    width: 50%;
+}
+span.imgs-num {
+    font-size: 0.8rem;
+    color: #888888;
+}
+button.submit-add-btn {
+    width: 100%;
+    background: #e5e5e5;
+    border: none;
+    border-radius: 1rem;
+    color: #888888;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
+button.submit-add-btn.active {
+    background:#9d7e60;
+    color: #ffffff;
+}
+.upload-img-item {
+    width: 100%;
+    height: 100%;
+}

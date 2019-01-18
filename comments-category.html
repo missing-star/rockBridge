@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/comments-category.css">
+    <title>叠石桥</title>
+    <!--
+        商品预约
+    -->
+</head>
+
+<body>
+    <div id="app" class="mui-content">
+        <!--标题-->
+        <header class="top-upload">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+            <p class="title">商铺评价</p>
+        </header>
+        <ul class="comment-category">
+            <li class="comment-category-item active">
+                全部 1235
+            </li>
+            <li class="comment-category-item">
+                好评 125
+            </li>
+            <li class="comment-category-item">
+                中评 225
+            </li>
+            <li class="comment-category-item">
+                差评 102
+            </li>
+            <li class="comment-category-item">
+                有图 10
+            </li>
+        </ul>
+        <!--
+                    评论列表
+                -->
+        <ul class="comments-list">
+            <li v-for="n in 10" class="comments-item">
+                <div class="user-info">
+                    <div class="left-part">
+                        <img src="imgs/user-logo.png" alt="" class="user-logo">
+                        <p class="user-nickname">
+                            <span class="username">用户名</span>
+                            <span class="score">
+                                评分
+                                <img v-for="n in 4" class="comments-icon" src="imgs/star-high.png" alt="">
+                                <img class="comments-icon" src="imgs/star.png" alt="">
+                            </span>
+                        </p>
+                    </div>
+                    <div class="right-part">
+                        <p class="show-date">
+                            2018.06.12
+                        </p>
+                        <!-- <p class="like">
+                            <img src="imgs/like.png" class="like-icon" alt="">
+                            <span class="like-num">123</span>
+                        </p> -->
+                    </div>
+                </div>
+                <div class="comments-content">
+                    评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+                </div>
+                <div class="show-imgs">
+                    <img v-for="n in 3" src="imgs/bed1.png" class="show-img-item">
+                </div>
+                <!-- <div class="shop-reply">
+                    商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单
+                </div> -->
+            </li>
+        </ul>
+        <div class="bottom-line">
+            ······ 已见底了 ······
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/comments-category.js"></script>
+</body>
+
+</html>

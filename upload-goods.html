@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/upload-goods.css">
+    <title>叠石桥</title>
+    <!--
+        商品预约
+    -->
+</head>
+
+<body>
+    <div id="app" class="mui-content">
+        <!--标题-->
+        <header class="top-upload">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+            <p class="title">上传商品</p>
+            <p class="sub-title">
+                建议上传 1:1 比例尺寸的 jpeg/png图片
+            </p>
+        </header>
+        <div class="goods-name-container">
+            <p class="goods-name-title">商品名称</p>
+            <input v-model="goodsName" @input="limitName" placeholder="20字内编辑商品标题" type="text" class="goods-name-input">
+        </div>
+        <div class="goods-desc-container">
+            <p class="goods-name-title">商品描述</p>
+            <textarea v-model="description" @input="recordCounts" placeholder="输入您的描述" class="goods-desc-content"></textarea>
+            <span class="limit-num">{{counts}} / 200</span>
+        </div>
+        <div class="price-container">
+            <label for="" class="title">价格：</label>
+            <p class="calculator">
+                <span class="reduce" @click="reducePrice">
+                    -
+                </span>
+                <input type="number" v-model="goodsPrice" class="goods-price" />
+                <span class="add" @click="addPrice">
+                    +
+                </span>
+            </p>
+            <span class="unit">元</span>
+        </div>
+        <span class="warning">{{showPriceMsg}}</span>
+        <div class="price-container">
+            <label for="" class="title">库存：</label>
+            <p class="calculator">
+                <span class="reduce" @click="reduceCounts">
+                    -
+                </span>
+                <input type="number" v-model="goodsCounts" class="goods-price" />
+                <span class="add" @click="addCounts">
+                    +
+                </span>
+            </p>
+            <span class="unit">件</span>
+        </div>
+        <span class="warning">{{showCountsMsg}}</span>
+        <div class="goods-name-container">
+            <p class="goods-name-title">上传图片</p>
+            <div class="repair-item upload">
+                <div v-for="(item,index) in uploadedImgs" class="upload-item">
+                    <img :src="item.src" alt="" class="upload-img-item">
+                    <span @click="deleteImg(index)" class="delete-icon">
+                    </span>
+                </div>
+                <div :class="{active:uploadedImgs.length < 5}" class="upload-item upload">
+                    <div @click="uploadImg($event)" class="mask-click">
+                        <input class="upload-input" hidden type="file" accept="image/*">
+                    </div>
+                    <img src="imgs/camera.png" alt="" class="camera">
+                    <span class="imgs-num">{{uploadedImgs.length}} / 5</span>
+                </div>
+            </div>
+        </div>
+        <button :disabled="isDisabled" :class="{active:!isDisabled}" class="submit-add-btn">提交</button>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/upload-goods.js"></script>
+</body>
+
+</html>

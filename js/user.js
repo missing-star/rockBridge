@@ -1,3 +1,4 @@
+var userData = '';
 getUserInfo();
 
 /**
@@ -11,7 +12,7 @@ function getUserInfo(temp) {
         datType: 'json',
         success: function (data) {
             localStorage.setItem('user', JSON.stringify(data.result));
-            vm.userData = data.result;
+            userData = data.result;
             if (data.result.shop_id > 0) {
                 localStorage.setItem('switchRole', 1);
             } else {
@@ -28,7 +29,7 @@ var vm = new Vue({
     el: '#app',
     data: {
         currentRole: localStorage.getItem('currentRole'),
-        userData: JSON.parse(localStorage.getItem('user')),
+        userData: userData,
         isSwitchRole: localStorage.getItem('switchRole')
     },
     methods: {

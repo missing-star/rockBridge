@@ -23,12 +23,12 @@
             <a class="mui-tab-item" href="goods-management.html">
                 <img src="imgs/goods.png" class="mui-icon nav-bar-icon active" />
                 <img src="imgs/goods-active.png" class="mui-icon nav-bar-icon" />
-                <span class="mui-tab-label">商品</span>
+                <span class="mui-tab-label">商品管理</span>
             </a>
-            <a class="mui-tab-item mui-active" href="info.html">
-                <img src="imgs/info.png" class="mui-icon nav-bar-icon active" />
-                <img src="imgs/info-active.png" class="mui-icon nav-bar-icon" />
-                <span class="mui-tab-label">资讯</span>
+            <a class="mui-tab-item" href="comments.html">
+                <img src="imgs/seller-notice.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/seller-notice-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">评价</span>
             </a>
             <a class="mui-tab-item" href="user.html">
                 <img src="imgs/user.png" class="mui-icon nav-bar-icon active" />
@@ -44,37 +44,43 @@
         </header>
         <div class="mui-content">
             <div class="cost-container">
-                <p class="all-cost">
-                    <span class="title">物业缴费总额度（2018.10.12-2018.12.12)</span>
-                    <span class="cost">￥240</span>
-                </p>
+                <div class="all-cost-container">
+                    <p class="all-cost">
+                        <span class="title">所有商品数（份）</span>
+                        <span class="cost">123</span>
+                    </p>
+                    <p class="all-cost">
+                        <span class="title">总展架数（个）</span>
+                        <span class="cost">100</span>
+                    </p>
+                </div>
                 <!--费用分类-->
                 <div class="classify">
                     <div class="water-cost">
-                        <span class="title">水费</span>
+                        <span class="title">上架商品</span>
                         <div class="detail">
-                            <span class="cost">￥60</span>
-                            <span class="date">10.11-11.12</span>
+                            <span class="cost">22</span>
+                            <span class="date">份</span>
                         </div>
 
                     </div>
                     <div class="power-cost">
-                        <span class="title">电费</span>
+                        <span class="title">仓库商品</span>
                         <div class="detail">
-                            <span class="cost">￥100</span>
-                            <span class="date">10.11-11.12</span>
+                            <span class="cost">33</span>
+                            <span class="date">份</span>
                         </div>
                     </div>
                     <div class="property-cost">
-                        <span class="title">物业费</span>
+                        <span class="title">下架商品</span>
                         <div class="detail">
-                            <span class="cost">￥80</span>
-                            <span class="date">10.11-11.12</span>
+                            <span class="cost">25</span>
+                            <span class="date">份</span>
                         </div>
                     </div>
                 </div>
                 <!--商品分类-->
-                <div class="goods-classify">
+                <!-- <div class="goods-classify">
                     <div class="goods-classify-item">
                         <p class="title">上架商品</p>
                         <p class="number">
@@ -103,7 +109,7 @@
                             <span class="unit">条</span>
                         </p>
                     </div>
-                </div>
+                </div> -->
                 <!--访客部分-->
                 <div class="visitor-container">
                     <div class="visitor-item">
@@ -127,8 +133,8 @@
                     <p class="apply-desc">扩充上架商品量，让更多人看到你的商品</p>
                 </div>
                 <!--有好货-->
-                <p class="class-title">一星期内预约商品（3）</p>
-                <ul class="reverse-list">
+                <p class="class-title">上架商品展示</p>
+                <!-- <ul class="reverse-list">
                     <li v-for="n in 3" class="reverse-item">
                         <img src="imgs/bed1.png" alt="" class="goods-icon">
                         <div class="goods-desc">
@@ -140,7 +146,22 @@
                             <p class="surplus-time">剩余2天12小时23分钟预约时间将到期</p>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
+                <div class="have-good-goods">
+                    <div @click="goDetail('goods-detail.html',0)" v-for="n in 3" class="goods-item">
+                        <img class="goods-img" src="imgs/bed1.png" />
+                        <div class="goods-info">
+                            <p>
+                                <span>商品名称</span>
+                                <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
+                            </p>
+                            <p>
+                                <span class="goods-price">￥200</span>
+                                <button class="reserve">咨询</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="bottom-line">
                     ······ 已见底了 ······
                 </div>

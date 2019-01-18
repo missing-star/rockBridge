@@ -40,8 +40,8 @@
                     </button>
                 </div>
                 <ul class="tab-list">
-                    <li class="tab-item active" data-tab-id="0">首页</li>
-                    <li class="tab-item" data-tab-id="1">商品</li>
+                    <li class="tab-item active" data-tab-id="0">商品</li>
+                    <li class="tab-item" data-tab-id="1">评论</li>
                 </ul>
             </div>
         </header>
@@ -80,21 +80,69 @@
                 </div>
             </div>
             <div class="tab-content goods" :class="{active:showTab == 1}">
-                <div class="have-good-goods">
-                    <div @click="getDetail(shops.id)" v-for="shops in searchList" class="goods-item">
-                        <img class="goods-img" :src="shops.images" />
-                        <div class="goods-info">
-                            <p>
-                                <span>商品名称</span>
-                                <span class="eye-container"><img class="view-num" src="imgs/eye.png" />{{shops.click_num}}</span>
-                            </p>
-                            <p>
-                                <span class="goods-price">￥{{shops.price}}</span>
-                                <button class="reserve">查看</button>
-                            </p>
-                        </div>
+                <div class="comments-score">
+                    <div class="score-show">
+                        <p class="score">8.6</p>
+                        <p class="title">综合评分</p>
+                    </div>
+                    <div class="star-container">
+                        <p class="score-star">
+                            <span class="title">评分</span>
+                            <img class="comments-icon" v-for="n in 4" src="imgs/star-high.png" alt="">
+                            <img class="comments-icon" src="imgs/star.png" alt="">
+                            <span class="num">9.0</span>
+                        </p>
+                        <p class="score-star">
+                            <span class="title">点赞</span>
+                            <img class="comments-icon" v-for="n in 4" src="imgs/star-high.png" alt="">
+                            <img class="comments-icon" src="imgs/star.png" alt="">
+                            <span class="num">9.0</span>
+                        </p>
+                    </div>
+                    <div class="good-percent">
+                        <p class="number">88%</p>
+                        <p class="title">好评率</p>
                     </div>
                 </div>
+                <!--
+                    评论列表
+                -->
+                <ul class="comments-list">
+                    <li v-for="n in 10" class="comments-item">
+                        <div class="user-info">
+                            <div class="left-part">
+                                <img src="imgs/user-logo.png" alt="" class="user-logo">
+                                <p class="user-nickname">
+                                    <span class="username">用户名</span>
+                                    <span class="score">
+                                        评分
+                                        <img v-for="n in 4" class="comments-icon" src="imgs/star-high.png" alt="">
+                                        <img class="comments-icon" src="imgs/star.png" alt="">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="right-part">
+                                <p class="show-date">
+                                    2018.06.12
+                                </p>
+                                <!-- <p class="like">
+                                    <img src="imgs/like.png" class="like-icon" alt="">
+                                    <span class="like-num">123</span>
+                                </p> -->
+                            </div>
+                        </div>
+                        <div class="comments-content">
+                            评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+                        </div>
+                        <div class="show-imgs">
+                            <img v-for="n in 3" src="imgs/bed1.png" class="show-img-item">
+                        </div>
+                        <!-- <div class="shop-reply">
+                            商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单
+                        </div> -->
+                    </li>
+                </ul>
+                <button @click="goToComments" class="comments-btn">去评论</button>
                 <div class="bottom-line">
                     ······ 已见底了 ······
                 </div>

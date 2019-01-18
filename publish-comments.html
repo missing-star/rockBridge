@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/publish-comments.css">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+            <div class="top-title">
+                <p class="collection">发表评论</p>
+                <p class="no-show-name">
+                    <span @click="selectNoName($event)" class="mask"></span>
+                    <span class="checkbox"></span>
+                    <span class="checkbox-name">匿名</span>
+                </p>
+            </div>
+        </header>
+        <div class="mui-content">
+            <div class="goods-desc">
+                <p class="title">商品描述</p>
+                <p class="star-num">
+                    <span v-for="n in 5" @click="selectDesc(0,n,$event)" class="star-container"></span>
+                </p>
+                <p class="show-title">
+                    {{goodsDescTitle}}
+                </p>
+            </div>
+            <div class="goods-desc">
+                <p class="title">产品供货</p>
+                <p class="star-num">
+                    <span v-for="n in 5" @click="selectDesc(1,n,$event)" class="star-container"></span>
+                </p>
+                <p class="show-title">
+                    {{productProvideTitle}}
+                </p>
+            </div>
+            <div class="goods-desc">
+                <p class="title">商家描述</p>
+                <p class="star-num">
+                    <span v-for="n in 5" @click="selectDesc(2,n,$event)" class="star-container"></span>
+                </p>
+                <p class="show-title">
+                    {{shopDescTitle}}
+                </p>
+            </div>
+            <textarea placeholder="您的建议是我们成长的动力～" class="comments-area"></textarea>
+            <p class="main-title">添加图片</p>
+            <div class="repair-item upload">
+                <div v-for="(item,index) in uploadedImgs" class="upload-item">
+                    <img :src="item.src" alt="" class="upload-img-item">
+                    <span @click="deleteImg(index)" class="delete-icon">
+                    </span>
+                </div>
+                <div :class="{active:uploadedImgs.length < 3}" class="upload-item upload">
+                    <div @click="uploadImg($event)" class="mask-click">
+                        <input class="upload-input" hidden type="file" accept="image/*">
+                    </div>
+                    <img src="imgs/camera.png" alt="" class="camera">
+                    <span class="imgs-num">{{uploadedImgs.length}} / 3</span>
+                </div>
+            </div>
+            <button :disabled="isDisabled" :class="{active:!isDisabled,disabled:isDisabled}" class="publish-btn">发布</button>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/publish-comments.js"></script>
+</body>
+
+</html>

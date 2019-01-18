@@ -4,7 +4,7 @@ var vm = new Vue({
         selectedClassify: '',
         selectedId: '',
         //户号
-        userNum: 12345,
+        userNum: JSON.parse(sessionStorage.getItem('user')).shops.shop_code,
         //需要交纳的费用
         money: '',
         //支付费率

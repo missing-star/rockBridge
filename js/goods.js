@@ -19,10 +19,12 @@ var vm = new Vue({
         //搜索内容
         keyword: '',
         //排序方式
-        goodsSortName:'click_name',
+        goodsSortName:'click_num',
         goodsSortType: 'desc',
         shopSortName:0,
-        shopSortType: 1
+        shopSortType: 1,
+        isMoreGoods:true,
+        isMoreShops:true
 
     },
     filters: {
@@ -69,6 +71,7 @@ var vm = new Vue({
                         this.isShowGoods = true;
                         if (vm.keyword != '') {
                             page1 = 1;
+                            vm.goodsList = [];
                             getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
                         }
                         //切换到商品
@@ -77,6 +80,7 @@ var vm = new Vue({
                         this.isShowGoods = false;
                         if (vm.keyword != '') {
                             page2 = 1;
+                            vm.shopList = [];
                             getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
                         }
                         //切换到商铺
@@ -105,9 +109,11 @@ var vm = new Vue({
             //开始搜索
             if (vm.isShowGoods) {
                 page1 = 1;
+                vm.goodsList = [];
                 getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
             } else {
                 page2 = 1;
+                vm.shopList = [];
                 getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
             }
             this.hideSearch();
@@ -127,10 +133,10 @@ $(function () {
     });
     $(document).scroll(function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
-            if (vm.isShowGoods) {
+            if (vm.isShowGoods && vm.isMoreGoods) {
                 //滚动加载商品
                 getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSortName, ++page1);
-            } else {
+            } else if(!vm.isShowGoods && vm.isMoreShops) {
                 //滚动加载商家
                 getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
             }
@@ -166,6 +172,7 @@ $(function () {
 function getGoodsList(keyword, fields, type, page) {
     $.ajax({
         url: `${rootUrl}/index/api/getGoodsList`,
+        async:false,
         data: {
             keyword: keyword,
             fields: fields,
@@ -176,7 +183,7 @@ function getGoodsList(keyword, fields, type, page) {
         type: 'post',
         success: function (data) {
             if (data.status == 1) {
-                vm.goodsList = data.result;
+                vm.goodsList = vm.goodsList.concat(data.result);
             }
         },
         error: function () {
@@ -188,6 +195,7 @@ function getGoodsList(keyword, fields, type, page) {
 function getShopList(keyword, sort, type, page) {
     $.ajax({
         url: `${rootUrl}/index/api/getShopsList`,
+        async:false,
         data: {
             keyword: keyword,
             sort: sort,
@@ -198,7 +206,7 @@ function getShopList(keyword, sort, type, page) {
         dataType:'json',
         success: function (data) {
             if (data.status == 1) {
-                vm.shopList = data.result;
+                vm.shopList = vm.shopList.concat(data.result);
             }
         },
         error: function () {

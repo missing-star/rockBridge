@@ -21,12 +21,12 @@
         <a class="mui-tab-item mui-active" href="javascript:;">
             <img src="imgs/goods.png" class="mui-icon nav-bar-icon" />
             <img src="imgs/goods-active.png" class="mui-icon nav-bar-icon active" />
-            <span class="mui-tab-label">商品</span>
+            <span class="mui-tab-label">商品管理</span>
         </a>
-        <a class="mui-tab-item mui-active" href="info.html">
-            <img src="imgs/info.png" class="mui-icon nav-bar-icon active" />
-            <img src="imgs/info-active.png" class="mui-icon nav-bar-icon" />
-            <span class="mui-tab-label">资讯</span>
+        <a class="mui-tab-item" href="comments.html">
+            <img src="imgs/seller-notice.png" class="mui-icon nav-bar-icon active" />
+            <img src="imgs/seller-notice-active.png" class="mui-icon nav-bar-icon" />
+            <span class="mui-tab-label">评价</span>
         </a>
         <a class="mui-tab-item" href="user.html">
             <img src="imgs/user.png" class="mui-icon nav-bar-icon active" />
@@ -38,7 +38,7 @@
         <!--标题-->
         <header class="top-upload">
             <p class="title">商品管理</p>
-            <p class="upload-container">
+            <p @click="uplodGoods" class="upload-container">
                 <img src="imgs/upload.png" alt="" class="upload-icon">
                 <span class="upload-title">上传</span>
             </p>

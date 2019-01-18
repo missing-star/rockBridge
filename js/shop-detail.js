@@ -63,6 +63,11 @@ var vm = new Vue({
         },
         startSearch() {
             
+        },
+        goToComments() {
+            mui.openWindow({
+                url:'publish-comments.html'
+            });
         }
     }
 });
