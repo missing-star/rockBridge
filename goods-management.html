@@ -79,7 +79,7 @@
                         <p class="goods-order">商品编号：{{item.sku}}</p>
                         <span class="is-upper">已上架</span>
                     </div>
-                    <div class="goods-img-container">
+                    <div @click="getGoodsDetail(item.id)" class="goods-img-container">
                         <img :src="item.images" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button class="get-detail">查看详情</button>
+                        <button @click="editGoods(item.id)" class="get-detail">编辑</button>
                         <button @click="setDown(item.id)" class="setting-lower">设为下架</button>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                         <p class="goods-order">商品编号：{{item.sku}}</p>
                         <span class="is-upper lower">仓库中</span>
                     </div>
-                    <div class="goods-img-container">
+                    <div @click="getGoodsDetail(item.id)"  class="goods-img-container">
                         <img :src="item.images" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
@@ -127,11 +127,12 @@
                             <p class="stock">
                                 库存：{{item.nums}}件
                             </p>
+                            <p class="refuse-cause" v-cloak>未通过：{{item.refusal_content}}</p>
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button class="get-detail">查看详情</button>
-                        <button class="setting-lower">删除</button>
+                        <button @click="editGoods(item.id)" class="get-detail">编辑</button>
+                        <button @click="deleteGoods(item.id)" class="setting-lower delete">删除</button>
                     </div>
                 </div>
             </div>
@@ -143,7 +144,7 @@
                         <p class="goods-order">商品编号：{{item.sku}}</p>
                         <span class="is-upper">已下架</span>
                     </div>
-                    <div class="goods-img-container">
+                    <div @click="getGoodsDetail(item.id)"  class="goods-img-container">
                         <img :src="item.images" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
@@ -159,9 +160,9 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button class="get-detail">查看详情</button>
+                        <button @click="editGoods(item.id)" class="get-detail">编辑</button>
                         <button @click="setUpper(item.id)" class="setting-lower">设为上架</button>
-                        <button class="setting-lower">删除</button>
+                        <button @click="deleteGoods(item.id)" class="setting-lower delete">删除</button>
                     </div>
                 </div>
                 <div class="tools-bar stock">
@@ -169,7 +170,7 @@
                         <span class="checkbox"></span>
                         <span class="title">全选</span>
                     </label>
-                    <button class="setting-lower">设为上架</button>
+                    <button @click="setUpperAll" class="setting-lower">设为上架</button>
                 </div>
             </div>
             <!-- <div class="goods-tab-content-item">

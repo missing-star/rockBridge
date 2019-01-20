@@ -342,3 +342,11 @@ span.comments-num {
 span.comments-num.warning {
     color: #ff7c3c;
 }
+p.refuse-cause {
+    color: red;
+    font-size: 0.65rem;
+}
+button.setting-lower.delete{
+    background: #EE6A50;
+    border-color: #EE6A50;
+}

@@ -144,6 +144,7 @@ span.warning {
     flex-direction: column;
     justify-content: space-around;
     margin-right: 5vw;
+    margin-bottom: 1.5rem;
 }
 .mask-click {
     position: absolute;

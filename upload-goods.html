@@ -73,7 +73,7 @@
                     <span @click="deleteImg(index)" class="delete-icon">
                     </span>
                 </div>
-                <div :class="{active:uploadedImgs.length < 5}" class="upload-item upload">
+                <div v-if="uploadedImgs.length < 5" :class="{active:uploadedImgs.length < 5}" class="upload-item upload">
                     <div @click="uploadImg($event)" class="mask-click">
                         <input class="upload-input" hidden type="file" accept="image/*">
                     </div>

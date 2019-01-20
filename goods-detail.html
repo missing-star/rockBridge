@@ -25,36 +25,32 @@
         </p>
         <div class="swiper-container global-promotion">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="imgs/bed1.png"></div>
-                <div class="swiper-slide"><img src="imgs/bed2.png"></div>
-                <div class="swiper-slide"><img src="imgs/bed1.png"></div>
-                <div class="swiper-slide"><img src="imgs/bed2.png"></div>
-                <div class="swiper-slide"><img src="imgs/bed1.png"></div>
+                <div v-for="img in goodsInfo.goods.images" class="swiper-slide"><img :src="img | filterImg"></div>
             </div>
         </div>
         <div class="goods-desc">
-            <div v-if="isCollected" class="goods-title-container">
-                <p class="title">商品名称</p>
-                <p @click="collect(false)" class="collection">
+            <div v-if="goodsInfo.goods.is_collection == 1" class="goods-title-container">
+                <p v-cloak  class="title">{{goodsInfo.goods.title}}</p>
+                <p @click="collect(0)" class="collection">
                     <img src="imgs/star-high.png" alt="">
-                    <span class="active">收藏</span>
+                    <span class="active">已收藏</span>
                 </p>
             </div>
             <div v-else class="goods-title-container">
-                <p class="title">商品名称</p>
-                <p @click="collect(true)" class="collection">
+                <p v-cloak  class="title">{{goodsInfo.goods.title}}</p>
+                <p @click="collect(1)" class="collection">
                     <img src="imgs/star.png" alt="">
                     <span>收藏</span>
                 </p>
             </div>
-            <p class="sub-title">子标题</p>
+            <p v-cloak class="sub-title">{{goodsInfo.goods.g_desc}}</p>
         </div>
         <div class="business-container">
             <div class="business-info">
-                <img src="imgs/business-logo.png" class="business-logo" />
+                <img :src="goodsInfo.shops_info.images" class="business-logo" />
                 <p class="business-detail">
-                    <span class="business-name">店铺名称<img v-for="n in 4" src="imgs/star.png" class="business-level" /></span>
-                    <span>销量 22万 | 收藏 36</span>
+                    <span v-cloak  class="business-name">{{goodsInfo.shops_info.title}}<img v-for="n in goodsInfo.shops_info.shop_review" src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - goodsInfo.shops_info.shop_review)" src="imgs/star.png" class="business-level" /></span>
+                    <span v-cloak >收藏 {{goodsInfo.shops_info.shop_collection}}</span>
                 </p>
             </div>
             <button @click="enterShop(0)" class="go-business-btn">
