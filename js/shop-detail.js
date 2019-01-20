@@ -11,7 +11,9 @@ var vm = new Vue({
         shopInfo: '',
         hotList: [],
         allList: [],
-        searchList: []
+        searchList: [],
+        isCollection: '',
+        score: 0
     },
     filters: {
         //拼接图片地址
@@ -20,6 +22,26 @@ var vm = new Vue({
         }
     },
     methods: {
+        collect(flag) {
+            $.ajax({
+                url: `/index/api/getUserCollection`,
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    type: 1,
+                    id: getParams().id
+                },
+                success: function (data) {
+                    mui.toast(data.msg);
+                    if (data.status == 1) {
+                        vm.isCollection = flag == 0 ? 1 : 0;
+                    }
+                },
+                error: function () {
+                    mui.toast('服务器异常');
+                }
+            });
+        },
         showSearch() {
             //打开搜索页
             this.isFadeIn = true;
@@ -62,11 +84,11 @@ var vm = new Vue({
             this.startSearch();
         },
         startSearch() {
-            
+
         },
         goToComments() {
             mui.openWindow({
-                url:'publish-comments.html'
+                url: 'publish-comments.html'
             });
         }
     }
@@ -100,13 +122,15 @@ function getShopInfo() {
         data: {
             id: getParams().id
         },
-        type: 'json',
+        type: 'post',
         dataType: 'json',
         success: function (data) {
             vm.shopInfo = data.result[0];
             vm.hotList = data.result.click_goods_list;
             vm.allList = data.result.goods_list;
             vm.searchList = data.result.goods_list;
+            vm.isCollection = data.result.is_collection;
+            vm.score = data.result.shop_review;
         },
         error: function () {
             mui.toast('服务器异常');

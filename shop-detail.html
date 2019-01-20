@@ -28,15 +28,16 @@
                     <div class="shop-title">
                         <p class="shop-name">{{shopInfo.title}}</p>
                         <p class="shop-level">
-                            <span class="shop-score">8.8分</span>
+                            <span class="shop-score">{{score}}分</span>
                             <span class="shop-level-icon">
-                                <img class="img-level" src="imgs/crown-active.png" alt="">
-                                <img class="img-level" v-for="n in 4" src="imgs/crown.png" alt="">
+                                <img v-for="n in score" class="img-level" src="imgs/crown-active.png" alt="">
+                                <img class="img-level" v-for="n in (5-score)" src="imgs/crown.png" alt="">
                             </span>
                         </p>
                     </div>
-                    <button class="follow active">
-                        已收藏
+                    <button @click="collect(isCollection)" class="follow" :class="{active:isCollection}">
+                        <template v-if="isCollection == 1">已收藏</template>
+                        <template v-else>收藏</template>
                     </button>
                 </div>
                 <ul class="tab-list">

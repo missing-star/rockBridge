@@ -24,9 +24,9 @@ var vm = new Vue({
                 }
             });
         },
-        enterShop() {
+        enterShop(id) {
             mui.openWindow({
-                url: 'shop-detail.html'
+                url: 'shop-detail.html?id=' + id
             });
         }
     },
