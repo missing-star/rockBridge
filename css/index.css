@@ -174,7 +174,6 @@ p.business-item-content {
     padding: 0;
 }
 div.card-view-con{
-    height: 8rem;
     margin-top: 1rem;
 }
 .card-view-con {
@@ -183,7 +182,6 @@ div.card-view-con{
     justify-content: space-between;
 }
 .news-card {
-    background-image:linear-gradient(90deg, #bfe7e7 0%, #94c2e6 100%);
     background-size:100%;
     border-radius: 6px;
     background-repeat: no-repeat;
@@ -214,10 +212,13 @@ div.right-container{
     background-image:url(../imgs/notice-2.png),linear-gradient(90deg, #ffe07e 0%, #ffab83 100%);
 }
 p.card-content-con {
-    position: absolute;
-    right: 0.3rem;
-    bottom: 0.3rem;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+p.card-content-con>img {
+    width: 100%;
 }
 p.card-content-con>span {
     display: block;
@@ -225,10 +226,14 @@ p.card-content-con>span {
 p.card-content-con>span{
     color: #fff;
 }
-p.card-content-con>span.title{
+p.card-content-con>span.title {
     font-size: 0.8rem;
-	line-height: 0.8rem;
-	margin-bottom: 0.5rem;
+    line-height: 0.8rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 p.card-content-con>span.desc{
     font-size: 0.6rem;

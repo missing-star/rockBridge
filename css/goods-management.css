@@ -37,7 +37,6 @@ ul.goods-tab-bar {
     margin-top: 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 li.goods-tab-bar-item {
@@ -45,6 +44,7 @@ li.goods-tab-bar-item {
     font-size: 0.8rem;
     position: relative;
     line-height: 1rem;
+    margin-right: 1rem;
 }
 
 li.goods-tab-bar-item.active {

@@ -7,19 +7,23 @@ var vm = new Vue({
             description: '',
             goodsPrice: '100.00',
             goodsCounts: 100,
+            keywords:'',
             showPriceMsg: '',
             showCountsMsg: '',
             priceOk: true,
             countsOk: true,
             //上传的图片
-            uploadedImgs: [{src:'imgs/bed1.png'}],
+            uploadedImgs: [],
             isDisabled:true,
-            uploadOk:true,
-            goodsNameOk:false
+            uploadOk:false,
+            descriptionOk:false,
+            goodsNameOk:false,
+            keywordsOk:false
         }
     },
     methods: {
         recordCounts() {
+            this.description = this.description.replace(/\s+/g,"");
             this.description = this.description.substring(0, 200);
             this.counts = this.description.length;
         },
@@ -87,13 +91,46 @@ var vm = new Vue({
             this.goodsName = this.goodsName.replace(/\s+/g,"");
             this.goodsName = this.goodsName.substring(0,20);
         },
+        limitKeywords() {
+            this.keywords = this.keywords.replace(/\s+/g,"");
+        },
         validateAll() {
-            if(this.countsOk && this.priceOk && this.goodsNameOk && this.uploadOk) {
+            if(this.countsOk && this.priceOk && this.goodsNameOk && this.uploadOk && this.descriptionOk) {
                 this.isDisabled = false;
             }
             else {
                 this.isDisabled = true;
             }
+        },
+        deleteImg(index) {
+            this.uploadedImgs.splice(index, 1);
+        },
+        submitGoods() {
+            var imgs = '';
+            for(var i = 0; i < this.uploadedImgs.length; i++) {
+                imgs += this.uploadedImgs[i].realPath + ',';
+            }
+            var formData = {
+                act:getParams().type,
+                title:this.goodsName,
+                g_desc:this.description,
+                keywords:this.keywords,
+                price:this.goodsPrice,
+                nums:this.goodsCounts,
+                images:imgs.substring(0,imgs.length - 1)
+            }
+            $.ajax({
+                url:`${rootUrl}/index/api/getShopsGoodsEdit`,
+                data:formData,
+                type:'post',
+                dataType:'json',
+                success:function(data) {
+
+                },
+                error:function() {
+                    mui.toast('服务器异常');
+                }
+            });
         }
     },
     watch: {
@@ -105,12 +142,16 @@ var vm = new Vue({
             this.countsOk = this.validateCounts();
             this.validateAll();
         },
-        uploadImg() {
-            this.uploadOk = this.uploadImg.length > 0 ? true : false;
+        uploadedImgs() {
+            this.uploadOk = this.uploadedImgs.length > 0 ? true : false;
             this.validateAll();
         },
         goodsName() {
             this.goodsNameOk = this.goodsName.length > 0 ? true : false;
+            this.validateAll();
+        },
+        description() {
+            this.descriptionOk = this.description.trim().length > 0 ? true : false;
             this.validateAll();
         }
     }
@@ -150,10 +191,10 @@ function uploadImgRealPath(fileObj, src) {
             mui.toast(data.msg);
             if (data.status == 1) {
                 //设置文件路径为服务器路径
-                vm.uploadedImgs.push({
+                vm.uploadedImgs = vm.uploadedImgs.concat([{
                     src: src,
                     realPath: data.result
-                });
+                }]);
             }
         },
         error: function () {

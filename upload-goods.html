@@ -28,6 +28,10 @@
             <p class="goods-name-title">商品名称</p>
             <input v-model="goodsName" @input="limitName" placeholder="20字内编辑商品标题" type="text" class="goods-name-input">
         </div>
+        <div class="goods-name-container">
+                <p class="goods-name-title">搜索关键词</p>
+                <input v-model="keywords" @input="limitKeywords" placeholder="以逗号隔开多个关键词" type="text" class="goods-name-input">
+            </div>
         <div class="goods-desc-container">
             <p class="goods-name-title">商品描述</p>
             <textarea v-model="description" @input="recordCounts" placeholder="输入您的描述" class="goods-desc-content"></textarea>
@@ -78,7 +82,7 @@
                 </div>
             </div>
         </div>
-        <button :disabled="isDisabled" :class="{active:!isDisabled}" class="submit-add-btn">提交</button>
+        <button @click="submitGoods" :disabled="isDisabled" :class="{active:!isDisabled}" class="submit-add-btn">提交</button>
     </div>
     <script src="assets/vue/vue.min.js"></script>
     <script src="assets/jquery/jquery.min.js"></script>

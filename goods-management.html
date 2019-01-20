@@ -45,100 +45,123 @@
         </header>
         <!--tab页头-->
         <ul class="goods-tab-bar">
-            <li class="goods-tab-bar-item active">
+            <li data-type="1" class="goods-tab-bar-item active">
                 已上架
                 <span class="current-number">
                     ({{upperList.length}})
                 </span>
             </li>
-            <li class="goods-tab-bar-item">
+            <li data-type="2,3" class="goods-tab-bar-item">
                 仓库中
                 <span class="current-number">
                     ({{stockList.length}})
                 </span>
             </li>
-            <li class="goods-tab-bar-item">
+            <li data-type="4" class="goods-tab-bar-item">
                 已下架
                 <span class="current-number">
                     ({{lowerList.length}})
                 </span>
             </li>
-            <li class="goods-tab-bar-item">
+            <!-- <li class="goods-tab-bar-item">
                 评价
                 <span class="current-number">
                     ({{comments.length}})
                 </span>
-            </li>
+            </li> -->
         </ul>
         <div class="goods-tab-content">
             <!--上架-->
-            <div data-type="0" class="goods-tab-content-item active">
+            <div data-type="1" class="goods-tab-content-item active">
                 <div v-for="item in upperList" class="goods-item upper">
-                    <div class="goods-info upper">
+                    <div :goods-id="item.id" class="goods-info upper">
                         <span class="checkbox"></span>
-                        <p class="goods-order">商品编号：{{item.order}}</p>
+                        <p class="goods-order">商品编号：{{item.sku}}</p>
                         <span class="is-upper">已上架</span>
                     </div>
                     <div class="goods-img-container">
-                        <img :src="item.thumb" alt="" class="goods-img">
+                        <img :src="item.images" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
                                 <span class="title">{{item.title}}</span>
                                 <span class="eye-number">
                                     <img src="imgs/eye.png" alt="">
-                                    <span>{{item.watched}}</span>
+                                    <span>{{item.click_num}}</span>
                                 </span>
                             </p>
                             <p class="stock">
-                                库存：{{item.stock}}件
-                            </p>
-                            <p class="reverse">
-                                预约：{{item.reverse}}
+                                库存：{{item.nums}}件
                             </p>
                         </div>
                     </div>
                     <div class="operation-group">
                         <button class="get-detail">查看详情</button>
-                        <button class="setting-lower">设为下架</button>
+                        <button @click="setDown(item.id)" class="setting-lower">设为下架</button>
                     </div>
                 </div>
-                <div class="tools-bar upper">
+                <div v-if="upperList.length > 0" class="tools-bar upper">
                     <label @click="selctAllUpper" for="" class="select-all">
                         <span class="checkbox"></span>
                         <span class="title">全选</span>
                     </label>
-                    <button class="setting-lower">设为下架</button>
+                    <button @click="setDownAll" class="setting-lower">设为下架</button>
                 </div>
             </div>
             <!--仓库中-->
-            <div data-type="1" class="goods-tab-content-item">
+            <div data-type="2,3" class="goods-tab-content-item">
                 <div v-for="item in stockList" class="goods-item stock">
-                    <div class="goods-info stock">
-                        <span class="checkbox"></span>
-                        <p class="goods-order">商品编号：{{item.order}}</p>
-                        <span class="is-upper">仓库中</span>
+                    <div :goods-id="item.id" class="goods-info stock">
+                        <p class="goods-order">商品编号：{{item.sku}}</p>
+                        <span class="is-upper lower">仓库中</span>
                     </div>
                     <div class="goods-img-container">
-                        <img :src="item.thumb" alt="" class="goods-img">
+                        <img :src="item.images" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
                                 <span class="title">{{item.title}}</span>
                                 <span class="eye-number">
                                     <img src="imgs/eye.png" alt="">
-                                    <span>{{item.watched}}</span>
+                                    <span>{{item.click_num}}</span>
                                 </span>
                             </p>
                             <p class="stock">
-                                库存：{{item.stock}}件
-                            </p>
-                            <p class="reverse">
-                                预约：{{item.reverse}}
+                                库存：{{item.nums}}件
                             </p>
                         </div>
                     </div>
                     <div class="operation-group">
                         <button class="get-detail">查看详情</button>
-                        <button class="setting-lower">设为上架</button>
+                        <button class="setting-lower">删除</button>
+                    </div>
+                </div>
+            </div>
+            <!--已下架-->
+            <div data-type="4" class="goods-tab-content-item">
+                <div v-for="item in lowerList" class="goods-item stock">
+                    <div class="goods-info stock">
+                        <span class="checkbox"></span>
+                        <p class="goods-order">商品编号：{{item.sku}}</p>
+                        <span class="is-upper">已下架</span>
+                    </div>
+                    <div class="goods-img-container">
+                        <img :src="item.images" alt="" class="goods-img">
+                        <div class="goods-desc">
+                            <p class="goods-title">
+                                <span class="title">{{item.title}}</span>
+                                <span class="eye-number">
+                                    <img src="imgs/eye.png" alt="">
+                                    <span>{{item.click_num}}</span>
+                                </span>
+                            </p>
+                            <p class="stock">
+                                库存：{{item.nums}}件
+                            </p>
+                        </div>
+                    </div>
+                    <div class="operation-group">
+                        <button class="get-detail">查看详情</button>
+                        <button @click="setUpper(item.id)" class="setting-lower">设为上架</button>
+                        <button class="setting-lower">删除</button>
                     </div>
                 </div>
                 <div class="tools-bar stock">
@@ -149,38 +172,7 @@
                     <button class="setting-lower">设为上架</button>
                 </div>
             </div>
-            <!--已下架-->
-            <div class="goods-tab-content-item">
-                <div v-for="item in lowerList" class="goods-item stock">
-                    <div class="goods-info stock">
-                        <p class="goods-order">商品编号：{{item.order}}</p>
-                        <span class="is-upper lower">已下架</span>
-                    </div>
-                    <div class="goods-img-container">
-                        <img :src="item.thumb" alt="" class="goods-img">
-                        <div class="goods-desc">
-                            <p class="goods-title">
-                                <span class="title">{{item.title}}</span>
-                                <span class="eye-number">
-                                    <img src="imgs/eye.png" alt="">
-                                    <span>{{item.watched}}</span>
-                                </span>
-                            </p>
-                            <p class="stock">
-                                库存：{{item.stock}}件
-                            </p>
-                            <p class="reverse">
-                                预约：{{item.reverse}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="operation-group">
-                        <button class="get-detail">查看详情</button>
-                        <button class="setting-lower">编辑</button>
-                    </div>
-                </div>
-            </div>
-            <div class="goods-tab-content-item">
+            <!-- <div class="goods-tab-content-item">
                 <div class="comments-management">
                     <p class="comments-examine">
                         评价审核
@@ -219,7 +211,7 @@
                         <span class="comments-num warning">22</span>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
     <script src="assets/vue/vue.min.js"></script>

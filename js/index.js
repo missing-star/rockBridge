@@ -141,6 +141,9 @@ function getData() {
         success: function (data) {
             if (data.status == 1) {
                 vm.homeInfo = data.result;
+                vm.$nextTick(function() {
+                    initBanner();
+                });
             }
         },
         error: function () {
@@ -152,9 +155,6 @@ function getData() {
 
 function initBanner() {
     var swiper = new Swiper('.swiper-container', {
-        pagination: {
-            el: '.swiper-pagination'
-        },
         autoHeight: true,
         autoplay: {
             delay: 2500,
@@ -163,5 +163,3 @@ function initBanner() {
         loop: true
     });
 }
-
-initBanner();

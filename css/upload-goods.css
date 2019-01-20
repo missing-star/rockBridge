@@ -16,7 +16,7 @@ header.top-upload {
     height: 6rem;
 }
 p.sub-title {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: #888888;
     line-height: 1rem;
 }
@@ -37,16 +37,16 @@ p.goods-name-title {
 }
 input.goods-name-input {
     width: 100%;
-    background: #f6f6f6f6;
+    background: #f6f6f6;
     margin-top: 0.5rem;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     line-height: 1rem;
 }
 textarea.goods-desc-content {
     width: 100%;
-    background: #f6f6f6f6;
+    background: #f6f6f6;
     margin-top: 0.5rem;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     line-height: 1rem;
     height: 6rem;
     padding: 0.5rem;
@@ -63,7 +63,7 @@ span.limit-num {
     position: absolute;
     bottom: 0;
     right: 0;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     background: #ffffff;
 }
 .price-container {
@@ -78,7 +78,7 @@ p.calculator {
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
     width: 55%;
     margin: 0 0.5rem;
-    height: 1.8rem;
+    height: 2rem;
     border-radius: 0.2rem;
     display: flex;
     align-items: center;
@@ -101,11 +101,11 @@ span.add{
     color:#9d7e60;
 }
 .price-container>label.title {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     line-height: 1rem;
 }
 span.unit {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: #9d7e60;
     height: 1.8rem;
     display: inline-flex;
@@ -122,7 +122,7 @@ input.goods-price {
 }
 span.warning {
     color: red;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     display: inline-block;
     line-height: 1rem;
 }
@@ -175,4 +175,18 @@ button.submit-add-btn.active {
 .upload-img-item {
     width: 100%;
     height: 100%;
+}
+span.delete-icon {
+    background-color: #f52d1e;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: -0.5rem;
+    top: -0.5rem;
+    border-radius: 50%;
+    background-image: url(../imgs/delete-icon.png);
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: center;
 }
