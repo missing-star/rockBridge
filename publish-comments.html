@@ -17,16 +17,16 @@
             <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
             <div class="top-title">
                 <p class="collection">发表评论</p>
-                <p class="no-show-name">
+                <!-- <p class="no-show-name">
                     <span @click="selectNoName($event)" class="mask"></span>
                     <span class="checkbox"></span>
                     <span class="checkbox-name">匿名</span>
-                </p>
+                </p> -->
             </div>
         </header>
         <div class="mui-content">
             <div class="goods-desc">
-                <p class="title">商品描述</p>
+                <p class="title">综合评分</p>
                 <p class="star-num">
                     <span v-for="n in 5" @click="selectDesc(0,n,$event)" class="star-container"></span>
                 </p>
@@ -35,7 +35,7 @@
                 </p>
             </div>
             <div class="goods-desc">
-                <p class="title">产品供货</p>
+                <p class="title">服务评分</p>
                 <p class="star-num">
                     <span v-for="n in 5" @click="selectDesc(1,n,$event)" class="star-container"></span>
                 </p>
@@ -43,7 +43,7 @@
                     {{productProvideTitle}}
                 </p>
             </div>
-            <div class="goods-desc">
+            <!-- <div class="goods-desc">
                 <p class="title">商家描述</p>
                 <p class="star-num">
                     <span v-for="n in 5" @click="selectDesc(2,n,$event)" class="star-container"></span>
@@ -51,8 +51,8 @@
                 <p class="show-title">
                     {{shopDescTitle}}
                 </p>
-            </div>
-            <textarea placeholder="您的建议是我们成长的动力～" class="comments-area"></textarea>
+            </div> -->
+            <textarea v-model="commentsContent" placeholder="请输入评论内容～" class="comments-area"></textarea>
             <p class="main-title">添加图片</p>
             <div class="repair-item upload">
                 <div v-for="(item,index) in uploadedImgs" class="upload-item">
@@ -68,7 +68,7 @@
                     <span class="imgs-num">{{uploadedImgs.length}} / 3</span>
                 </div>
             </div>
-            <button :disabled="isDisabled" :class="{active:!isDisabled,disabled:isDisabled}" class="publish-btn">发布</button>
+            <button @click="submitComments" :disabled="isDisabled" :class="{active:!isDisabled,disabled:isDisabled}" class="publish-btn">发布</button>
         </div>
     </div>
     <script src="assets/vue/vue.min.js"></script>

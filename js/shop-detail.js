@@ -69,7 +69,7 @@ var vm = new Vue({
         },
         getDetail(id) {
             mui.openWindow({
-                url: 'goods-detail.html'
+                url: 'goods-detail.html?id='+id
             })
         },
         clearHistory(name) {
@@ -97,9 +97,13 @@ var vm = new Vue({
 
         },
         goToComments() {
-            mui.openWindow({
-                url: 'publish-comments.html'
-            });
+            if (validateUser()) {
+                mui.openWindow({
+                    url: 'publish-comments.html?id='+getParams().id
+                });
+            } else {
+                mui.toast('请登录后操作!');
+            }
         }
     }
 });
@@ -128,7 +132,7 @@ $(function () {
     });
 
     $(document).scroll(function () {
-        if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
+        if (document.querySelector('div.bottom-line.comments').getBoundingClientRect().top < document.documentElement.clientHeight) {
             if(!vm.isMore) {
                 return;
             }

@@ -117,7 +117,7 @@
                                     <span class="username">{{item.nickname}}</span>
                                     <span class="score">
                                         评分
-                                        <img v-for="n item.in service" class="comments-icon" src="imgs/star-high.png" alt="">
+                                        <img v-for="n in item.service" class="comments-icon" src="imgs/star-high.png" alt="">
                                         <img class="comments-icon" v-for="n in (5 - item.service)" src="imgs/star.png" alt="">
                                     </span>
                                 </p>
@@ -144,7 +144,7 @@
                     </li>
                 </ul>
                 <button @click="goToComments" class="comments-btn">去评论</button>
-                <div class="bottom-line">
+                <div class="bottom-line comments">
                     ······ 已见底了 ······
                 </div>
             </div>
@@ -166,18 +166,6 @@
                 </header>
                 <ul class="history-list">
                     <li v-for="item in historyList" class="list-item">{{item}}</li>
-                </ul>
-            </div>
-            <!--热门搜索-->
-            <div class="hot-search">
-                <header class="hot-header">
-                    <p class="search-hot-title">热门搜索</p>
-                </header>
-                <ul class="hot-list">
-                    <template v-for="n in 3">
-                        <li class="list-item">手机</li>
-                        <li class="list-item">羽绒服</li>
-                    </template>
                 </ul>
             </div>
         </div>

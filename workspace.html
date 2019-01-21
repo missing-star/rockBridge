@@ -39,7 +39,7 @@
         <header>
             <div @click="getShopDetail()" class="header-title-group">
                 <p class="sub-title">专营店</p>
-                <p class="main-title">叠石桥官方旗舰店</p>
+                <p v-cloak class="main-title">{{shopInfo.shops_info.title}}</p>
             </div>
         </header>
         <div class="mui-content">
@@ -47,11 +47,11 @@
                 <div class="all-cost-container">
                     <p class="all-cost">
                         <span class="title">所有商品数（份）</span>
-                        <span class="cost">123</span>
+                        <span v-cloak class="cost">{{parseInt(shopInfo.goods_down_list) + parseInt(shopInfo.goods_up_list) + parseInt(goods_warehouse_list)}}</span>
                     </p>
                     <p class="all-cost">
                         <span class="title">总展架数（个）</span>
-                        <span class="cost">100</span>
+                        <span v-cloak class="cost">{{shopInfo.show_goods_num}}</span>
                     </p>
                 </div>
                 <!--费用分类-->
@@ -59,7 +59,7 @@
                     <div class="water-cost">
                         <span class="title">上架商品</span>
                         <div class="detail">
-                            <span class="cost">22</span>
+                            <span v-cloak class="cost">{{shopInfo.goods_up_list}}</span>
                             <span class="date">份</span>
                         </div>
 
@@ -67,14 +67,14 @@
                     <div class="power-cost">
                         <span class="title">仓库商品</span>
                         <div class="detail">
-                            <span class="cost">33</span>
+                            <span v-cloak class="cost">{{shopInfo.goods_warehouse_list}}</span>
                             <span class="date">份</span>
                         </div>
                     </div>
                     <div class="property-cost">
                         <span class="title">下架商品</span>
                         <div class="detail">
-                            <span class="cost">25</span>
+                            <span v-cloak class="cost">{{shopInfo.goods_down_list}}</span>
                             <span class="date">份</span>
                         </div>
                     </div>
@@ -117,14 +117,14 @@
                             <img src="imgs/today-visitor.png">
                             <span>今日访客量</span>
                         </p>
-                        <p class="number">2355</p>
+                        <p v-cloak class="number">{{shopInfo.today_count}}</p>
                     </div>
                     <div class="visitor-item">
                         <p class="title">
                             <img src="imgs/yesterday-visitor.png">
                             <span>昨日访客量</span>
                         </p>
-                        <p class="number">2542</p>
+                        <p v-cloak class="number">{{shopInfo.yesterday_count}}</p>
                     </div>
                 </div>
                 <!--申请上架权限-->

@@ -2,18 +2,22 @@ var vm = new Vue({
     el: '#app',
     data: {
         goodsDescTitle: '',
-        productProvideTitle:'',
-        shopDescTitle:'',
+        productProvideTitle: '',
+        shopDescTitle: '',
         //上传的图片
         uploadedImgs: [],
-        isDisabled:true
+        isDisabled: true,
+        commentsContent: '',
+        service: 1,
+        quality: 1
     },
     methods: {
-        selectDesc(type,index, event) {
+        selectDesc(type, index, event) {
             $(event.target).nextAll().removeClass('active');
             $(event.target).addClass('active');
             $(event.target).prevAll().addClass('active');
-            type == 0 ? this.goodsDescTitle = this.getContent(index) : (type == 1 ? this.productProvideTitle = this.getContent(index) : this.shopDescTitle = this.getContent(index));
+            type == 0 ? this.goodsDescTitle = this.getContent(index) : this.productProvideTitle = this.getContent(index);
+            type == 0 ? this.service = index : this.quality = index;
         },
         getContent(index) {
             var result = '';
@@ -40,15 +44,45 @@ var vm = new Vue({
             $(event.target).find('input').click();
         },
         isPublish() {
-            if(this.goodsDescTitle != '' && this.productProvideTitle != '' && this.shopDescTitle != '') {
+            if (this.goodsDescTitle != '' && this.productProvideTitle != '') {
                 this.isDisabled = false;
-            }
-            else {
+            } else {
                 this.isDisabled = true;
             }
         },
+        deleteImg(index) {
+            this.uploadedImgs.splice(index, 1);
+        },
         selectNoName(event) {
             $(event.target).parent().toggleClass('active');
+        },
+        submitComments() {
+            const imgs = this.uploadedImgs.map(function(item) {
+                return item.realPath;
+            });
+            $.ajax({
+                url: `${rootUrl}/index/api/getShopsReviewAdd`,
+                type: 'post',
+                data: {
+                    shop_id: getParams().id,
+                    content: vm.commentsContent,
+                    images: imgs.join(','),
+                    service: vm.service,
+                    quality: vm.quality
+                },
+                dataType: 'json',
+                success: function (data) {
+                    mui.toast(data.msg);
+                    if (data.status == 1) {
+                        setTimeout(function () {
+                            location.history.back(-1);
+                        }, 200);
+                    }
+                },
+                error: function () {
+                    mui.toast('服务器异常');
+                }
+            });
         }
     },
     watch: {
@@ -57,9 +91,6 @@ var vm = new Vue({
             this.isPublish();
         },
         productProvideTitle() {
-            this.isPublish();
-        },
-        shopDescTitle() {
             this.isPublish();
         }
     },
