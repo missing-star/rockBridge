@@ -198,6 +198,7 @@ button.reserve {
     font-size: 0.8rem;
     text-align: center;
     height: 2rem;
+    margin-bottom: 0.5rem;
 }
 button.follow.active {
     color: #ff8b16;
@@ -502,6 +503,7 @@ button.comments-btn {
     background: #9d7e60;
     border-radius: 0px;
     color: #ffffff;
+    padding: 0.5rem;
 }
 .show-imgs {
     display: flex;

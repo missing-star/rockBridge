@@ -223,9 +223,6 @@ p.card-content-con>img {
 p.card-content-con>span {
     display: block;
 }
-p.card-content-con>span{
-    color: #fff;
-}
 p.card-content-con>span.title {
     font-size: 0.8rem;
     line-height: 0.8rem;

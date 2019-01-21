@@ -1,16 +1,14 @@
 var vm = new Vue({
     el: '#app',
     data: {
+        keyword:'',
         isFadeIn: false,
         isFadeOut: false,
         searchContent: '',
         currentTab: 'all',
         //是否已入驻
         isSettled: false,
-        historyList: {
-            goods: ['手机', '羽绒服', '笔记本电脑'],
-            shops: ['联想旗舰店', '金士顿旗舰店', '天猫超市']
-        },
+        historyList: JSON.parse(localStorage.getItem('historyList')) || [],
         itemList: [{
                 icon: 'imgs/safe.png',
                 title: '商家认证',
@@ -52,6 +50,17 @@ var vm = new Vue({
             this.isFadeOut = false;
             $("input#search").focus();
         },
+        searchHistory(name) {
+            //从历史记录里点击搜索
+            vm.keyword = name;
+            this.startSearch();
+        },
+        startSearch() {
+            //跳转到商品页搜索
+            mui.openWindow({
+                url:'goods.html?keywords='+vm.keyword
+            });
+        },
         hideSearch() {
             //关闭搜索页
             this.isFadeIn = false;
@@ -66,6 +75,10 @@ var vm = new Vue({
             if (flag) {
                 //需要登录操作
                 if (validateUser()) {
+                    if (localStorage.getItem('switchRole') == 0) {
+                        mui.toast('请先进行商户认证！');
+                        return false;
+                    }
                     mui.openWindow({
                         url: url
                     });

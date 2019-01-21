@@ -13,7 +13,8 @@ var vm = new Vue({
         allList: [],
         searchList: [],
         isCollection: '',
-        score: 0
+        score: 0,
+        commentsList:[]
     },
     filters: {
         //拼接图片地址
@@ -97,6 +98,8 @@ var vm = new Vue({
 $(function () {
     //获得商家详情
     getShopInfo();
+    //获得评论列表
+    getShopComments();
     //切换tab
     $("li.tab-item").click(function () {
         if (!$(this).hasClass('active')) {
@@ -137,3 +140,28 @@ function getShopInfo() {
         }
     });
 }
+let page = 1;
+function getShopComments() {
+    $.ajax({
+        url: `${rootUrl}/index/api/getShopsReviewList`,
+        data: {
+            shop_id: getParams().id,
+            page:page
+        },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            vm.commentsList = vm.commentsList.concat(data.result);
+        },
+        error: function () {
+            mui.toast('服务器异常');
+        }
+    });
+}
+
+$(document).scroll(function() {
+    if(document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
+        page++;
+        getShopComments();
+    }
+});

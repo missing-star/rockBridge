@@ -54,7 +54,7 @@
                 </p>
                 <div class="slider-business">
                     <div @click="getDetail(shops.id)" v-for="shops in hotList" class="slider-business-item">
-                        <img src="imgs/bed1.png | filterImg" />
+                        <img :src="shops.images | filterImg" />
                         <p class="business-item-title">{{shops.title}}</p>
                         <p class="business-item-content">{{shops.price}}</p>
                     </div>

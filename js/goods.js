@@ -9,7 +9,7 @@ var vm = new Vue({
         isDefBusLayout: true,
         //tab页是否显示商品
         isShowGoods: true,
-        historyList: [],
+        historyList: JSON.parse(localStorage.getItem('historyList')) || [],
         goodsList: [],
         shopList: [],
         //商品排序类型
@@ -99,12 +99,13 @@ var vm = new Vue({
         },
         searchHistory(name) {
             //从历史记录里点击搜索
-            vm.keyword = name;
+            this.keyword = name;
             this.startSearch();
         },
         startSearch() {
-            if(vm.historyList.join('-').indexOf(name) == -1) {
-                vm.historyList = vm.historyList.push(vm.keyword);
+            if(this.historyList.join('-').indexOf(this.keyword) == -1) {
+                this.historyList.push(this.keyword);
+                localStorage.setItem('historyList',JSON.stringify(this.historyList));
             }
             //开始搜索
             if (vm.isShowGoods) {
@@ -117,6 +118,12 @@ var vm = new Vue({
                 getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
             }
             this.hideSearch();
+        }
+    },
+    mounted() {
+        if(getParams().keywords) {
+            this.keyword = decodeURI(getParams().keywords);
+            this.startSearch();
         }
     }
 });

@@ -25,16 +25,16 @@
             </ul>
             <!--商品tab页内容-->
             <div class="tab-content goods" :class="{active:isShowGoods}">
-                <div @click="getDetail('goods-detail.html',0)" v-for="n in 11" :class={'goods-item':isDefGoodsLayout,'goods-item-line':!isDefGoodsLayout}>
-                    <img class="goods-img" src="imgs/bed1.png" />
+                <div @click="getDetail('goods-detail.html',item.id)" v-for="item in goodsList" :class={'goods-item':isDefGoodsLayout,'goods-item-line':!isDefGoodsLayout}>
+                    <img class="goods-img" :src="item.images" />
                     <div class="goods-info">
                         <p>
-                            <span>商品名称</span>
-                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
+                            <span>{{item.title}}</span>
+                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />{{item.click_num}}</span>
                         </p>
                         <p>
-                            <span class="goods-price">￥200</span>
-                            <button class="reserve">预约</button>
+                            <span class="goods-price">￥{{item.price}}</span>
+                            <button class="reserve">咨询</button>
                         </p>
                     </div>
                 </div>
@@ -44,32 +44,23 @@
             </div>
             <!--商家tab页内容-->
             <div class="tab-content business" :class="{active:!isShowGoods}">
-                <div v-for="n in 5" :class={'business-item':isDefBusLayout,'business-item-line':!isDefBusLayout}>
+                <div v-for="item in shopList" :class={'business-item':isDefBusLayout,'business-item-line':!isDefBusLayout}>
                     <div class="top">
                         <div class="business-info">
-                            <img src="imgs/business-logo.png" class="business-logo" />
+                            <img :src="item.images" class="business-logo" />
                             <p class="business-detail">
-                                <span class="business-name">店铺名称<img v-for="n in 4" src="imgs/star.png" class="business-level" /></span>
-                                <span>销量 22万 | 收藏 36</span>
+                                <span class="business-name">{{item.title}}<img v-for="n in item.shop_review" src="imgs/star-high.png"
+                                        class="business-level" /><img v-for="n in (5 - item.shop_review)" src="imgs/star.png"
+                                        class="business-level" /></span>
+                                <span>收藏 {{item.shop_collection}}</span>
                             </p>
                         </div>
-                        <button @click="getDetail('shop-detail.html',0)" class="go-business-btn">
+                        <button @click="getDetail('shop-detail.html',item.id)" class="go-business-btn">
                             进店
                         </button>
                     </div>
                     <div class="bottom">
-                        <template v-if="isDefBusLayout">
-                            <img v-for="n in 3" src="imgs/bed1.png" class="business-img-item" />
-                        </template>
-                        <template v-else>
-                            <img src="imgs/bed1.png" class="business-img-item" />
-                            <div class="goods-desc">
-                                <p class="goods-title">商品名称</p>
-                                <p class="goods-detail">
-                                    销量 36万 | 收藏 12351
-                                </p>
-                            </div>
-                        </template>
+                        <img v-for="img in item.goods_images" :src="img" class="business-img-item" />
                     </div>
                 </div>
                 <div class="bottom-line">

@@ -9,11 +9,8 @@ if (!localStorage.getItem('switchRole')) {
 
 //保存历史记录
 if (!localStorage.getItem('historyList')) {
-    var historyListValue = {
-        goods: [],
-        shops: []
-    };
-    localStorage.setItem('historyList', historyListValue);
+    var historyListValue = [];
+    localStorage.setItem('historyList', JSON.stringify(historyListValue));
 }
 
 function pageLink(url) {
