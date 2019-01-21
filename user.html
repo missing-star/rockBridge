@@ -125,12 +125,12 @@
                         <p class="operation-item-name">我的收藏</p>
                     </li>
                 </a>
-                <a href="javascript:;" @click="enterItem('my-reverse.html')">
+                <!-- <a href="javascript:;" @click="enterItem('my-reverse.html')">
                     <li class="operation-item">
                         <img class="operation-item-icon" src="imgs/user-reserve.png" />
                         <p class="operation-item-name">我的预约</p>
                     </li>
-                </a>
+                </a> -->
             </ul>
             <ul class="operation-list">
                 <template v-if="currentRole == 0">
@@ -175,18 +175,18 @@
                         <p class="operation-item-name">我的足迹</p>
                     </li>
                 </a>
-                <a href="javascript:;" @click="enterItem('setting.html')">
+                <a v-if="currentRole == 0" href="javascript:;" @click="enterItem('setting.html')">
                     <li class="operation-item">
                         <img class="operation-item-icon" src="imgs/user-setting.png" />
                         <p class="operation-item-name">设置</p>
                     </li>
                 </a>
-                <!-- <a v-if="currentRole == 1" href="javascript:;" onclick="enterItem('setting.html')">
+                <a v-if="currentRole == 1" href="javascript:;" onclick="enterItem('setting.html')">
                     <li class="operation-item">
                         <img class="operation-item-icon" src="imgs/user-setting.png" />
                         <p class="operation-item-name">店铺设置</p>
                     </li>
-                </a> -->
+                </a>
             </ul>
         </div>
     </div>
