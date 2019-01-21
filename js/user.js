@@ -49,10 +49,12 @@ var vm = new Vue({
         //登录
         login() {
             if (this.userData) {
-                //个人信息
-                mui.openWindow({
-                    url: 'personal-info.html'
-                })
+                if (this.currentRole == 0) {
+                    //个人信息
+                    mui.openWindow({
+                        url: 'personal-info.html'
+                    });
+                }
             } else {
                 //去登录
                 mui.openWindow({

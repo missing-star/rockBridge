@@ -9,6 +9,14 @@ var vm = new Vue({
                 url:'shop-base-info.html'
             })
         }
+    },
+    filters: {
+        filterImg(thumb) {
+            if(thumb.indexOf('http') != -1) {
+                return `${thumb}`;
+            }
+            return `${rootUrl}${thumb}`;
+        }
     }
 });
 getWorkspaceData();

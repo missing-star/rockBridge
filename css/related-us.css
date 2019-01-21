@@ -1,0 +1,52 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+p.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20%;
+}
+img.logo-icon {
+    width: 30%;
+}
+span.title {
+    color: #666262;
+    font-size: 1rem;
+    line-height: 1rem;
+    margin-top: 0.8rem;
+}
+button.introduction {
+    background: #e8e8e8;
+    border: none;
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color:#9d7e60;
+}

@@ -93,7 +93,7 @@ var vm = new Vue({
         },
         getDetail(url, id) {
             mui.openWindow({
-                url: url
+                url: `${url}?id=${id}`
             });
         },
         clearHistory() {
@@ -148,7 +148,7 @@ $(function () {
                 getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSortName, ++page1);
             } else if(!vm.isShowGoods && vm.isMoreShops) {
                 //滚动加载商家
-                getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
+                getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, ++page2);
             }
         }
     });
@@ -169,11 +169,13 @@ $(function () {
         if(vm.isShowGoods) {
             vm.goodsSortName = fields;
             vm.goodsSortType = type;
+            vm.goodsList = [];
             getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
         }
         else {
             vm.shopSortName = fields;
             vm.shopSortType = type == 'asc' ? 2 : 1;
+            vm.shopList = [];
             getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
         }
     });

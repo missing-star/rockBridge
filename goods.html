@@ -22,10 +22,6 @@
                 <img @click="switchGoodsLayout" class="switch-layout" :class="{active:!isDefGoodsLayout}" src="imgs/layout-default.png" />
                 <img @click="switchGoodsLayout" class="switch-layout" :class="{active:isDefGoodsLayout}" src="imgs/layout-line.png" />
             </template>
-            <template v-else>
-                <img id="bu" @click="switchBusLayout" class="switch-layout" :class="{active:!isDefBusLayout}" src="imgs/layout-default.png" />
-                <img id="bu2" @click="switchBusLayout" class="switch-layout" :class="{active:isDefBusLayout}" src="imgs/layout-line.png" />
-            </template>
         </header>
         <!--底部导航栏-->
         <nav class="mui-bar mui-bar-tab">

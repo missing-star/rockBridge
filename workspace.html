@@ -47,11 +47,11 @@
                 <div class="all-cost-container">
                     <p class="all-cost">
                         <span class="title">所有商品数（份）</span>
-                        <span v-cloak class="cost">{{parseInt(shopInfo.goods_down_list) + parseInt(shopInfo.goods_up_list) + parseInt(goods_warehouse_list)}}</span>
+                        <span v-cloak class="cost">{{parseInt(shopInfo.goods_down_list) + parseInt(shopInfo.goods_up_list) + parseInt(shopInfo.goods_warehouse_list)}}</span>
                     </p>
                     <p class="all-cost">
                         <span class="title">总展架数（个）</span>
-                        <span v-cloak class="cost">{{shopInfo.show_goods_num}}</span>
+                        <span v-cloak class="cost">{{shopInfo.shops_info.show_goods_num}}</span>
                     </p>
                 </div>
                 <!--费用分类-->
@@ -79,37 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <!--商品分类-->
-                <!-- <div class="goods-classify">
-                    <div class="goods-classify-item">
-                        <p class="title">上架商品</p>
-                        <p class="number">
-                            <span class="number-value">4</span>
-                            <span class="unit">件</span>
-                        </p>
-                    </div>
-                    <div class="goods-classify-item">
-                        <p class="title">仓库商品</p>
-                        <p class="number">
-                            <span class="number-value">12</span>
-                            <span class="unit">件</span>
-                        </p>
-                    </div>
-                    <div class="goods-classify-item">
-                        <p class="title">下架商品</p>
-                        <p class="number">
-                            <span class="number-value">12</span>
-                            <span class="unit">件</span>
-                        </p>
-                    </div>
-                    <div class="goods-classify-item">
-                        <p class="title">待评价</p>
-                        <p class="number">
-                            <span class="number-value">2</span>
-                            <span class="unit">条</span>
-                        </p>
-                    </div>
-                </div> -->
+
                 <!--访客部分-->
                 <div class="visitor-container">
                     <div class="visitor-item">
@@ -134,29 +104,16 @@
                 </div>
                 <!--有好货-->
                 <p class="class-title">上架商品展示</p>
-                <!-- <ul class="reverse-list">
-                    <li v-for="n in 3" class="reverse-item">
-                        <img src="imgs/bed1.png" alt="" class="goods-icon">
-                        <div class="goods-desc">
-                            <p class="goods-name">商品名称</p>
-                            <p class="time-status">
-                                <span class="reverse-time">预约时间：2018年2月15日 12:00</span>
-                                <span class="reverse-status">预约状态：预约成功</span>
-                            </p>
-                            <p class="surplus-time">剩余2天12小时23分钟预约时间将到期</p>
-                        </div>
-                    </li>
-                </ul> -->
                 <div class="have-good-goods">
-                    <div @click="goDetail('goods-detail.html',0)" v-for="n in 3" class="goods-item">
-                        <img class="goods-img" src="imgs/bed1.png" />
+                    <div @click="goDetail('goods-detail.html',item.id)" v-for="item in shopInfo.goods_list" class="goods-item">
+                        <img class="goods-img" :src="item.images | filterImg" />
                         <div class="goods-info">
                             <p>
-                                <span>商品名称</span>
-                                <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
+                                <span>{{item.title}}</span>
+                                <span class="eye-container"><img class="view-num" src="imgs/eye.png" />{{item.click_num}}</span>
                             </p>
                             <p>
-                                <span class="goods-price">￥200</span>
+                                <span class="goods-price">￥{{item.price}}</span>
                                 <button class="reserve">咨询</button>
                             </p>
                         </div>
