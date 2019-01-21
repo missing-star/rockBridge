@@ -1,63 +1,41 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        currentStep: 1,
-        totalMoney: 3500,
-        selectedZj: '顶级展架',
-        selectedZjPrice:500,
-        selectedShop:'品牌店铺',
-        classify: [{
-            id: 0,
-            name: '品牌店铺'
-        }, {
-            id: 1,
-            name: '专营店铺'
-        }, {
-            id: 2,
-            name: '企业店铺'
-        }, {
-            id: 3,
-            name: '试营店铺'
-        }],
-        zjList: [{
-            id: 0,
-            name: '顶级展架',
-            amount: 80,
-            money: 500
-        }, {
-            id: 1,
-            name: '高级展架',
-            amount: 50,
-            money: 400
-        }, {
-            id: 2,
-            name: '中级展架',
-            amount: 30,
-            money: 300
-        }, {
-            id: 3,
-            name: '初级展架',
-            amount: 10,
-            money: 0
-        }]
+        buyNums:10,
+        price:100,
+        totalMoney:0,
+        isDisabled:false,
+        msg:''
     },
     methods: {
-        goSecond() {
-            this.currentStep = 2;
+        validateNum() {
+            if(!parseInt(this.buyNums)) {
+                this.isDisabled = true;
+                this.msg = '您输入的数量有误';
+            }
+            else {
+                this.msg = '';
+                this.totalMoney = this.buyNums*this.price*1.006
+                this.isDisabled = false;
+            }
         },
-        getThird() {
-            this.currentStep = 3;
-        },
-        backToTwo() {
-            this.currentStep = 2;
-        },
-        backToOne() {
-            this.currentStep = 1;
-        },
-        submitAndPay() {
+        submitOrder() {
+            $.ajax({
+                url:`${rootUrl}/index/api/displayDopay`,
+                type:'post',
+                dataType:'json',
+                data:{
+                    buy_num:vm.buyNums
+                },
+                success:function(data) {
 
+                }
+            });
         }
-    }
+    },
+    created() {
+        this.totalMoney = this.buyNums*this.price*1.006
+    },
 });
 $(function () {
     $("li.setp1").click(function () {

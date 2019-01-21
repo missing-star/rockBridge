@@ -4,8 +4,7 @@ var vm = new Vue({
         inputContent: '',
         uploadedImgs: [],
         currentTab: 'proposal',
-        type:1,
-        description:''
+        type:1
     },
     methods: {
         limitLength() {
@@ -18,14 +17,15 @@ var vm = new Vue({
             this.uploadedImgs.splice(index, 1);
         },
         submitComplain() {
-            const imgs = uploadedImgs.map(function(item) {
+            const imgs = this.uploadedImgs.map(function(item) {
                 return item.realPath;
             });
             $.ajax({
                 url: `${rootUrl}/index/api/getComplain`,
+                type:'post',
                 data: {
                     type:vm.type,
-                    content:vm.description,
+                    content:vm.inputContent,
                     images:imgs.join(',')
                 },
                 dataType: 'json',

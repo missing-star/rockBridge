@@ -30,7 +30,7 @@
             </div>
             <div class="repair-item upload">
                 <div v-for="(item,index) in uploadedImgs" class="upload-item">
-                    <img :src="item" alt="" class="upload-img-item">
+                    <img :src="item.src" alt="" class="upload-img-item">
                     <span @click="deleteImg(index)" class="delete-icon">
                     </span>
                 </div>
@@ -42,7 +42,7 @@
                     <span class="imgs-num">{{uploadedImgs.length}} / 3</span>
                 </div>
             </div>
-            <button class="submit">提交</button>
+            <button @click="submitForm" class="submit">提交</button>
         </div>
 
     </div>

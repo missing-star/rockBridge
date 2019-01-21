@@ -13,111 +13,30 @@
 
 <body>
     <div id="app">
-        <div v-show="currentStep == 1" class="one">
+        <div class="one">
             <header class="mui-bar mui-bar-nav">
                 <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
             </header>
             <div class="mui-content">
                 <header class="packet-title">
-                    <p>第一步，选择商铺类型</p>
-                    <p>第1 / 3步</p>
+                    <p>购买展架</p>
                 </header>
-                <p class="sub-title">选择远比执行重要，选择适合自己的</p>
-                <ul class="shop-classify">
-                    <li :item-id="item.id" v-for="(item,index) in classify" class="classify-item setp1" :class="{active:index == 0}">
-                        <label for="" class="title">{{item.name}}</label>
-                        <div class="checkbox"></div>
-                    </li>
-                </ul>
-                <p class="tips">
-                    注：申请开店需先商铺认证，再签订开店合同，并且需要提供营业执照、身份证、租房合同等重要信息。
-                </p>
-                <p class="regular-desc">
-                    店铺说明
-                </p>
-                <button @click="goSecond" class="next">
-                    下一步
-                </button>
-            </div>
-        </div>
-        <div v-show="currentStep == 2" class="two">
-            <header class="mui-bar mui-bar-nav">
-                <i @click="backToOne" class="mui-icon mui-icon-arrowleft"></i>
-            </header>
-            <div class="mui-content">
-                <header class="packet-title">
-                    <p>第二步，选择上架量</p>
-                    <p>第2 / 3步</p>
-                </header>
-                <p class="sub-title">扩大展架，上传更多商品，提高预约率</p>
-                <ul class="shop-classify">
-                    <li :item-id="item.id" v-for="(item,index) in zjList" :class="{active:index == 0}" class="classify-item setp2">
-                        <div class="checkbox-container">
-                            <div class="checkbox"></div>
-                            <label for="" class="title title-left">{{item.name}}</label>
-                        </div>
-                        <p class="price">
-                            {{item.amount}}位展架/{{item.money == 0 ? '免费': item.money+'元'}}
-                        </p>
-                    </li>
-
-                </ul>
-                <p class="regular-desc">
-                    保证金费用说明
-                </p>
-                <p class="pay">
-                    <span class="title">需交费(包含3000元保证金)</span>
-                    <span class="total-money">￥{{selectedZjPrice + 3000}}</span>
-                </p>
-                <button @click="getThird" class="next">
-                    下一步
-                </button>
-            </div>
-        </div>
-        <div v-show="currentStep == 3" class="three">
-            <header class="mui-bar mui-bar-nav">
-                <i @click="backToTwo" class="mui-icon mui-icon-arrowleft"></i>
-            </header>
-            <div class="mui-content">
-                <header class="packet-title">
-                    <p>第三步，资料完善</p>
-                    <p>第3 / 3步</p>
-                </header>
-                <p class="sub-title">您的资料我们将绝对保密，请认真完善</p>
-                <ul class="data-list">
-                    <li class="data-list-item title">
-                        店铺资料
-                    </li>
-                    <li class="data-list-item">
-                        <label for="" class="title">开店合同</label>
-                        <input readonly type="text" class="content">
-                    </li>
-                    <li class="data-list-item">
-                        <label for="" class="title">营业执照</label>
-                        <input readonly type="text" class="content">
-                    </li>
-                    <li class="data-list-item">
-                        <label for="" class="title">身份证</label>
-                        <input readonly type="text" class="content">
-                    </li>
-                    <li class="data-list-item title">
-                        品牌店铺
-                    </li>
-                    <li class="data-list-item">
-                        <label for="" class="title">{{selectedZj}}</label>
-                        <input readonly type="text" class="content money">
-                    </li>
-                </ul>
-                <p class="tips">
-                    注：请完善该页面资料，我们会以该资料进行审核受理，若不通过将全额退款
-                </p>
-                <p class="pay">
-                    <span class="title">需交费(包含3000元保证金)</span>
-                    <span class="total-money">￥{{selectedZjPrice + 3000}}</span>
-                </p>
-                <button @click="submitAndPay" class="next">
-                    提交并支付
-                </button>
+                <div class="show-content">
+                    <p class="now-number">
+                        现有展架：10
+                    </p>
+                    <p class="price">
+                        单价：{{price}}元/个
+                    </p>
+                    <p class="title">
+                        购买数量
+                    </p>
+                    <input @input="validateNum" v-model="buyNums" placeholder="请输入购买数量" type="number" class="number">
+                    <span class="warning">{{msg}}</span>
+                    <span class="fate">费率（0.6%）</span>
+                    <p class="show-money">总价：￥{{totalMoney}}</p>
+                    <button @click="submitOrder" :disabled="isDisabled" class="submit-btn" :class="{'submit-order':!isDisabled,'disabled':isDisabled}">立即购买</button>
+                </div>
             </div>
         </div>
 
