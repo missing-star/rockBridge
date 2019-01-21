@@ -7,7 +7,7 @@ var vm = new Vue({
     },
     methods: {
         limitLength() {
-            this.quesDesc = this.quesDesc.slice(0, 200);
+            this.quesDesc = this.quesDesc.replace(/\s+/g, "").slice(0, 200);
             this.inputCount = this.quesDesc.length;
         },
         uploadImg(event) {
@@ -15,6 +15,39 @@ var vm = new Vue({
         },
         deleteImg(index) {
             this.uploadedImgs.splice(index, 1);
+        },
+        submitForm() {
+            if (this.quesDesc.length == 0) {
+                mui.toast('请输入注销原因!');
+                return;
+            }
+            const imgs = this.uploadedImgs.map(function (item) {
+                return item.realPath;
+            });
+            //提交注销
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                url: `${rootUrl}/index/api/getCancelShop`,
+                data: {
+                    repulse_content: vm.quesDesc,
+                    images: imgs.join(',')
+                },
+                success: function (data) {
+                    mui.toast(data.msg);
+                    if (data.status == 1) {
+                        localStorage.clear();
+                        setTimeout(function () {
+                            mui.openWindow({
+                                url: 'user.html'
+                            });
+                        }, 200);
+                    }
+                },
+                error: function () {
+                    mui.toast('服务器异常');
+                }
+            });
         }
     }
 });
@@ -39,12 +72,36 @@ $(function () {
 
         var arr = filePath.split('\\');
         var fileName = arr[arr.length - 1];
-
-        $(this).parent().next().show();
         fr.onload = function () {
-            vm.uploadedImgs.push(this.result);
+            uploadImgRealPath(imgObj, this.result);
             //置空文件上传框的值
             $('input.upload-input').val("");
         };
     });
 });
+//上传图片到后台
+function uploadImgRealPath(fileObj, src) {
+    var formData = new FormData();
+    formData.append('image', fileObj);
+    $.ajax({
+        url: 'http://dieshiqiao.pzhkj.cn/index/Uploadify/api_imgUp',
+        type: 'post',
+        dataType: 'json',
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (data) {
+            mui.toast(data.msg);
+            if (data.status == 1) {
+                //设置文件路径为服务器路径
+                vm.uploadedImgs.push({
+                    src: src,
+                    realPath: data.result
+                });
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常!');
+        }
+    })
+}

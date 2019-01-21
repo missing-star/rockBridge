@@ -21,32 +21,11 @@
                 <p>注销店铺原因</p>
                 <p class="sub-title">每一次的相遇都是一种缘分，期待下次再相聚</p>
             </header>
-            <p class="choose-cause">
-                选择原因
-            </p>
-            <ul class="cause-list">
-                <li class="cause-item active">
-                    <span class="checkbox"></span>
-                    <p class="desc">原因-A</p>
-                </li>
-                <li class="cause-item">
-                    <span class="checkbox"></span>
-                    <p class="desc">原因-B</p>
-                </li>
-                <li class="cause-item">
-                    <span class="checkbox"></span>
-                    <p class="desc">原因-C</p>
-                </li>
-                <li class="cause-item">
-                    <span class="checkbox"></span>
-                    <p class="desc">原因-D</p>
-                </li>
-            </ul>
             <p class="detail-desc">
                 详情描述
             </p>
             <div class="question-container">
-                <textarea v-model="quesDesc" @input="limitLength" placeholder="简单描述您的报修问题" name="" id=""></textarea>
+                <textarea v-model="quesDesc" @input="limitLength" placeholder="请描述注销原因" name="" id=""></textarea>
                 <span class="show-number">{{inputCount}}/200</span>
             </div>
             <div class="repair-item upload">

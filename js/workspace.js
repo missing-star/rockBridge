@@ -22,7 +22,7 @@ var vm = new Vue({
 getWorkspaceData();
 function getWorkspaceData() {
     $.ajax({
-        url:`${rootUrl}/index/api/getShopsIndex`,
+        url:`${rootUrl}/index/api/getShopsShopsInfo`,
         dataType:'json',
         type:'post',
         success:function(data) {

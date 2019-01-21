@@ -122,18 +122,7 @@
                         </button>
                     </div>
                     <div class="bottom">
-                        <template v-if="isDefBusLayout">
-                            <img v-for="n in 3" src="imgs/bed1.png" class="business-img-item" />
-                        </template>
-                        <template v-else>
-                            <img src="imgs/bed1.png" class="business-img-item" />
-                            <div class="goods-desc">
-                                <p class="goods-title">商品名称</p>
-                                <p class="goods-detail">
-                                    销量 36万 | 收藏 12351
-                                </p>
-                            </div>
-                        </template>
+                        <img v-for="goods in shop.goods_list" :src="goods | filterImg" class="business-img-item" />
                     </div>
                 </div>
                 <div class="bottom-line">

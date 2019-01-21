@@ -3,7 +3,9 @@ var vm = new Vue({
     data: {
         inputContent: '',
         uploadedImgs: [],
-        currentTab:'proposal'
+        currentTab: 'proposal',
+        type:1,
+        description:''
     },
     methods: {
         limitLength() {
@@ -15,6 +17,31 @@ var vm = new Vue({
         deleteImg(index) {
             this.uploadedImgs.splice(index, 1);
         },
+        submitComplain() {
+            const imgs = uploadedImgs.map(function(item) {
+                return item.realPath;
+            });
+            $.ajax({
+                url: `${rootUrl}/index/api/getComplain`,
+                data: {
+                    type:vm.type,
+                    content:vm.description,
+                    images:imgs.join(',')
+                },
+                dataType: 'json',
+                success: function (data) {
+                    mui.toast(data.msg);
+                    if (data.status == 1) {
+                        setTimeout(function () {
+                            location.reload();
+                        }, 200);
+                    }
+                },
+                error: function () {
+                    mui.toast('服务器异常');
+                }
+            })
+        }
     }
 });
 
@@ -23,18 +50,9 @@ $(function () {
     $("div.classify-item").click(function () {
         if (!$(this).hasClass('active')) {
             vm.currentTab = $(this).attr('data-type');
-            var index = Array.prototype.slice.call(document.querySelectorAll('div.classify-item')).indexOf(this);
             $(this).addClass('active');
             $(this).siblings().removeClass('active');
-            $('ul.ques-classify').eq(index).addClass('active');
-            $('ul.ques-classify').eq(index).siblings().removeClass('active');
-        }
-    });
-    // 小分类点击
-    $("li.ques-item").click(function () {
-        if (!$(this).hasClass('active')) {
-            $(this).addClass('active');
-            $(this).siblings().removeClass('active');
+            vm.type = vm.currentTab == 'proposal' ? 1 : 2;
         }
     });
 
@@ -51,16 +69,37 @@ $(function () {
 
         var arr = filePath.split('\\');
         var fileName = arr[arr.length - 1];
-
-        $(this).parent().next().show();
         fr.onload = function () {
-            vm.uploadedImgs.push(this.result);
+            uploadImgRealPath(imgObj, this.result);
             //置空文件上传框的值
             $('input.upload-input').val("");
         };
     });
 });
 
-function uploadImg(elem) {
-    $(elem).find('input').click();
+//上传图片到后台
+function uploadImgRealPath(fileObj, src) {
+    var formData = new FormData();
+    formData.append('image', fileObj);
+    $.ajax({
+        url: 'http://dieshiqiao.pzhkj.cn/index/Uploadify/api_imgUp',
+        type: 'post',
+        dataType: 'json',
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (data) {
+            mui.toast(data.msg);
+            if (data.status == 1) {
+                //设置文件路径为服务器路径
+                vm.uploadedImgs.push({
+                    src: src,
+                    realPath: data.result
+                });
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常!');
+        }
+    })
 }

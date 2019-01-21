@@ -44,30 +44,30 @@
                 <ul class="score-list">
                     <li class="score-item">
                         <p class="title">好评率</p>
-                        <p v-cloak class="score" :class="{high:}">{{commentsInfo.service_ratio}}%</p>
+                        <p v-cloak class="score" :class="{high:commentsInfo.service_ratio > 60,low:commentsInfo.service_ratio <= 60}">{{commentsInfo.service_ratio}}%</p>
                     </li>
                     <li class="score-item">
                         <p class="title">商家服务</p>
-                        <p v-cloak class="score">{{commentsInfo.shop_quality}}</p>
+                        <p v-cloak class="score" :class="{high:commentsInfo.shop_quality > 3,low:commentsInfo.shop_quality <= 3}">{{commentsInfo.shop_quality}}</p>
                     </li>
                     <li class="score-item">
                         <p class="title">综合评分</p>
-                        <p v-cloak class="score high">{{commentsInfo.shop_review}}</p>
+                        <p v-cloak class="score" :class="{high:commentsInfo.shop_review > 3,low:commentsInfo.shop_review <= 3}">{{commentsInfo.shop_review}}</p>
                     </li>
                 </ul>
                 <div class="bg-bar"></div>
                 <ul class="comments-list">
-                    <li @click="getDetail(0)" class="comments-item">
+                    <li @click="getDetail(1)" class="comments-item">
                         <img src="imgs/good-comments.png" alt="" class="comments-icon">
                         <p class="comments-title">收到好评</p>
                         <span v-cloak class="comments-num">{{commentsInfo.good}}</span>
                     </li>
-                    <li @click="getDetail(1)" class="comments-item">
+                    <li @click="getDetail(2)" class="comments-item">
                         <img src="imgs/normal-comments.png" alt="" class="comments-icon">
                         <p class="comments-title">收到中评</p>
                         <span v-cloak class="comments-num warning">{{commentsInfo.medium}}</span>
                     </li>
-                    <li @click="getDetail(2)" class="comments-item">
+                    <li @click="getDetail(3)" class="comments-item">
                         <img src="imgs/bad-comments.png" alt="" class="comments-icon">
                         <p class="comments-title">收到差评</p>
                         <span v-cloak class="comments-num warning">{{commentsInfo.negative}}</span>

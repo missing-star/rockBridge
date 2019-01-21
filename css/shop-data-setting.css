@@ -35,6 +35,17 @@ header.packet-title>p:first-child {
 }
 img.business-logo {
     width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+button.edit {
+    border: none;
+    background: #9D7E60;
+    border-radius: 1rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: #ffffff;
 }
 p.hello-info {
     color: #333333;
@@ -63,6 +74,40 @@ li.info-item {
     justify-content: space-between;
     border-bottom: 1px solid #f6f6f6;
     padding: 0.5rem 0;
+}
+.editor-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.mask-upload {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+#clipArea {
+    margin: 20px;
+    height: 300px;
+}
+button#cancel-btn {
+    float: left;
+    margin-left: 15px;
+}
+button#cancel-btn, button#confirm-btn {
+    border-radius: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+button#confirm-btn {
+    float: right;
+    margin-right: 15px;
+}
+button#cancel-btn, button#confirm-btn {
+    border-radius: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
 }
 label.title {
     font-size: 0.8rem;

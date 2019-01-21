@@ -42,33 +42,7 @@
                     </div>
                 </div>
             </div>
-            <!--小分类-->
-            <p class="classify-title">选择类型</p>
-            <ul class="ques-classify active">
-                <li class="ques-item active">
-                    <span class="checkbox"></span>
-                    <p class="ques-desc">线上体验优化</p>
-                </li>
-                <li class="ques-item">
-                    <span class="checkbox"></span>
-                    <p class="ques-desc">线下产品建议</p>
-                </li>
-            </ul>
-            <ul class="ques-classify">
-                <li class="ques-item active">
-                    <span class="checkbox"></span>
-                    <p class="ques-desc">功能异常</p>
-                </li>
-                <li class="ques-item">
-                    <span class="checkbox"></span>
-                    <p class="ques-desc">使用问题</p>
-                </li>
-                <li class="ques-item">
-                    <span class="checkbox"></span>
-                    <p class="ques-desc">其他</p>
-                </li>
-            </ul>
-            <p class="title-ques">建议描述</p>
+            <p class="title-ques">问题描述</p>
             <div class="question-desc">
                 <textarea placeholder="输入您的描述" @input="limitLength" v-model="inputContent" name="" id="" cols="30" rows="10"></textarea>
                 <span class="amount">{{inputContent.length}} / 200</span>
@@ -88,7 +62,7 @@
                     <span class="imgs-num">{{uploadedImgs.length}} / 3</span>
                 </div>
             </div>
-            <button class="button-apply">
+            <button @click="submitComplain" class="button-apply">
                 提交
             </button>
         </div>

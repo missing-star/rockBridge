@@ -22,58 +22,51 @@
             <p class="title">商铺评价</p>
         </header>
         <ul class="comment-category">
-            <li class="comment-category-item active">
-                全部 1235
+            <li v-cloak @click="showTab(0)" class="comment-category-item" :class="{active:type == 0}">
+                全部 {{nums.total}}
             </li>
-            <li class="comment-category-item">
-                好评 125
+            <li v-cloak @click="showTab(1)" class="comment-category-item" :class="{active:type == 1}">
+                好评 {{nums.good}}
             </li>
-            <li class="comment-category-item">
-                中评 225
+            <li v-cloak @click="showTab(2)" class="comment-category-item" :class="{active:type == 2}">
+                中评 {{nums.medium}}
             </li>
-            <li class="comment-category-item">
-                差评 102
+            <li v-cloak @click="showTab(3)" class="comment-category-item" :class="{active:type == 3}">
+                差评 {{nums.negative}}
             </li>
-            <li class="comment-category-item">
-                有图 10
+            <li v-cloak @click="showTab(4)" class="comment-category-item" :class="{active:type == 4}">
+                有图 {{nums.img}}
             </li>
         </ul>
         <!--
                     评论列表
                 -->
         <ul class="comments-list">
-            <li v-for="n in 10" class="comments-item">
+            <li v-for="item in commentsList" class="comments-item">
                 <div class="user-info">
                     <div class="left-part">
-                        <img src="imgs/user-logo.png" alt="" class="user-logo">
+                        <img :src="" alt="" class="user-logo">
                         <p class="user-nickname">
-                            <span class="username">用户名</span>
+                            <span v-cloak class="username">{{item.nickname}}</span>
                             <span class="score">
                                 评分
-                                <img v-for="n in 4" class="comments-icon" src="imgs/star-high.png" alt="">
-                                <img class="comments-icon" src="imgs/star.png" alt="">
+                                <img v-for="n in item.service" class="comments-icon" src="imgs/star-high.png" alt="">
+                                <img v-for="n in (5 - item.service)" class="comments-icon" src="imgs/star.png" alt="">
                             </span>
                         </p>
                     </div>
                     <div class="right-part">
-                        <p class="show-date">
-                            2018.06.12
+                        <p v-cloak class="show-date">
+                            {{item.create_at}}
                         </p>
-                        <!-- <p class="like">
-                            <img src="imgs/like.png" class="like-icon" alt="">
-                            <span class="like-num">123</span>
-                        </p> -->
                     </div>
                 </div>
-                <div class="comments-content">
-                    评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+                <div v-cloak class="comments-content">
+                    {{item.content}}
                 </div>
                 <div class="show-imgs">
-                    <img v-for="n in 3" src="imgs/bed1.png" class="show-img-item">
+                    <img v-for="img in item.images" :src="img" class="show-img-item">
                 </div>
-                <!-- <div class="shop-reply">
-                    商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单
-                </div> -->
             </li>
         </ul>
         <div class="bottom-line">
