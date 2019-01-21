@@ -13,6 +13,9 @@ var vm = new Vue({
     filters: {
         //拼接图片地址
         filterImg(thumb) {
+           if(thumb.indexOf('http') != -1) {
+                return `${thumb}`;
+            }
             return `${rootUrl}${thumb}`;
         }
     },

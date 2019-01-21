@@ -83,25 +83,25 @@
             <div class="tab-content goods" :class="{active:showTab == 1}">
                 <div class="comments-score">
                     <div class="score-show">
-                        <p class="score">8.6</p>
+                        <p class="score">{{commentsInfo.shop_review}}</p>
                         <p class="title">综合评分</p>
                     </div>
                     <div class="star-container">
                         <p class="score-star">
                             <span class="title">评分</span>
-                            <img class="comments-icon" v-for="n in 4" src="imgs/star-high.png" alt="">
-                            <img class="comments-icon" src="imgs/star.png" alt="">
-                            <span class="num">9.0</span>
+                            <img class="comments-icon" v-for="n in commentsInfo.shop_review" src="imgs/star-high.png" alt="">
+                            <img class="comments-icon" v-for="n in (5 - commentsInfo.shop_review)" src="imgs/star.png" alt="">
+                            <span class="num">{{commentsInfo.shop_review}}</span>
                         </p>
                         <p class="score-star">
-                            <span class="title">点赞</span>
-                            <img class="comments-icon" v-for="n in 4" src="imgs/star-high.png" alt="">
-                            <img class="comments-icon" src="imgs/star.png" alt="">
-                            <span class="num">9.0</span>
+                            <span class="title">服务</span>
+                            <img class="comments-icon" v-for="n in commentsInfo.shop_quality" src="imgs/star-high.png" alt="">
+                            <img class="comments-icon" v-for="n in (5 - commentsInfo.shop_quality)" src="imgs/star.png" alt="">
+                            <span class="num">{{commentsInfo.shop_quality}}</span>
                         </p>
                     </div>
                     <div class="good-percent">
-                        <p class="number">88%</p>
+                        <p class="number">{{commentsInfo.service_ratio}}%</p>
                         <p class="title">好评率</p>
                     </div>
                 </div>
@@ -109,22 +109,22 @@
                     评论列表
                 -->
                 <ul class="comments-list">
-                    <li v-for="n in 10" class="comments-item">
+                    <li v-for="item in commentsList" class="comments-item">
                         <div class="user-info">
                             <div class="left-part">
-                                <img src="imgs/user-logo.png" alt="" class="user-logo">
+                                <img :src="item.hed_images" alt="" class="user-logo">
                                 <p class="user-nickname">
-                                    <span class="username">用户名</span>
+                                    <span class="username">{{item.nickname}}</span>
                                     <span class="score">
                                         评分
-                                        <img v-for="n in 4" class="comments-icon" src="imgs/star-high.png" alt="">
-                                        <img class="comments-icon" src="imgs/star.png" alt="">
+                                        <img v-for="n item.in service" class="comments-icon" src="imgs/star-high.png" alt="">
+                                        <img class="comments-icon" v-for="n in (5 - item.service)" src="imgs/star.png" alt="">
                                     </span>
                                 </p>
                             </div>
                             <div class="right-part">
                                 <p class="show-date">
-                                    2018.06.12
+                                    {{item.create_at}}
                                 </p>
                                 <!-- <p class="like">
                                     <img src="imgs/like.png" class="like-icon" alt="">
@@ -133,10 +133,10 @@
                             </div>
                         </div>
                         <div class="comments-content">
-                            评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+                            {{item.content}}
                         </div>
                         <div class="show-imgs">
-                            <img v-for="n in 3" src="imgs/bed1.png" class="show-img-item">
+                            <img v-for="img in item.images" :src="img" class="show-img-item">
                         </div>
                         <!-- <div class="shop-reply">
                             商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单 商家回复内容大幅度搜佛菩萨单

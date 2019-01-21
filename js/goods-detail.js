@@ -32,6 +32,9 @@ var vm = new Vue({
     },
     filters: {
         filterImg(thumb) {
+            if(thumb.indexOf('http') != -1) {
+                return `${thumb}`;
+            }
             return `${rootUrl}${thumb}`;
         }
     }

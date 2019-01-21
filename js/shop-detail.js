@@ -14,11 +14,20 @@ var vm = new Vue({
         searchList: [],
         isCollection: '',
         score: 0,
-        commentsList:[]
+        commentsList: [],
+        commentsInfo:{
+            service_ratio:'',
+            shop_quality:'',
+            shop_review:''
+        },
+        isMore:true
     },
     filters: {
         //拼接图片地址
         filterImg(thumb) {
+            if(thumb.indexOf('http') != -1) {
+                return `${thumb}`;
+            }
             return `${rootUrl}${thumb}`;
         }
     },
@@ -117,6 +126,16 @@ $(function () {
             vm.currentTab = $(this).attr('history');
         }
     });
+
+    $(document).scroll(function () {
+        if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
+            if(!vm.isMore) {
+                return;
+            }
+            page++;
+            getShopComments();
+        }
+    });
 });
 
 function getShopInfo() {
@@ -141,27 +160,29 @@ function getShopInfo() {
     });
 }
 let page = 1;
+
 function getShopComments() {
     $.ajax({
         url: `${rootUrl}/index/api/getShopsReviewList`,
+        async: false,
         data: {
             shop_id: getParams().id,
-            page:page
+            page: page
         },
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            vm.commentsList = vm.commentsList.concat(data.result);
+            if(data.result.review_list.length == 0) {
+                vm.isMore = false;
+                return;
+            }
+            vm.commentsList = vm.commentsList.concat(data.result.review_list);
+            vm.commentsInfo.service_ratio = data.result.service_ratio;
+            vm.commentsInfo.shop_quality = data.result.shop_quality;
+            vm.commentsInfo.shop_review = data.result.shop_review;
         },
         error: function () {
             mui.toast('服务器异常');
         }
     });
 }
-
-$(document).scroll(function() {
-    if(document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
-        page++;
-        getShopComments();
-    }
-});
