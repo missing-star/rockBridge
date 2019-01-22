@@ -27,9 +27,7 @@
                     {{news.author}} | {{news.update_time}}
                 </p>
                 <p v-cloak class="middle-title">{{news.description}}</p>
-                <p v-cloak class="info-content">
-                    {{news.content}}
-                </p>
+                <p v-cloak class="info-content" v-html="news.content"></p>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+var page = 1;
 var vm = new Vue({
     el: '#app',
     data: {
@@ -13,12 +14,27 @@ var vm = new Vue({
             mui.openWindow({
                 url: 'info-detail.html?id=' + id
             });
+        },
+        switchTab(id, event) {
+            if (!$(event.target).hasClass('active')) {
+                $(event.target).addClass('active');
+                $(event.target).siblings().removeClass('active');
+                //模拟重新获取数据
+                vm.tabContent = [];
+                vm.isMore = true;
+                getNewsByCat(page,id);
+                //滚动到顶部
+                $(window).scrollTop(0);
+                vm.$nextTick(function () {
+                    waterFall();
+                });
+            }
         }
     },
     filters: {
         //拼接图片地址
         filterImg(thumb) {
-           if(thumb.indexOf('http') != -1) {
+            if (thumb.indexOf('http') != -1) {
                 return `${thumb}`;
             }
             return `${rootUrl}${thumb}`;
@@ -31,7 +47,7 @@ window.onload = function () {
     /**
      * 滚动加载
      */
-    var page = 1;
+
     window.onscroll = function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
             if (!vm.isMore) return;
@@ -39,22 +55,6 @@ window.onload = function () {
         }
 
     };
-    /**
-     * tab页切换
-     */
-    $("li.tab-bar-item").click(function () {
-        if (!$(this).hasClass('active')) {
-            $(this).addClass('active');
-            $(this).siblings().removeClass('active');
-            //模拟重新获取数据
-            vm.tabContent = reGetList();
-            //滚动到顶部
-            $(window).scrollTop(0);
-            vm.$nextTick(function () {
-                waterFall();
-            });
-        }
-    });
 
     //入口函数
     getCategory();

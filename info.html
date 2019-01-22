@@ -65,7 +65,7 @@
                 <p class="sub-title">每日一读，知天下事</p>
             </header>
             <ul class="tab-bar">
-                <li v-cloak  :class="{active:index == 0}" v-for="(item,index) in tab" :cat-id="item.id" class="tab-bar-item">{{item.cat_name}}</li>
+                <li v-cloak @click="switchTab(item.id,$event)"  :class="{active:index == 0}" v-for="(item,index) in tab" :cat-id="item.id" class="tab-bar-item">{{item.cat_name}}</li>
             </ul>
             <ul class="info-list">
                 <li @click="getInfoDetail(item.id)" v-for="item in tabContent" class="info-item">
