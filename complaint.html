@@ -45,7 +45,7 @@
             <p class="title-ques">问题描述</p>
             <div class="question-desc">
                 <textarea placeholder="输入您的描述" @input="limitLength" v-model="inputContent" name="" id="" cols="30" rows="10"></textarea>
-                <span class="amount">{{inputContent.length}} / 200</span>
+                <span v-cloak  class="amount">{{inputContent.length}} / 200</span>
             </div>
             <p class="title-upload">上传图片</p>
             <div class="repair-item upload">
@@ -59,7 +59,7 @@
                         <input class="upload-input" hidden type="file" accept="image/*">
                     </div>
                     <img src="imgs/camera.png" alt="" class="camera">
-                    <span class="imgs-num">{{uploadedImgs.length}} / 3</span>
+                    <span v-cloak  class="imgs-num">{{uploadedImgs.length}} / 3</span>
                 </div>
             </div>
             <button @click="submitComplain" class="button-apply">

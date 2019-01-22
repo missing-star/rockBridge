@@ -32,11 +32,11 @@
             <!--浏览量，好评率，关注量-->
             <div class="base-data">
                 <div class="base-data-item">
-                    <span class="number">{{shopInfo.service_ratio}}%</span>
+                    <span v-cloak  class="number">{{shopInfo.service_ratio}}%</span>
                     <span class="title">好评率</span>
                 </div>
                 <div class="base-data-item">
-                    <span class="number">{{shopInfo.shop_collection}}</span>
+                    <span v-cloak  class="number">{{shopInfo.shop_collection}}</span>
                     <span class="title">关注量</span>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                         <img v-for="n in (5 - shopInfo.shop_quality)" src="imgs/star.png" alt="">
                     </span>
                     <span class="score">
-                        <span class="high">{{shopInfo.shop_quality}}</span>
+                        <span v-cloak  class="high">{{shopInfo.shop_quality}}</span>
                     </span>
                 </li>
                 <li class="shop-score-item">
@@ -71,11 +71,11 @@
                 </li>
                 <li class="address-item">
                     <p class="title">商家电话</p>
-                    <p class="content">{{shopInfo.phone}}</p>
+                    <p class="content" v-cloak >{{shopInfo.phone}}</p>
                 </li>
                 <li class="address-item">
                     <p class="title">注册时间</p>
-                    <p class="content">{{shopInfo.create_at}}</p>
+                    <p class="content" v-cloak >{{shopInfo.create_at}}</p>
                 </li>
             </ul>
             <!--工商执照-->

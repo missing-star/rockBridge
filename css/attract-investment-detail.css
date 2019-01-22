@@ -16,8 +16,10 @@ p.title{
     overflow-x: scroll;
     margin-top: 1rem;
 }
-.img-slider img{
+.img-slider img {
     width: 95%;
+    margin-right: 1rem;
+    border-radius: 0.2rem;
 }
 .img-slider::-webkit-scrollbar,ul.facilities-list::-webkit-scrollbar{
     height: 0;

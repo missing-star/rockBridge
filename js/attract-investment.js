@@ -1,4 +1,4 @@
-new Vue({
+const vm = new Vue({
     el:'#app',
     data:{
         attractList:[]
@@ -19,7 +19,7 @@ function getAttractList() {
         dataType:'json',
         type:'post',
         success:function(data) {
-
+            vm.attractList = data.result;
         },
         error:function() {
             mui.toast('服务器异常');

@@ -28,7 +28,7 @@
                 </li>
                 <li class="bind-item">
                     <input @input="validateCode" v-model="code" placeholder="输入验证码" type="number" class="content">
-                    <span @click="getCode" class="send-code">{{msg}}</span>
+                    <span v-cloak  @click="getCode" class="send-code">{{msg}}</span>
                 </li>
                 <li class="bind-item">
                     <input v-model="password" @input="validatePass" placeholder="设置密码" type="password" class="content">

@@ -27,7 +27,7 @@
                 <li class="repair-item question">
                     <label for="" class="title">报修问题描述</label>
                     <textarea v-model="quesDesc" @input="limitLength" placeholder="简单描述您的报修问题" name="" id=""></textarea>
-                    <span class="show-number">{{inputCount}}/300</span>
+                    <span v-cloak  class="show-number">{{inputCount}}/300</span>
                 </li>
             </ul>
             <p class="repair-title">服务评价</p>
@@ -67,7 +67,7 @@
                             <input class="upload-input" hidden type="file" accept="image/*">
                         </div>
                         <img src="imgs/camera.png" alt="" class="camera">
-                        <span class="imgs-num">{{uploadedImgs.length}} / 3</span>
+                        <span v-cloak  class="imgs-num">{{uploadedImgs.length}} / 3</span>
                     </div>
                 </li>
             </ul>

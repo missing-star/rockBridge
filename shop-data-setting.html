@@ -19,7 +19,7 @@
         <div class="mui-content">
             <div v-show="!isEditName" class="hello">
                 <div @click="editShopName" class="left">
-                    <p class="hello-info">你好！{{title}}</p>
+                    <p v-cloak  class="hello-info">你好！{{title}}</p>
                     <p class="sub-title">点击编辑您的店铺名称</p>
                 </div>
                 <div class="editor-logo">
@@ -33,7 +33,7 @@
             <div v-show="isEditName" class="editName">
                 <div class="input-group">
                     <input v-model="editName" @input="limitName" type="text" class="editor">
-                    <span class="inpupt-number">{{editName.length}} / 8</span>
+                    <span v-cloak  class="inpupt-number">{{editName.length}} / 8</span>
                     <span @click="clearInput" v-show="editName.length != 0" class="clear-input">
                         <img src="imgs/clear.png" alt="">
                     </span>

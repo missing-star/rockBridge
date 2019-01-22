@@ -28,7 +28,7 @@
                 </li>
                 <li class="login-item">
                     <input v-model="code" @input="validateCode" type="number" placeholder="输入验证码" type="text" class="content">
-                    <span @click="getCode" class="forget-password code">{{msg}}</span>
+                    <span v-cloak  @click="getCode" class="forget-password code">{{msg}}</span>
                 </li>
                 <li class="login-item">
                     <input @input="limitPassword" v-model="password" type="password" placeholder="请输入6-18位密码" type="text" class="content password">

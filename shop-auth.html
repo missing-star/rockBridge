@@ -79,14 +79,14 @@
                     <label for="" class="title">
                         营业执照（选填）
                     </label>
-                    <span class="upload-status">{{cardList.license.realPath != '' ? '已选择' : '请上传'}}</span>
+                    <span v-cloak  class="upload-status">{{cardList.license.realPath != '' ? '已选择' : '请上传'}}</span>
                     <input type="file" accept="image/*" hidden id="license">
                 </li>
                 <li @click="uploadRent" class="tab-contetn-item arrow-right">
                     <label for="" class="title">
                         租房合同（选填）
                     </label>
-                    <span class="upload-status">{{cardList.renting.realPath != '' ? '已选择' : '请上传'}}</span>
+                    <span v-cloak  class="upload-status">{{cardList.renting.realPath != '' ? '已选择' : '请上传'}}</span>
                     <input type="file" accept="image/*" hidden id="renting">
                 </li>
             </ul>

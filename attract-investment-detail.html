@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <header>
             <img onclick="history.go(-1)" src="imgs/arrow-left.png" alt="" class="icon-back">
         </header>
@@ -28,7 +28,7 @@
             {{attractInfo.title}}
         </p>
         <p class="sub-title-btn">
-            <span class="sub-title">{{attractInfo.title2}}</span>
+            <span v-cloak  class="sub-title">{{attractInfo.title2}}</span>
             <button @click="reverseAttract" class="revese">预约</button>
         </p>
         <p class="setting">

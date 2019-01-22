@@ -26,14 +26,14 @@
             <ul class="repair-list">
                 <li @click="getRecordDetail(0)" v-for="item in recordList" class="repair-item">
                     <p class="head">
-                        <span>{{item.shopNo}}</span>
-                        <span class="status" :class="{'warning':item.status == 2}">{{item.statusName}}</span>
+                        <span v-cloak >{{item.shopNo}}</span>
+                        <span v-cloak  class="status" :class="{'warning':item.status == 2}">{{item.statusName}}</span>
                     </p>
                     <p class="repair-content">
-                        <span class="title">{{item.title}}</span>
-                        <span class="date">{{item.dateTime}}</span>
+                        <span v-cloak  class="title">{{item.title}}</span>
+                        <span v-cloak  class="date">{{item.dateTime}}</span>
                     </p>
-                    <p v-if="item.charge" class="charge">
+                    <p v-cloak  v-if="item.charge" class="charge">
                         额外收费：￥{{item.charge}}
                     </p>
                 </li>

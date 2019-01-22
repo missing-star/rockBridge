@@ -27,7 +27,7 @@
             <div class="trade-container">
                 <img src="imgs/electric.png" alt="" class="trade-icon">
                 <!-- <p class="title">南京供电公司</p> -->
-                <p class="trade-money">-{{detail.actual_payment}}</p>
+                <p v-cloak  class="trade-money">-{{detail.actual_payment}}</p>
                 <p class="trade-status">交易成功</p>
             </div>
             <ul class="detail-list">
@@ -35,20 +35,20 @@
                     <label for="" class="title">
                         付款方式
                     </label>
-                    <p class="content">{{detail.pay_method}}</p>
+                    <p v-cloak  class="content">{{detail.pay_method}}</p>
                 </li>
                 <li class="detail-item">
                     <label for="" class="title">
                         缴费说明
                     </label>
-                    <p class="content">{{detail.content}}</p>
+                    <p v-cloak  class="content">{{detail.content}}</p>
                 </li>
                 <li class="detail-item">
                     <label for="" class="title space-between">
                         <span>户</span>
                         <span>号</span>
                     </label>
-                    <p class="content">{{detail.shop_code}}</p>
+                    <p v-cloak  class="content">{{detail.shop_code}}</p>
                 </li>
                 <!-- <li class="detail-item">
                     <label for="" class="title">
@@ -60,13 +60,13 @@
                         <label for="" class="title">
                             创建日期
                         </label>
-                        <p class="content">{{detail.add_time}}</p>
+                        <p v-cloak  class="content">{{detail.add_time}}</p>
                     </li>
                 <li class="detail-item">
                     <label for="" class="title">
                         订单号
                     </label>
-                    <p class="content">{{detail.pay_order}}</p>
+                    <p v-cloak class="content">{{detail.pay_order}}</p>
                 </li>
                 <li class="detail-item">
                     <label for="" class="title">

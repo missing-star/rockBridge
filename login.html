@@ -32,7 +32,7 @@
                 </li>
                 <li v-show="loginWay == 1" class="login-item">
                     <input v-model="code" @input="validateCode" type="number" placeholder="输入验证码" class="content">
-                    <span @click="getCode" class="forget-password code">{{msg}}</span>
+                    <span v-cloak  @click="getCode" class="forget-password code">{{msg}}</span>
                 </li>
             </ul>
             <p class="other-way">

@@ -29,11 +29,11 @@
                     <img class="goods-img" :src="item.images" />
                     <div class="goods-info">
                         <p>
-                            <span>{{item.title}}</span>
-                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />{{item.click_num}}</span>
+                            <span v-cloak >{{item.title}}</span>
+                            <span v-cloak  class="eye-container"><img class="view-num" src="imgs/eye.png" />{{item.click_num}}</span>
                         </p>
                         <p>
-                            <span class="goods-price">￥{{item.price}}</span>
+                            <span v-cloak  class="goods-price">￥{{item.price}}</span>
                             <button class="reserve">咨询</button>
                         </p>
                     </div>
@@ -49,10 +49,10 @@
                         <div class="business-info">
                             <img :src="item.images" class="business-logo" />
                             <p class="business-detail">
-                                <span class="business-name">{{item.title}}<img v-for="n in item.shop_review" src="imgs/star-high.png"
+                                <span v-cloak  class="business-name">{{item.title}}<img v-for="n in item.shop_review" src="imgs/star-high.png"
                                         class="business-level" /><img v-for="n in (5 - item.shop_review)" src="imgs/star.png"
                                         class="business-level" /></span>
-                                <span>收藏 {{item.shop_collection}}</span>
+                                <span v-cloak >收藏 {{item.shop_collection}}</span>
                             </p>
                         </div>
                         <button @click="getDetail('shop-detail.html',item.id)" class="go-business-btn">

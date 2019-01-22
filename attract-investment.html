@@ -26,8 +26,8 @@
             <div @click="goDetail(item.id)" v-for="item in attractList" class="investment-item">
                 <img :src="item.thumb" alt="" class="investment-img">
                 <p class="desc">
-                    <span class="title">{{item.title}}</span>
-                    <span class="sub-title">{{item.title2}}</span>
+                    <span v-cloak  class="title">{{item.title}}</span>
+                    <span v-cloak  class="sub-title">{{item.title2}}</span>
                 </p>
             </div>
         </div>

@@ -74,14 +74,14 @@
                     <template v-if="currentRole == 1">
                         <img class="user-logo" :src="userData.shops.images" />
                         <p class="user-detail">
-                            <span class="user-nickname">{{userData.shops.title}}</span>
+                            <span v-cloak  class="user-nickname">{{userData.shops.title}}</span>
                             <span class="user-welcome">欢迎来叠石桥体验商城商铺一体化</span>
                         </p>
                     </template>
                     <template v-if="currentRole == 0">
                         <img class="user-logo" :src="userData.users.images" />
                         <p class="user-detail">
-                            <span class="user-nickname">你好！{{userData.users.nickname}}</span>
+                            <span v-cloak  class="user-nickname">你好！{{userData.users.nickname}}</span>
                             <span class="user-welcome">欢迎来叠石桥体验商城商铺一体化</span>
                         </p>
                     </template>

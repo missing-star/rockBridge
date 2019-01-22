@@ -65,16 +65,16 @@
                 <p class="sub-title">每日一读，知天下事</p>
             </header>
             <ul class="tab-bar">
-                <li :class="{active:index == 0}" v-for="(item,index) in tab" :cat-id="item.id" class="tab-bar-item">{{item.cat_name}}</li>
+                <li v-cloak  :class="{active:index == 0}" v-for="(item,index) in tab" :cat-id="item.id" class="tab-bar-item">{{item.cat_name}}</li>
             </ul>
             <ul class="info-list">
                 <li @click="getInfoDetail(item.id)" v-for="item in tabContent" class="info-item">
                     <div class="box-shadow">
                         <img :src="item.thumb | filterImg" class="info-item-img" />
-                        <p class="info-item-desc">
+                        <p v-cloak  class="info-item-desc">
                             <template>{{item.description}}</template>
                         </p>
-                        <p class="info-source">
+                        <p v-cloak  class="info-source">
                             <span>{{item.title}}</span>
                             <span>{{item.update_time.substring(0,10)}}</span>
                         </p>

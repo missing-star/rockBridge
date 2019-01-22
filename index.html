@@ -86,8 +86,8 @@
                 <div @click="goDetail('attract-investment-detail.html',item.id)" v-for="item in homeInfo.property_let_list"
                     class="slider-business-item">
                     <img :src="item.thumb | filterImg" />
-                    <p class="business-item-title">{{item.title}}</p>
-                    <p class="business-item-content">{{item.title2}}</p>
+                    <p v-cloak  class="business-item-title">{{item.title}}</p>
+                    <p v-cloak  class="business-item-content">{{item.title2}}</p>
                 </div>
             </div>
             <!--卡片：新闻，领券，通知-->
@@ -95,13 +95,13 @@
                 <div @click="goInner(homeInfo.ad_left.ad_link)" class="news-card">
                     <p class="card-content-con">
                         <img :src="homeInfo.ad_left.ad_code | filterImg" alt="">
-                        <span class="title">{{homeInfo.ad_left.ad_name}}</span>
+                        <span v-cloak  class="title">{{homeInfo.ad_left.ad_name}}</span>
                     </p>
                 </div>
                 <div @click="goInner(homeInfo.ad_right.ad_link)" class="news-card">
                     <p class="card-content-con">
                         <img :src="homeInfo.ad_right.ad_code | filterImg" alt="">
-                        <span class="title">{{homeInfo.ad_right.ad_name}}</span>
+                        <span v-cloak  class="title">{{homeInfo.ad_right.ad_name}}</span>
                     </p>
                 </div>
             </div>
@@ -114,8 +114,8 @@
                 <div class="goods-container">
                     <div class="bottom-item" v-for="goods in homeInfo.goods_list">
                         <img @click="goDetail('goods-detail.html',goods.id)" :src="goods.images | filterImg" />
-                        <p class="name">{{goods.title}}</p>
-                        <p class="price">￥{{goods.price}}</p>
+                        <p v-cloak  class="name">{{goods.title}}</p>
+                        <p v-cloak  class="price">￥{{goods.price}}</p>
                     </div>
                 </div>
             </div>
@@ -127,10 +127,10 @@
                         <div class="business-info">
                             <img :src="shop.images" class="business-logo" />
                             <p class="business-detail">
-                                <span class="business-name">{{shop.title}}<img v-for="n in shop.shop_review" src="imgs/star-high.png"
+                                <span class="business-name" v-cloak >{{shop.title}}<img v-for="n in shop.shop_review" src="imgs/star-high.png"
                                         class="business-level" /><img v-for="n in (5 - shop.shop_review)" src="imgs/star.png"
                                         class="business-level" /></span>
-                                <span>收藏 {{shop.shop_collection}}</span>
+                                <span v-cloak >收藏 {{shop.shop_collection}}</span>
                             </p>
                         </div>
                         <button @click="enterShop(shop.id)" class="go-business-btn">
@@ -149,8 +149,8 @@
                     <img class="goods-img" :src="goods.ad_code | filterImg" />
                     <div class="goods-info">
                         <p>
-                            <span>{{goods.ad_name}}</span>
-                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_count}}</span>
+                            <span v-cloak >{{goods.ad_name}}</span>
+                            <span v-cloak  class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_count}}</span>
                         </p>
                         <!-- <p>
                             <span class="goods-price">￥{{goods.</span>
@@ -180,7 +180,7 @@
                     <img @click="clearHistory" src="imgs/delete.png" class="icon-delete" />
                 </header>
                 <ul class="history-list">
-                    <li @click="searchHistory(item)" v-for="item in historyList" class="list-item">{{item}}</li>
+                    <li v-cloak  @click="searchHistory(item)" v-for="item in historyList" class="list-item">{{item}}</li>
                 </ul>
             </div>
             <!--热门搜索-->

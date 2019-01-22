@@ -71,7 +71,7 @@
                 </li>
                 <li v-if="repairInfo.repairStatus == 4 && repairInfo.needPay > 0" class="repair-item need-pay">
                     <p class="title">需缴费</p>
-                    <p class="money">{{repairInfo.needPay}}</p>
+                    <p v-cloak  class="money">{{repairInfo.needPay}}</p>
                 </li>
             </ul>
             <template v-if="repairInfo.repairStatus != 0">

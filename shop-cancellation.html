@@ -26,7 +26,7 @@
             </p>
             <div class="question-container">
                 <textarea v-model="quesDesc" @input="limitLength" placeholder="请描述注销原因" name="" id=""></textarea>
-                <span class="show-number">{{inputCount}}/200</span>
+                <span v-cloak  class="show-number">{{inputCount}}/200</span>
             </div>
             <div class="repair-item upload">
                 <div v-for="(item,index) in uploadedImgs" class="upload-item">
@@ -39,7 +39,7 @@
                         <input class="upload-input" hidden type="file" accept="image/*">
                     </div>
                     <img src="imgs/camera.png" alt="" class="camera">
-                    <span class="imgs-num">{{uploadedImgs.length}} / 3</span>
+                    <span v-cloak  class="imgs-num">{{uploadedImgs.length}} / 3</span>
                 </div>
             </div>
             <button @click="submitForm" class="submit">提交</button>
