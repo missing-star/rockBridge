@@ -21,7 +21,7 @@
             <header class="packet-title">
                 <p>我的足迹</p>
                 <p>
-                    <span v-cloak  id="footprint-date" class="date-time">{{printDate}}</span>
+                    <span v-cloak id="footprint-date" class="date-time">{{printDate}}</span>
                     <span class="arrow-down">
                         <img class="icon-down" src="imgs/arrow-down-black.png" alt="">
                     </span>
@@ -29,23 +29,28 @@
             </header>
             <div class="foot-print-container">
                 <div class="date-group">
-                    <p class="foot-print-date">
-                        10月21日
-                    </p>
-                    <div class="have-good-goods">
-                        <div @click="goDetail('goods-detail.html',0)" v-for="n in 3" class="goods-item">
-                            <img class="goods-img" src="imgs/bed1.png" />
-                            <div class="goods-info">
-                                <p>
-                                    <span>商品名称</span>
-                                    <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
-                                </p>
-                                <p>
-                                    <span class="goods-price">￥200</span>
-                                    <button class="reserve">预约</button>
-                                </p>
+                    <template v-for="item in goodsList">
+                        <p v-cloak class="foot-print-date">
+                            {{item.date}}
+                        </p>
+                        <div class="have-good-goods">
+                            <div @click="goDetail('goods-detail.html',goods.id)" v-for="goods in item.browse_list" class="goods-item">
+                                <img class="goods-img" :src="goods.images | filterImg" />
+                                <div class="goods-info">
+                                    <p>
+                                        <span v-cloak>{{shops.title}}</span>
+                                        <span class="eye-container"><img class="view-num" src="imgs/eye.png" />{{shops.click_num}}</span>
+                                    </p>
+                                    <p>
+                                        <span v-cloak class="goods-price">￥{{shops.price}}</span>
+                                        <button class="reserve">咨询</button>
+                                    </p>
+                                </div>
                             </div>
                         </div>
+                    </template>
+                    <div class="bottom-line">
+                        ······ 已见底了 ······
                     </div>
                 </div>
             </div>

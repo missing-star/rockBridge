@@ -1,11 +1,19 @@
+const page = 1;
 var nowDate = new Date();
 var vm = new Vue({
     el:'#app',
     data:{
-        printDate:nowDate.getFullYear() + '年' + (nowDate.getMonth() + 1) +'月'
+        printDate:nowDate.getFullYear() + '年' + (nowDate.getMonth() + 1) +'月',
+        year:nowDate.getFullYear(),
+        month:nowDate.getMonth + 1,
+        isMore:true,
+        goodsList:[]
     },
     methods:{
 
+    },
+    mounted() {
+     getMyFootPrint(this.year,this.month);   
     }
 });
 (function ($, doc) {
@@ -14,7 +22,7 @@ var vm = new Vue({
         //日期选择
         var dtPicker = new $.DtPicker({
             "type": "month",
-            "beginYear": "2017",
+            "beginYear": "2018",
             "endYear":new Date().getFullYear()
         });
         var birthBtn = document.getElementById('footprint-date');
@@ -22,9 +30,39 @@ var vm = new Vue({
             dtPicker.show(function (selectItems) {
                 vm.printDate = selectItems.y.text +
                     '年' + selectItems.m.text + '月';
-
+                    getMyFootPrint();
             });
         });
     });
 
 })(mui, document);
+
+$(function() {
+    if(document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
+        if(vm.isMore) {
+            page += 1;
+            getMyFootPrint(vm.year,vm.month);
+        }
+    }
+});
+
+function getMyFootPrint(year,month) {
+    $.ajax({
+        url:`${rootUrl}/index/api/getGroups`,
+        type:'post',
+        dataType:'json',
+        data:{
+            year:year,
+            month:month,
+            page:page
+        },
+        success:function(data) {
+            if(data.status == 1) {
+                vm.goodsList = data.result;
+            }
+        },
+        error:function() {
+            mui.toast('服务器异常');
+        }
+    });
+}
