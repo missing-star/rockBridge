@@ -145,7 +145,7 @@
             <!--有好物-->
             <p class="class-title">有好物</p>
             <div class="have-good-goods">
-                <div @click="goDetail(goods.ad_link,0)" v-for="goods in homeInfo.ad_goods_list" class="goods-item">
+                <div @click="goDetail('goods-detail.html',goods.id)" v-for="goods in homeInfo.ad_goods_list" class="goods-item">
                     <img class="goods-img" :src="goods.ad_code | filterImg" />
                     <div class="goods-info">
                         <p>

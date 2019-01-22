@@ -122,31 +122,43 @@ button.mui-btn.mui-poppicker-btn-cancel {
     border-color: #aaaaaa;
 }
 
-.mui-picker-inner ,.mui-picker{
+.mui-picker-inner,
+.mui-picker {
     background: #fcfcfc;
     -webkit-mask-box-image: none;
 }
-.mui-poppicker-body{
+
+.mui-poppicker-body {
     border: none;
 }
+
 button.mui-btn.mui-btn-blue {
     color: #ff8b16;
     background: #ffffff;
     border-color: #ff8b16;
 }
+
 button.mui-btn {
     color: #aaaaaa;
     border-color: #aaaaaa;
 }
+
 .mui-dtpicker-header {
     background: #ffffff;
 }
-.mui-dtpicker-title h5{
-    display:none;
+
+.mui-dtpicker-title h5 {
+    display: none;
 }
+
 span.mui-popup-button.mui-popup-button-bold {
     color: #FF8B16;
 }
+
 span.mui-popup-button {
     color: #aaaaaa;
+}
+
+[v-cloak] {
+    display: none !important;
 }

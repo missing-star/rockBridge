@@ -99,3 +99,9 @@ li.pay-item {
 .one.next.fade-out{
     left: 100%;
 }
+.one.next>header.mui-bar.mui-bar-nav {
+    position: relative;
+}
+.one.next>div.mui-content {
+    padding-top: 0;
+}
