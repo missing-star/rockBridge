@@ -23,11 +23,11 @@
             招商招租
         </p>
         <div class="investment-list">
-            <div @click="goDetail(0)" v-for="n in 5" class="investment-item">
-                <img src="imgs/business.png" alt="" class="investment-img">
+            <div @click="goDetail(item.id)" v-for="item in attractList" class="investment-item">
+                <img :src="item.thumb" alt="" class="investment-img">
                 <p class="desc">
-                    <span class="title">终于等到你</span>
-                    <span class="sub-title">优选店面</span>
+                    <span class="title">{{item.title}}</span>
+                    <span class="sub-title">{{item.title2}}</span>
                 </p>
             </div>
         </div>

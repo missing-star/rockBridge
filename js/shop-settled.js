@@ -6,7 +6,9 @@ var vm = new Vue({
         price:100,
         totalMoney:0,
         isDisabled:false,
-        msg:''
+        msg:'',
+        str:'',
+        isNext:false
     },
     methods: {
         validateNum() {
@@ -31,9 +33,27 @@ var vm = new Vue({
                     buy_num:vm.buyNums
                 },
                 success:function(data) {
-
+                    if(data.status == 1) {
+                        vm.str = data.info;
+                        vm.isNext = true;
+                    }
                 }
             });
+        },
+        hideSubmit() {
+            this.isNext = false;
+        },
+        submit() {
+            if (typeof WeixinJSBridge == "undefined") {
+                if (document.addEventListener) {
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            } else {
+                jsApiCall();
+            }
         }
     },
     created() {
@@ -67,3 +87,28 @@ $(function () {
         }
     });
 });
+
+
+/**
+ * 微信支付
+ */
+function jsApiCall() {
+    WeixinJSBridge.invoke(
+        'getBrandWCPayRequest',
+        JSON.parse(vm.str),
+        function (res) {
+            if (res.err_msg == "get_brand_wcpay_request:ok") {
+                mui.toast('支付成功!');
+                setTimeout(function() {
+                    mui.openWindow({
+                        url:'workspace.html'
+                    });
+                }, 200);
+            }
+            else {
+                //支付失败/用户取消支付
+                
+            }
+        }
+    );
+}

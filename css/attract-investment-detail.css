@@ -86,3 +86,60 @@ span.facilities-name {
 .investment-detail img {
     width: 100%;
 }
+div#sheet1 {
+    width: 100% !important;
+    left: 0;
+    padding: 0;
+    top: 35%;
+}
+.content {
+    background: #FFFFFF;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 0.2rem;
+    min-height: 12rem;
+    position: relative;
+    padding-top: 0.8rem;
+}
+.btn-group {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-top: 1px solid #f6f6f6;
+}
+a.btn {
+    width: 50%;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+a.btn.cancel {
+    border-right: 1px solid #f6f6f6;
+    color: #aaaaaa;
+}
+a.btn.confirm {
+    color: #ff5816;
+}
+.input-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.5rem;
+}
+input.item {
+    width: 90%;
+    padding-left: 0;
+    border-bottom: 1px solid #f6f6f6;
+    border-radius: 0;
+}
+label.title {
+    line-height: 1rem;
+}

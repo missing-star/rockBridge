@@ -1,7 +1,7 @@
 new Vue({
     el:'#app',
     data:{
-
+        attractList:[]
     },
     methods:{
         goDetail(id) {

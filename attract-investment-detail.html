@@ -22,35 +22,46 @@
             招商招租详情
         </p>
         <div class="img-slider">
-            <img v-for="n in 5" src="imgs/business.png" alt="" class="img-slider-item">
+            <img v-for="img in attractInfo.thumb" :src="img" alt="" class="img-slider-item">
         </div>
-        <p class="desc">
-            房屋描述附近的拉风的来访记录都是饭店附近的恐龙当家
+        <p v-cloak class="desc">
+            {{attractInfo.title}}
         </p>
         <p class="sub-title-btn">
-            <span class="sub-title">小标题</span>
-            <button class="revese">预约</button>
+            <span class="sub-title">{{attractInfo.title2}}</span>
+            <button @click="reverseAttract" class="revese">预约</button>
         </p>
         <p class="setting">
             配置设施
         </p>
         <ul class="facilities-list">
-            <li v-for="n in 6" class="facilities-item">
+            <li v-for="item in attractInfo.appliance" class="facilities-item">
                 <img src="imgs/business-logo.png" alt="" class="facilities-logo">
-                <span class="facilities-name">热水器</span>
+                <span v-cloak class="facilities-name">{{item}}</span>
             </li>
         </ul>
         <p class="investment-title">
             招租信息
         </p>
-        <div class="investment-detail">
-            文本信息到了房间爱里的风景的发电机房来看
-            文本信息到了房间爱里的风景的发电机房来看
-            <img src="imgs/bed1.png" alt="">
-            文本信息到了房间爱里的风景的发电机房来看文本信息到了房间爱里的风景的发电机房来看文本信
-            息到了房间爱里的风景的发电机房来看文本信息到了房间爱里的风景的发电机房来看
+        <div v-cloak class="investment-detail">
+           {{attractInfo.content}}
         </div>
-
+        <div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+            <div class="content">
+                <div class="input-container">
+                    <label for="" class="title">姓名</label>
+                    <input @input="limitName" v-model="name" placeholder="请输入姓名" type="text" class="username item">
+                </div>
+                <div class="input-container">
+                    <label for="" class="title">手机号</label>
+                    <input @input="limitPhone" v-model="phone" placeholder="请输入手机号" type="number" class="phone item">
+                </div>
+                <div class="btn-group">
+                    <a href="#sheet1" class="btn cancel">取消</a>
+                    <a @click="submitReverse" href="javascript:;" class="btn confirm">确定</a>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="assets/vue/vue.min.js"></script>
     <script src="assets/jquery/jquery.min.js"></script>
