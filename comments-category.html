@@ -39,13 +39,13 @@
             </li>
         </ul>
         <!--
-                    评论列表
-                -->
+                        评论列表
+                    -->
         <ul class="comments-list">
             <li v-for="item in commentsList" class="comments-item">
                 <div class="user-info">
                     <div class="left-part">
-                        <img :src="" alt="" class="user-logo">
+                        <img :src="item.hed_images | filterImg" alt="" class="user-logo">
                         <p class="user-nickname">
                             <span v-cloak class="username">{{item.nickname}}</span>
                             <span class="score">

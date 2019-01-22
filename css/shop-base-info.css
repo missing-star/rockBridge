@@ -24,6 +24,8 @@ p.shop-info {
 
 img.shop-logo {
     width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
 }
 
 p.shop-info-level {
@@ -60,7 +62,7 @@ div.base-data {
     justify-content: space-around;
 }
 .base-data-item {
-    width: calc(100% / 3);
+    width: calc(100% / 2);
     position: relative;
     display: flex;
     align-items: center;
@@ -76,14 +78,6 @@ div.base-data {
     background: #fff;
     width: 1px;
     left: 0;
-}
-.base-data-item:nth-child(2):after {
-    content: '';
-    height: 30%;
-    position: absolute;
-    background: #fff;
-    width: 1px;
-    right: 0;
 }
 span.number {
     font-size: 0.8rem;
@@ -149,13 +143,12 @@ li.address-item>p.content {
     color: #333;
     font-size: 0.8rem;
 }
-.card {
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
+p.license-title {
     font-size: 0.8rem;
     color: #333;
-    background:url(../imgs/arrow-right.png) no-repeat;
-    background-position: right;
-    background-size: 0.5rem;
+    margin-bottom: 1rem;
+}
+img.license {
+    display: block;
+    width: 100%;
 }

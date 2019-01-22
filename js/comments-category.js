@@ -1,9 +1,9 @@
 var page = 1;
-
 var vm = new Vue({
     el: '#app',
     data: {
-        types: getParams().type,
+        name:'aaa',
+        type: getParams().type,
         commentsList: [],
         nums: {
             good: 0,
@@ -13,10 +13,19 @@ var vm = new Vue({
             total: 0
         }
     },
+    filters:{
+        filterImg(thumb) {
+            if(thumb.indexOf('http') != -1) {
+                return `${thumb}`;
+            }
+            return `${rootUrl}${thumb}`;
+        }
+    },
     methods: {
         showTab(type) {
             if (this.type != type) {
                 this.type = type;
+                vm.commentsList = [];
                 getCommentsByType(type);
             }
         }

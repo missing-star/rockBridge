@@ -10,4 +10,19 @@ new Vue({
             })
         }
     }
-})
+});
+
+getAttractList();
+function getAttractList() {
+    $.ajax({
+        url:`${rootUrl}/index/api/getLetsList`,
+        dataType:'json',
+        type:'post',
+        success:function(data) {
+
+        },
+        error:function() {
+            mui.toast('服务器异常');
+        }
+    });
+}

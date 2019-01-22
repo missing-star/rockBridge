@@ -28,7 +28,7 @@ p.logo-container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20%;
+    margin-top: 8%;
 }
 img.logo-icon {
     width: 30%;
@@ -43,10 +43,35 @@ button.introduction {
     background: #e8e8e8;
     border: none;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     border-radius: 1rem;
     padding: 0.5rem;
     font-size: 0.8rem;
     line-height: 1rem;
     color:#9d7e60;
+}
+.info-list {
+    width: 80%;
+    margin: 1rem auto;
+    line-height: 1.5rem;
+}
+p.info-item {
+    color: #9d7e60;
+    font-size: 0.9rem;
+}
+span.content {
+    text-decoration: underline;
+}
+p.erwei-code-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+img.code {
+    width: 30%;
+}p.bottom {
+    text-align: center;
+    margin-top: 0.5rem;
+    color: #888888;
 }

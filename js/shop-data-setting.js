@@ -61,6 +61,12 @@ var vm = new Vue({
         },
         hideInput() {
             this.isEditName = false;
+        },
+        buySettles() {
+            //购买展架
+            mui.openWindow({
+                url:'shop-settled.html'
+            });
         }
     }
 });

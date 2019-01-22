@@ -73,3 +73,14 @@ p.show-money {
     font-size: 1rem;
     color: #FF7041;
 }
+ul.pay-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+li.pay-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f6f6f6;
+    height: 3rem;
+}

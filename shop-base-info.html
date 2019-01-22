@@ -19,89 +19,69 @@
         <div class="mui-content">
             <p class="shop-info">商铺信息</p>
             <div class="shop-logo-info">
-                <img src="imgs/business-logo.png" alt="" class="shop-logo">
+                <img :src="shopInfo.images | filterImg" alt="" class="shop-logo">
                 <p class="shop-info-level">
-                    <span class="shop-name">叠石桥家纺城官方旗舰店</span>
+                    <span v-cloak class="shop-name">{{shopInfo.title}}</span>
                     <span class="shop-level-icon">
-                        <img src="imgs/crown-active.png" alt="" class="level-icon level-icon-active">
-                        <img v-for="n in 4" src="imgs/crown.png" alt="" class="level-icon">
-                        <span>4.8分</span>
+                        <img v-for="n in shopInfo.shop_review" src="imgs/crown-active.png" alt="" class="level-icon level-icon-active">
+                        <img v-for="n in (5 - shopInfo.shop_review)" src="imgs/crown.png" alt="" class="level-icon">
+                        <span>{{shopInfo.shop_review}}分</span>
                     </span>
                 </p>
             </div>
             <!--浏览量，好评率，关注量-->
             <div class="base-data">
                 <div class="base-data-item">
-                    <span class="number">2345</span>
-                    <span class="title">浏览量</span>
-                </div>
-                <div class="base-data-item">
-                    <span class="number">100%</span>
+                    <span class="number">{{shopInfo.service_ratio}}%</span>
                     <span class="title">好评率</span>
                 </div>
                 <div class="base-data-item">
-                    <span class="number">2345</span>
+                    <span class="number">{{shopInfo.shop_collection}}</span>
                     <span class="title">关注量</span>
                 </div>
             </div>
             <!--商铺评分-->
             <ul class="shop-score">
                 <li class="shop-score-item">
-                    <span class="title">商品描述</span>
+                    <span class="title">综合服务</span>
                     <span class="icon">
-                        <img v-for="n in 4" src="imgs/star-high.png" alt="">
-                        <img src="imgs/star.png" alt="">
+                        <img v-for="n in shopInfo.shop_quality" src="imgs/star-high.png" alt="">
+                        <img v-for="n in (5 - shopInfo.shop_quality)" src="imgs/star.png" alt="">
                     </span>
                     <span class="score">
-                        <span class="high">4.8</span>
-                        <img class="arrow-rise-reduce" src="imgs/rise.png" alt="">
+                        <span class="high">{{shopInfo.shop_quality}}</span>
                     </span>
                 </li>
                 <li class="shop-score-item">
-                    <span class="title">商品描述</span>
+                    <span class="title">综合评分</span>
                     <span class="icon">
-                        <img v-for="n in 3" src="imgs/star-low.png" alt="">
-                        <img v-for="n in 2" src="imgs/star.png" alt="">
+                        <img v-for="n in shopInfo.shop_review" src="imgs/star-high.png" alt="">
+                        <img v-for="n in (5 - shopInfo.shop_review)" src="imgs/star.png" alt="">
                     </span>
                     <span class="score">
-                        <span class="low">3</span>
-                        <img class="arrow-rise-reduce" src="imgs/reduce.png" alt="">
-                    </span>
-                </li>
-                <li class="shop-score-item">
-                    <span class="title">商品描述</span>
-                    <span class="icon">
-                        <img v-for="n in 4" src="imgs/star-high.png" alt="">
-                        <img src="imgs/star.png" alt="">
-                    </span>
-                    <span class="score">
-                        <span class="high">4.8</span>
-                        <img class="arrow-rise-reduce" src="imgs/rise.png" alt="">
+                        <span v-cloak class="high">{{shopInfo.shop_review}}</span>
                     </span>
                 </li>
             </ul>
             <!--地址信息-->
             <ul class="address-list">
                 <li class="address-item">
-                    <p class="title">所在地区</p>
-                    <p class="content">南京市江南区高新园321人才创业大厦</p>
-                </li>
-                <li class="address-item">
-                    <p class="title">实名认证</p>
-                    <p class="content">已通过系统实名认证</p>
+                    <p class="title">所在地址</p>
+                    <p class="content" v-cloak>{{shopInfo.province+shopInfo.city+shopInfo.district}}</p>
                 </li>
                 <li class="address-item">
                     <p class="title">商家电话</p>
-                    <p class="content">400-000-0000</p>
+                    <p class="content">{{shopInfo.phone}}</p>
                 </li>
                 <li class="address-item">
-                    <p class="title">所在地区</p>
-                    <p class="content">2014-12-21</p>
+                    <p class="title">注册时间</p>
+                    <p class="content">{{shopInfo.create_at}}</p>
                 </li>
             </ul>
             <!--工商执照-->
             <div class="card">
-                工商执照
+                <p class="license-title">工商执照</p>
+                <img :src="shopInfo.business_license | filterImg" alt="" class="license">
             </div>
         </div>
     </div>

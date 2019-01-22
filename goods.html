@@ -113,8 +113,8 @@
                         <div class="business-info">
                             <img src="imgs/business-logo.png" class="business-logo" />
                             <p class="business-detail">
-                                <span class="business-name">{{shop.title}}<img v-for="n in 4" src="imgs/star.png" class="business-level" /></span>
-                                <span>浏览 {{shop.shop_review}} | 收藏 {{shop.shop_collection}}</span>
+                                <span class="business-name">{{shop.title}}<img v-for="n in shop.shop_review" src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - shop.shop_review)" src="imgs/star.png" class="business-level" /></span>
+                                <span>收藏 {{shop.shop_collection}}</span>
                             </p>
                         </div>
                         <button @click="getDetail('shop-detail.html',shop.id)" class="go-business-btn">

@@ -8,6 +8,12 @@ var vm = new Vue({
             mui.openWindow({
                 url:'shop-base-info.html'
             })
+        },
+        buySettles() {
+            //购买展架
+            mui.openWindow({
+                url:'shop-settled.html'
+            });
         }
     },
     filters: {
@@ -22,7 +28,7 @@ var vm = new Vue({
 getWorkspaceData();
 function getWorkspaceData() {
     $.ajax({
-        url:`${rootUrl}/index/api/getShopsShopsInfo`,
+        url:`${rootUrl}/index/api/getShopsIndex`,
         dataType:'json',
         type:'post',
         success:function(data) {

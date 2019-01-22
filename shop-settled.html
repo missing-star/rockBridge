@@ -21,22 +21,26 @@
                 <header class="packet-title">
                     <p>购买展架</p>
                 </header>
-                <div class="show-content">
-                    <p class="now-number">
-                        现有展架：10
-                    </p>
-                    <p class="price">
-                        单价：{{price}}元/个
-                    </p>
-                    <p class="title">
-                        购买数量
-                    </p>
-                    <input @input="validateNum" v-model="buyNums" placeholder="请输入购买数量" type="number" class="number">
-                    <span class="warning">{{msg}}</span>
-                    <span class="fate">费率（0.6%）</span>
-                    <p class="show-money">总价：￥{{totalMoney}}</p>
-                    <button @click="submitOrder" :disabled="isDisabled" class="submit-btn" :class="{'submit-order':!isDisabled,'disabled':isDisabled}">立即购买</button>
-                </div>
+                <ul class="pay-list">
+                    <li id="classify" class="pay-item picker">
+                        <label for="" class="title">现有展架</label>
+                        <input v-model="nowNums" type="text" class="classify" readonly>
+                    </li>
+                    <li id="classify" class="pay-item picker">
+                        <label for="" class="title">价格</label>
+                        <input v-model="price" type="text" class="classify" readonly>
+                    </li>
+                    <li id="repair-list" class="pay-item picker">
+                        <label for="" class="title">购买数量</label>
+                        <input @input="validateNum" v-model="buyNums" placeholder="请输入购买数量" type="number" class="classify">
+                    </li>
+                    <li class="pay-item">
+                        <label for="" class="title">支付费率</label>
+                        <input readonly type="text" class="classify" value="0.6%">
+                    </li>
+                </ul>
+                <p class="show-money">总价：￥{{totalMoney}}</p>
+                <button @click="submitOrder" :disabled="isDisabled" class="submit-btn" :class="{'submit-order':!isDisabled,'disabled':isDisabled}">立即购买</button>
             </div>
         </div>
 

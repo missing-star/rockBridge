@@ -1,6 +1,7 @@
 var vm = new Vue({
     el: '#app',
     data: {
+        nowNums:10,
         buyNums:10,
         price:100,
         totalMoney:0,
@@ -9,7 +10,9 @@ var vm = new Vue({
     },
     methods: {
         validateNum() {
-            if(!parseInt(this.buyNums)) {
+            this.buyNums = this.buyNums.replace(".","");
+            const reg = /^[1-9]+\d*$/;
+            if(!reg.test(this.buyNums)) {
                 this.isDisabled = true;
                 this.msg = '您输入的数量有误';
             }

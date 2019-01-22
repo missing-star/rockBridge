@@ -194,6 +194,10 @@ function getGoodsList(keyword, fields, type, page) {
         dataType:'json',
         type: 'post',
         success: function (data) {
+            if(data.result.length == 0) {
+                vm.isMoreGoods = false;
+                return;
+            }
             if (data.status == 1) {
                 vm.goodsList = vm.goodsList.concat(data.result);
             }
@@ -217,6 +221,10 @@ function getShopList(keyword, sort, type, page) {
         type:'post',
         dataType:'json',
         success: function (data) {
+            if(data.result.length == 0) {
+                vm.isMoreShops = false;
+                return;
+            }
             if (data.status == 1) {
                 vm.shopList = vm.shopList.concat(data.result);
             }
