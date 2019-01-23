@@ -320,11 +320,12 @@ button.go-business-btn{
 .business-item .bottom {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-top: 1rem;
 }
 img.business-img-item {
-    width: 32%;
+    width: 30%;
+    margin: 0 1.5%;
 }
 p.business-detail>span:first-child {
     font-size: 0.8rem;

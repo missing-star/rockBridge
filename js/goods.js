@@ -145,7 +145,7 @@ $(function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
             if (vm.isShowGoods && vm.isMoreGoods) {
                 //滚动加载商品
-                getGoodsList(vm.keyword, vm.goodsSortType, vm.goodsSortName, ++page1);
+                getGoodsList(vm.keyword,vm.goodsSortName,vm.goodsSortType, ++page1);
             } else if(!vm.isShowGoods && vm.isMoreShops) {
                 //滚动加载商家
                 getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, ++page2);

@@ -319,11 +319,12 @@ button.go-business-btn{
 .business-recommond .bottom {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-top: 1rem;
 }
 img.business-img-item {
-    width: 32%;
+    width: 30%;
+    margin: 0 1.5%;
 }
 img.goods-img {
     width: 100%;

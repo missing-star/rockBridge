@@ -167,7 +167,7 @@
         <div class="search-page" :class={active:isFadeIn,'slide-out':isFadeOut}>
             <header>
                 <img @click="hideSearch" src="imgs/icon-back.png" class="icon-back" />
-                <form class="input-group">
+                <form @submit="startSearch" class="input-group">
                     <input placeholder="输入商品或商店名称" v-model="keyword" id="search" class="search-page-input" type="text">
                     <img v-show="searchContent.length != 0" @click="clearInput" class="clear-icon" src="imgs/clear.png" />
                 </form>

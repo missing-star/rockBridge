@@ -70,7 +70,7 @@ var vm = new Vue({
             }
         },
         validateCounts() {
-            if (!parseInt(this.goodsCounts) || parseInt(this.goodsCounts) <= 0 || this.goodsCounts.indexOf('.') != -1) {
+            if (!parseInt(this.goodsCounts) || parseInt(this.goodsCounts) <= 0 || this.goodsCounts.toString().indexOf('.') != -1) {
                 this.showCountsMsg = '您输入的库存有误!';
                 return false;
             } else {

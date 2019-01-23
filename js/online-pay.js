@@ -8,7 +8,7 @@ var vm = new Vue({
         //需要交纳的费用
         money: '',
         //支付费率
-        payFate:'0.5元',
+        payFate:0,
         //用户输入的费用
         inputMoney: '',
         description: '',
@@ -138,14 +138,18 @@ var vm = new Vue({
         })
     });
     var payPicker = new $.PopPicker();
-    payPicker.setData([{
-        value: 1,
-        text: '微信支付'
-    }]);
+    let result = getPayWay().map(function(item) {
+        return {
+            value:item.id,
+            text:item.name,
+            fate:item.service_price
+        }
+    });
+    payPicker.setData(result);
     var eventBtn = doc.getElementById('pay-way');
     eventBtn.addEventListener('tap', function (event) {
         payPicker.show(function (items) {
-            console.log(items[0]);
+            vm.payFate = items[0].fate;
             vm.payWay = items[0].text;
             console.log(vm.payWay);
         });
@@ -228,4 +232,24 @@ function jsApiCall() {
             }
         }
     );
+}
+
+/**
+ * 获得支付方式
+ */
+function getPayWay() {
+    let result = [];
+    $.ajax({
+        url:`${rootUrl}/index/api/getPayment`,
+        dataType:'json',
+        type:'post',
+        async:false,
+        success:function(data) {
+            result = data.result;
+        },
+        error:function() {
+            mui.toast('服务器异常');
+        }
+    });
+    return result;
 }
