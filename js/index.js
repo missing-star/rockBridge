@@ -106,6 +106,11 @@ var vm = new Vue({
                 url: `${url}?id=${id}`
             });
         },
+        goAd(url) {
+            mui.openWindow({
+                url:url
+            });
+        },
         enterShop(id) {
             //进店
             mui.openWindow({
