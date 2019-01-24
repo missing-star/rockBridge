@@ -285,6 +285,7 @@ div.tab-content.business.active{
 img.business-logo {
     width: 2rem;
     margin-right: 1rem;
+    height: 2rem;
 }
 img.business-level {
     width: 0.8rem;

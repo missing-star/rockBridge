@@ -94,3 +94,6 @@ span.upload-status {
     margin-right: 0.8rem;
     line-height: 1rem;
 }
+img.show-upload-img {
+    width: 100%;
+}

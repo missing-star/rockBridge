@@ -302,6 +302,7 @@ div.tab-content.business.active{
 img.business-logo {
     width: 2rem;
     margin-right: 1rem;
+    height: 2rem;
     border-radius: 50%;
 }
 img.business-level {

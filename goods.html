@@ -111,7 +111,7 @@
                 <div v-for="shop in shopList" :class={'business-item':isDefBusLayout,'business-item-line':!isDefBusLayout}>
                     <div class="top">
                         <div class="business-info">
-                            <img src="imgs/business-logo.png" class="business-logo" />
+                            <img :src="shop.images | filterImg" class="business-logo" />
                             <p class="business-detail">
                                 <span v-cloak  class="business-name">{{shop.title}}<img v-for="n in shop.shop_review" src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - shop.shop_review)" src="imgs/star.png" class="business-level" /></span>
                                 <span v-cloak >收藏 {{shop.shop_collection}}</span>

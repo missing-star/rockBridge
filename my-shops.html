@@ -26,63 +26,43 @@
         </header>
         <!--tab页头-->
         <ul class="goods-tab-bar">
-            <li class="goods-tab-bar-item active">
+            <li data-type="1"  class="goods-tab-bar-item active">
                 已通过
             </li>
-            <li class="goods-tab-bar-item">
+            <li data-type="2"  class="goods-tab-bar-item">
                 审核中
-            </li>
-            <li class="goods-tab-bar-item">
-                已拒绝
             </li>
         </ul>
         <div class="goods-tab-content">
             <!--通过-->
             <div class="goods-tab-content-item active">
-                <div v-for="n in 8" class="goods-item">
+                <div v-for="item in passList" class="goods-item">
                     <div class="goods-img-container">
-                        <img src="imgs/bed1.png" alt="" class="left-icon">
-                        <p class="address">
+                        <img :src="item.images" alt="" class="left-icon">
+                        <p class="address" v-cloak>
                             <span class="title">商铺地址：</span>
-                            江苏省南京市雨花台区雨花东路1号
+                            {{item.province+item.city+item.address}}
                         </p>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail()" class="get-detail">详情</button>
-                        <button @click="editShops()" class="get-detail reverse">编辑</button>
+                        <button @click="getDetail(item.id)" class="get-detail">详情</button>
+                        <button @click="unbindShops(item.id)" class="get-detail reverse">解绑</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>
             </div>
             <!--审核中-->
-            <div class="goods-tab-content-item active">
-                <div v-for="n in 8" class="goods-item">
+            <div  class="goods-tab-content-item active">
+                <div v-for="item in checkList" class="goods-item">
                     <div class="goods-img-container">
-                        <img src="imgs/bed1.png" alt="" class="left-icon">
+                        <img :src="item.images" alt="" class="left-icon">
                         <p class="address">
                             <span class="title">商铺地址：</span>
-                            江苏省南京市六合区南化新一村8号
+                            {{item.province+item.city+item.address}}
                         </p>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail()" class="get-detail">详情</button>
-                    </div>
-                </div>
-                <div class="no-more">--没有更多了--</div>
-            </div>
-            <!--已拒绝-->
-            <div class="goods-tab-content-item active">
-                <div v-for="n in 8" class="goods-item">
-                    <div class="goods-img-container">
-                        <img src="imgs/bed1.png" alt="" class="left-icon">
-                        <p class="address">
-                            <span class="title">商铺地址：</span>
-                            虎踞北路33号附近
-                        </p>
-                    </div>
-                    <div class="operation-group">
-                        <button @click="getDetail()" class="get-detail">详情</button>
-                        <button @click="editShops()" class="get-detail reverse">编辑</button>
+                        <button @click="getDetail(item.id)" class="get-detail">详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>

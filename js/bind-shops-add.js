@@ -2,10 +2,11 @@ const vm = new Vue({
     el: '#app',
     data() {
         return {
-            addressPub:'',
-            renting:{
-                realPath:'',
-                src:''
+            addressPub: '',
+            addressPubId: '',
+            renting: {
+                realPath: '',
+                src: ''
             }
         }
     },
@@ -15,7 +16,34 @@ const vm = new Vue({
             $("#renting").click();
         },
         submit() {
-
+            if (vm.addressPub == '') {
+                mui.toast('请选择地址');
+                return false;
+            } else if (vm.renting.realPath == '') {
+                mui.toast('请上传租房合同');
+                return false;
+            }
+            //提交绑定商铺
+            $.ajax({
+                url: `${rootUrl}/index/api/getBindingAddress`,
+                type: 'post',
+                dtaType: 'json',
+                data: {
+                    id: vm.addressPubId,
+                    lease: vm.renting.realPath
+                },
+                success: function (data) {
+                    mui.toast(data.msg);
+                    if (data.status == 1) {
+                        setTimeout(function () {
+                            history.go(-1);
+                        }, 200);
+                    }
+                },
+                error: function () {
+                    mui.toast('服务器异常');
+                }
+            });
         }
     }
 });
@@ -24,7 +52,11 @@ $(function () {
     $("#renting").change(function () {
         parseImage(this, 'renting');
     });
-    initPicker();
+    if (getParams().type == 'edit') {
+        getSopsDetail();
+    } else {
+        initPicker();
+    }
 });
 
 /**
@@ -59,9 +91,9 @@ function uploadImgRealPath(fileObj, key, src) {
         success: function (data) {
             mui.toast(data.msg);
             if (data.status == 1) {
-                vm.cardList[key].src = src;
+                vm.renting.src = src;
                 //设置文件路径为服务器路径
-                vm.cardList[key].realPath = data.result;
+                vm.renting.realPath = data.result;
             }
         },
         error: function () {
@@ -71,22 +103,53 @@ function uploadImgRealPath(fileObj, key, src) {
 }
 
 function initPicker() {
-    var addressPicker = new mui.PopPicker();
-    addressPicker.setData([
-        {
-            value:1,
-            text:'地址1'
+    jQuery.ajax({
+        url: 'http://dieshiqiao.pzhkj.cn/index/api/getShopAddress',
+        dataType: 'json',
+        type: 'POST',
+        success: function (data) {
+            //公房商户选择地址
+            var addressPicker = new mui.PopPicker();
+            data.result = data.result.map(function (item, index) {
+                return {
+                    id: item.id,
+                    text: item.address
+                }
+            });
+            addressPicker.setData(data.result);
+            addressPicker.pickers[0].items.forEach(function(address,index) {
+                if(address.value == userSex) {
+                    addressPicker.pickers[0].setSelectedIndex(index);
+                }
+            });
+            var addressClickBtn = document.getElementById('address-public-shop');
+            addressClickBtn.addEventListener('tap', function (event) {
+                addressPicker.show(function (items) {
+                    vm.addressPubId = items[0].id;
+                    vm.addressPub = items[0].text;
+                });
+            }, false);
         },
-        {
-            value:2,
-            text:'地址2'
+        error: function () {
+            mui.toast('获取地址异常!');
         }
-    ]);
-    var addressClickBtn = document.getElementById('address-public-shop');
-    addressClickBtn.addEventListener('tap', function (event) {
-        addressPicker.show(function (items) {
-            vm.addressPubId = items[0].id;
-            vm.addressPub = items[0].text;
-        });
-    }, false);
+    });
+}
+
+function getSopsDetail() {
+    $.ajax({
+        url: `${rootUrl}/index/api/getAddressInfo`,
+        data: {
+            id: getParams().id
+        },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            vm.shopsInfo = data.result;
+            initPicker();
+        },
+        error: function () {
+            mui.toast('服务器异常');
+        }
+    });
 }
