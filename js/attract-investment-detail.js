@@ -17,6 +17,7 @@ const vm = new Vue({
             this.phone = this.phone.substring(0,11);
         },
         submitReverse() {
+            //预约招商招租
             var regPhone = /^1[34578]\d{9}$/;
             if(this.name == '') {
                 mui.toast('请输入姓名');
@@ -27,6 +28,26 @@ const vm = new Vue({
                 return;
             }
             //发送请求
+            $.ajax({
+                url:`${rootUrl}/index/api/getAddAppointment`,
+                data:{
+                    phone:this.phone,
+                    username:this.name
+                },
+                type:'post',
+                dataType:'json',
+                success:function(data) {
+                    mui.toast(data.msg);
+                    if(data.status == 1) {
+                        vm.name = '';
+                        vm.phone = '';
+                        mui('#sheet1').popover('toggle');
+                    }
+                },
+                error:function() {
+                    mui.toast('服务器异常');
+                }
+            })
         }
     }
 });
