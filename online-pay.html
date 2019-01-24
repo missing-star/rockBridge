@@ -31,6 +31,10 @@
                         <label for="" class="title">缴费类型</label>
                         <input v-model="selectedClassify" type="text" class="classify" readonly>
                     </li>
+                    <li v-show="!isShowRepair" id="address" class="pay-item picker">
+                        <label for="" class="title">商铺地址</label>
+                        <input v-model="selectedShopAddress" class="classify" type="text" readonly>
+                    </li>
                     <li  id="repair-list" v-show="isShowRepair" class="pay-item picker">
                         <label for="" class="title">报修单</label>
                         <input v-model="selectedRepairName" type="text" class="classify" readonly>
@@ -66,6 +70,10 @@
                 <li id="classify" class="pay-item picker">
                     <label for="" class="title">缴费类型</label>
                     <input v-model="selectedClassify" type="text" readonly>
+                </li>
+                <li v-show="!isShowRepair" id="address" class="pay-item picker">
+                    <label for="" class="title">商铺地址</label>
+                    <input v-model="selectedShopAddress" type="text" readonly>
                 </li>
                 <li v-show="isShowRepair"  class="pay-item picker">
                     <label for="" class="title">报修单</label>

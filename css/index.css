@@ -270,6 +270,7 @@ p.title>span:last-child{
 .bottom-item img {
     width: 100%;
     border-radius: 6px;
+    height: 4.5rem;
 }
 .goods-container>.top{
     background: url(../imgs/bg-temp.png) no-repeat;
@@ -325,6 +326,7 @@ button.go-business-btn{
 img.business-img-item {
     width: 30%;
     margin: 0 1.5%;
+    height: 4.5rem;
 }
 img.goods-img {
     width: 100%;

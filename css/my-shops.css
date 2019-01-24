@@ -1,18 +1,27 @@
+div.mui-content{
+    height: 100vh;
+    overflow: hidden;
+}
 .mui-bar-tab~.mui-content {
     padding-top: 1rem;
 }
 
 p.title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #333333;
     line-height: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 header.top-upload {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     justify-content: space-between;
-    height: 2rem;
+    height: 4rem;
 }
 
 img.upload-icon {
@@ -44,7 +53,7 @@ li.goods-tab-bar-item {
     font-size: 0.8rem;
     position: relative;
     line-height: 1rem;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
 }
 
 li.goods-tab-bar-item.active {
@@ -55,7 +64,7 @@ li.goods-tab-bar-item.active:after {
     content: '';
     position: absolute;
     height: 4px;
-    width: 70%;
+    width: 100%;
     background: #9d7e60;
     bottom: -0.5rem;
     left: 0;
@@ -74,7 +83,7 @@ span.current-number {
 }
 
 .goods-tab-content {
-    height: calc(100vh - 9rem);
+    height: calc(100vh - 7rem);
 }
 
 .goods-tab-content-item {
@@ -90,7 +99,6 @@ span.current-number {
     width: 100vw;
     margin: 0 -1rem;
     padding: 1rem;
-    padding-bottom: 3rem;
 }
 .goods-tab-content-item.active::-webkit-scrollbar{
     width: 0;
@@ -121,7 +129,7 @@ span.checkbox.active{
 }
 
 p.goods-order {
-    color: #333333;
+    color: #888888;
     margin-left: 0.5rem;
     font-size: 0.8rem;
 }
@@ -142,7 +150,7 @@ span.is-upper {
 }
 img.goods-img {
     width: 30%;
-    height: 4.5rem;
+    border-radius: 0.2rem;
 }
 
 .goods-desc {
@@ -343,11 +351,63 @@ span.comments-num {
 span.comments-num.warning {
     color: #ff7c3c;
 }
-p.refuse-cause {
-    color: red;
-    font-size: 0.65rem;
+i.mui-icon.mui-icon-arrowleft {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
 }
-button.setting-lower.delete{
-    background: #EE6A50;
-    border-color: #EE6A50;
+button.get-detail.reverse {
+    background: #9D7E60;
+    color: #ffffff;
+    border: none;
+}
+p.desc-title {
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+p.desc-detail,p.desc-time {
+    color: #888888;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
+button.reverse-btn {
+    background: #F0F0F0;
+    font-size: 0.8rem;
+    border-radius: 1rem;
+    line-height: 1.5rem;
+    padding: 0 0.8em;
+    color: #4e4e4e;
+    border: none;
+}
+.no-more {
+    height: 2rem;
+    width: 100%;
+    text-align: center;
+    color: #aaaaaa;
+    font-size: 0.7rem;
+    line-height: 1rem;
+}
+p.pay-re-money {
+    color: #FF8B16;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
+img.left-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+}
+p.address {
+    flex: 1;
+    height: 100%;
+    padding: 0 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+span.title {
+    color: #333333;
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
 }

@@ -20,6 +20,10 @@ var vm = new Vue({
         selectedRepairId: '',
         //选择的报修单名称
         selectedRepairName: '',
+        //选择的商铺地址
+        selectedShopAddress:'',
+        //地址id
+        selectedShopAddressId:'',
         str: ''
     },
     methods: {
@@ -35,7 +39,11 @@ var vm = new Vue({
             } else if (this.selectedId == 0 && this.selectedRepairId == '') {
                 mui.toast('请选择报修单！');
                 return false;
-            } else if (!parseFloat(this.inputMoney) || this.inputMoney == '') {
+            } else if(this.selectedId != 0 && this.selectedShopAddressId == '') {
+                mui.toast('请选择商铺地址！');
+                return false;
+            }
+            else if (!parseFloat(this.inputMoney) || this.inputMoney == '') {
                 mui.toast('请输入缴费金额！');
                 return false;
             } else if (this.payWay == '') {
@@ -46,7 +54,8 @@ var vm = new Vue({
                 cate_id: this.selectedId,
                 content: this.description,
                 actual_payment: this.inputMoney,
-                pay_method: this.payWay
+                pay_method: this.payWay,
+                address_id:this.selectedShopAddressId
             };
             $.ajax({
                 url: `${rootUrl}/index/api/getAddPayCharge`,
@@ -101,20 +110,32 @@ var vm = new Vue({
             dataType: 'json',
             type: 'post',
             success: function (data) {
+                //缴费类型picker
                 var classifyPicker = new $.PopPicker();
+                //商铺地址picker
+                var addressPicker = new $.PopPicker();
                 var list = [{
                     value: 0,
                     text: '报修单缴费',
                     money: 100
                 }];
-                for (key in data.result) {
+                var addList = [];
+                for (key in data.result.pay_category) {
                     list.push({
-                        value: data.result[key].id,
-                        text: data.result[key].name,
-                        money: data.result[key].pay_money
+                        value: data.result.pay_category[key].id,
+                        text: data.result.pay_category[key].name,
+                        money: data.result.pay_category[key].pay_money
                     });
                 };
+                for(key in data.result.property_address) {
+                    addList.push({
+                        value:data.result.property_address[key].id,
+                        text:data.result.property_address[key].address
+                    });
+                }
                 classifyPicker.setData(list);
+                addressPicker.setData(addList);
+                //缴费类型选择
                 var eventBtn = doc.getElementById('classify');
                 eventBtn.addEventListener('tap', function (event) {
                     classifyPicker.show(function (items) {
@@ -128,6 +149,14 @@ var vm = new Vue({
                         } else {
                             vm.isShowRepair = false;
                         }
+                    });
+                }, false);
+                //商铺地址选择
+                var addBtn = doc.getElementById('address');
+                addBtn.addEventListener('tap', function (event) {
+                    addressPicker.show(function (items) {
+                        vm.selectedShopAddressId = items[0].value;
+                        vm.selectedShopAddress = items[0].text;
                     });
                 }, false);
             },

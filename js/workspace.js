@@ -14,6 +14,11 @@ var vm = new Vue({
             mui.openWindow({
                 url:'shop-settled.html'
             });
+        },
+        goDetail(url,id) {
+            mui.openWindow({
+                url:`${url}?id=${id}`
+            });
         }
     },
     filters: {
