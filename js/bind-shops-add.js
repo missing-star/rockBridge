@@ -128,14 +128,14 @@ function initPicker() {
                 addressPicker.pickers[0].items.forEach(function (address, index) {
                     if (address.value == vm.addressPubId) {
                         addressPicker.pickers[0].setSelectedIndex(index);
-                        vm.addressPub = item.text;
+                        vm.addressPub = address.text;
                     }
                 });
             }
             var addressClickBtn = document.getElementById('address-public-shop');
             addressClickBtn.addEventListener('tap', function (event) {
                 addressPicker.show(function (items) {
-                    vm.addressPubId = items[0].id;
+                    vm.addressPubId = items[0].value;
                     vm.addressPub = items[0].text;
                 });
             }, false);

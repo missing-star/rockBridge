@@ -18,7 +18,7 @@ var vm = new Vue({
     },
     filters: {
         filterImg(thumb) {
-            thumb == null ? '' : thumb;
+            thumb = thumb == null ? '' : thumb;
             if (thumb.indexOf('http') != -1) {
                 return `${thumb}`;
             }
