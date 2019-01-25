@@ -119,7 +119,7 @@ function initPicker() {
             var addressPicker = new mui.PopPicker();
             data.result = data.result.map(function (item, index) {
                 return {
-                    id: item.id,
+                    value: item.id,
                     text: item.address
                 }
             });
@@ -128,6 +128,7 @@ function initPicker() {
                 addressPicker.pickers[0].items.forEach(function (address, index) {
                     if (address.value == vm.addressPubId) {
                         addressPicker.pickers[0].setSelectedIndex(index);
+                        vm.addressPub = item.text;
                     }
                 });
             }
@@ -155,10 +156,9 @@ function getSopsDetail() {
         dataType: 'json',
         success: function (data) {
             vm.addressPubId = data.result.address_id;
-            vm.addressPub = data.result.address;
             vm.renting.src = rootUrl + data.result.images;
             vm.renting.realPath = data.result.images;
-            vm.shopStatus = data.result.status == 2 ? '已通过' : (shopsInfo.status == 1 ? '待审核' : (shopsInfo.status == 3 ? '已拒绝' : '已解绑'));
+            vm.shopStatus = data.result.status == 2 ? '已通过' : (data.result.status == 1 ? '待审核' : (data.result.status == 3 ? '已拒绝' : '已解绑'));
             initPicker();
         },
         error: function () {

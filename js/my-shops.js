@@ -27,7 +27,7 @@ const vm = new Vue({
         },
         //解绑
         unbindShops(id) {
-            ('确定解绑该商铺？', '', ['取消', '确定'], function (e) {
+            mui.confirm('确定解绑该商铺？', '', ['取消', '确定'], function (e) {
                 if (e.index == 1) {
                     $.ajax({
                         url: `${rootUrl}/index/api/getRemoveBindingAddress`,
