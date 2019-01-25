@@ -63,6 +63,7 @@
                     </div>
                     <div class="operation-group">
                         <button @click="getDetail(item.id)" class="get-detail">详情</button>
+                        <button v-if="item.status == 1 || item.status == 3" @click="editShops(item.id)" class="get-detail reverse">编辑</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>

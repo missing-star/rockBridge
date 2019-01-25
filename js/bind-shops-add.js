@@ -7,7 +7,9 @@ const vm = new Vue({
             renting: {
                 realPath: '',
                 src: ''
-            }
+            },
+            isEdit:false,
+            shopStatus:''
         }
     },
     methods: {
@@ -23,15 +25,19 @@ const vm = new Vue({
                 mui.toast('请上传租房合同');
                 return false;
             }
+            var formData = {
+                address_id: vm.addressPubId,
+                lease: vm.renting.realPath
+            }
+            if(getParams().type == 'edit') {
+                formData.id = getParams().id;
+            }
             //提交绑定商铺
             $.ajax({
                 url: `${rootUrl}/index/api/getBindingAddress`,
                 type: 'post',
                 dtaType: 'json',
-                data: {
-                    id: vm.addressPubId,
-                    lease: vm.renting.realPath
-                },
+                data: formData,
                 success: function (data) {
                     mui.toast(data.msg);
                     if (data.status == 1) {
@@ -54,6 +60,7 @@ $(function () {
     });
     if (getParams().type == 'edit') {
         getSopsDetail();
+        vm.isEdit = true;
     } else {
         initPicker();
     }
@@ -117,11 +124,13 @@ function initPicker() {
                 }
             });
             addressPicker.setData(data.result);
-            addressPicker.pickers[0].items.forEach(function(address,index) {
-                if(address.value == userSex) {
-                    addressPicker.pickers[0].setSelectedIndex(index);
-                }
-            });
+            if (getParams().type == 'edit') {
+                addressPicker.pickers[0].items.forEach(function (address, index) {
+                    if (address.value == vm.addressPubId) {
+                        addressPicker.pickers[0].setSelectedIndex(index);
+                    }
+                });
+            }
             var addressClickBtn = document.getElementById('address-public-shop');
             addressClickBtn.addEventListener('tap', function (event) {
                 addressPicker.show(function (items) {
@@ -145,7 +154,11 @@ function getSopsDetail() {
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            vm.shopsInfo = data.result;
+            vm.addressPubId = data.result.address_id;
+            vm.addressPub = data.result.address;
+            vm.renting.src = rootUrl + data.result.images;
+            vm.renting.realPath = data.result.images;
+            vm.shopStatus = data.result.status == 2 ? '已通过' : (shopsInfo.status == 1 ? '待审核' : (shopsInfo.status == 3 ? '已拒绝' : '已解绑'));
             initPicker();
         },
         error: function () {

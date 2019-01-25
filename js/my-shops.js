@@ -2,9 +2,9 @@ const vm = new Vue({
     el: '#app',
     data() {
         return {
-            passList:[],
-            checkList:[],
-            refuseList:[]
+            passList: [],
+            checkList: [],
+            refuseList: []
         }
     },
     methods: {
@@ -27,7 +27,29 @@ const vm = new Vue({
         },
         //解绑
         unbindShops(id) {
-            
+            ('确定解绑该商铺？', '', ['取消', '确定'], function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        url: `${rootUrl}/index/api/getRemoveBindingAddress`,
+                        data: {
+                            id: id
+                        },
+                        type: 'post',
+                        dataType: 'json',
+                        success: function (data) {
+                            mui.toast(data.msg);
+                            if (data.status == 1) {
+                                setTimeout(function () {
+                                    location.reload();
+                                }, 200);
+                            }
+                        },
+                        error: function () {
+                            mui.toast('服务器异常');
+                        }
+                    });
+                }
+            });
         }
     }
 });
@@ -51,8 +73,9 @@ $(function () {
 function getShopsList(status) {
     $.ajax({
         url: `${rootUrl}/index/api/getBindingAddressList`,
+        type: 'post',
         data: {
-            status: status
+            type: status
         },
         dataType: 'json',
         async: false,

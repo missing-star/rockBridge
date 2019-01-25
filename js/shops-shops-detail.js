@@ -6,7 +6,7 @@ var vm = new Vue({
         }
     },
     methods: {
-
+        
     },
     filters: {
         filterImg(thumb) {
