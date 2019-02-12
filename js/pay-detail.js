@@ -67,7 +67,7 @@ $.ajax({
     type: 'post',
     success: function (data) {
         var list = [];
-        for (key in data.result) {
+        for (key in data.result.pay_category) {
             vm.categoryIdList.push({id:data.result[key].id,name:data.result[key].name});
         };
         vm.currentTab = vm.categoryIdList[0].id;

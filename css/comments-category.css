@@ -133,8 +133,7 @@ button.comments-btn {
 .show-imgs {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 0.5rem;
+    margin:0 1%;
 }
 img.show-img-item {
     width: 30%;
@@ -145,6 +144,7 @@ img.comments-icon {
 }
 img.user-logo {
     width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
 }
 .bottom-line {

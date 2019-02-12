@@ -131,6 +131,7 @@ li.tab-item.active:after{
 .slider-business-item img {
     width: 100%;
     border-radius: 6px;
+    height: 5rem;
 }
 p.business-item-title {
     margin-top: 0.5rem;
@@ -164,6 +165,7 @@ div.have-good-goods {
 }
 img.goods-img {
     width: 100%;
+    height: calc(48vw - 1rem);
 }
 .goods-info>p:first-child {
     margin: 0.2rem 0;
@@ -414,6 +416,7 @@ p.score-star {
 }
 img.user-logo {
     width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
 }
 ul.comments-list {
@@ -510,9 +513,9 @@ button.comments-btn {
 .show-imgs {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-top: 0.5rem;
 }
 img.show-img-item {
     width: 30%;
+    margin: 0 1%;
 }
