@@ -8,7 +8,7 @@ var vm = new Vue({
         currentTab: 'all',
         //是否已入驻
         isSettled: false,
-        historyList: JSON.parse(localStorage.getItem('historyList')) || [],
+        historyList: getSearchHistory(),
         itemList: [{
                 icon: 'imgs/safe.png',
                 title: '商家认证',

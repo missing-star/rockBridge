@@ -145,7 +145,6 @@
             <div class="search-history">
                 <header class="history-header">
                     <p class="search-history-title">历史搜索</p>
-                    <img @click="clearHistory" src="imgs/delete.png" class="icon-delete" />
                 </header>
                 <ul class="history-list">
                     <li v-cloak  @click="searchHistory(item)" v-for="item in historyList" class="list-item">{{item}}</li>

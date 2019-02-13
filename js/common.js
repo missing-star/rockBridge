@@ -7,11 +7,6 @@ if (!localStorage.getItem('switchRole')) {
     localStorage.setItem('switchRole', 0);
 }
 
-//保存历史记录
-if (!localStorage.getItem('historyList')) {
-    var historyListValue = [];
-    localStorage.setItem('historyList', JSON.stringify(historyListValue));
-}
 
 function pageLink(url) {
     mui.openWindow({
@@ -125,3 +120,25 @@ function sortByPro(pro, flag) {
         }
     }
 }
+
+/**
+ * 获得历史搜索记录
+ */
+
+ function getSearchHistory() {
+     var result = [];
+     $.ajax({
+         url:`${rootUrl}/index/api/getSerachLog`,
+         async:false,
+         type:'post',
+         success:function(data) {
+            result = data.result.map(function(item,i) {
+                return item.keywords;
+            });
+         },
+         error:function() {
+             mui.toast('服务器异常');
+         }
+     });
+     return result;
+ }

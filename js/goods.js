@@ -9,7 +9,7 @@ var vm = new Vue({
         isDefBusLayout: true,
         //tab页是否显示商品
         isShowGoods: true,
-        historyList: JSON.parse(localStorage.getItem('historyList')) || [],
+        historyList: getSearchHistory(),
         goodsList: [],
         shopList: [],
         //商品排序类型
