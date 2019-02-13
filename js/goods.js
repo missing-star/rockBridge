@@ -107,10 +107,6 @@ var vm = new Vue({
             this.startSearch();
         },
         startSearch() {
-            if(this.historyList.join('-').indexOf(this.keyword) == -1) {
-                this.historyList.push(this.keyword);
-                localStorage.setItem('historyList',JSON.stringify(this.historyList));
-            }
             //开始搜索
             if (vm.isShowGoods) {
                 page1 = 1;
@@ -121,6 +117,7 @@ var vm = new Vue({
                 vm.shopList = [];
                 getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
             }
+            saveSearchKeywords();
             this.hideSearch();
         }
     },
@@ -234,4 +231,20 @@ function getShopList(keyword, sort, type, page) {
             mui.toast('服务器异常');
         }
     })
+}
+/**
+ * 保存用户输入的关键字
+ */
+function saveSearchKeywords() {
+    $.ajax({
+        url:`${rootUrl}/index/api/getAddSerachLog`,
+        type:'post',
+        data:{
+            keywords:vm.keyword
+        },
+        success:function() {},
+        error:function() {
+            mui.toast('服务异常');
+        }
+    });
 }
