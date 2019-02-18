@@ -4,7 +4,9 @@ const vm = new Vue({
         return {
             btnInfo: '发送验证码',
             time: 60,
-            code:''
+            code: '',
+            username: localStorage.getItem('activeName'),
+            phone: localStorage.getItem('activePhone')
         }
     },
     methods: {
@@ -40,15 +42,33 @@ const vm = new Vue({
             }
         },
         limitCodeLength() {
-            this.code = this.code.substring(0,6);
+            this.code = this.code.substring(0, 6);
         },
         activeNow() {
-            if(this.code.length != 6) {
+            if (this.code.length != 6) {
                 mui.toast('请输入6位数字验证码');
                 return;
             }
             //验证。。。
-            mui('#sheet1').popover('toggle');
+            $.ajax({
+                url: `${rootUrl}/index/api/getShopActivate`,
+                type: 'post',
+                data: {
+
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.status == 1) {
+                    mui('#sheet1').popover('toggle');
+                    }
+                    else {
+                        mui.toast('激活失败');
+                    }
+                },
+                error: function () {
+                    mui.toast('服务器异常');
+                }
+            });
         }
     }
 });

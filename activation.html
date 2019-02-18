@@ -28,20 +28,20 @@
                 <label for="" class="title">选择门牌号</label>
                 <input v-model="selectedNumber" id="number-btn" readonly type="text" class="number-value arrow-right">
             </div>
-            <ul class="shops-list">
+            <ul v-for="shops in shopsList" class="shops-list">
                 <li class="shops-item">
                     <header class="shops-info-header">
-                        <p class="shops-code">商户号：236655145</p>
-                        <button @click="getDetail(1)" class="detail">查看详情</button>
+                        <p class="shops-code" v-cloak>商户号：{{shops.shop_code}}</p>
+                        <button @click="getDetail(shops.address_id)" class="detail">查看详情</button>
                     </header>
                     <section class="main-content">
                         <p class="shops-name">
                             <label for="" class="title">商铺名称</label>
-                            <span class="content">行行行</span>
+                            <span class="content" v-cloak>{{shops.title}}</span>
                         </p>
                         <p class="shops-number">
                             <label for="" class="title">门牌号</label>
-                            <span class="content">12-11</span>
+                            <span class="content" v-cloak>{{shops.address}}</span>
                         </p>
                     </section>
                 </li>
