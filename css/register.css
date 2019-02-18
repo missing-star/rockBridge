@@ -53,6 +53,7 @@ button.register {
     color: #ffffff;
     font-size: 0.8rem;
     padding: 0.5rem;
+    margin-top: 1rem;
 }
 
 input.content.password {
@@ -96,4 +97,11 @@ span.checkbox>span {
 }
 span.link {
     color: #9D7E60;
+}
+a.regisiter {
+    color: #333333;
+    text-decoration: underline;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    /* margin-bottom: 1rem; */
 }

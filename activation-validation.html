@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/activation-validation.css">
+    <title>叠石桥</title>
+    <!--
+        缴费
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>获取验证码</p>
+            </header>
+            <ul class="validate-info">
+                <li class="info-item">
+                    <label for="" class="title">姓名</label>
+                    <input value="周某人" type="text" class="content" readonly>
+                </li>
+                <li class="info-item">
+                    <label for="" class="title">手机号</label>
+                    <input value="13654521475" type="number" class="content" readonly>
+                </li>
+                <li class="info-item">
+                    <label for="" class="title">验证码</label>
+                    <input v-model="code" type="number" class="content">
+                    <button type="button" @click="sendCode" class="send-code">{{btnInfo}}</button>
+                </li>
+            </ul>
+            <!-- 激活结果展示 -->
+            <div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+                <div class="content">
+                    <header class="msg-title">
+                        通过激活
+                    </header>
+                    <p class="msg">恭喜您，通过激活，无需重复操作</p>
+                    <a href="#sheet1" class="btn cancel">确定</a>
+                </div>
+            </div>
+            <button type="button" @click="activeNow" class="next">立即激活</button>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js"></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="assets/mui/picker/js/mui.picker.js"></script>
+    <script src="assets/mui/picker/js/mui.poppicker.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/activation-validation.js"></script>
+</body>
+
+</html>

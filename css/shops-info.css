@@ -1,0 +1,53 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+header.packet-title {
+    margin-top: 1rem;
+}
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+p.shops-number {
+    color: #333333;
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+ul.info-list {
+    list-style: none;
+    padding: 0;
+}
+li.info-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f6f6f6;
+    margin-bottom: 1rem;
+}
+labe.title {
+    width: 30%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #000000;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+p.content {
+    color: #333333;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+}

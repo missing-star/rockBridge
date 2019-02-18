@@ -45,7 +45,11 @@ var vm = new Vue({
                 src: '',
                 realPath: ''
             }
-        }
+        },
+        //房东名称
+        landlord:'',
+        //房东电话
+        landlord_phone:''
     },
     methods: {
         limitPhone() {
@@ -127,7 +131,9 @@ var vm = new Vue({
                 type: this.isPub ? 1 : 2,
                 province: vm.province,
                 city: vm.city,
-                district: vm.district
+                district: vm.district,
+                landlord:this.landlord,
+                landlord_phone:this.landlord_phone
             };
             if (formData.person_name == '') {
                 mui.toast('请输入商户名！');
@@ -145,6 +151,10 @@ var vm = new Vue({
                 return false;
             } else if (this.cardList.emblem.realPath == '' || this.cardList.portrait.realPath == '') {
                 mui.toast('请上传身份证正反两面！');
+                return false;
+            }
+            else if(formData.landlord_phone.length != 0 && !regPhone.test(formData.landlord_phone)) {
+                mui.toast('请输入正确的房东电话！');
                 return false;
             }
             $.ajax({

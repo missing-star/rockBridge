@@ -89,6 +89,18 @@
                     <span v-cloak  class="upload-status">{{cardList.renting.realPath != '' ? '已选择' : '请上传'}}</span>
                     <input type="file" accept="image/*" hidden id="renting">
                 </li>
+                <li class="tab-contetn-item">
+                    <label for="" class="title edit">
+                        房东
+                    </label>
+                    <input v-model="landlord" @input="validateName" type="text" class="username">
+                </li>
+                <li class="tab-contetn-item">
+                    <label for="" class="title edit">
+                        房东电话
+                    </label>
+                    <input v-model="landlord_phone" @input="limitPhone" type="number" class="username">
+                </li>
             </ul>
             <button @click="submit" id="test" class="submit">提交</button>
         </div>

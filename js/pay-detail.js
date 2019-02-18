@@ -68,7 +68,7 @@ $.ajax({
     success: function (data) {
         var list = [];
         for (key in data.result.pay_category) {
-            vm.categoryIdList.push({id:data.result[key].id,name:data.result[key].name});
+            vm.categoryIdList.push({id:data.result.pay_category[key].id,name:data.result.pay_category[key].name});
         };
         vm.currentTab = vm.categoryIdList[0].id;
         var date = vm.printDate.replace('年','-').replace('月','');

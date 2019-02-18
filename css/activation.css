@@ -1,0 +1,114 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+.choose-number {
+    border-bottom: 1px solid #f6f6f6;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+label.title {
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1rem;
+    white-space: nowrap;
+}
+input.arrow-right{
+    background: url(../imgs/arrow-right.png) no-repeat;
+    background-position: right;
+    background-size: 0.7rem;
+    font-size: 0.9rem;
+}
+ul.shops-list {
+    list-style: none;
+    padding: 0;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.15);
+    padding: 0.5rem;
+    position: relative;
+    border-radius: 0.3rem;
+}
+header.shops-info-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+header.shops-info-header::after{
+    content: '';
+    position: absolute;
+    width: calc(100% + 1rem);
+    left: -0.5rem;
+    height: 1px;
+    background: #f6f6f6;
+    bottom: 0;
+}
+section.main-content {
+    padding-top: 1rem;
+}
+button.detail {
+    background: #f0f0f0;
+    border: none;
+    border-radius: 1rem;
+    color: #9d7e60;
+    font-size: 0.6rem;
+    line-height: 1rem;
+}
+p.shops-name, p.shops-number {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+p.shops-number{
+    margin-bottom: 1.5rem;
+}
+label.title {
+    display: inline-block;
+    width: 30%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+p.shops-code {
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+span.content {
+    color: #333333;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+button.next {
+    background: #9d7e60;
+    width: 100%;
+    border: none;
+    color: #ffffff;
+    border-radius: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 2rem;
+}

@@ -1,0 +1,101 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+header.packet-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+ul.validate-info {
+    list-style: none;
+    padding: 0;
+    margin-top: 3rem;
+}
+li.info-item {
+    position: relative;
+    border-bottom: 1px solid #f6f6f6;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+label.title {
+    width: 25%;
+    display: inline-block;
+    white-space: nowrap;
+}
+button.send-code {
+    position: absolute;
+    right: 0;
+    border: none;
+    background:#9d7e60;
+    color: #ffffff;
+    border-radius: 1rem;
+    font-size: 0.6rem;
+    line-height: 1rem;
+}
+button.next {
+    width: 100%;
+    background: #9d7e60;
+    color: #ffffff;
+    border-radius: 1rem;
+    border: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 3rem;
+}
+div#sheet1 {
+    width: 100% !important;
+    left: 0;
+    padding: 0;
+    top: 40%;
+}
+.content {
+    position: relative;
+    width: 80%;
+    height: 7rem;
+    background: #ffffff;
+    margin: 0 auto;
+    border-radius: 0.3rem;
+}
+header.msg-title {
+    text-align: center;
+    padding-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+p.msg {
+    text-align: center;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    margin-top: 0.5rem;
+}
+a.btn.cancel {
+    width: 100%;
+    text-align: center;
+    background: #f6f6f6;
+    color: #ff8b16;
+    position: absolute;
+    bottom: 0;
+    height: 2rem;
+    border-radius: 0 0 0.3rem 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

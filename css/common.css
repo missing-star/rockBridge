@@ -109,27 +109,36 @@ button.submit {
 
 button.mui-btn.mui-btn-blue.mui-poppicker-btn-ok {
     color: #ff8b16;
-    background: #ffffff;
-    border-color: #ff8b16;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
 }
 
 .mui-poppicker-header {
     background: #ffffff;
+    border-radius: 0.3rem 0.3rem 0 0;
 }
 
 button.mui-btn.mui-poppicker-btn-cancel {
     color: #aaaaaa;
-    border-color: #aaaaaa;
+    border:none;
+    background: transparent;
+    font-size: 1rem;
+}
+button.mui-btn.mui-poppicker-btn-cancel>img {
+    width: 1rem;
 }
 
 .mui-picker-inner,
 .mui-picker {
     background: #fcfcfc;
     -webkit-mask-box-image: none;
+    border-radius: 0 0 0.3rem 0.3rem;
 }
 
 .mui-poppicker-body {
     border: none;
+    border-radius: 0 0 0.3rem 0.3rem;
 }
 
 button.mui-btn.mui-btn-blue {
@@ -161,4 +170,33 @@ span.mui-popup-button {
 
 [v-cloak] {
     display: none !important;
+}
+.mui-poppicker.mui-active {
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+    border-radius: 0.3rem;
+}
+
+.popicker-title {
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+    color: #000000;
+}
+.mui-poppicker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #eeeeee;
+}
+.mui-pciker-list li {
+    color:#b19c88;
+}
+.mui-pciker-list li.highlight{
+    color: #5f4831;
+}
+.mui-pciker-rule-ft {
+    z-index: 2;
+    border-top: solid 1px #ced7de;
+    border-bottom: solid 1px #ced7de;
 }

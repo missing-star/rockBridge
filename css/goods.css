@@ -201,6 +201,7 @@ div.goods {
 
 .goods-item-line img.goods-img {
     width: 30%;
+    height: 5rem;
 }
 
 .goods-item-line .goods-info{
