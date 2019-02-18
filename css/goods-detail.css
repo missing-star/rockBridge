@@ -5,6 +5,7 @@ div#app {
 div.swiper-slide img {
     width: 100%;
     border-radius: 0.5rem;
+    height: 60vw;
 }
 
 .swiper-container {

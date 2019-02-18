@@ -310,6 +310,7 @@ button.go-business-btn{
 img.business-img-item {
     width: 30%;
     margin: 0 1.5%;
+    height: 5rem;
 }
 p.business-detail>span:first-child {
     font-size: 0.8rem;
@@ -494,12 +495,12 @@ img.clear-icon {
 input.search-page-input {
     height: 100%;
     background: url(../imgs/search.png) no-repeat;
-    background-position: 0.2rem;
+    background-position: 0.3rem;
     background-size: 0.8rem;
     margin: 0;
     box-shadow: 0 0 6px 0 rgba(0,0,0,0.15);
     border-radius: 1rem;
-    padding-left: 1.3rem;
+    padding-left: 1.5rem;
     font-size: 0.8rem;
     width: 100%;
 }
@@ -538,6 +539,8 @@ ul.sort-header.fixed {
 }
 ul.sort-header.fixed.active {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .mui-bar-tab~.mui-content{
     padding-top: 7rem;

@@ -105,3 +105,8 @@ a.regisiter {
     line-height: 1.5rem;
     /* margin-bottom: 1rem; */
 }
+img.show-hide-pwd {
+    position: absolute;
+    right: 5rem;
+    width: 1rem;
+}

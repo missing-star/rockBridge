@@ -8,9 +8,17 @@ var vm = new Vue({
         waitTime: 60,
         password: '',
         code: '',
-        rePassword: ''
+        rePassword: '',
+        isShowPwd:false,
+        isShowPwd2:false
     },
     methods: {
+        showHidePwd() {
+            this.isShowPwd = !this.isShowPwd;
+        },
+        showHidePwd2() {
+            this.isShowPwd2 = !this.isShowPwd2;
+        },
         changeWay(way) {
             this.loginWay = way;
         },

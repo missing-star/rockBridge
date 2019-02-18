@@ -31,7 +31,9 @@
                     <span v-cloak  @click="getCode" class="forget-password code">{{msg}}</span>
                 </li>
                 <li class="login-item">
-                    <input @input="limitPassword" v-model="password" type="password" placeholder="请输入6-18位密码" type="text" class="content password">
+                    <input :type="isShowPwd ? 'text':'password'" @input="limitPassword" v-model="password" type="password" placeholder="请输入6-18位密码" type="text" class="content password">
+                    <img @click="showHidePwd" src="imgs/show-password.png" class="show-hide-pwd" alt="" v-show="isShowPwd">
+                    <img @click="showHidePwd" src="imgs/hide-password.png" class="show-hide-pwd" alt="" v-show="!isShowPwd">
                 </li>
             </ul>
             <!-- <div class="agree-protocol">

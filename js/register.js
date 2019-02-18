@@ -7,9 +7,13 @@ var vm = new Vue({
         phone: '',
         waitTime: 60,
         password: '',
-        code: ''
+        code: '',
+        isShowPwd:false
     },
     methods: {
+        showHidePwd() {
+            this.isShowPwd = !this.isShowPwd;
+        },
         changeWay(way) {
             this.loginWay = way;
         },

@@ -36,6 +36,7 @@ li.login-item {
     align-items: center;
     border-bottom: 1px solid #cecece;
     padding: 0.5rem 0;
+    position: relative;
 }
 img.clear-phone {
     width: 1rem;
@@ -71,7 +72,7 @@ input.content.password {
     background: url(../imgs/icon-password.png) no-repeat;
     background-size: 1rem;
     background-position: 95%;
-    padding-right: 3rem;
+    padding-right: 5rem;
 }
 
 span.forget-password {
@@ -107,4 +108,9 @@ img.other-icon {
 img.login-icon {
     margin: 0 10%;
     width: 10%;
+}
+img.show-hide-pwd {
+    position: absolute;
+    right: 5rem;
+    width: 1rem;
 }
