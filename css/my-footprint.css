@@ -49,6 +49,7 @@ span.date-time {
 }
 img.goods-img {
     width: 100%;
+    height: calc((100vw - 2rem)/2);
 }
 .goods-info>p:first-child {
     margin: 0.2rem 0;

@@ -54,7 +54,8 @@ const vm = new Vue({
                 url: `${rootUrl}/index/api/getShopActivate`,
                 type: 'post',
                 data: {
-
+                    phone:vm.phone,
+                    code:vm.code
                 },
                 dataType: 'json',
                 success: function (data) {
