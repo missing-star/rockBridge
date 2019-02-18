@@ -15,8 +15,10 @@ function getUserInfo(temp) {
             userData = data.result;
             if (data.result.shop_id > 0) {
                 localStorage.setItem('switchRole', 1);
+                localStorage.setItem('currentRole',1);
             } else {
                 localStorage.setItem('switchRole', 0);
+                localStorage.setItem('currentRole',0);
             }
         },
         error: function () {

@@ -50,7 +50,7 @@
 		init: function(options) {
 			var self = this;
 			self.options = options || {};
-			self.options.buttons = self.options.buttons || ["<img src='../../../../imgs/close.png'/>",'确定'];
+			self.options.buttons = self.options.buttons || ["<img src='./imgs/close.png'/>",'确定'];
 			self.panel = $.dom(panelBuffer)[0];
 			document.body.appendChild(self.panel);
 			self.ok = self.panel.querySelector('.mui-poppicker-btn-ok');

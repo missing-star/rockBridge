@@ -43,4 +43,22 @@ const vm = new Vue({
             });
         }, false);
     });
+    getNotActivdShops();
 })(mui, document);
+
+/**
+ * 获得未激活的商铺
+ */
+
+ function getNotActivdShops() {
+    $.ajax({
+        url:`${rootUrl}/index/api/getNotAddress`,
+        type:'post',
+        success:function(data) {
+
+        },
+        error:function() {
+            mui.toast('服务器异常');
+        }
+    });
+ }

@@ -25,8 +25,9 @@
 
 	var domBuffer = '<div class="mui-dtpicker" data-type="datetime">\
 		<div class="mui-dtpicker-header">\
-			<button data-id="btn-cancel" class="mui-btn">取消</button>\
-			<button data-id="btn-ok" class="mui-btn mui-btn-blue">确定</button>\
+		<button data-id="btn-ok" class="mui-btn mui-btn-blue">确定</button>\
+		<div class="dt-popicker-title"></div>\
+		<button data-id="btn-cancel" class="mui-btn">取消</button>\
 		</div>\
 		<div class="mui-dtpicker-title"><h5 data-id="title-y">年</h5><h5 data-id="title-m">月</h5><h5 data-id="title-d">日</h5><h5 data-id="title-h">时</h5><h5 data-id="title-i">分</h5></div>\
 		<div class="mui-dtpicker-body">\
@@ -79,6 +80,7 @@
 			var self = this;
 			var _picker = $.dom(domBuffer)[0];
 			document.body.appendChild(_picker);
+			document.querySelector('.dt-popicker-title').innerHTML = options.title || '选择日期';
 			$('[data-id*="picker"]', _picker).picker();
 			var ui = self.ui = {
 				picker: _picker,
@@ -92,6 +94,7 @@
 				i: $('[data-id="picker-i"]', _picker)[0],
 				labels: $('[data-id*="title-"]', _picker),
 			};
+
 			ui.cancel.addEventListener('tap', function() {
 				self.hide();
 			}, false);
@@ -365,8 +368,8 @@
 			var self = this;
 			var options = self.options;
 			var ui = self.ui;
-			ui.cancel.innerText = options.buttons[0];
-			ui.ok.innerText = options.buttons[1];
+			ui.cancel.innerHTML = options.buttons[0];
+			ui.ok.innerHTML = options.buttons[1];
 		},
 		_parseValue: function(value) {
 			var self = this;
@@ -392,7 +395,7 @@
 			var self = this;
 			options = options || {};
 			options.labels = options.labels || ['年', '月', '日', '时', '分'];
-			options.buttons = options.buttons || ['取消', '确定'];
+			options.buttons = options.buttons || ["<img src='./imgs/close.png'/>",'确定'];
 			options.type = options.type || 'datetime';
 			options.customData = options.customData || {};
 			self.options = options;

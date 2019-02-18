@@ -107,25 +107,24 @@ button.submit {
     height: 2rem;
 }
 
-button.mui-btn.mui-btn-blue.mui-poppicker-btn-ok {
+button.mui-btn.mui-btn-blue.mui-poppicker-btn-ok,button.mui-btn.mui-btn-blue {
     color: #ff8b16;
     background: transparent;
     border: none;
     font-size: 1rem;
 }
 
-.mui-poppicker-header {
-    background: #ffffff;
+.mui-poppicker-header ,.mui-dtpicker-header{
     border-radius: 0.3rem 0.3rem 0 0;
 }
 
-button.mui-btn.mui-poppicker-btn-cancel {
+button.mui-btn.mui-poppicker-btn-cancel,.mui-dtpicker-header button {
     color: #aaaaaa;
     border:none;
     background: transparent;
     font-size: 1rem;
 }
-button.mui-btn.mui-poppicker-btn-cancel>img {
+button.mui-btn.mui-poppicker-btn-cancel>img,.mui-dtpicker-header button>img {
     width: 1rem;
 }
 
@@ -139,12 +138,6 @@ button.mui-btn.mui-poppicker-btn-cancel>img {
 .mui-poppicker-body {
     border: none;
     border-radius: 0 0 0.3rem 0.3rem;
-}
-
-button.mui-btn.mui-btn-blue {
-    color: #ff8b16;
-    background: #ffffff;
-    border-color: #ff8b16;
 }
 
 button.mui-btn {
@@ -171,19 +164,19 @@ span.mui-popup-button {
 [v-cloak] {
     display: none !important;
 }
-.mui-poppicker.mui-active {
+.mui-poppicker.mui-active,.mui-dtpicker.mui-active {
     margin: 0.5rem;
     width: calc(100% - 1rem);
     border-radius: 0.3rem;
 }
 
-.popicker-title {
+.popicker-title ,.dt-popicker-title{
     flex: 1;
     text-align: center;
     font-size: 1rem;
     color: #000000;
 }
-.mui-poppicker-header {
+.mui-poppicker-header,.mui-dtpicker-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
