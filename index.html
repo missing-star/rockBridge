@@ -107,7 +107,7 @@
             </div>
             <!--人气好物-->
             <div class="good-goods-con">
-                <p class="title">
+                <p @click="jumpLink('popular-goods.html')" class="title">
                     <span>人气好物 | </span>
                     <span>回头率超高</span>
                 </p>
@@ -120,7 +120,7 @@
                 </div>
             </div>
             <!--商家推荐-->
-            <p class="class-title">商家推荐</p>
+            <p @click="jumpLink('business-recommend.html')" class="class-title arrow-right">商家推荐</p>
             <div class="business-recommond">
                 <div v-for="shop in homeInfo.shops_list" class="business-item">
                     <div class="top">
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <!--有好物-->
-            <p class="class-title">有好物</p>
+            <p @click="jumpLink('have-good-goods.html')" class="class-title arrow-right">有好物</p>
             <div class="have-good-goods">
                 <div @click="goAd(goods.ad_link)" v-for="goods in homeInfo.ad_goods_list" class="goods-item">
                     <img class="goods-img" :src="goods.ad_code | filterImg" />

@@ -550,3 +550,9 @@ p.price {
     width: 100%;
     border-radius: 0.5rem;
 }
+p.class-title.arrow-right {
+    background: url(../imgs/arrow-right.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 0.6rem;
+}

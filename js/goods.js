@@ -108,31 +108,31 @@ var vm = new Vue({
         },
         startSearch() {
             //开始搜索
-            if (vm.isShowGoods) {
+            if (this.isShowGoods) {
                 page1 = 1;
-                vm.goodsList = [];
-                getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
+                this.goodsList = [];
+                getGoodsList(this.keyword, this.goodsSortName, this.goodsSortType, page1);
             } else {
                 page2 = 1;
-                vm.shopList = [];
-                getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
+                this.shopList = [];
+                getShopList(this.keyword, this.shopSortType, this.shopSortName, page2);
             }
             saveSearchKeywords();
             this.hideSearch();
-        }
-    },
-    mounted() {
-        if(getParams().keywords) {
-            this.keyword = decodeURI(getParams().keywords);
-            this.startSearch();
         }
     }
 });
 var page1 = 1;
 var page2 = 1;
 $(function () {
-    getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
-    getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
+    if(getParams().keywords) {
+        vm.keyword = decodeURI(getParams().keywords);
+        vm.startSearch();
+    }
+    else {
+        getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
+        getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
+    }
     $('li.tab-bar-item').click(function () {
         if (!$(this).hasClass('active')) {
             $(this).addClass('active');

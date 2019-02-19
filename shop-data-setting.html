@@ -56,15 +56,6 @@
                     <button type="button" @click="savePhone" class="edit">保存</button>
                 </li>
                 <li class="info-item">
-                    <label for="" class="title">身份证</label>
-                    <div class="id-card-container">
-                        <img @click="uploadEmblem" class="id-card" :src="cardList.emblem.src" alt="">
-                        <input type="file" accept="image/*" id="emblem" hidden />
-                        <img @click="uploadPortrait" class="id-card" :src="cardList.portrait.src" alt="">
-                        <input type="file" id="portrait" hidden accept="image/*">
-                    </div>
-                </li>
-                <li class="info-item">
                     <label for="" class="title">注册时间</label>
                     <input readonly type="text" class="content arrow-right no-bg" v-model="regisiterTime">
                 </li>
