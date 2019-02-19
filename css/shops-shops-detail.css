@@ -49,7 +49,10 @@ ul.tab-content {
 }
 li.tab-contetn-item {
     border-bottom: 1px solid #f6f6f6;
-    padding: 0.5rem 0;
+    padding: 0.8rem 0;
+    display:flex;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 label.title.edit {
     color: #333333;
@@ -73,6 +76,7 @@ li.tab-contetn-item.arrow-right,li.tab-contetn-item.arrow-right input{
 }
 label.title.edit {
     width: 25%;
+    margin: 0;
 }
 li.tab-contetn-item.id-card {
     align-items: flex-start;
@@ -103,4 +107,38 @@ img.rent-img {
 p.content {
     font-size: 0.8rem;
     line-height: 1.2rem;
+}
+p.status {
+    background: #ff7c3c;
+    color: #FFFFFF;
+    width: 4rem;
+    font-size: 0.75rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 1.4rem;
+    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.top-header {
+    display: flex;
+    align-items: center;
+}
+button.edit {
+    border: 1px solid #e4e4e4;
+    border-radius: 1rem;
+    color: #333333;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.8rem;
+    margin-right: 0.5rem;
+    position: absolute;
+    right: 0;
+}
+li.tab-contetn-item.img-contanier {
+    display: block;
+    border: none;
+}
+label.title.edit.img {
+    margin-bottom: 0.8rem;
 }

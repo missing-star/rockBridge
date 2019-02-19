@@ -122,7 +122,7 @@
                         </button>
                     </div>
                     <div class="bottom">
-                        <img v-for="goods in shop.goods_list" :src="goods | filterImg" class="business-img-item" />
+                        <img @click="getDetail('goods-detail.html',goods.id)" v-for="goods in shop.goods_list" :src="goods.images | filterImg" class="business-img-item" />
                     </div>
                 </div>
                 <div class="bottom-line">

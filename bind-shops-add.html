@@ -20,9 +20,27 @@
         <p class="title">商铺绑定</p>
         <div class="mui-content">
             <ul class="tab-content active">
+                <li class="tab-contetn-item">
+                    <label for="" class="title edit">
+                        负责人
+                    </label>
+                    <input id="address-public-shop" readonly v-model="addressPub" type="text" class="username">
+                </li>
+                <li class="tab-contetn-item">
+                    <label for="" class="title edit">
+                        联系电话
+                    </label>
+                    <input id="address-public-shop" readonly v-model="addressPub" type="text" class="username">
+                </li>
+                <li class="tab-contetn-item">
+                    <label for="" class="title edit">
+                        身份证
+                    </label>
+                    <input id="address-public-shop" readonly v-model="addressPub" type="text" class="username">
+                </li>
                 <li class="tab-contetn-item arrow-right">
                     <label for="" class="title edit">
-                        所在地址<i class="must-icon">*</i>
+                        所在地址
                     </label>
                     <input id="address-public-shop" readonly v-model="addressPub" type="text" class="username">
                 </li>
@@ -34,9 +52,9 @@
                 </li>
                 <li @click="uploadRent" class="tab-contetn-item arrow-right">
                     <label for="" class="title">
-                        租房合同<i class="must-icon">*</i>
+                        租房合同
                     </label>
-                    <span v-cloak  class="upload-status">{{renting.realPath != '' ? '已选择' : '请上传'}}</span>
+                    <span v-cloak class="upload-status">{{renting.realPath != '' ? '已选择' : '请上传'}}</span>
                     <input type="file" accept="image/*" hidden id="renting">
                 </li>
             </ul>

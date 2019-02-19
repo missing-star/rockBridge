@@ -17,39 +17,61 @@
         <header>
             <img onclick="history.go(-1)" src="imgs/arrow-left-black.png" alt="" class="icon-back">
         </header>
-        <p class="title">商铺详情</p>
+        <div class="top-header">
+            <p class="title">商铺详情</p>
+            <p class="status">{{shopsInfo.status == 2 ? '已通过' : (shopsInfo.status == 1 ? '待审核' : (shopsInfo.status == 3
+                ? '已拒绝' : '已解绑'))}}</p>
+            <button class="edit" @click="editShops(shopsInfo.id)">编辑</button>
+        </div>
         <div class="mui-content">
             <ul class="tab-content active">
-                <li class="tab-contetn-item">
-                    <label for="" class="title edit">
-                        状态
-                    </label>
-                    <p class="content">
-                        {{shopsInfo.status == 2 ? '已通过' : (shopsInfo.status == 1 ? '待审核' : (shopsInfo.status == 3 ? '已拒绝' : '已解绑'))}}
-                    </p>
-                </li>
                 <li v-if="shopsInfo.status == 3" class="tab-contetn-item">
-                        <label for="" class="title edit">
-                            拒绝原因
-                        </label>
-                        <p class="content">
-                            {{shopsInfo.refusal_content}}
-                        </p>
-                    </li>
-                <li class="tab-contetn-item">
                     <label for="" class="title edit">
-                        地址
+                        拒绝原因
                     </label>
                     <p class="content">
-                            {{shopsInfo.province+shopsInfo.city+shopsInfo.area}}
+                        {{shopsInfo.refusal_content}}
                     </p>
                 </li>
                 <li class="tab-contetn-item">
                     <label for="" class="title edit">
+                        所在地址
+                    </label>
+                    <p class="content">
+                        {{shopsInfo.province+shopsInfo.city+shopsInfo.area}}
+                    </p>
+                </li>
+                <li class="tab-contetn-item">
+                    <label for="" class="title edit">
+                        负责人
+                    </label>
+                    <p class="content">
+                        {{shopsInfo.province+shopsInfo.city+shopsInfo.area}}
+                    </p>
+                </li>
+                <li class="tab-contetn-item">
+                    <label for="" class="title edit">
+                        联系电话
+                    </label>
+                    <p class="content">
+                        {{shopsInfo.province+shopsInfo.city+shopsInfo.area}}
+                    </p>
+                </li>
+                <li class="tab-contetn-item">
+                    <label for="" class="title edit">
+                        身份证
+                    </label>
+                    <p class="content">
+                        {{shopsInfo.province+shopsInfo.city+shopsInfo.area}}
+                    </p>
+                </li>
+                <li class="tab-contetn-item img-contanier">
+                    <label for="" class="title edit img">
                         租房合同
                     </label>
                     <p class="content">
-                        <img :src="shopsInfo.images | filterImg" class="rent-img" alt="">
+                        <!-- <img :src="shopsInfo.images | filterImg" class="rent-img" alt=""> -->
+                        <img src="imgs/bed1.png" class="rent-img" alt="">
                     </p>
                 </li>
             </ul>

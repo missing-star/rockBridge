@@ -60,7 +60,7 @@
                         </button>
                     </div>
                     <div class="bottom">
-                        <img v-for="img in item.goods_images" :src="img" class="business-img-item" />
+                        <img  @click="getDetail('goods-detail.html',img.id)" @click="" v-for="img in item.shop_goods" :src="img.images" class="business-img-item" />
                     </div>
                 </div>
                 <div class="bottom-line">
