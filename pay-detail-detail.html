@@ -25,8 +25,9 @@
                 <p @click="getInvoice(detail.id)">发票</p>
             </header>
             <div class="trade-container">
-                <img src="imgs/electric.png" alt="" class="trade-icon">
+                <!-- <img src="imgs/electric.png" alt="" class="trade-icon"> -->
                 <!-- <p class="title">南京供电公司</p> -->
+                <p class="show-title" v-cloak>{{detail.name}}</p>
                 <p v-cloak  class="trade-money">-{{detail.actual_payment}}</p>
                 <p class="trade-status">交易成功</p>
             </div>

@@ -58,6 +58,7 @@ function getMyCollection() {
     $.ajax({
         url: `${rootUrl}/index/api/getMyCollection`,
         type: 'post',
+        async:false,
         data: {
             page: page
         },

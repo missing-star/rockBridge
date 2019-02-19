@@ -37,7 +37,7 @@
             <div class="history-pay-list active">
                 <div @click="getDetail(item.id)" v-for="item in contentList" class="history-pay-item">
                     <div class="pay-category">
-                        <img src="imgs/electric.png" alt="" class="pay-icon">
+                        <img :src="currentIcon" alt="" class="pay-icon">
                         <div class="title-address">
                             <p v-cloak  class="pay-title">{{item.name}}</p>
                             <!-- <p class="address">{{item.number}} | {{item.address}}</p> -->

@@ -13,9 +13,39 @@ var vm = new Vue({
         //展架数量
         showCounts:JSON.parse(localStorage.getItem('user')).shops.show_goods_num,
         images:'',
-        regisiterTime:transformTime(JSON.parse(localStorage.getItem('user')).shops.create_at)
+        regisiterTime:transformTime(JSON.parse(localStorage.getItem('user')).shops.create_at),
+        cardList: {
+            emblem: {
+                src: 'imgs/id-card-1.png',
+                realPath: ''
+            },
+            portrait: {
+                src: 'imgs/id-card-2.png',
+                realPath: ''
+            },
+            license: {
+                src: '',
+                realPath: ''
+            },
+            renting: {
+                src: '',
+                realPath: ''
+            },
+            other: {
+                src: '',
+                realPath: ''
+            }
+        }
     },
     methods:{
+        uploadEmblem() {
+            //上传国徽面
+            $("#emblem").click();
+        },
+        uploadPortrait() {
+            //上传人像面
+            $("#portrait").click();
+        },
         limitName() {
             this.editName = this.editName.replace(/\s+/g, "");
             this.editName = this.editName.slice(0,8);

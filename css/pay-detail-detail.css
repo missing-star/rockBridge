@@ -80,3 +80,7 @@ header.packet-title>p:last-child {
     line-height: 1rem;
     color: #000000;
 }
+p.show-title {
+    font-size: 0.6rem;
+    color: #ff5816;
+}

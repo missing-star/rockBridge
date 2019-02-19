@@ -5,14 +5,15 @@ var vm = new Vue({
         paidList: [1],
         printDate: nowDate.getFullYear() + '年' + (nowDate.getMonth() + 1) + '月',
         currentTab: 0,
-        categoryIdList:[],
-        contentList:[],
-        currentTab:''
+        categoryIdList: [],
+        contentList: [],
+        currentTab: '',
+        currentIcon: ''
     },
     methods: {
         getDetail(id) {
             mui.openWindow({
-                url: 'pay-detail-detail.html?id='+id
+                url: 'pay-detail-detail.html?id=' + id
             })
         },
         getInvoice() {
@@ -21,17 +22,18 @@ var vm = new Vue({
                 url: 'apply-invoice.html'
             })
         },
-        switchTab(event,tabId) {
+        switchTab(event, tabId) {
             if (!$(event.target).hasClass('active')) {
                 var index = Array.prototype.slice.call(document.querySelectorAll('li.cost-category-item')).indexOf(event.target);
+                vm.currentIcon = `${rootUrl}${vm.categoryIdList[index].thumb}`;
                 $(event.target).addClass('active');
                 $(event.target).siblings().removeClass('active');
                 vm.currentTab = $(event.target).attr('data-type');
                 $('div.history-pay-list').eq(index).addClass('active');
                 $('div.history-pay-list').eq(index).siblings().removeClass('active');
                 //请求数据
-                var date = this.printDate.replace('年','-').replace('月','');
-                getCostDetail(tabId,date);
+                var date = this.printDate.replace('年', '-').replace('月', '');
+                getCostDetail(tabId, date);
             }
         }
     }
@@ -51,8 +53,8 @@ var vm = new Vue({
             dtPicker.show(function (selectItems) {
                 vm.printDate = selectItems.y.text +
                     '年' + selectItems.m.text + '月';
-                    var date = vm.printDate.replace('年','-').replace('月','');
-                    getCostDetail(vm.currentTab,date);
+                var date = vm.printDate.replace('年', '-').replace('月', '');
+                getCostDetail(vm.currentTab, date);
 
             });
         });
@@ -68,31 +70,35 @@ $.ajax({
     success: function (data) {
         var list = [];
         for (key in data.result.pay_category) {
-            vm.categoryIdList.push({id:data.result.pay_category[key].id,name:data.result.pay_category[key].name});
+            vm.categoryIdList.push({
+                id: data.result.pay_category[key].id,
+                name: data.result.pay_category[key].name,
+                thumb: data.result.pay_category[key].thumb
+            });
         };
         vm.currentTab = vm.categoryIdList[0].id;
-        var date = vm.printDate.replace('年','-').replace('月','');
-        getCostDetail(vm.currentTab,date);
+        vm.currentIcon = `${rootUrl}${vm.categoryIdList[0].thumb}`;
+        var date = vm.printDate.replace('年', '-').replace('月', '');
+        getCostDetail(vm.currentTab, date);
     },
     error: function () {
         mui.toast('服务器异常！');
     }
-
 });
 
-function getCostDetail(cateId,date) {
+function getCostDetail(cateId, date) {
     $.ajax({
-        url:`${rootUrl}/index/api/getMyPayCharge`,
-        data:{
-            cate_id:cateId,
-            date:date
+        url: `${rootUrl}/index/api/getMyPayCharge`,
+        data: {
+            cate_id: cateId,
+            date: date
         },
-        type:'post',
-        dataType:'json',
-        success:function(data) {
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
             vm.contentList = data.result;
         },
-        error:function() {
+        error: function () {
 
         }
     })

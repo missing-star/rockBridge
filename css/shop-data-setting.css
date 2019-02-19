@@ -193,3 +193,13 @@ span.clear-input>img {
 input.content.limit {
     width: 50%;
 }
+.id-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 6rem;
+    overflow: hidden;
+}
+img.id-card {
+    width: 35%;
+}

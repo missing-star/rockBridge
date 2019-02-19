@@ -19,7 +19,7 @@
         <div class="mui-content">
             <div v-show="!isEditName" class="hello">
                 <div @click="editShopName" class="left">
-                    <p v-cloak  class="hello-info">你好！{{title}}</p>
+                    <p v-cloak class="hello-info">你好！{{title}}</p>
                     <p class="sub-title">点击编辑您的店铺名称</p>
                 </div>
                 <div class="editor-logo">
@@ -33,7 +33,7 @@
             <div v-show="isEditName" class="editName">
                 <div class="input-group">
                     <input v-model="editName" @input="limitName" type="text" class="editor">
-                    <span v-cloak  class="inpupt-number">{{editName.length}} / 8</span>
+                    <span v-cloak class="inpupt-number">{{editName.length}} / 8</span>
                     <span @click="clearInput" v-show="editName.length != 0" class="clear-input">
                         <img src="imgs/clear.png" alt="">
                     </span>
@@ -54,6 +54,15 @@
                     <label for="" class="title">商家电话</label>
                     <input type="tel" class="content" v-model="landline">
                     <button type="button" @click="savePhone" class="edit">保存</button>
+                </li>
+                <li class="info-item">
+                    <label for="" class="title">身份证</label>
+                    <div class="id-card-container">
+                        <img @click="uploadEmblem" class="id-card" :src="cardList.emblem.src" alt="">
+                        <input type="file" accept="image/*" id="emblem" hidden />
+                        <img @click="uploadPortrait" class="id-card" :src="cardList.portrait.src" alt="">
+                        <input type="file" id="portrait" hidden accept="image/*">
+                    </div>
                 </li>
                 <li class="info-item">
                     <label for="" class="title">注册时间</label>
