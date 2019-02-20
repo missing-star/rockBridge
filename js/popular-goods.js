@@ -3,8 +3,21 @@ const vm = new Vue({
     data:{
         goodsList:[]
     },
-    methods:{
-        
+    methods:{   
+        goDetail(url,id) {
+            mui.openWindow({
+                url:`${url}?id=${id}`
+            })
+        }
+    },
+    filters:{
+        filterImg(thumb) {
+            thumb = thumb == null ? '' : thumb;
+            if(thumb.indexOf('http') != -1) {
+                return `${thumb}`;
+            }
+            return `${rootUrl}${thumb}`;
+        }
     }
 });
 

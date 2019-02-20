@@ -24,15 +24,15 @@
                 <p>人气好物</p>
             </header>
             <div class="have-good-goods">
-                <div @click="goDetail('goods-detail.html',0)" v-for="n in 13" class="goods-item">
-                    <img class="goods-img" src="imgs/bed1.png" />
+                <div @click="goDetail('goods-detail.html',goods.id)" v-for="goods in goodsList" class="goods-item">
+                    <img class="goods-img" :src="goods.images | filterImg" />
                     <div class="goods-info">
                         <p>
-                            <span>商品名称</span>
-                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
+                            <span v-cloak>{{goods.title}}</span>
+                            <span v-cloak class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_num}}</span>
                         </p>
                         <p>
-                            <span class="goods-price">￥200</span>
+                            <span class="goods-price" v-cloak>￥{{goods.price}}</span>
                             <button class="reserve">查看</button>
                         </p>
                     </div>
