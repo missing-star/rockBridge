@@ -67,13 +67,6 @@
                     <span v-cloak  class="upload-status">{{cardList.license.realPath != '' ? '已选择' : '请上传'}}</span>
                     <input type="file" accept="image/*" hidden id="license">
                 </li>
-                <li @click="uploadRent" class="info-item renting arrow-right">
-                    <label for="" class="title">
-                        租房合同
-                    </label>
-                    <span v-cloak  class="upload-status">{{cardList.renting.realPath != '' ? '已选择' : '请上传'}}</span>
-                    <input type="file" accept="image/*" hidden id="renting">
-                </li>
                 <li class="info-item">
                     <label for="" class="title">注册时间</label>
                     <input readonly type="text" class="content arrow-right no-bg" v-model="regisiterTime">

@@ -15,25 +15,25 @@ var vm = new Vue({
         images:'',
         regisiterTime:transformTime(JSON.parse(localStorage.getItem('user')).shops.create_at),
         cardList: {
+            //头像
             userLogo:{
                 src:JSON.parse(localStorage.getItem('user')).shops.images,
                 realPath:JSON.parse(localStorage.getItem('user')).shops.images
             },
+            //国徽面
             emblem: {
                 src: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[0],
                 realPath: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[0]
             },
+            //人像面
             portrait: {
                 src: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[1],
                 realPath: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[1]
             },
+            //营业执照
             license: {
                 src: JSON.parse(localStorage.getItem('user')).shops.business_license,
                 realPath:JSON.parse(localStorage.getItem('user')).shops.business_license
-            },
-            renting: {
-                src: JSON.parse(localStorage.getItem('user')).shops.lease,
-                realPath: JSON.parse(localStorage.getItem('user')).shops.lease
             }
         }
     },
@@ -47,10 +47,6 @@ var vm = new Vue({
         }
     },
     methods:{
-        uploadRent() {
-            //上传租房合同
-            $("#renting").click();
-        },
         uploadEmblem() {
             //上传国徽面
             $("#emblem").click();
@@ -81,6 +77,9 @@ var vm = new Vue({
             else {
                 mui.toast('修改失败');
             }
+        },
+        savePerseonName() {
+
         },
         clearInput() {
             this.editName = '';
@@ -135,7 +134,7 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
     clipFinish: function (dataURL) {
         $("#wait-loading").css("display", "flex");
         //上传图片
-        uploadImgRealPath(vm.imgObj, dataURL);
+        uploadImgRealPath(dataURLtoFile(dataURL), dataURL);
     }
 });
 //关闭actionsheet
@@ -144,7 +143,6 @@ function closeSheet() {
 }
 function uploadImgRealPath(fileObj, dataURL) {
     console.log(dataURL,fileObj);
-    console.log(dataURLtoFile(dataURL,fileObj.name));
     var formData = new FormData();
     formData.append('image', fileObj);
     $.ajax({
@@ -204,7 +202,11 @@ function updateUserInfo() {
     });
     return result;
 }
-
+/**
+ * 
+ * @param {string} dataurl base64格式图片
+ * @param {string} filename 文件名
+ */
 function dataURLtoFile(dataurl, filename) {
     var arr = dataurl.split(',');
     var mime = arr[0].match(/:(.*?);/)[1];
@@ -216,6 +218,4 @@ function dataURLtoFile(dataurl, filename) {
     }
     //转换成file对象
     return new File([u8arr], filename, {type:mime});
-    //转换成成blob对象
-    // return new Blob([u8arr],{type:mime});
   }
