@@ -24,22 +24,27 @@
                 <p>商家推荐</p>
             </header>
             <div class="business-recommond">
-                <div v-for="n in 2" class="business-item">
+                <div v-for="item in shopsList" class="business-item">
                     <div class="top">
                         <div class="business-info">
-                            <img src="imgs/business-logo.png" class="business-logo" />
+                            <img :src="item.images | filterImg" class="business-logo" />
                             <p class="business-detail">
-                                <span class="business-name">店铺名称<img v-for="n in 4" src="imgs/star.png" class="business-level" /></span>
-                                <span>销量 22万 | 收藏 36</span>
+                                <span v-cloak  class="business-name">{{item.title}}<img v-for="n in item.shop_review" src="imgs/star-high.png"
+                                        class="business-level" /><img v-for="n in (5 - item.shop_review)" src="imgs/star.png"
+                                        class="business-level" /></span>
+                                <span v-cloak >收藏 {{item.shop_collection}}</span>
                             </p>
                         </div>
-                        <button @click="enterShop(0)" class="go-business-btn">
+                        <button @click="getDetail('shop-detail.html',item.id)" class="go-business-btn">
                             进店
                         </button>
                     </div>
                     <div class="bottom">
-                        <img @click="goDetail('goods-detail.html',0)" v-for="n in 3" src="imgs/bed1.png" class="business-img-item" />
+                        <img  @click="getDetail('goods-detail.html',img.id)" @click="" v-for="img in item.goods_list" :src="img.images | filterImg" class="business-img-item" />
                     </div>
+                </div>
+                <div class="bottom-line">
+                    ······ 已见底了 ······
                 </div>
             </div>
         </div>

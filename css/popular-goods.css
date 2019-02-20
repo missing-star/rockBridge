@@ -78,3 +78,10 @@ button.reserve {
     font-size: 0.6rem;
     line-height: 1rem;
 }
+.bottom-line {
+    width: 100%;
+    color: #aaa;
+    font-size: 0.8rem;
+    text-align: center;
+    height: 2rem;
+}
