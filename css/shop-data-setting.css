@@ -67,6 +67,7 @@ ul.info-list {
     list-style: none;
     padding: 0;
     margin-top: 1rem;
+    margin-bottom: 0;
 }
 li.info-item {
     display: flex;
@@ -112,6 +113,7 @@ button#cancel-btn, button#confirm-btn {
 label.title {
     font-size: 0.8rem;
     white-space: nowrap;
+    width: 25%;
 }
 p.level-up.arrow-right {
     background: url(../imgs/arrow-right-black.png) no-repeat;
@@ -202,4 +204,24 @@ input.content.limit {
 }
 img.id-card {
     width: 35%;
+}
+li.tab-contetn-item.id-card {
+    margin-top: 1rem;
+}
+li.info-item.renting {
+    padding: 1rem 0;
+}
+span.upload-status {
+    font-size: 0.6rem;
+    color: #aaaaaa;
+}
+li.info-item.renting.arrow-right {
+    background: url(../imgs/arrow-right-black.png) no-repeat;
+    background-position: right;
+    background-size: 0.6rem;
+    padding-right: 1rem;
+}
+button.apply-destory.save {
+    background: #9D7E60;
+    color: #FFFFFF;
 }

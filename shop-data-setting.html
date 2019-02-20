@@ -27,7 +27,7 @@
                         <input id="file" hidden type="file" accept="image/*" class="invisible">
                     </div>
                     <!-- <img class="business-logo" :src="userLogo" alt=""> -->
-                    <img class="business-logo" :src="userLogo" alt="">
+                    <img class="business-logo" :src="cardList.userLogo.realPath | filterImg" alt="">
                 </div>
             </div>
             <div v-show="isEditName" class="editName">
@@ -51,13 +51,43 @@
                     <p class="level-up arrow-right">可升级</p>
                 </li>
                 <li class="info-item">
+                    <label for="" class="title">负责人</label>
+                    <input v-model="person_name" type="text" class="content limit">
+                    <button type="button" @click="savePhone" class="edit">保存</button>
+                </li>
+                <li class="info-item">
                     <label for="" class="title">商家电话</label>
                     <input type="tel" class="content" v-model="landline">
                     <button type="button" @click="savePhone" class="edit">保存</button>
                 </li>
+                <li @click="uploadLicense" class="info-item renting arrow-right">
+                    <label for="" class="title">
+                        营业执照
+                    </label>
+                    <span v-cloak  class="upload-status">{{cardList.license.realPath != '' ? '已选择' : '请上传'}}</span>
+                    <input type="file" accept="image/*" hidden id="license">
+                </li>
+                <li @click="uploadRent" class="info-item renting arrow-right">
+                    <label for="" class="title">
+                        租房合同
+                    </label>
+                    <span v-cloak  class="upload-status">{{cardList.renting.realPath != '' ? '已选择' : '请上传'}}</span>
+                    <input type="file" accept="image/*" hidden id="renting">
+                </li>
                 <li class="info-item">
                     <label for="" class="title">注册时间</label>
                     <input readonly type="text" class="content arrow-right no-bg" v-model="regisiterTime">
+                </li>
+                <li class="tab-contetn-item id-card">
+                    <label for="" class="title">
+                        身份证
+                    </label>
+                    <div class="id-card-container">
+                        <img @click="uploadEmblem" class="id-card" :src="cardList.emblem.src | filterImg" alt="">
+                        <input type="file" accept="image/*" id="emblem" hidden />
+                        <img @click="uploadPortrait" class="id-card" :src="cardList.portrait.src | filterImg" alt="">
+                        <input type="file" id="portrait" hidden accept="image/*">
+                    </div>
                 </li>
             </ul>
             <button @click="applyCancel" class="apply-destory">注销店铺</button>

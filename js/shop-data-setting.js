@@ -6,8 +6,8 @@ var vm = new Vue({
         title:JSON.parse(localStorage.getItem('user')).shops.title,
         //编辑的名称
         editName:'',
-        //头像
-        userLogo:JSON.parse(localStorage.getItem('user')).shops.images,
+        //负责人
+        person_name:JSON.parse(localStorage.getItem('user')).shops.person_name,
         //电话
         landline:JSON.parse(localStorage.getItem('user')).shops.landline || '',
         //展架数量
@@ -15,29 +15,42 @@ var vm = new Vue({
         images:'',
         regisiterTime:transformTime(JSON.parse(localStorage.getItem('user')).shops.create_at),
         cardList: {
+            userLogo:{
+                src:JSON.parse(localStorage.getItem('user')).shops.images,
+                realPath:JSON.parse(localStorage.getItem('user')).shops.images
+            },
             emblem: {
-                src: 'imgs/id-card-1.png',
-                realPath: ''
+                src: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[0],
+                realPath: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[0]
             },
             portrait: {
-                src: 'imgs/id-card-2.png',
-                realPath: ''
+                src: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[1],
+                realPath: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[1]
             },
             license: {
-                src: '',
-                realPath: ''
+                src: JSON.parse(localStorage.getItem('user')).shops.business_license,
+                realPath:JSON.parse(localStorage.getItem('user')).shops.business_license
             },
             renting: {
-                src: '',
-                realPath: ''
-            },
-            other: {
-                src: '',
-                realPath: ''
+                src: JSON.parse(localStorage.getItem('user')).shops.lease,
+                realPath: JSON.parse(localStorage.getItem('user')).shops.lease
             }
         }
     },
+    filters:{
+        filterImg(thumb) {
+            thumb = thumb == null ? '' : thumb;
+            if(thumb.indexOf('http') != -1) {
+                return `${thumb}`;
+            }
+            return `${rootUrl}${thumb}`;
+        }
+    },
     methods:{
+        uploadRent() {
+            //上传租房合同
+            $("#renting").click();
+        },
         uploadEmblem() {
             //上传国徽面
             $("#emblem").click();
@@ -45,6 +58,10 @@ var vm = new Vue({
         uploadPortrait() {
             //上传人像面
             $("#portrait").click();
+        },
+        uploadLicense() {
+            //上传营业执照
+            $("#license").click();
         },
         limitName() {
             this.editName = this.editName.replace(/\s+/g, "");
@@ -126,6 +143,8 @@ function closeSheet() {
     mui('#sheet').popover('toggle');
 }
 function uploadImgRealPath(fileObj, dataURL) {
+    console.log(dataURL,fileObj);
+    console.log(dataURLtoFile(dataURL,fileObj.name));
     var formData = new FormData();
     formData.append('image', fileObj);
     $.ajax({
@@ -185,3 +204,18 @@ function updateUserInfo() {
     });
     return result;
 }
+
+function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(',');
+    var mime = arr[0].match(/:(.*?);/)[1];
+    var bstr = atob(arr[1]);
+    var n = bstr.length; 
+    var u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    //转换成file对象
+    return new File([u8arr], filename, {type:mime});
+    //转换成成blob对象
+    return new Blob([u8arr],{type:mime});
+  }
