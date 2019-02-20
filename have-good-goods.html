@@ -24,16 +24,12 @@
                 <p>有好物</p>
             </header>
             <div class="have-good-goods">
-                <div @click="goDetail('goods-detail.html',0)" v-for="n in 13" class="goods-item">
-                    <img class="goods-img" src="imgs/bed1.png" />
+                <div @click="goLink(ad.ad_link)" v-for="ad in adList" class="goods-item">
+                    <img class="goods-img" :src="ad.ad_code | filterImg" />
                     <div class="goods-info">
                         <p>
-                            <span>商品名称</span>
-                            <span class="eye-container"><img class="view-num" src="imgs/eye.png" />123</span>
-                        </p>
-                        <p>
-                            <span class="goods-price">￥200</span>
-                            <button class="reserve">预约</button>
+                            <span v-cloak>{{ad.ad_name}}</span>
+                            <span class="eye-container" v-cloak><img class="view-num" src="imgs/eye.png" />{{ad.click_count}}</span>
                         </p>
                     </div>
                 </div>
