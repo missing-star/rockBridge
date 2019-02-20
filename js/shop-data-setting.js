@@ -1,24 +1,25 @@
 var vm = new Vue({
-    el:'#app',
-    data:{
-        isEditName:false,
+    el: '#app',
+    data: {
+        updateForm: new FormData(),
+        isEditName: false,
         //显示的名称
-        title:JSON.parse(localStorage.getItem('user')).shops.title,
+        title: JSON.parse(localStorage.getItem('user')).shops.title,
         //编辑的名称
-        editName:'',
+        editName: '',
         //负责人
-        person_name:JSON.parse(localStorage.getItem('user')).shops.person_name,
+        person_name: JSON.parse(localStorage.getItem('user')).shops.person_name,
         //电话
-        landline:JSON.parse(localStorage.getItem('user')).shops.landline || '',
+        landline: JSON.parse(localStorage.getItem('user')).shops.landline || '',
         //展架数量
-        showCounts:JSON.parse(localStorage.getItem('user')).shops.show_goods_num,
-        images:'',
-        regisiterTime:transformTime(JSON.parse(localStorage.getItem('user')).shops.create_at),
+        showCounts: JSON.parse(localStorage.getItem('user')).shops.show_goods_num,
+        images: '',
+        regisiterTime: transformTime(JSON.parse(localStorage.getItem('user')).shops.create_at),
         cardList: {
             //头像
-            userLogo:{
-                src:JSON.parse(localStorage.getItem('user')).shops.images,
-                realPath:JSON.parse(localStorage.getItem('user')).shops.images
+            userLogo: {
+                src: JSON.parse(localStorage.getItem('user')).shops.images,
+                realPath: JSON.parse(localStorage.getItem('user')).shops.images
             },
             //国徽面
             emblem: {
@@ -33,20 +34,20 @@ var vm = new Vue({
             //营业执照
             license: {
                 src: JSON.parse(localStorage.getItem('user')).shops.business_license,
-                realPath:JSON.parse(localStorage.getItem('user')).shops.business_license
+                realPath: JSON.parse(localStorage.getItem('user')).shops.business_license
             }
         }
     },
-    filters:{
+    filters: {
         filterImg(thumb) {
             thumb = thumb == null ? '' : thumb;
-            if(thumb.indexOf('http') != -1) {
+            if (thumb.indexOf('http') != -1) {
                 return `${thumb}`;
             }
             return `${rootUrl}${thumb}`;
         }
     },
-    methods:{
+    methods: {
         uploadEmblem() {
             //上传国徽面
             $("#emblem").click();
@@ -61,25 +62,34 @@ var vm = new Vue({
         },
         limitName() {
             this.editName = this.editName.replace(/\s+/g, "");
-            this.editName = this.editName.slice(0,8);
+            this.editName = this.editName.slice(0, 8);
         },
         uploadLogo(event) {
             $(event.target).find('input.invisible').click();
         },
         savePhone() {
-            if(this.landline.trim().length == 0) {
+            if (this.landline.trim().length == 0) {
                 mui.toast('请输入电话');
                 return;
             }
-            if(updateUserInfo()) {
+            vm.updateForm.append('landline',this.landline);
+            if (updateUserInfo()) {
                 mui.toast('修改成功');
-            }
-            else {
+            } else {
                 mui.toast('修改失败');
             }
         },
         savePerseonName() {
-
+            if(this.person_name.trim().length == 0) {
+                mui.toast('请输入名称');
+                return;
+            }
+            vm.updateForm.append('person_name',vm.person_name);
+            if (updateUserInfo()) {
+                mui.toast('修改成功');
+            } else {
+                mui.toast('修改失败');
+            }
         },
         clearInput() {
             this.editName = '';
@@ -90,6 +100,7 @@ var vm = new Vue({
         confirmName() {
             if (this.editName.length != 0) {
                 this.title = this.editName;
+                vm.updateForm.append('title',this.title);
                 if (updateUserInfo()) {
                     mui.toast('修改成功');
                     this.isEditName = false;
@@ -102,7 +113,7 @@ var vm = new Vue({
         },
         applyCancel() {
             mui.openWindow({
-                url:'shop-cancellation.html'
+                url: 'shop-cancellation.html'
             })
         },
         hideInput() {
@@ -111,7 +122,7 @@ var vm = new Vue({
         buySettles() {
             //购买展架
             mui.openWindow({
-                url:'shop-settled.html'
+                url: 'shop-settled.html'
             });
         }
     }
@@ -134,15 +145,39 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
     clipFinish: function (dataURL) {
         $("#wait-loading").css("display", "flex");
         //上传图片
-        uploadImgRealPath(dataURLtoFile(dataURL), dataURL);
+        uploadImgRealPath(dataURLtoFile(dataURL, vm.imgObj.name), dataURL,'userLogo');
     }
 });
 //关闭actionsheet
 function closeSheet() {
     mui('#sheet').popover('toggle');
 }
-function uploadImgRealPath(fileObj, dataURL) {
-    console.log(dataURL,fileObj);
+/**
+ * 
+ * @param {String} elem 
+ * @param {String} key 
+ * 处理图片图片
+ */
+function parseImage(elem, key) {
+    var filePath = $(elem).val(); //读取图片路径
+    var fr = new FileReader(); //创建new FileReader()对象
+    var imgObj = elem.files[0]; //获取图片
+    fr.readAsDataURL(imgObj); //将图片读取为DataURL
+    var arr = filePath.split('\\');
+    var fileName = arr[arr.length - 1];
+    fr.onload = function () {
+        uploadImgRealPath(imgObj, null,key);
+        //置空文件上传框的值
+        $(elem).val("");
+    };
+}
+/**
+ * 
+ * @param {object} fileObj 图片对象 
+ * @param {string} dataURL base64图片格式 
+ * @param {string} key 上传的分类 
+ */
+function uploadImgRealPath(fileObj, dataURL, key) {
     var formData = new FormData();
     formData.append('image', fileObj);
     $.ajax({
@@ -155,15 +190,46 @@ function uploadImgRealPath(fileObj, dataURL) {
         data: formData,
         success: function (data) {
             if (data.status == 1) {
-                vm.images = data.result;
-                //图片上传成功,开始更新个人信息
-                if (updateUserInfo()) {
-                    $("#wait-loading").css("display", "none");
-                    mui('#sheet').popover('toggle');
-                    vm.userLogo = dataURL;
-                } else {
-                    mui.toast('修改失败');
+                switch (key) {
+                    case 'userLogo':
+                        vm.updateForm.append('images', data.result);
+                        if (updateUserInfo()) {
+                            vm.cardList[key].realPath = vm.cardList[key].src = data.result;
+                            $("#wait-loading").css("display", "none");
+                            mui('#sheet').popover('toggle');
+                            vm.userLogo = dataURL;
+                        } else {
+                            mui.toast('修改失败');
+                        }
+                        break;
+                    case 'license':
+                        vm.updateForm.append('business_license', data.result);
+                        if (updateUserInfo()) {
+                            vm.cardList[key].realPath = vm.cardList[key].src = data.result;
+                        } else {
+                            mui.toast('修改失败');
+                        }
+                        break;
+                    case 'emblem':
+                        //国徽
+                        vm.updateForm.append('idcard', data.result + ',' + vm.cardList.portrait.realPath);
+                        if (updateUserInfo()) {
+                            vm.cardList.portrait.emblem = vm.cardList.emblem.src = data.result;
+                        } else {
+                            mui.toast('修改失败');
+                        }
+                        break;
+                    case 'portrait':
+                        // 人像
+                        vm.updateForm.append('idcard', vm.cardList.emblem.realPath + ',' + data.result);
+                        if (updateUserInfo()) {
+                            vm.cardList.portrait.realPath = vm.cardList.portrait.src = data.result;
+                        } else {
+                            mui.toast('修改失败');
+                        }
+                        break;
                 }
+
             } else {
                 mui.toast('上传失败');
             }
@@ -178,15 +244,14 @@ function uploadImgRealPath(fileObj, dataURL) {
  * 更新个人信息
  */
 function updateUserInfo() {
+    console.log(vm.updateForm);
     var result = false;
     $.ajax({
         url: `${rootUrl}/index/api/updateShopsInfo`,
         async: false,
-        data: {
-            title:vm.title,
-            images:vm.images,
-            landline:vm.landline
-        },
+        contentType: false,
+        processData: false,
+        data: vm.updateForm,
         type: 'post',
         dataType: 'json',
         success: function (data) {
@@ -200,6 +265,7 @@ function updateUserInfo() {
             result = false;
         }
     });
+    vm.updateForm = new FormData();
     return result;
 }
 /**
@@ -211,11 +277,26 @@ function dataURLtoFile(dataurl, filename) {
     var arr = dataurl.split(',');
     var mime = arr[0].match(/:(.*?);/)[1];
     var bstr = atob(arr[1]);
-    var n = bstr.length; 
+    var n = bstr.length;
     var u8arr = new Uint8Array(n);
-    while(n--){
+    while (n--) {
         u8arr[n] = bstr.charCodeAt(n);
     }
     //转换成file对象
-    return new File([u8arr], filename, {type:mime});
-  }
+    return new File([u8arr], filename, {
+        type: mime
+    });
+}
+
+$(function () {
+    //监听图片上传
+    $('#emblem').change(function () {
+        parseImage(this, 'emblem');
+    });
+    $("#license").change(function () {
+        parseImage(this, 'license');
+    });
+    $("#portrait").change(function () {
+        parseImage(this, 'portrait');
+    });
+});

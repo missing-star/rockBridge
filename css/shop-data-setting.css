@@ -204,6 +204,7 @@ input.content.limit {
 }
 img.id-card {
     width: 35%;
+    height: 4rem;
 }
 li.tab-contetn-item.id-card {
     margin-top: 1rem;
