@@ -75,7 +75,7 @@ var vm = new Vue({
                     mui.toast(data.msg);
                     if (data.status == 1) {
                         setTimeout(function () {
-                            location.history.back(-1);
+                            history.back(-1);
                         }, 200);
                     }
                 },

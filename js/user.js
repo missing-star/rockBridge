@@ -15,10 +15,8 @@ function getUserInfo(temp) {
             userData = data.result;
             if (data.result.shop_id > 0) {
                 localStorage.setItem('switchRole', 1);
-                localStorage.setItem('currentRole',1);
             } else {
                 localStorage.setItem('switchRole', 0);
-                localStorage.setItem('currentRole',0);
             }
         },
         error: function () {
@@ -30,7 +28,7 @@ function getUserInfo(temp) {
 var vm = new Vue({
     el: '#app',
     data: {
-        currentRole: localStorage.getItem('currentRole'),
+        currentRole: localStorage.getItem('currentRole') || 0,
         userData: userData,
         isSwitchRole: localStorage.getItem('switchRole')
     },
@@ -39,6 +37,9 @@ var vm = new Vue({
         switchRole() {
             if (this.isSwitchRole == 0) {
                 mui.toast('请先进行商户认证！');
+                mui.openWindow({
+                    url:'shop-auth.html'
+                });
                 return false;
             }
             if (this.currentRole == 0) {

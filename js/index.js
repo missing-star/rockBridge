@@ -1,7 +1,7 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        keyword:'',
+        keyword: '',
         isFadeIn: false,
         isFadeOut: false,
         searchContent: '',
@@ -41,7 +41,7 @@ var vm = new Vue({
         //拼接图片地址
         filterImg(thumb) {
             thumb = thumb == null ? '' : thumb;
-           if(thumb.indexOf('http') != -1) {
+            if (thumb.indexOf('http') != -1) {
                 return `${thumb}`;
             }
             return `${rootUrl}${thumb}`;
@@ -62,7 +62,7 @@ var vm = new Vue({
         startSearch() {
             //跳转到商品页搜索
             mui.openWindow({
-                url:'goods.html?keywords='+vm.keyword
+                url: 'goods.html?keywords=' + vm.keyword
             });
         },
         hideSearch() {
@@ -74,18 +74,33 @@ var vm = new Vue({
             //清空搜索框
             this.searchContent = '';
         },
-        jumpLink(url, flag) {
+        jumpLink(url, flag, isShop) {
             //认证，缴费，入驻，联系我们跳转
             if (flag) {
                 //需要登录操作
                 if (validateUser()) {
                     if (localStorage.getItem('switchRole') == 0) {
-                        mui.toast('请先进行商户认证！');
+                        if(isShop == 1) {
+                            mui.openWindow({
+                                url:'shop-auth.html'
+                            });
+                        }
+                        else {
+                            mui.openWindow({
+                                url:url
+                            })
+                        }
                         return false;
                     }
-                    mui.openWindow({
-                        url: url
-                    });
+                    else {
+                        if(isShop == 1) {
+                           mui.toast('您已进行过商户认证');
+                           return false;
+                        }
+                        mui.openWindow({
+                            url:url
+                        });
+                    }
                 } else {
                     mui.toast('请登录后操作!');
                 }
@@ -98,7 +113,7 @@ var vm = new Vue({
         },
         goInner(url) {
             mui.openWindow({
-                url:url
+                url: url
             });
         },
         goDetail(url, id) {
@@ -109,7 +124,7 @@ var vm = new Vue({
         },
         goAd(url) {
             mui.openWindow({
-                url:url
+                url: url
             });
         },
         enterShop(id) {
@@ -163,7 +178,7 @@ function getData() {
         success: function (data) {
             if (data.status == 1) {
                 vm.homeInfo = data.result;
-                vm.$nextTick(function() {
+                vm.$nextTick(function () {
                     initBanner();
                 });
             }

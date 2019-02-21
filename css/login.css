@@ -68,12 +68,6 @@ p.other-way>span,p.other-way>a {
     font-size: 0.8rem;
     line-height: 1.5rem;
 }
-input.content.password {
-    background: url(../imgs/icon-password.png) no-repeat;
-    background-size: 1rem;
-    background-position: 95%;
-    padding-right: 5rem;
-}
 
 span.forget-password {
     color: #9D7E60;
@@ -111,6 +105,6 @@ img.login-icon {
 }
 img.show-hide-pwd {
     position: absolute;
-    right: 5rem;
+    right: 4rem;
     width: 1rem;
 }
