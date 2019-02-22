@@ -22,6 +22,10 @@
             </header>
             <ul class="bind-list">
                 <li class="bind-item">
+                    <label for="" class="title">原手机号</label>
+                    <input v-model="originPhone" @input="validatePhone" type="number" readonly class="content">
+                </li>
+                <li class="bind-item">
                     <label for="" class="title">+86</label>
                     <input placeholder="请输入新手机号" v-model="phone" @input="validatePhone" type="number" class="content">
                     <span v-show="phone.length != 0" @click="clearPhone" class="clear-phone"><img src="imgs/clear-phone.png"

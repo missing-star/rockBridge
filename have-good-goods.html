@@ -24,7 +24,7 @@
                 <p>有好物</p>
             </header>
             <div class="have-good-goods">
-                <div @click="goLink(ad.ad_link)" v-for="ad in adList" class="goods-item">
+                <div @click="goLink(ad.ad_link+'&ad_id='+ad.id)" v-for="ad in adList" class="goods-item">
                     <img class="goods-img" :src="ad.ad_code | filterImg" />
                     <div class="goods-info">
                         <p>
