@@ -80,11 +80,15 @@ function initBanner() {
 getGoodsDetail(getParams().id);
 
 function getGoodsDetail(id) {
+    const data = {
+        id:id
+    }
+    if(getParams().ad_id) {
+        data.ad_id = getParams().ad_id
+    }
     $.ajax({
         url: `${rootUrl}/index/api/getGoodsInfo`,
-        data: {
-            id: id
-        },
+        data: data,
         async: false,
         type: 'post',
         dataType: 'json',
