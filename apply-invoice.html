@@ -34,35 +34,35 @@
             <ul class="repair-info active">
                 <li class="repair-item">
                     <label for="" class="title">发票抬头</label>
-                    <input @input="validateName" :readonly="isApplied" v-model="invoiceInfo.rise" placeholder="抬头名称或极速开票六位代码"
+                    <input :disabled="isApplied" @input="validateName" :readonly="isApplied" v-model="invoiceInfo.rise" placeholder="抬头名称或极速开票六位代码"
                         type="text" class="content">
                 </li>
                 <template v-if="!isPerson">
                     <li class="repair-item">
                         <label for="" class="title">税号</label>
-                        <input v-model="invoiceInfo.number" :readonly="isApplied" placeholder="纳税人识别号" type="number"
+                        <input v-model="invoiceInfo.number" :disabled="isApplied" :readonly="isApplied" placeholder="纳税人识别号" type="number"
                             class="content">
                     </li>
                     <li class="repair-item">
                         <label for="" class="title">开户银行</label>
-                        <input v-model="invoiceInfo.bankName" :readonly="isApplied" placeholder="选填" type="text" class="content">
+                        <input v-model="invoiceInfo.bankName" :disabled="isApplied" :readonly="isApplied" placeholder="选填" type="text" class="content">
                     </li>
                     <li class="repair-item">
                         <label for="" class="title">银行账号</label>
-                        <input v-model="invoiceInfo.bankNum" :readonly="isApplied" placeholder="选填" type="number" class="content">
+                        <input v-model="invoiceInfo.bankNum" :disabled="isApplied" :readonly="isApplied" placeholder="选填" type="number" class="content">
                     </li>
                     <li class="repair-item">
                         <label for="" class="title">企业地址</label>
-                        <input v-model="invoiceInfo.erpAdd" :readonly="isApplied" placeholder="选填" type="text" class="content">
+                        <input v-model="invoiceInfo.erpAdd" :disabled="isApplied" :readonly="isApplied" placeholder="选填" type="text" class="content">
                     </li>
                     <li class="repair-item">
                         <label for="" class="title">企业电话</label>
-                        <input v-model="invoiceInfo.erpTel" :readonly="isApplied" placeholder="选填" type="number" class="content">
+                        <input v-model="invoiceInfo.erpTel" :disabled="isApplied" :readonly="isApplied" placeholder="选填" type="number" class="content">
                     </li>
                 </template>
                 <li class="repair-item">
                     <label for="" class="title">电子邮箱</label>
-                    <input v-model="invoiceInfo.email" :readonly="isApplied" placeholder="接收您的电子发票" type="email" class="content">
+                    <input v-model="invoiceInfo.email" :disabled="isApplied" :readonly="isApplied" placeholder="接收您的电子发票" type="email" class="content">
                 </li>
                 <li class="repair-item setting">
                     <label for="" class="setting-often">

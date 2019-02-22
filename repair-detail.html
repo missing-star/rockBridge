@@ -35,34 +35,34 @@
                 <!--报修拒绝和报修指派两种类型-->
                 <li class="repair-item">
                     <label for="" class="title">商家信息</label>
-                    <input readonly v-model="repairInfo.shopName" type="text" class="content">
+                    <input readonly disabled v-model="repairInfo.shopName" type="text" class="content">
                 </li>
                 <template v-if="repairInfo.repairStatus != 3">
                     <li class="repair-item">
                         <label for="" class="title">报修单号</label>
-                        <input v-model="repairInfo.repairNo" readonly type="number" class="content">
+                        <input v-model="repairInfo.repairNo" readonly disabled type="number" class="content">
                     </li>
                     <!-- <li class="repair-item">
                         <label for="" class="title">提交部门</label>
-                        <input v-model="repairInfo.submitSection" id="section" readonly type="text">
+                        <input v-model="repairInfo.submitSection" id="section" readonly disabled type="text">
                     </li>
                     <li class="repair-item">
                         <label for="" class="title">维修位置</label>
-                        <input readonly type="text" value="大门" class="content">
+                        <input readonly disabled type="text" value="大门" class="content">
                     </li> -->
                 </template>
                 <li class="repair-item">
                     <label for="" class="title">维修状态</label>
-                    <input v-model="repairInfo.repairStatusName" readonly type="text" class="content" :class="{warning:repairInfo.repairStatus == 1 || repairInfo.repairStatus == 0,gray:repairInfo.repairStatus == 2 || repairInfo.repairStatus == 4}">
+                    <input v-model="repairInfo.repairStatusName" readonly disabled type="text" class="content" :class="{warning:repairInfo.repairStatus == 1 || repairInfo.repairStatus == 0,gray:repairInfo.repairStatus == 2 || repairInfo.repairStatus == 4}">
                 </li>
                 <template v-if="repairInfo.repairStatus != 3">
                     <li class="repair-item">
                         <label for="" class="title">报修时间</label>
-                        <input readonly v-model="repairInfo.submitTime" type="text">
+                        <input readonly disabled v-model="repairInfo.submitTime" type="text">
                     </li>
                     <li class="repair-item question">
                         <label for="" class="title">报修问题描述</label>
-                        <textarea readonly v-model="repairInfo.quesDesc" placeholder="简单描述您的报修问题" name="" id=""></textarea>
+                        <textarea readonly disabled v-model="repairInfo.quesDesc" placeholder="简单描述您的报修问题" name="" id=""></textarea>
                     </li>
                     <li class="repair-item img-container">
                         <img v-for="item in repairInfo.imgs" :src="item" class="repair-img" alt="" />
@@ -71,7 +71,7 @@
                 <!--拒绝时显示-->
                 <li v-if="repairInfo.repairStatus == 3" class="repair-item">
                     <label for="" class="title">拒绝原因</label>
-                    <input v-model="repairInfo.cause" readonly type="text" class="content">
+                    <input v-model="repairInfo.cause" readonly disabled type="text" class="content">
                 </li>
                 <li v-if="repairInfo.repairStatus == 4 && repairInfo.needPay > 0" class="repair-item need-pay">
                     <p class="title">需缴费</p>

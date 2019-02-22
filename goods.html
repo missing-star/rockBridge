@@ -19,7 +19,7 @@
     <div id="app">
         <header class="page1">
             <form class="input-group">
-                <input readonly @focus="showSearch" placeholder="输入商品或商店名称" v-model="keyword" id="search" class="search-page-input"
+                <input readonly disabled @focus="showSearch" placeholder="输入商品或商店名称" v-model="keyword" id="search" class="search-page-input"
                     type="text">
             </form>
             <template v-if="isShowGoods">

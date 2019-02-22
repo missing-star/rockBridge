@@ -31,7 +31,7 @@
             <ul class="repair-info">
                 <li @click="showShop" class="repair-item">
                     <label for="" class="title">商家信息</label>
-                    <input v-model="shopInfoShow" readonly type="text" class="content arrow-right">
+                    <input v-model="shopInfoShow" readonly disabled type="text" class="content arrow-right">
                 </li>
                 <!-- <li class="repair-item">
                     <label for="" class="title">报修单号</label>
@@ -39,16 +39,16 @@
                 </li>
                 <li class="repair-item">
                     <label for="" class="title">提交部门</label>
-                    <input v-model="selectedSection" id="section" readonly placeholder="选择提交部门" type="text" class="arrow-right content">
+                    <input v-model="selectedSection" id="section" readonly disabled placeholder="选择提交部门" type="text" class="arrow-right content">
                 </li>
                 <li class="repair-item">
                     <label for="" class="title">报修位置</label>
-                    <input v-model="selectedPosition" id="repair-position" readonly placeholder="选择报修位置" type="text"
+                    <input v-model="selectedPosition" id="repair-position" readonly disabled placeholder="选择报修位置" type="text"
                         class="arrow-right content">
                 </li>
                 <li class="repair-item">
                     <label for="" class="title">报修时间</label>
-                    <input v-model="repairTime" id="repair-time" readonly placeholder="" type="text" class="arrow-right content">
+                    <input v-model="repairTime" id="repair-time" readonly disabled placeholder="" type="text" class="arrow-right content">
                 </li> -->
                 <li class="repair-item">
                     <label for="" class="title">标题</label>
@@ -89,11 +89,11 @@
                 <ul class="repair-info">
                     <li class="repair-item">
                         <label for="" class="title">商铺号</label>
-                        <input v-model="shopInfo.shop_code" readonly type="text" class="content">
+                        <input v-model="shopInfo.shop_code" readonly disabled type="text" class="content">
                     </li>
                     <li class="repair-item">
                         <label for="" class="title">商家名称</label>
-                        <input v-model="shopInfo.title" readonly type="text" class="content">
+                        <input v-model="shopInfo.title" readonly disabled type="text" class="content">
                     </li>
                     <li class="repair-item">
                         <label for="" class="title">手机号</label>
@@ -101,7 +101,7 @@
                     </li>
                     <li class="repair-item">
                         <label for="" class="title">报修时间</label>
-                        <input readonly type="text" class="content" value="2018.8.12 14:00-15:00">
+                        <input readonly disabled type="text" class="content" value="2018.8.12 14:00-15:00">
                     </li>
                 </ul>
                 <button @click="savePhone" class="submit-repair">
