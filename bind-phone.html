@@ -18,24 +18,25 @@
         </header>
         <div class="mui-content">
             <header class="packet-title">
-                <p>手机绑定</p>
+                <p>更换手机号</p>
             </header>
             <ul class="bind-list">
                 <li class="bind-item">
                     <label for="" class="title">+86</label>
-                    <input v-model="phone" @input="validatePhone" type="number" class="content">
-                    <span v-show="phone.length != 0" @click="clearPhone" class="clear-phone"><img src="imgs/clear-phone.png" alt=""></span>
+                    <input placeholder="请输入新手机号" v-model="phone" @input="validatePhone" type="number" class="content">
+                    <span v-show="phone.length != 0" @click="clearPhone" class="clear-phone"><img src="imgs/clear-phone.png"
+                            alt=""></span>
                 </li>
                 <li class="bind-item">
-                    <input @input="validateCode" v-model="code" placeholder="输入验证码" type="number" class="content">
-                    <span v-cloak  @click="getCode" class="send-code">{{msg}}</span>
+                    <input @input="validateCode" v-model="code" placeholder="请输入验证码" type="number" class="content">
+                    <span v-cloak @click="getCode" class="send-code">{{msg}}</span>
                 </li>
                 <li class="bind-item">
-                    <input v-model="password" @input="validatePass" placeholder="设置密码" type="password" class="content">
+                    <input @input="validatePass" v-model="password" placeholder="输入原账号密码" type="password" class="content">
                 </li>
             </ul>
-            <button :class="{'bind-phone':isInputAll,'bind-btn':true}" :disabled="!isInputAll">
-                立即绑定
+            <button type="button" @click="changeNow" :class="{'bind-phone':isInputAll,'bind-btn':true}" :disabled="!isInputAll">
+                立即更换
             </button>
         </div>
     </div>

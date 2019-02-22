@@ -5,15 +5,9 @@ var vm = new Vue({
     },
     methods: {
         bindPhone() {
-            //绑定手机号
-            if(JSON.parse(localStorage.getItem('user')).users.phone) {
-                mui.toast('手机号已绑定');
-            }
-            else {
-                mui.openWindow({
-                    url:'bind-phone.html'
-                })
-            }
+            mui.openWindow({
+                url: 'bind-phone.html'
+            })
         },
         exitLogin() {
             //退出登录

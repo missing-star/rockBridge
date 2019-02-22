@@ -152,6 +152,7 @@ $(function () {
     });
     //分类tab页切换
     $('li.sort-item').click(function () {
+        page1 = page2 = 1;
         var fields = $(this).attr('data-sort-type');
         var type = 'desc';
         if (!$(this).hasClass('active')) {

@@ -6,7 +6,12 @@ var vm = new Vue({
         }
     },
     methods: {
-        
+        //编辑
+        editShops(id) {
+            mui.openWindow({
+                url: `bind-shops-add.html?id=${id}&type=edit`
+            });
+        }
     },
     filters: {
         filterImg(thumb) {

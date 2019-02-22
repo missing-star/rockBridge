@@ -165,9 +165,9 @@ var vm = new Vue({
                 success: function (data) {
                     if (data.status == 1) {
                         mui.confirm('资料已提交成功', '', ['确定'], function (e) {
-                            window.location.reload();
-                            //可以进行切换
-                            localStorage.setItem('switchRole', 1);
+                            mui.openWindow({
+                                url:'user.html'
+                            });
                         });
                     } else {
                         mui.toast(data.msg);

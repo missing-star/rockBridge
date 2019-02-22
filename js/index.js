@@ -80,7 +80,7 @@ var vm = new Vue({
                 //需要登录操作
                 if (validateUser()) {
                     if (localStorage.getItem('switchRole') == 0) {
-                        if(isShop == 1) {
+                        if(isShop == 1 || isShop == 2) {
                             mui.openWindow({
                                 url:'shop-auth.html'
                             });

@@ -10,7 +10,8 @@ var vm = new Vue({
         passwrodValidate: false,
         sendCode: false,
         waitTime: 60,
-        msg: '获取验证码'
+        msg: '获取验证码',
+        originPhone:JSON.parse(localStorage.getItem('user')).users.phone
     },
     methods: {
         validatePhone() {
@@ -24,6 +25,10 @@ var vm = new Vue({
             }
         },
         getCode() {
+            // if(this.phone == this.originPhone) {
+            //     mui.toast('请使用新手机号进行绑定');
+            //     return;
+            // }
             if (this.sendCode && this.waitTime == 60) {
                 $.ajax({
                     url: `${rootUrl}/index/api/sendSms`,
@@ -83,6 +88,30 @@ var vm = new Vue({
         },
         clearPhone() {
             this.phone = '';
+        },
+        changeNow() {
+            $.ajax({
+                url:`${rootUrl}/index/api/updateUserPhone`,
+                type:'post',
+                dataType:'json',
+                data:{
+                    phone:this.originPhone,
+                    password:this.password,
+                    x_phone:this.phone,
+                    code:this.code
+                },
+                success:function(data) {
+                    mui.toast(data.msg);
+                    if(data.status == 1) {
+                        setTimeout(function(){
+                            history.go(-1);
+                        }, 200);
+                    }
+                },
+                error:function() {
+                    mui.toast('服务器异常');
+                }
+            });
         }
     },
     watch: {

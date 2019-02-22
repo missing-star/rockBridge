@@ -18,7 +18,7 @@
             <img onclick="history.go(-1)" src="imgs/arrow-left-black.png" alt="" class="icon-back">
         </header>
         <div class="top-header">
-            <p class="title">商铺详情</p>
+            <p class="title">门店详情</p>
             <p class="status">{{shopsInfo.status == 2 ? '已通过' : (shopsInfo.status == 1 ? '待审核' : (shopsInfo.status == 3
                 ? '已拒绝' : '已解绑'))}}</p>
             <button class="edit" @click="editShops(shopsInfo.id)">编辑</button>
@@ -59,7 +59,7 @@
     <script src="assets/mui/picker/js/mui.picker.js?v=1.0.0"></script>
     <script src="assets/mui/picker/js/mui.poppicker.js?v=1.0.0"></script>
     <script src="js/common.js?v=1.0.0"></script>
-    <script src="js/shops-shops-detail.js?v=1.0.0"></script>
+    <script src="js/shops-shops-detail.js?v=1.0.1"></script>
 </body>
 
 </html>
