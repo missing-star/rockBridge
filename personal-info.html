@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
@@ -27,7 +31,7 @@
         <div class="mui-content">
             <div v-show="!isEditName" class="user-logo-editor">
                 <div @click="editNickname" class="editor-nickname">
-                    <p v-cloak  class="nickname">{{nickname}}</p>
+                    <p v-cloak class="nickname">{{nickname}}</p>
                     <p class="sub-title">点击编辑昵称</p>
                 </div>
                 <div class="editor-logo">
@@ -40,7 +44,7 @@
             <div v-show="isEditName" class="editName">
                 <div class="input-group">
                     <input v-model="editName" @input="limitName" type="text" class="editor">
-                    <span v-cloak  class="inpupt-number">{{editName.length}} / 8</span>
+                    <span v-cloak class="inpupt-number">{{editName.length}} / 8</span>
                     <span @click="clearInput" v-show="editName.length != 0" class="clear-input">
                         <img src="imgs/clear.png" alt="">
                     </span>

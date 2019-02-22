@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/pay-detail-detail.css?v=1.0.0">
@@ -28,7 +32,7 @@
                 <!-- <img src="imgs/electric.png" alt="" class="trade-icon"> -->
                 <!-- <p class="title">南京供电公司</p> -->
                 <p class="show-title" v-cloak>{{detail.name}}</p>
-                <p v-cloak  class="trade-money">-{{detail.actual_payment}}</p>
+                <p v-cloak class="trade-money">-{{detail.actual_payment}}</p>
                 <p class="trade-status">交易成功</p>
             </div>
             <ul class="detail-list">
@@ -36,20 +40,20 @@
                     <label for="" class="title">
                         付款方式
                     </label>
-                    <p v-cloak  class="content">{{detail.pay_method}}</p>
+                    <p v-cloak class="content">{{detail.pay_method}}</p>
                 </li>
                 <li class="detail-item">
                     <label for="" class="title">
                         缴费说明
                     </label>
-                    <p v-cloak  class="content">{{detail.content}}</p>
+                    <p v-cloak class="content">{{detail.content}}</p>
                 </li>
                 <li class="detail-item">
                     <label for="" class="title space-between">
                         <span>户</span>
                         <span>号</span>
                     </label>
-                    <p v-cloak  class="content">{{detail.shop_code}}</p>
+                    <p v-cloak class="content">{{detail.shop_code}}</p>
                 </li>
                 <!-- <li class="detail-item">
                     <label for="" class="title">
@@ -58,11 +62,11 @@
                     <p class="content">6月12日-8月12日</p>
                 </li> -->
                 <li class="detail-item">
-                        <label for="" class="title">
-                            创建日期
-                        </label>
-                        <p v-cloak  class="content">{{detail.add_time}}</p>
-                    </li>
+                    <label for="" class="title">
+                        创建日期
+                    </label>
+                    <p v-cloak class="content">{{detail.add_time}}</p>
+                </li>
                 <li class="detail-item">
                     <label for="" class="title">
                         订单号

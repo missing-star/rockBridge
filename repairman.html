@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/repairman.css?v=1.0.0">
@@ -33,14 +37,14 @@
             <div data-type="2" class="goods-tab-content-item active">
                 <div v-for="item in assigning.list" class="goods-item upper">
                     <div class="goods-info upper">
-                        <p v-cloak  class="goods-order">单号：{{item.re_code}}</p>
+                        <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
                     </div>
                     <div class="goods-img-container">
                         <img :src="item.repait_content_images" alt="" class="goods-img">
                         <div class="goods-desc">
-                            <p v-cloak  class="desc-title">{{item.repair_title}}</p>
+                            <p v-cloak class="desc-title">{{item.repair_title}}</p>
                             <!-- <p class="desc-detail">{{item.detail}}</p> -->
-                            <p v-cloak  class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p v-cloak class="desc-time">预约时间：{{item.create_at}}</p>
                         </div>
                     </div>
                     <div class="operation-group">
@@ -54,15 +58,15 @@
             <div data-type="4" class="goods-tab-content-item active">
                 <div v-for="item in finished.list" class="goods-item upper">
                     <div class="goods-info upper">
-                        <p v-cloak  class="goods-order">单号：{{item.re_code}}</p>
+                        <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
                     </div>
                     <div class="goods-img-container">
                         <img :src="item.repait_content_images" alt="" class="goods-img">
                         <div class="goods-desc">
-                            <p v-cloak  class="desc-title">{{item.repair_title}}</p>
+                            <p v-cloak class="desc-title">{{item.repair_title}}</p>
                             <!-- <p class="desc-detail">{{item.detail}}</p> -->
-                            <p v-cloak  class="desc-time">预约时间：{{item.create_at}}</p>
-                            <p v-cloak  v-if="item.re_money > 0" class="pay-re-money">需支付：￥{{item.re_money}}</p>
+                            <p v-cloak class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p v-cloak v-if="item.re_money > 0" class="pay-re-money">需支付：￥{{item.re_money}}</p>
                         </div>
                     </div>
                     <div class="operation-group">
@@ -76,14 +80,14 @@
             <div data-type="3" class="goods-tab-content-item">
                 <div v-for="item in refused.list" class="goods-item upper">
                     <div class="goods-info upper">
-                        <p v-cloak  class="goods-order">单号：{{item.re_code}}</p>
+                        <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
                     </div>
                     <div class="goods-img-container">
                         <img :src="item.repait_content_images" alt="" class="goods-img">
                         <div class="goods-desc">
-                            <p v-cloak  class="desc-title">{{item.repair_title}}</p>
+                            <p v-cloak class="desc-title">{{item.repair_title}}</p>
                             <!-- <p class="desc-detail">{{item.detail}}</p> -->
-                            <p v-cloak  class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p v-cloak class="desc-time">预约时间：{{item.create_at}}</p>
                         </div>
                     </div>
                     <div class="operation-group">

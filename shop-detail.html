@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/shop-detail.css?v=1.0.0">
@@ -89,14 +93,18 @@
                     <div class="star-container">
                         <p class="score-star">
                             <span class="title">评分</span>
-                            <img class="comments-icon" v-for="n in commentsInfo.shop_review" src="imgs/star-high.png" alt="">
-                            <img class="comments-icon" v-for="n in (5 - commentsInfo.shop_review)" src="imgs/star.png" alt="">
+                            <img class="comments-icon" v-for="n in commentsInfo.shop_review" src="imgs/star-high.png"
+                                alt="">
+                            <img class="comments-icon" v-for="n in (5 - commentsInfo.shop_review)" src="imgs/star.png"
+                                alt="">
                             <span class="num">{{commentsInfo.shop_review}}</span>
                         </p>
                         <p class="score-star">
                             <span class="title">服务</span>
-                            <img class="comments-icon" v-for="n in commentsInfo.shop_quality" src="imgs/star-high.png" alt="">
-                            <img class="comments-icon" v-for="n in (5 - commentsInfo.shop_quality)" src="imgs/star.png" alt="">
+                            <img class="comments-icon" v-for="n in commentsInfo.shop_quality" src="imgs/star-high.png"
+                                alt="">
+                            <img class="comments-icon" v-for="n in (5 - commentsInfo.shop_quality)" src="imgs/star.png"
+                                alt="">
                             <span class="num">{{commentsInfo.shop_quality}}</span>
                         </p>
                     </div>
@@ -117,8 +125,10 @@
                                     <span class="username">{{item.nickname}}</span>
                                     <span class="score">
                                         评分
-                                        <img v-for="n in item.service" class="comments-icon" src="imgs/star-high.png" alt="">
-                                        <img class="comments-icon" v-for="n in (5 - item.service)" src="imgs/star.png" alt="">
+                                        <img v-for="n in item.service" class="comments-icon" src="imgs/star-high.png"
+                                            alt="">
+                                        <img class="comments-icon" v-for="n in (5 - item.service)" src="imgs/star.png"
+                                            alt="">
                                     </span>
                                 </p>
                             </div>

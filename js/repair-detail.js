@@ -5,6 +5,9 @@ switch (parseInt(param.status)) {
         statusName = '预约中';
         break;
     case 2:
+        statusName = '维修中';
+        break;
+    case 6:
         statusName = '指派中';
         break;
     case 4:
@@ -18,9 +21,9 @@ var vm = new Vue({
     el: '#app',
     data: {
         repairInfo: {
-            id:param.id,
-            status:param.status,
-            order_status:param.order_status,
+            id: param.id,
+            status: param.status,
+            order_status: param.order_status,
             shopName: '',
             repairNo: '',
             submitSection: '部门1',
@@ -30,11 +33,11 @@ var vm = new Vue({
             quesDesc: '',
             cause: '',
             imgs: [],
-            submitTime:'',
-            isTimeUp:true,
+            submitTime: '',
+            isTimeUp: true,
             //倒计时
-            remindTime:'',
-            needPay:''
+            remindTime: '',
+            needPay: ''
         }
     },
     methods: {
@@ -60,7 +63,7 @@ var vm = new Vue({
         feedBack() {
             // 维修反馈
             mui.openWindow({
-                url: 'repair-feedback.html?repair_id='+param.id+'&repair_review_status='+param.order_status
+                url: 'repair-feedback.html?repair_id=' + param.id + '&repair_review_status=' + param.order_status
             })
         },
         getRecord() {
@@ -78,21 +81,21 @@ var vm = new Vue({
     }
 });
 
-$(function() {
+$(function () {
     getRecordDetail(param.id);
 });
 
 function getRecordDetail(id) {
     $.ajax({
-        url:`${rootUrl}/index/api/getRepairRecordInfo`,
-        dataType:'json',
-        type:'post',
-        data:{
-            id:id
+        url: `${rootUrl}/index/api/getRepairRecordInfo`,
+        dataType: 'json',
+        type: 'post',
+        data: {
+            id: id
         },
-        success:function(data) {
+        success: function (data) {
             vm.repairInfo.submitTime = data.result.create_at;
-            data.result.repait_content_images.forEach(function(item,index) {
+            data.result.repait_content_images.forEach(function (item, index) {
                 vm.repairInfo.imgs.push(rootUrl + item);
             });
             vm.repairInfo.needPay = data.result.re_money;
@@ -102,7 +105,7 @@ function getRecordDetail(id) {
             vm.repairInfo.remindTime = countTime(data.result.create_at);
             vm.repairInfo.cause = data.result.refusal_content;
         },
-        error:function() {
+        error: function () {
             mui.toast('服务器异常！');
         }
     })

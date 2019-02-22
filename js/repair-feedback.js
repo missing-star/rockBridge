@@ -44,7 +44,7 @@ var vm = new Vue({
                 success: function (data) {
                     if (data.status == 1) {
                         mui.confirm('反馈已提交！', '', ['确定'], function (e) {
-                            window.location.reload();
+                           history.go(-1);
                         });
                     } else {
                         mui.toast(data.msg);

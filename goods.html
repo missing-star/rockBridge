@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/goods.css?v=1.0.0">
@@ -93,11 +97,11 @@
                     <img class="goods-img" :src="goods.images | filterImg" />
                     <div class="goods-info">
                         <p>
-                            <span v-cloak >{{goods.title}}</span>
-                            <span v-cloak  class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_num}}</span>
+                            <span v-cloak>{{goods.title}}</span>
+                            <span v-cloak class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_num}}</span>
                         </p>
                         <p>
-                            <span v-cloak  class="goods-price">￥{{goods.price}}</span>
+                            <span v-cloak class="goods-price">￥{{goods.price}}</span>
                             <button class="reserve">查看</button>
                         </p>
                     </div>
@@ -113,8 +117,10 @@
                         <div class="business-info">
                             <img :src="shop.images | filterImg" class="business-logo" />
                             <p class="business-detail">
-                                <span v-cloak  class="business-name">{{shop.title}}<img v-for="n in shop.shop_review" src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - shop.shop_review)" src="imgs/star.png" class="business-level" /></span>
-                                <span v-cloak >收藏 {{shop.shop_collection}}</span>
+                                <span v-cloak class="business-name">{{shop.title}}<img v-for="n in shop.shop_review"
+                                        src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - shop.shop_review)"
+                                        src="imgs/star.png" class="business-level" /></span>
+                                <span v-cloak>收藏 {{shop.shop_collection}}</span>
                             </p>
                         </div>
                         <button @click="getDetail('shop-detail.html',shop.id)" class="go-business-btn">
@@ -122,7 +128,8 @@
                         </button>
                     </div>
                     <div class="bottom">
-                        <img @click="getDetail('goods-detail.html',goods.id)" v-for="goods in shop.goods_list" :src="goods.images | filterImg" class="business-img-item" />
+                        <img @click="getDetail('goods-detail.html',goods.id)" v-for="goods in shop.goods_list" :src="goods.images | filterImg"
+                            class="business-img-item" />
                     </div>
                 </div>
                 <div class="bottom-line">
@@ -147,7 +154,7 @@
                     <p class="search-history-title">历史搜索</p>
                 </header>
                 <ul class="history-list">
-                    <li v-cloak  @click="searchHistory(item)" v-for="item in historyList" class="list-item">{{item}}</li>
+                    <li v-cloak @click="searchHistory(item)" v-for="item in historyList" class="list-item">{{item}}</li>
                 </ul>
             </div>
         </div>

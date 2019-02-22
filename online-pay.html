@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
@@ -35,7 +39,7 @@
                         <label for="" class="title">商铺地址</label>
                         <input v-model="selectedShopAddress" class="classify" type="text" readonly>
                     </li>
-                    <li  id="repair-list" v-show="isShowRepair" class="pay-item picker">
+                    <li id="repair-list" v-show="isShowRepair" class="pay-item picker">
                         <label for="" class="title">报修单</label>
                         <input v-model="selectedRepairName" type="text" class="classify" readonly>
                     </li>
@@ -75,7 +79,7 @@
                     <label for="" class="title">商铺地址</label>
                     <input v-model="selectedShopAddress" type="text" readonly>
                 </li>
-                <li v-show="isShowRepair"  class="pay-item picker">
+                <li v-show="isShowRepair" class="pay-item picker">
                     <label for="" class="title">报修单</label>
                     <input v-model="selectedRepairName" type="text" placeholder="请选择报修单" readonly>
                 </li>

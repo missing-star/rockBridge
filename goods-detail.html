@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="assets/swiper/css/swiper.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
-    <link rel="stylesheet" href="css/goods-detail.css?v=1.0.0">
+    <link rel="stylesheet" href="css/goods-detail.css?v=1.0.1">
     <title>叠石桥</title>
     <!--
         商品详情
@@ -30,14 +34,14 @@
         </div>
         <div class="goods-desc">
             <div v-if="goodsInfo.goods.is_collection == 1" class="goods-title-container">
-                <p v-cloak  class="title">{{goodsInfo.goods.title}}</p>
+                <p v-cloak class="title">{{goodsInfo.goods.title}}</p>
                 <p @click="collect(0)" class="collection">
                     <img src="imgs/star-high.png" alt="">
                     <span class="active">已收藏</span>
                 </p>
             </div>
             <div v-else class="goods-title-container">
-                <p v-cloak  class="title">{{goodsInfo.goods.title}}</p>
+                <p v-cloak class="title">{{goodsInfo.goods.title}}</p>
                 <p @click="collect(1)" class="collection">
                     <img src="imgs/star.png" alt="">
                     <span>收藏</span>
@@ -49,8 +53,10 @@
             <div class="business-info">
                 <img :src="goodsInfo.shops_info.images" class="business-logo" />
                 <p class="business-detail">
-                    <span v-cloak  class="business-name">{{goodsInfo.shops_info.title}}<img v-for="n in goodsInfo.shops_info.shop_review" src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - goodsInfo.shops_info.shop_review)" src="imgs/star.png" class="business-level" /></span>
-                    <span v-cloak >收藏 {{goodsInfo.shops_info.shop_collection}}</span>
+                    <span v-cloak class="business-name">{{goodsInfo.shops_info.title}}<img v-for="n in goodsInfo.shops_info.shop_review"
+                            src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - goodsInfo.shops_info.shop_review)"
+                            src="imgs/star.png" class="business-level" /></span>
+                    <span v-cloak>收藏 {{goodsInfo.shops_info.shop_collection}}</span>
                 </p>
             </div>
             <button @click="enterShop(goodsInfo.shops_info.id)" class="go-business-btn">

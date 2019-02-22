@@ -5,7 +5,7 @@ div#app {
 div.swiper-slide img {
     width: 100%;
     border-radius: 0.5rem;
-    height: 60vw;
+    max-height: 100vw;
 }
 
 .swiper-container {
@@ -59,6 +59,8 @@ p.collection>span.active{
 }
 img.business-logo {
     width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
 }
 .business-container {
     display: flex;

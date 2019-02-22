@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/repair-detail.css?v=1.0.0">
@@ -71,7 +75,7 @@
                 </li>
                 <li v-if="repairInfo.repairStatus == 4 && repairInfo.needPay > 0" class="repair-item need-pay">
                     <p class="title">需缴费</p>
-                    <p v-cloak  class="money">{{repairInfo.needPay}}</p>
+                    <p v-cloak class="money">{{repairInfo.needPay}}</p>
                 </li>
             </ul>
             <template v-if="repairInfo.repairStatus != 0">
@@ -85,10 +89,12 @@
                     提交并支付
                 </button> -->
                 <!--已完成（已缴费）-->
-                <button v-if="repairInfo.repairStatus == 4 && parseFloat(repairInfo.needPay) == 0" @click="feedBack" class="submit-repair">
+                <button v-if="repairInfo.repairStatus == 4 && parseFloat(repairInfo.needPay) == 0" @click="feedBack"
+                    class="submit-repair">
                     维修反馈
                 </button>
-                <button v-if="repairInfo.repairStatus == 4 && repairInfo.needPay > 0" @click="goPay(repairInfo.status,repairInfo.id,repairInfo.order_status)" class="submit-repair pay">
+                <button v-if="repairInfo.repairStatus == 4 && repairInfo.needPay > 0" @click="goPay(repairInfo.status,repairInfo.id,repairInfo.order_status)"
+                    class="submit-repair pay">
                     立即支付
                 </button>
             </template>

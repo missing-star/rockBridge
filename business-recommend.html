@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/business-recommend.css?v=1.0.0">
@@ -29,10 +33,10 @@
                         <div class="business-info">
                             <img :src="item.images | filterImg" class="business-logo" />
                             <p class="business-detail">
-                                <span v-cloak  class="business-name">{{item.title}}<img v-for="n in item.shop_review" src="imgs/star-high.png"
-                                        class="business-level" /><img v-for="n in (5 - item.shop_review)" src="imgs/star.png"
-                                        class="business-level" /></span>
-                                <span v-cloak >收藏 {{item.shop_collection}}</span>
+                                <span v-cloak class="business-name">{{item.title}}<img v-for="n in item.shop_review"
+                                        src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - item.shop_review)"
+                                        src="imgs/star.png" class="business-level" /></span>
+                                <span v-cloak>收藏 {{item.shop_collection}}</span>
                             </p>
                         </div>
                         <button @click="getDetail('shop-detail.html',item.id)" class="go-business-btn">
@@ -40,7 +44,8 @@
                         </button>
                     </div>
                     <div class="bottom">
-                        <img  @click="getDetail('goods-detail.html',img.id)" @click="" v-for="img in item.goods_list" :src="img.images | filterImg" class="business-img-item" />
+                        <img @click="getDetail('goods-detail.html',img.id)" @click="" v-for="img in item.goods_list"
+                            :src="img.images | filterImg" class="business-img-item" />
                     </div>
                 </div>
                 <div class="bottom-line">

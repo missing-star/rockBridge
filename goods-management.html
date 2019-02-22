@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/goods-management.css?v=1.0.0">
@@ -47,19 +51,19 @@
         <ul class="goods-tab-bar">
             <li data-type="1" class="goods-tab-bar-item active">
                 已上架
-                <span v-cloak  class="current-number">
+                <span v-cloak class="current-number">
                     ({{upperList.length}})
                 </span>
             </li>
             <li data-type="2,3" class="goods-tab-bar-item">
                 审核中
-                <span v-cloak  class="current-number">
+                <span v-cloak class="current-number">
                     ({{stockList.length}})
                 </span>
             </li>
             <li data-type="4" class="goods-tab-bar-item">
                 仓库中
-                <span v-cloak  class="current-number">
+                <span v-cloak class="current-number">
                     ({{lowerList.length}})
                 </span>
             </li>
@@ -76,20 +80,20 @@
                 <div v-for="item in upperList" class="goods-item upper">
                     <div :goods-id="item.id" class="goods-info upper">
                         <span class="checkbox"></span>
-                        <p v-cloak  class="goods-order">商品编号：{{item.sku}}</p>
+                        <p v-cloak class="goods-order">商品编号：{{item.sku}}</p>
                         <span class="is-upper">已上架</span>
                     </div>
                     <div @click="getGoodsDetail(item.id)" class="goods-img-container">
                         <img :src="item.images" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
-                                <span v-cloak  class="title">{{item.title}}</span>
+                                <span v-cloak class="title">{{item.title}}</span>
                                 <span class="eye-number">
                                     <img src="imgs/eye.png" alt="">
-                                    <span v-cloak >{{item.click_num}}</span>
+                                    <span v-cloak>{{item.click_num}}</span>
                                 </span>
                             </p>
-                            <p v-cloak  class="stock">
+                            <p v-cloak class="stock">
                                 库存：{{item.nums}}件
                             </p>
                         </div>
@@ -111,20 +115,20 @@
             <div data-type="2,3" class="goods-tab-content-item">
                 <div v-for="item in stockList" class="goods-item stock">
                     <div :goods-id="item.id" class="goods-info stock">
-                        <p v-cloak  class="goods-order">商品编号：{{item.sku}}</p>
+                        <p v-cloak class="goods-order">商品编号：{{item.sku}}</p>
                         <span class="is-upper lower">仓库中</span>
                     </div>
-                    <div @click="getGoodsDetail(item.id)"  class="goods-img-container">
+                    <div @click="getGoodsDetail(item.id)" class="goods-img-container">
                         <img :src="item.images" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
-                                <span v-cloak  class="title">{{item.title}}</span>
+                                <span v-cloak class="title">{{item.title}}</span>
                                 <span class="eye-number">
                                     <img src="imgs/eye.png" alt="">
-                                    <span v-cloak >{{item.click_num}}</span>
+                                    <span v-cloak>{{item.click_num}}</span>
                                 </span>
                             </p>
-                            <p v-cloak  class="stock">
+                            <p v-cloak class="stock">
                                 库存：{{item.nums}}件
                             </p>
                             <p class="refuse-cause" v-cloak>未通过：{{item.refusal_content}}</p>
@@ -141,20 +145,20 @@
                 <div v-for="item in lowerList" class="goods-item stock">
                     <div class="goods-info stock">
                         <span class="checkbox"></span>
-                        <p v-cloak  class="goods-order">商品编号：{{item.sku}}</p>
+                        <p v-cloak class="goods-order">商品编号：{{item.sku}}</p>
                         <span class="is-upper">已下架</span>
                     </div>
-                    <div @click="getGoodsDetail(item.id)"  class="goods-img-container">
+                    <div @click="getGoodsDetail(item.id)" class="goods-img-container">
                         <img :src="item.images" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
-                                <span v-cloak  class="title">{{item.title}}</span>
+                                <span v-cloak class="title">{{item.title}}</span>
                                 <span class="eye-number">
                                     <img src="imgs/eye.png" alt="">
-                                    <span v-cloak >{{item.click_num}}</span>
+                                    <span v-cloak>{{item.click_num}}</span>
                                 </span>
                             </p>
-                            <p v-cloak  class="stock">
+                            <p v-cloak class="stock">
                                 库存：{{item.nums}}件
                             </p>
                         </div>

@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/upload-goods.css?v=1.0.0">
@@ -29,13 +33,13 @@
             <input v-model="goodsName" @input="limitName" placeholder="20字内编辑商品标题" type="text" class="goods-name-input">
         </div>
         <div class="goods-name-container">
-                <p class="goods-name-title">搜索关键词</p>
-                <input v-model="keywords" @input="limitKeywords" placeholder="以逗号隔开多个关键词" type="text" class="goods-name-input">
-            </div>
+            <p class="goods-name-title">搜索关键词</p>
+            <input v-model="keywords" @input="limitKeywords" placeholder="以逗号隔开多个关键词" type="text" class="goods-name-input">
+        </div>
         <div class="goods-desc-container">
             <p class="goods-name-title">商品描述</p>
             <textarea v-model="description" @input="recordCounts" placeholder="输入您的描述" class="goods-desc-content"></textarea>
-            <span v-cloak  class="limit-num">{{counts}} / 200</span>
+            <span v-cloak class="limit-num">{{counts}} / 200</span>
         </div>
         <div class="price-container">
             <label for="" class="title">价格：</label>
@@ -50,7 +54,7 @@
             </p>
             <span class="unit">元</span>
         </div>
-        <span v-cloak  class="warning">{{showPriceMsg}}</span>
+        <span v-cloak class="warning">{{showPriceMsg}}</span>
         <div class="price-container">
             <label for="" class="title">库存：</label>
             <p class="calculator">
@@ -64,7 +68,7 @@
             </p>
             <span class="unit">件</span>
         </div>
-        <span v-cloak  class="warning">{{showCountsMsg}}</span>
+        <span v-cloak class="warning">{{showCountsMsg}}</span>
         <div class="goods-name-container">
             <p class="goods-name-title">上传图片</p>
             <div class="repair-item upload">
@@ -78,7 +82,7 @@
                         <input class="upload-input" hidden type="file" accept="image/*">
                     </div>
                     <img src="imgs/camera.png" alt="" class="camera">
-                    <span v-cloak  class="imgs-num">{{uploadedImgs.length}} / 5</span>
+                    <span v-cloak class="imgs-num">{{uploadedImgs.length}} / 5</span>
                 </div>
             </div>
         </div>

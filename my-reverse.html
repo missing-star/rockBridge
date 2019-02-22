@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/my-reverse.css?v=1.0.0">
@@ -38,23 +42,23 @@
             <div data-type="0" class="goods-tab-content-item active">
                 <div v-for="item in upperList" class="goods-item upper">
                     <div class="goods-info upper">
-                        <p v-cloak  class="goods-order">商品编号：{{item.order}}</p>
+                        <p v-cloak class="goods-order">商品编号：{{item.order}}</p>
                         <span class="is-upper lower">预约中</span>
                     </div>
                     <div class="goods-img-container">
                         <img :src="item.thumb" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
-                                <span class="title" v-cloak >{{item.title}}</span>
+                                <span class="title" v-cloak>{{item.title}}</span>
                                 <span class="eye-number">
                                     <img src="imgs/eye.png" alt="">
-                                    <span v-cloak >{{item.watched}}</span>
+                                    <span v-cloak>{{item.watched}}</span>
                                 </span>
                             </p>
-                            <p class="stock" v-cloak >
+                            <p class="stock" v-cloak>
                                 库存：{{item.stock}}件
                             </p>
-                            <p class="reverse" v-cloak >
+                            <p class="reverse" v-cloak>
                                 预约：{{item.reverse}}
                             </p>
                         </div>
@@ -68,23 +72,23 @@
             <div data-type="1" class="goods-tab-content-item">
                 <div v-for="item in stockList" class="goods-item stock">
                     <div class="goods-info stock">
-                        <p v-cloak  class="goods-order">商品编号：{{item.order}}</p>
+                        <p v-cloak class="goods-order">商品编号：{{item.order}}</p>
                         <span class="is-upper lower">已受理</span>
                     </div>
                     <div class="goods-img-container">
                         <img :src="item.thumb" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
-                                <span v-cloak  class="title">{{item.title}}</span>
-                                <span v-cloak  class="eye-number">
+                                <span v-cloak class="title">{{item.title}}</span>
+                                <span v-cloak class="eye-number">
                                     <img src="imgs/eye.png" alt="">
                                     <span>{{item.watched}}</span>
                                 </span>
                             </p>
-                            <p v-cloak  class="stock">
+                            <p v-cloak class="stock">
                                 库存：{{item.stock}}件
                             </p>
-                            <p v-cloak  class="reverse">
+                            <p v-cloak class="reverse">
                                 预约：{{item.reverse}}
                             </p>
                         </div>
@@ -98,23 +102,23 @@
             <div class="goods-tab-content-item">
                 <div v-for="item in lowerList" class="goods-item stock">
                     <div class="goods-info stock">
-                        <p v-cloak  class="goods-order">商品编号：{{item.order}}</p>
+                        <p v-cloak class="goods-order">商品编号：{{item.order}}</p>
                         <span class="is-upper lower">已取消</span>
                     </div>
                     <div class="goods-img-container">
                         <img :src="item.thumb" alt="" class="goods-img">
                         <div class="goods-desc">
                             <p class="goods-title">
-                                <span v-cloak  class="title">{{item.title}}</span>
+                                <span v-cloak class="title">{{item.title}}</span>
                                 <span class="eye-number">
                                     <img src="imgs/eye.png" alt="">
-                                    <span v-cloak >{{item.watched}}</span>
+                                    <span v-cloak>{{item.watched}}</span>
                                 </span>
                             </p>
-                            <p v-cloak  class="stock">
+                            <p v-cloak class="stock">
                                 库存：{{item.stock}}件
                             </p>
-                            <p  v-cloak class="reverse">
+                            <p v-cloak class="reverse">
                                 预约：{{item.reverse}}
                             </p>
                         </div>

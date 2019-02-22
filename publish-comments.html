@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/publish-comments.css?v=1.0.0">
@@ -30,7 +34,7 @@
                 <p class="star-num">
                     <span v-for="n in 5" @click="selectDesc(0,n,$event)" class="star-container"></span>
                 </p>
-                <p v-cloak  class="show-title">
+                <p v-cloak class="show-title">
                     {{goodsDescTitle}}
                 </p>
             </div>
@@ -39,7 +43,7 @@
                 <p class="star-num">
                     <span v-for="n in 5" @click="selectDesc(1,n,$event)" class="star-container"></span>
                 </p>
-                <p v-cloak  class="show-title">
+                <p v-cloak class="show-title">
                     {{productProvideTitle}}
                 </p>
             </div>
@@ -65,10 +69,11 @@
                         <input class="upload-input" hidden type="file" accept="image/*">
                     </div>
                     <img src="imgs/camera.png" alt="" class="camera">
-                    <span v-cloak  class="imgs-num">{{uploadedImgs.length}} / 3</span>
+                    <span v-cloak class="imgs-num">{{uploadedImgs.length}} / 3</span>
                 </div>
             </div>
-            <button @click="submitComments" :disabled="isDisabled" :class="{active:!isDisabled,disabled:isDisabled}" class="publish-btn">发布</button>
+            <button @click="submitComments" :disabled="isDisabled" :class="{active:!isDisabled,disabled:isDisabled}"
+                class="publish-btn">发布</button>
         </div>
     </div>
     <script src="assets/vue/vue.min.js?v=1.0.0"></script>

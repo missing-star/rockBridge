@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
@@ -23,7 +27,7 @@
         <div class="mui-content">
             <header class="packet-title">
                 <p>缴费明细</p>
-                <p id="footprint-date" >
+                <p id="footprint-date">
                     <span v-cloak class="date-time">{{printDate}}</span>
                     <span class="arrow-down">
                         <img class="icon-down" src="imgs/arrow-down-black.png" alt="">
@@ -31,7 +35,8 @@
                 </p>
             </header>
             <ul class="cost-category-list">
-                <li v-cloak  @click="switchTab($event,item.id)" v-for="(item,index) in categoryIdList" :data-type="item.id" class="cost-category-item" :class="{active:index == 0}">{{item.name}}</li>
+                <li v-cloak @click="switchTab($event,item.id)" v-for="(item,index) in categoryIdList" :data-type="item.id"
+                    class="cost-category-item" :class="{active:index == 0}">{{item.name}}</li>
             </ul>
             <!--水费-->
             <div class="history-pay-list active">
@@ -39,13 +44,13 @@
                     <div class="pay-category">
                         <img :src="currentIcon" alt="" class="pay-icon">
                         <div class="title-address">
-                            <p v-cloak  class="pay-title">{{item.name}}</p>
+                            <p v-cloak class="pay-title">{{item.name}}</p>
                             <!-- <p class="address">{{item.number}} | {{item.address}}</p> -->
                         </div>
                     </div>
                     <div class="pay-date">
-                        <p v-cloak  class="date-time">{{item.add_time}}</p>
-                        <p v-cloak  class="cost">{{parseFloat(item.actual_payment).toFixed(2)}}</p>
+                        <p v-cloak class="date-time">{{item.add_time}}</p>
+                        <p v-cloak class="cost">{{parseFloat(item.actual_payment).toFixed(2)}}</p>
                     </div>
                 </div>
                 <div v-if="contentList.length != 0" class="no-more">---没有更多了---</div>

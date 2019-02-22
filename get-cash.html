@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.0">
     <link rel="stylesheet" href="css/common.css?v=1.0.0">
     <link rel="stylesheet" href="css/get-cash.css?v=1.0.0">
     <title>叠石桥</title>
 </head>
+
 <body>
     <div id="app">
         <header class="mui-bar mui-bar-nav">
@@ -25,7 +31,7 @@
                 </span>
                 <p class="get-cash-container">
                     <span class="icon-get-cash">￥</span>
-                    <input v-model="inputMoney" type="number" class="input-cash"/>
+                    <input v-model="inputMoney" type="number" class="input-cash" />
                 </p>
                 <p class="current-balance">
                     <span>当前余额 ￥{{balance}}</span>
@@ -34,7 +40,7 @@
             </div>
             <!-- <p class="warning">{{warning}}</p> -->
             <div class="alipay-get-cash">
-                <img class="alipay-icon" src="imgs/alipay.png"/>
+                <img class="alipay-icon" src="imgs/alipay.png" />
                 <p>支付宝提现</p>
             </div>
             <div class="packet-btn-group">
@@ -42,10 +48,11 @@
             </div>
         </div>
     </div>
-    <script src="assets/vue/vue.min.js?v=1.0.0"></script>   
+    <script src="assets/vue/vue.min.js?v=1.0.0"></script>
     <script src="assets/jquery/jquery.min.js?v=1.0.0"></script>
     <script src="assets/mui/js/mui.min.js?v=1.0.0"></script>
     <script src="js/common.js?v=1.0.0"></script>
     <script src="js/get-cash.js?v=1.0.0"></script>
 </body>
+
 </html>
