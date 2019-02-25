@@ -81,7 +81,7 @@
                 </li>
                 <li @click="uploadLicense" class="tab-contetn-item arrow-right">
                     <label for="" class="title">
-                        营业执照（选填）
+                        营业执照<i class="must-icon">*</i>
                     </label>
                     <span v-cloak class="upload-status">{{cardList.license.realPath != '' ? '已选择' : '请上传'}}</span>
                     <input type="file" accept="image/*" hidden id="license">

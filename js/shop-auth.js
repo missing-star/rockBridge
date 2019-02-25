@@ -153,6 +153,10 @@ var vm = new Vue({
                 mui.toast('请上传身份证正反两面！');
                 return false;
             }
+            else if(this.cardList.business_license.realPath == '') {
+                mui.toast('请上传营业执照');
+                return false;
+            }
             else if(formData.landlord_phone.length != 0 && !regPhone.test(formData.landlord_phone)) {
                 mui.toast('请输入正确的房东电话！');
                 return false;
