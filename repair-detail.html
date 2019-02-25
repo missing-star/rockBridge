@@ -65,7 +65,7 @@
                         <textarea readonly disabled v-model="repairInfo.quesDesc" placeholder="简单描述您的报修问题" name="" id=""></textarea>
                     </li>
                     <li class="repair-item img-container">
-                        <img v-for="item in repairInfo.imgs" :src="item" class="repair-img" alt="" />
+                        <img v-for="item in repairInfo.imgs" :src="item" class="repair-img" alt="" data-preview-group="1" />
                     </li>
                 </template>
                 <!--拒绝时显示-->
@@ -78,31 +78,21 @@
                     <p v-cloak class="money">{{repairInfo.needPay}}</p>
                 </li>
             </ul>
-            <template v-if="repairInfo.repairStatus != 0">
-                <!--指派中-->
-                <!-- <button v-if="repairInfo.repairStatus == 1" @click="reminder" class="button" :class="{'submit-repair':repairInfo.isTimeUp}"
-                    :disabled="!repairInfo.isTimeUp">
-                    催单
-                </button> -->
-                <!--已完成（未缴费）-->
-                <!-- <button v-if="repairInfo.repairStatus == 2" @click="payOnline" class="submit-repair pay">
-                    提交并支付
-                </button> -->
-                <!--已完成（已缴费）-->
-                <button v-if="repairInfo.repairStatus == 4 && parseFloat(repairInfo.needPay) == 0" @click="feedBack"
-                    class="submit-repair">
-                    维修反馈
-                </button>
-                <button v-if="repairInfo.repairStatus == 4 && repairInfo.needPay > 0" @click="goPay(repairInfo.status,repairInfo.id,repairInfo.order_status)"
-                    class="submit-repair pay">
-                    立即支付
-                </button>
-            </template>
+            <!-- <button v-if="repairInfo.repairStatus == 4 && parseFloat(repairInfo.needPay) == 0" @click="feedBack" class="submit-repair">
+                维修反馈
+            </button>
+            <button v-if="repairInfo.repairStatus == 4 && repairInfo.needPay > 0" @click="goPay(repairInfo.status,repairInfo.id,repairInfo.order_status)"
+                class="submit-repair pay">
+                立即支付
+            </button> -->
+            <button class="cancel-reverse">取消预约</button>
         </div>
     </div>
     <script src="assets/vue/vue.min.js?v=1.0.0"></script>
     <script src="assets/jquery/jquery.min.js?v=1.0.0"></script>
     <script src="assets/mui/js/mui.min.js?v=1.0.0"></script>
+    <script src="assets/mui/js/mui.zoom.js"></script>
+    <script src="assets/mui/js/mui.previewimage.js"></script>
     <script src="js/common.js?v=1.0.0"></script>
     <script src="js/repair-detail.js?v=1.0.0"></script>
 </body>

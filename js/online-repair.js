@@ -38,26 +38,7 @@ var vm = new Vue({
             });
         },
         cancelReverse(id) {
-            //取消预约
-            $.ajax({
-                url: `${rootUrl}/index/api/getCancelRepair`,
-                type: 'post',
-                data: {
-                    id: id
-                },
-                dataType: 'json',
-                success: function (data) {
-                    mui.toast(data.msg);
-                    if (data.status == 1) {
-                        setTimeout(function () {
-                            location.reload();
-                        }, 500);
-                    }
-                },
-                error: function () {
-                    mui.toast('服务器异常！');
-                }
-            });
+            
         },
         getCause(cause) {
             var msg = cause == null ? '无' : cause;

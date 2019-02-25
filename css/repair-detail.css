@@ -240,3 +240,6 @@ li.repair-item.need-pay {
 button.submit-repair.pay {
     background: #FF7C3C;
 }
+button.cancel-reverse{
+    background: #9d7e60;
+}

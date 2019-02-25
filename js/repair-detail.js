@@ -78,11 +78,39 @@ var vm = new Vue({
                 url: 'online-pay.html?status=' + status + '&id=' + id + '&order_status=' + order_status
             });
         },
+        cancelReverse() {
+            //取消预约
+            mui.confirm('确定取消预约吗?', '', ['取消', '确定'], function (e) {
+                if (e.index == 1) {
+                    //取消预约
+                    $.ajax({
+                        url: `${rootUrl}/index/api/getCancelRepair`,
+                        type: 'post',
+                        data: {
+                            id: id
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            mui.toast(data.msg);
+                            if (data.status == 1) {
+                                setTimeout(function () {
+                                    history.go(-1);
+                                }, 200);
+                            }
+                        },
+                        error: function () {
+                            mui.toast('服务器异常！');
+                        }
+                    });
+                }
+            });
+        }
     }
 });
 
 $(function () {
     getRecordDetail(param.id);
+    mui.previewImage();
 });
 
 function getRecordDetail(id) {
