@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="confirmRepair(item.id)" class="get-detail reverse">完成维修</button>
+                        <!-- <button @click="confirmRepair(item.id)" class="get-detail reverse">完成维修</button> -->
                         <button @click="getDetail(1,item.id,item.handle_status)" class="get-detail">查看详情</button>
                     </div>
                 </div>
@@ -70,8 +70,9 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="settingMoney(item.id)" class="get-detail reverse">设置金额</button>
-                        <button @click="confirmRepair(item.id)" class="get-detail">无需缴费</button>
+                        <!-- <button @click="settingMoney(item.id)" class="get-detail reverse">设置金额</button>
+                        <button @click="confirmRepair(item.id)" class="get-detail">无需缴费</button> -->
+                        <button @click="getDetail(1,item.id,item.handle_status)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>

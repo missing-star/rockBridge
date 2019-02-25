@@ -104,12 +104,40 @@ var vm = new Vue({
                     });
                 }
             });
+        },
+        receiveOrder() {
+            //接受报修单
+            if (confirm('确定接受该报修单吗？')) {
+
+            }
+        },
+        refuseOrder() {
+            //拒绝报修单
+            if (confirm('确定拒绝该报修单吗？')) {
+
+            }
+        },
+        setPrice() {
+            mui.prompt('请输入金额', '金额', function (e) {
+                if (e.index == 1) {
+                    var reg = /^\d+(\.\d{0,2})?$/;
+                    var result = reg.test(e.value);
+                    if (result) {
+                        vm.inputMoney = e.value;
+                        submitRepair(id, e.value);
+                    } else {
+                        mui.toast('请输入正确的金额！');
+                        return false;
+                    }
+                }
+            });
         }
     }
 });
 
 $(function () {
     getRecordDetail(param.id);
+    //初始化图片预览
     mui.previewImage();
 });
 
@@ -137,4 +165,14 @@ function getRecordDetail(id) {
             mui.toast('服务器异常！');
         }
     })
+}
+
+function confirm(msg) {
+    const flag = false;
+    mui.confirm(msg, '', ['取消', '确定'], function (e) {
+        if (e.index == 1) {
+            flag = true;
+        }
+    });
+    return flag;
 }

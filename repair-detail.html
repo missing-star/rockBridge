@@ -65,7 +65,7 @@
                         <textarea readonly disabled v-model="repairInfo.quesDesc" placeholder="简单描述您的报修问题" name="" id=""></textarea>
                     </li>
                     <li class="repair-item img-container">
-                        <img v-for="item in repairInfo.imgs" :src="item" class="repair-img" alt="" data-preview-group="1" />
+                        <img data-preview-src="" v-for="item in repairInfo.imgs" :src="item" class="repair-img" alt="" data-preview-group="1" />
                     </li>
                 </template>
                 <!--拒绝时显示-->
@@ -85,7 +85,12 @@
                 class="submit-repair pay">
                 立即支付
             </button> -->
-            <button class="cancel-reverse">取消预约</button>
+            <button class="cancel-reverse" @click="cancelReverse">取消预约</button>
+            <div class="button-group">
+                <button @click="receiveOrder" class="receive-order">接受</button>
+                <button @click="refuseOrder" class="refuse-order">拒绝</button>
+            </div>
+            <button @click="setPrice" class="set-price">设置金额</button>
         </div>
     </div>
     <script src="assets/vue/vue.min.js?v=1.0.0"></script>
