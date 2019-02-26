@@ -1,25 +1,40 @@
 var param = getParams();
 var statusName = '';
-switch (parseInt(param.status)) {
-    case 1:
-        statusName = '预约中';
-        break;
-    case 2:
-        statusName = '维修中';
-        break;
-    case 6:
-        statusName = '指派中';
-        break;
-    case 4:
-        statusName = '维修完毕';
-        break;
-    case 3:
-        statusName = '已拒绝';
-        break;
+//当前用户为维修员还是商户
+const isRepairMan = JSON.parse(localStorage.getItem('user')).re_id > 0 ? true : false;
+if (isRepairMan) {
+    switch (param.status) {
+        case '2':
+            statusName = '待确认';
+            break;
+        case '3':
+            statusName = '维修中';
+            break;
+        case '4,5':
+            statusName = '已完成';
+            break;
+    }
+} else {
+    switch (param.status) {
+        case '1':
+            statusName = '预约中';
+            break;
+        case '2':
+            statusName = '指派中';
+            break;
+        case '3':
+            statusName = '维修中';
+            break;
+        case '4,5':
+            statusName = '已完成';
+            break;
+    }
 }
+
 var vm = new Vue({
     el: '#app',
     data: {
+        isRepairMan:isRepairMan,
         repairInfo: {
             id: param.id,
             status: param.status,
@@ -27,8 +42,6 @@ var vm = new Vue({
             shopName: '',
             repairNo: '',
             submitSection: '部门1',
-            //1:预约中，2：指派中，3：已拒绝，4：维修完成
-            repairStatus: param.status || 1,
             repairStatusName: statusName,
             quesDesc: '',
             cause: '',
@@ -41,14 +54,11 @@ var vm = new Vue({
         }
     },
     methods: {
-        reminder() {
-            //催单
-        },
         getShopInfo() {
             //获得商家信息
             mui.openWindow({
                 url: 'repair-shop-info.html'
-            })
+            });
         },
         payOnline() {
             //在线缴费
@@ -80,41 +90,112 @@ var vm = new Vue({
         },
         cancelReverse() {
             //取消预约
-            mui.confirm('确定取消预约吗?', '', ['取消', '确定'], function (e) {
+            mui.prompt('请填写取消原因', '原因', function (e) {
                 if (e.index == 1) {
-                    //取消预约
-                    $.ajax({
-                        url: `${rootUrl}/index/api/getCancelRepair`,
-                        type: 'post',
-                        data: {
-                            id: id
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            mui.toast(data.msg);
-                            if (data.status == 1) {
-                                setTimeout(function () {
-                                    history.go(-1);
-                                }, 200);
+                    if (e.value.trim() != '') {
+                        $.ajax({
+                            url: `${rootUrl}/index/api/getCancelRepair`,
+                            type: 'post',
+                            data: {
+                                id: id,
+                                refusal_content: e.value
+                            },
+                            dataType: 'json',
+                            success: function (data) {
+                                mui.toast(data.msg);
+                                if (data.status == 1) {
+                                    //重新拉取数据
+                                    getRecordDetail(param.id);
+                                }
+                            },
+                            error: function () {
+                                mui.toast('服务器异常！');
                             }
-                        },
-                        error: function () {
-                            mui.toast('服务器异常！');
-                        }
-                    });
+                        });
+                    } else {
+                        mui.toast('取消原因不可为空!');
+                        return false;
+                    }
                 }
             });
         },
         receiveOrder() {
             //接受报修单
             if (confirm('确定接受该报修单吗？')) {
-
+                $.ajax({
+                    url: `${rootUrl}/index/api/getConfirmAssignment`,
+                    type: 'post',
+                    async: false,
+                    dataType: 'json',
+                    data: {
+                        id: param.id
+                    },
+                    success: function (data) {
+                        mui.toast(data.msg);
+                        if (data.status == 1) {
+                            //重新拉取数据
+                            getRecordDetail(param.id);
+                        }
+                    },
+                    error: function () {
+                        mui.toast('服务器异常');
+                    }
+                });
             }
         },
         refuseOrder() {
             //拒绝报修单
-            if (confirm('确定拒绝该报修单吗？')) {
-
+            mui.prompt('请填写拒绝原因', '原因', function (e) {
+                if (e.index == 1) {
+                    if (e.value.trim() != '') {
+                        $.ajax({
+                            url: `${rootUrl}/index/api/getCancelRepair`,
+                            type: 'post',
+                            data: {
+                                id: id,
+                                refusal_content: e.value
+                            },
+                            dataType: 'json',
+                            success: function (data) {
+                                mui.toast(data.msg);
+                                if (data.status == 1) {
+                                    //重新拉取数据
+                                    getRecordDetail(param.id);
+                                }
+                            },
+                            error: function () {
+                                mui.toast('服务器异常！');
+                            }
+                        });
+                    } else {
+                        mui.toast('拒绝原因不可为空!');
+                        return false;
+                    }
+                }
+            });
+        },
+        completeOrder() {
+            //完成维修
+            if (confirm('确定已完成该保修单？')) {
+                $.ajax({
+                    url: `${rootUrl}/index/api/getUpdateOver`,
+                    type: 'post',
+                    async: false,
+                    dataType: 'json',
+                    data: {
+                        id: param.id
+                    },
+                    success: function (data) {
+                        mui.toast(data.msg);
+                        if (data.status == 1) {
+                            //重新拉取数据
+                            getRecordDetail(param.id);
+                        }
+                    },
+                    error: function () {
+                        mui.toast('服务器异常');
+                    }
+                });
             }
         },
         setPrice() {
@@ -137,8 +218,6 @@ var vm = new Vue({
 
 $(function () {
     getRecordDetail(param.id);
-    //初始化图片预览
-    mui.previewImage();
 });
 
 function getRecordDetail(id) {
@@ -160,6 +239,8 @@ function getRecordDetail(id) {
             vm.repairInfo.shopName = data.result.shop_phone;
             vm.repairInfo.remindTime = countTime(data.result.create_at);
             vm.repairInfo.cause = data.result.refusal_content;
+            //初始化图片预览
+            mui.previewImage();
         },
         error: function () {
             mui.toast('服务器异常！');

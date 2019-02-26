@@ -1,20 +1,20 @@
-var page2 = page3 = page4 = 1;
+var page1 = page2 = page3 = 1;
 var vm = new Vue({
     el: '#app',
     data: {
-        //指派中
+        //待确认 2
         assigning: {
             loadMore: true,
             list: []
         },
         inputMoney: '',
-        //已完成
-        finished: {
+        //维修中 3
+        fixing: {
             loadMore: true,
             list: []
         },
-        //已拒绝
-        refused: {
+        //已完成 4,5
+        finished: {
             loadMore: true,
             list: []
         }
@@ -59,10 +59,10 @@ $(function () {
             loadMore();
         }
     });
-    //获得报修记录1 处理中 2 维修中 3拒绝维修 4 维修完成
-    getRepairRecord(2, page2, true);
-    getRepairRecord(3, page3, true);
-    getRepairRecord(4, page4, true);
+    //获得报修记录 2--待确认 3--维修中 4,5--维修完成（包含取消的）
+    getRepairRecord('2', page1, true);
+    getRepairRecord('3', page2, true);
+    getRepairRecord('4,5', page3, true);
     loadMore();
 });
 
@@ -95,14 +95,14 @@ function getRepairRecord(type, page, loadMore) {
                 }
             });
             switch (parseInt(type)) {
-                case 2:
+                case '2':
                     vm.assigning.list = vm.assigning.list.concat(list);
                     break;
-                case 4:
-                    vm.finished.list = vm.finished.list.concat(list);
+                case '3':
+                    vm.fixing.list = vm.fixing.list.concat(list);
                     break;
-                case 3:
-                    vm.refused.list = vm.refused.list.concat(list);
+                case '4,5':
+                    vm.finished.list = vm.finished.list.concat(list);
             }
         },
         error: function () {
@@ -115,8 +115,8 @@ function getRepairRecord(type, page, loadMore) {
 function loadMore() {
     if (document.querySelector('.goods-tab-content-item.active .no-more').getBoundingClientRect().top < document.documentElement.clientHeight) {
         var type = document.querySelector('.goods-tab-content-item.active').dataset.type;
-        var page = type == 2 ? ++page2 : (type == 3 ? ++page3 : ++page4);
-        var loadMore = type == 2 ? vm.assigning.loadMore : (type == 3 ? vm.refused.loadMore : vm.finished.loadMore);
+        var page = type == '2' ? ++page1 : (type == '3' ? ++page2 : ++page3);
+        var loadMore = type == '2' ? vm.assigning.loadMore : (type == '3' ? vm.fixing.loadMore : vm.finished.loadMore);
         getRepairRecord(type, page, loadMore);
     }
 }

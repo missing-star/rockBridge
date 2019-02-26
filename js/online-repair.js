@@ -60,11 +60,11 @@ $(function () {
             loadMore();
         }
     });
-    //获得报修记录1 处理中 2 维修中 3拒绝维修 4 维修完成
-    getRepairRecord(1, page1, true);
-    getRepairRecord(2, page2, true);
-    getRepairRecord(3, page3, true);
-    getRepairRecord(4, page4, true);
+    //获得报修记录1 指派中 2 维修中 3维修中 4 维修完成(包括已取消的和已拒绝的)
+    getRepairRecord('1', page1, true);
+    getRepairRecord('2', page2, true);
+    getRepairRecord('3', page3, true);
+    getRepairRecord('4,5', page4, true);
     loadMore();
 });
 
@@ -97,28 +97,28 @@ function getRepairRecord(type, page, loadMore) {
                 }
             });
             switch (parseInt(type)) {
-                case 1:
+                case '1':
                     if (list.length == 0) {
                         vm.reverseing.loadMore = false;
                         break;
                     }
                     vm.reverseing.list = vm.reverseing.list.concat(list);
                     break;
-                case 2:
+                case '2':
                     if (list.length == 0) {
                         vm.assigning.loadMore = false;
                         break;
                     }
                     vm.assigning.list = vm.assigning.list.concat(list);
                     break;
-                case 3:
+                case '3':
                     if (list.length == 0) {
                         vm.refused.loadMore = false;
                         break;
                     }
                     vm.refused.list = vm.refused.list.concat(list);
                     break;
-                case 4:
+                case '4,5':
                     if (list.length == 0) {
                         vm.finished.loadMore = false;
                         break;

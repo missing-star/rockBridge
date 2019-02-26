@@ -23,17 +23,17 @@
         <!--tab页头-->
         <ul class="goods-tab-bar">
             <li class="goods-tab-bar-item active">
-                待处理
+                待确认
+            </li>
+            <li class="goods-tab-bar-item">
+                维修中
             </li>
             <li class="goods-tab-bar-item">
                 已完成
             </li>
-            <li class="goods-tab-bar-item">
-                已取消
-            </li>
         </ul>
         <div class="goods-tab-content">
-            <!--指派中-->
+            <!--待确认-->
             <div data-type="2" class="goods-tab-content-item active">
                 <div v-for="item in assigning.list" class="goods-item upper">
                     <div class="goods-info upper">
@@ -54,8 +54,8 @@
                 </div>
                 <div class="no-more">--没有更多了--</div>
             </div>
-            <!--已完成-->
-            <div data-type="4" class="goods-tab-content-item active">
+            <!--维修中-->
+            <div data-type="3" class="goods-tab-content-item active">
                 <div v-for="item in finished.list" class="goods-item upper">
                     <div class="goods-info upper">
                         <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
@@ -77,8 +77,8 @@
                 </div>
                 <div class="no-more">--没有更多了--</div>
             </div>
-            <!--已拒绝-->
-            <div data-type="3" class="goods-tab-content-item">
+            <!--已完成-->
+            <div data-type="4,5" class="goods-tab-content-item">
                 <div v-for="item in refused.list" class="goods-item upper">
                     <div class="goods-info upper">
                         <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
