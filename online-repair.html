@@ -32,15 +32,27 @@
         <ul class="goods-tab-bar">
             <li class="goods-tab-bar-item active">
                 预约中
+                <span v-cloak class="current-number">
+                    ({{}})
+                </span>
             </li>
             <li class="goods-tab-bar-item">
                 指派中
+                <span v-cloak class="current-number">
+                    ({{}})
+                </span>
+            </li>
+            <li class="goods-tab-bar-item">
+                维修中
+                <span v-cloak class="current-number">
+                    ({{}})
+                </span>
             </li>
             <li class="goods-tab-bar-item">
                 已完成
-            </li>
-            <li class="goods-tab-bar-item">
-                已取消
+                <span v-cloak class="current-number">
+                    ({{}})
+                </span>
             </li>
         </ul>
         <div class="goods-tab-content">
@@ -85,9 +97,9 @@
                 </div>
                 <div class="no-more">--没有更多了--</div>
             </div>
-            <!--已完成-->
-            <div data-type="4" class="goods-tab-content-item">
-                <div v-for="item in finished.list" class="goods-item upper">
+            <!--维修中-->
+            <div data-type="3" class="goods-tab-content-item">
+                <div v-for="item in fixing.list" class="goods-item upper">
                     <div class="goods-info upper">
                         <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
                     </div>
@@ -101,15 +113,14 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail(4,item.id,item.handle_status)" class="get-detail">查看详情</button>
-                        <button v-if="item.type == 1" @click="goPay(4,item.id,item.handle_status)" class="get-detail reverse">立即缴费</button>
+                        <button @click="getDetail(3,item.id,item.handle_status)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>
             </div>
-            <!--已拒绝-->
-            <div data-type="3" class="goods-tab-content-item">
-                <div v-for="item in refused.list" class="goods-item upper">
+            <!--已完成-->
+            <div data-type="4,5" class="goods-tab-content-item">
+                <div v-for="item in finished.list" class="goods-item upper">
                     <div class="goods-info upper">
                         <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
                     </div>
@@ -122,8 +133,7 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail(3,item.id)" class="get-detail">查看详情</button>
-                        <button @click="getCause(item.refusal_content)" class="get-detail reverse">拒绝原因</button>
+                        <button @click="getDetail('4,5',item.id,item.handle_status)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>

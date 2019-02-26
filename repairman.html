@@ -49,14 +49,14 @@
                     </div>
                     <div class="operation-group">
                         <!-- <button @click="confirmRepair(item.id)" class="get-detail reverse">完成维修</button> -->
-                        <button @click="getDetail(1,item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.handle_status,item.id,item.handle_status)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>
             </div>
             <!--维修中-->
             <div data-type="3" class="goods-tab-content-item active">
-                <div v-for="item in finished.list" class="goods-item upper">
+                <div v-for="item in fixing.list" class="goods-item upper">
                     <div class="goods-info upper">
                         <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
                     </div>
@@ -72,14 +72,14 @@
                     <div class="operation-group">
                         <!-- <button @click="settingMoney(item.id)" class="get-detail reverse">设置金额</button>
                         <button @click="confirmRepair(item.id)" class="get-detail">无需缴费</button> -->
-                        <button @click="getDetail(1,item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.handle_status,item.id,item.handle_status)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>
             </div>
             <!--已完成-->
             <div data-type="4,5" class="goods-tab-content-item">
-                <div v-for="item in refused.list" class="goods-item upper">
+                <div v-for="item in finished.list" class="goods-item upper">
                     <div class="goods-info upper">
                         <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
                     </div>
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail(1,item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.handle_status,item.id,item.handle_status)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>

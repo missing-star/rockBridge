@@ -2,21 +2,29 @@ var page1 = page2 = page3 = page4 = 1;
 var vm = new Vue({
     el: '#app',
     data: {
+        //预约
         reverseing: {
             loadMore: true,
-            list: []
+            list: [],
+            total:0
         },
+        //指派
         assigning: {
             loadMore: true,
-            list: []
+            list: [],
+            total:0
         },
+        //维修中
+        fixing: {
+            loadMore: true,
+            list: [],
+            total:0
+        },
+        //已完成
         finished: {
             loadMore: true,
-            list: []
-        },
-        refused: {
-            loadMore: true,
-            list: []
+            list: [],
+            total:0
         },
     },
     methods: {
@@ -60,7 +68,7 @@ $(function () {
             loadMore();
         }
     });
-    //获得报修记录1 指派中 2 维修中 3维修中 4 维修完成(包括已取消的和已拒绝的)
+    //获得报修记录1--预约中  2--指派中  3--维修中 4,5维修完成(包括已取消的和已拒绝的)
     getRepairRecord('1', page1, true);
     getRepairRecord('2', page2, true);
     getRepairRecord('3', page3, true);
@@ -88,7 +96,7 @@ function getRepairRecord(type, page, loadMore) {
         },
         dataType: 'json',
         success: function (data) {
-            var list = data.result;
+            var list = data.result.list;
             list.forEach(function (item, index) {
                 if (item.repait_content_images.indexOf(',') != -1) {
                     list[index].repait_content_images = rootUrl + item.repait_content_images.substring(0, item.repait_content_images.indexOf(','));
@@ -103,6 +111,7 @@ function getRepairRecord(type, page, loadMore) {
                         break;
                     }
                     vm.reverseing.list = vm.reverseing.list.concat(list);
+                    vm.reverseing.total = data.handle_num.handle_num1;
                     break;
                 case '2':
                     if (list.length == 0) {
@@ -110,13 +119,15 @@ function getRepairRecord(type, page, loadMore) {
                         break;
                     }
                     vm.assigning.list = vm.assigning.list.concat(list);
+                    vm.assigning.total = data.handle_num.handle_num2;
                     break;
                 case '3':
                     if (list.length == 0) {
-                        vm.refused.loadMore = false;
+                        vm.fixing.loadMore = false;
                         break;
                     }
-                    vm.refused.list = vm.refused.list.concat(list);
+                    vm.fixing.list = vm.fixing.list.concat(list);
+                    vm.fixing.total = data.handle_num.handle_num3;
                     break;
                 case '4,5':
                     if (list.length == 0) {
@@ -124,6 +135,7 @@ function getRepairRecord(type, page, loadMore) {
                         break;
                     }
                     vm.finished.list = vm.finished.list.concat(list);
+                    vm.finished.total = data.handle_num.handle_num4;
                     break;
             }
         },
@@ -137,8 +149,8 @@ function getRepairRecord(type, page, loadMore) {
 function loadMore() {
     if (document.querySelector('.goods-tab-content-item.active .no-more').getBoundingClientRect().top < document.documentElement.clientHeight) {
         var type = document.querySelector('.goods-tab-content-item.active').dataset.type;
-        var page = type == 1 ? ++page1 : (type == 2 ? ++page2 : (type == 3 ? ++page3 : ++page4));
-        var loadMore = type == 1 ? vm.reverseing.loadMore : (type == 2 ? vm.assigning.loadMore : (type == 3 ? vm.refused.loadMore : vm.finished.loadMore));
+        var page = type == '1' ? ++page1 : (type == '2' ? ++page2 : (type == '3' ? ++page3 : ++page4));
+        var loadMore = type == '1' ? vm.reverseing.loadMore : (type == '2' ? vm.assigning.loadMore : (type == '3' ? vm.fixing.loadMore : vm.finished.loadMore));
         getRepairRecord(type, page, loadMore);
     }
 }

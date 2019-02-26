@@ -5,34 +5,36 @@ var vm = new Vue({
         //待确认 2
         assigning: {
             loadMore: true,
-            list: []
+            list: [],
+            total: 0
         },
         inputMoney: '',
         //维修中 3
         fixing: {
             loadMore: true,
-            list: []
+            list: [],
+            total: 0
         },
         //已完成 4,5
         finished: {
             loadMore: true,
-            list: []
+            list: [],
+            total: 0
         }
     },
     methods: {
         confirmRepair(id) {
-            submitRepair(id,0);
+            submitRepair(id, 0);
         },
         settingMoney(id) {
             mui.prompt('请输入金额', '金额', function (e) {
-                if(e.index == 1) {
+                if (e.index == 1) {
                     var reg = /^\d+(\.\d{0,2})?$/;
                     var result = reg.test(e.value);
-                    if(result) {
+                    if (result) {
                         vm.inputMoney = e.value;
-                        submitRepair(id,e.value);
-                    }
-                    else {
+                        submitRepair(id, e.value);
+                    } else {
                         mui.toast('请输入正确的金额！');
                         return false;
                     }
@@ -86,7 +88,7 @@ function getRepairRecord(type, page, loadMore) {
         },
         dataType: 'json',
         success: function (data) {
-            var list = data.result;
+            var list = data.result.list;
             list.forEach(function (item, index) {
                 if (item.repait_content_images.indexOf(',') != -1) {
                     list[index].repait_content_images = rootUrl + item.repait_content_images.substring(0, item.repait_content_images.indexOf(','));
@@ -94,15 +96,31 @@ function getRepairRecord(type, page, loadMore) {
                     list[index].repait_content_images = rootUrl + item.repait_content_images;
                 }
             });
-            switch (parseInt(type)) {
+            switch (type) {
                 case '2':
+                    if (list.length == 0) {
+                        vm.assigning.loadMore = false;
+                        break;
+                    }
                     vm.assigning.list = vm.assigning.list.concat(list);
+                    vm.assigning.total = data.handle_status.handle_num2;
                     break;
                 case '3':
+                    if (list.length == 0) {
+                        vm.fixing.loadMore = false;
+                        break;
+                    }
                     vm.fixing.list = vm.fixing.list.concat(list);
+                    vm.fixing.total = data.handle_status.handle_num3;
                     break;
                 case '4,5':
+                    if (list.length == 0) {
+                        vm.finished.loadMore = false;
+                        break;
+                    }
                     vm.finished.list = vm.finished.list.concat(list);
+                    vm.finished.total = data.handle_status.handle_num4;
+                    break;
             }
         },
         error: function () {
@@ -124,7 +142,7 @@ $('div.goods-tab-content-item').scroll(function () {
     loadMore();
 });
 
-function submitRepair(id,money) {
+function submitRepair(id, money) {
     $.ajax({
         url: `${rootUrl}/index/api/getUpdateMoney`,
         data: {
