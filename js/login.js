@@ -102,6 +102,7 @@ var vm = new Vue({
                     if (data.status == 1) {
                         //设置维修员和其他人员跳转
                         if (data.result.re_id > 0) {
+                            localStorage.setItem('user',JSON.stringify(data.result));
                             mui.openWindow({
                                 url: 'repairman.html'
                             });

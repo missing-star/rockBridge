@@ -6,25 +6,25 @@ var vm = new Vue({
         reverseing: {
             loadMore: true,
             list: [],
-            total:0
+            total: 0
         },
         //指派
         assigning: {
             loadMore: true,
             list: [],
-            total:0
+            total: 0
         },
         //维修中
         fixing: {
             loadMore: true,
             list: [],
-            total:0
+            total: 0
         },
         //已完成
         finished: {
             loadMore: true,
             list: [],
-            total:0
+            total: 0
         },
     },
     methods: {
@@ -33,10 +33,10 @@ var vm = new Vue({
                 url: 'reverse-repair.html'
             });
         },
-        getDetail(status, id, order_status) {
+        getDetail(id) {
             //查看报修详情
             mui.openWindow({
-                url: 'repair-detail.html?status=' + status + '&id=' + id + '&order_status=' + order_status
+                url: 'repair-detail.html?id=' + id
             })
         },
         goPay(status, id, order_status) {
@@ -46,7 +46,7 @@ var vm = new Vue({
             });
         },
         cancelReverse(id) {
-            
+
         },
         getCause(cause) {
             var msg = cause == null ? '无' : cause;
@@ -104,14 +104,14 @@ function getRepairRecord(type, page, loadMore) {
                     list[index].repait_content_images = rootUrl + item.repait_content_images;
                 }
             });
-            switch (parseInt(type)) {
+            switch (type) {
                 case '1':
                     if (list.length == 0) {
                         vm.reverseing.loadMore = false;
                         break;
                     }
                     vm.reverseing.list = vm.reverseing.list.concat(list);
-                    vm.reverseing.total = data.handle_num.handle_num1;
+                    vm.reverseing.total = data.result.handle_num.handle_num1;
                     break;
                 case '2':
                     if (list.length == 0) {
@@ -119,7 +119,7 @@ function getRepairRecord(type, page, loadMore) {
                         break;
                     }
                     vm.assigning.list = vm.assigning.list.concat(list);
-                    vm.assigning.total = data.handle_num.handle_num2;
+                    vm.assigning.total = data.result.handle_num.handle_num2;
                     break;
                 case '3':
                     if (list.length == 0) {
@@ -127,7 +127,7 @@ function getRepairRecord(type, page, loadMore) {
                         break;
                     }
                     vm.fixing.list = vm.fixing.list.concat(list);
-                    vm.fixing.total = data.handle_num.handle_num3;
+                    vm.fixing.total = data.result.handle_num.handle_num3;
                     break;
                 case '4,5':
                     if (list.length == 0) {
@@ -135,7 +135,7 @@ function getRepairRecord(type, page, loadMore) {
                         break;
                     }
                     vm.finished.list = vm.finished.list.concat(list);
-                    vm.finished.total = data.handle_num.handle_num4;
+                    vm.finished.total = data.result.handle_num.handle_num.handle_num4;
                     break;
             }
         },

@@ -33,25 +33,25 @@
             <li class="goods-tab-bar-item active">
                 预约中
                 <span v-cloak class="current-number">
-                    ({{}})
+                    ({{reverseing.total}})
                 </span>
             </li>
             <li class="goods-tab-bar-item">
                 指派中
                 <span v-cloak class="current-number">
-                    ({{}})
+                    ({{assigning.total}})
                 </span>
             </li>
             <li class="goods-tab-bar-item">
                 维修中
                 <span v-cloak class="current-number">
-                    ({{}})
+                    ({{fixing.total}})
                 </span>
             </li>
             <li class="goods-tab-bar-item">
                 已完成
                 <span v-cloak class="current-number">
-                    ({{}})
+                    ({{finished.total}})
                 </span>
             </li>
         </ul>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail(1,item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
                         <!-- <button @click="cancelReverse(item.id)" class="get-detail reverse">取消预约</button> -->
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail(2,item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>
@@ -113,7 +113,7 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail(3,item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>
@@ -133,7 +133,7 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail('4,5',item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>

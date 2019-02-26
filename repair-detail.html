@@ -40,7 +40,7 @@
                 </template>
                 <li class="repair-item">
                     <label for="" class="title">维修状态</label>
-                    <input v-model="repairInfo.repairStatusName" readonly disabled type="text" class="content" class="warning">
+                    <input v-model="repairInfo.repairStatusName" readonly disabled type="text" class="content warning">
                 </li>
                 <template v-if="repairInfo.repairStatus != 3">
                     <li class="repair-item">
@@ -72,6 +72,7 @@
                     <button @click="receiveOrder" class="receive-order">接受</button>
                     <button @click="refuseOrder" class="refuse-order">拒绝</button>
                 </div>
+                <button v-if="repairInfo.status == 3" @click="completeOrder" class="set-price">维修完成</button>
                 <button v-if="repairInfo.status == 4" @click="setPrice" class="set-price">设置金额</button>
             </template>
             <!-- 商户 -->

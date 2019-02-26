@@ -24,12 +24,21 @@
         <ul class="goods-tab-bar">
             <li class="goods-tab-bar-item active">
                 待确认
+                <span v-cloak class="current-number">
+                    ({{assigning.total}})
+                </span>
             </li>
             <li class="goods-tab-bar-item">
                 维修中
+                <span v-cloak class="current-number">
+                    ({{fixing.total}})
+                </span>
             </li>
             <li class="goods-tab-bar-item">
                 已完成
+                <span v-cloak class="current-number">
+                    ({{finished.total}})
+                </span>
             </li>
         </ul>
         <div class="goods-tab-content">
@@ -49,7 +58,7 @@
                     </div>
                     <div class="operation-group">
                         <!-- <button @click="confirmRepair(item.id)" class="get-detail reverse">完成维修</button> -->
-                        <button @click="getDetail(item.handle_status,item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>
@@ -72,7 +81,7 @@
                     <div class="operation-group">
                         <!-- <button @click="settingMoney(item.id)" class="get-detail reverse">设置金额</button>
                         <button @click="confirmRepair(item.id)" class="get-detail">无需缴费</button> -->
-                        <button @click="getDetail(item.handle_status,item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>
@@ -92,7 +101,7 @@
                         </div>
                     </div>
                     <div class="operation-group">
-                        <button @click="getDetail(item.handle_status,item.id,item.handle_status)" class="get-detail">查看详情</button>
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
                     </div>
                 </div>
                 <div class="no-more">--没有更多了--</div>

@@ -2,47 +2,19 @@ var param = getParams();
 var statusName = '';
 //当前用户为维修员还是商户
 const isRepairMan = JSON.parse(localStorage.getItem('user')).re_id > 0 ? true : false;
-if (isRepairMan) {
-    switch (param.status) {
-        case '2':
-            statusName = '待确认';
-            break;
-        case '3':
-            statusName = '维修中';
-            break;
-        case '4,5':
-            statusName = '已完成';
-            break;
-    }
-} else {
-    switch (param.status) {
-        case '1':
-            statusName = '预约中';
-            break;
-        case '2':
-            statusName = '指派中';
-            break;
-        case '3':
-            statusName = '维修中';
-            break;
-        case '4,5':
-            statusName = '已完成';
-            break;
-    }
-}
 
 var vm = new Vue({
     el: '#app',
     data: {
-        isRepairMan:isRepairMan,
+        isRepairMan: isRepairMan,
         repairInfo: {
             id: param.id,
-            status: param.status,
-            order_status: param.order_status,
+            status: '',
+            order_status: '',
             shopName: '',
             repairNo: '',
             submitSection: '部门1',
-            repairStatusName: statusName,
+            repairStatusName: '',
             quesDesc: '',
             cause: '',
             imgs: [],
@@ -58,16 +30,6 @@ var vm = new Vue({
             //获得商家信息
             mui.openWindow({
                 url: 'repair-shop-info.html'
-            });
-        },
-        payOnline() {
-            //在线缴费
-            mui.confirm('缴费后可进行维修反馈', '缴费成功', ['取消', '确定'], function (e) {
-                if (e.index == 0) {
-                    //取消
-                } else {
-                    //确定，去评价
-                }
             });
         },
         feedBack() {
@@ -121,27 +83,29 @@ var vm = new Vue({
         },
         receiveOrder() {
             //接受报修单
-            if (confirm('确定接受该报修单吗？')) {
-                $.ajax({
-                    url: `${rootUrl}/index/api/getConfirmAssignment`,
-                    type: 'post',
-                    async: false,
-                    dataType: 'json',
-                    data: {
-                        id: param.id
-                    },
-                    success: function (data) {
-                        mui.toast(data.msg);
-                        if (data.status == 1) {
-                            //重新拉取数据
-                            getRecordDetail(param.id);
+            mui.confirm('确定接受该报修单吗？', '', ['取消', '确定'], function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        url: `${rootUrl}/index/api/getConfirmAssignment`,
+                        type: 'post',
+                        async: false,
+                        dataType: 'json',
+                        data: {
+                            id: param.id
+                        },
+                        success: function (data) {
+                            mui.toast(data.msg);
+                            if (data.status == 1) {
+                                //重新拉取数据
+                                getRecordDetail(param.id);
+                            }
+                        },
+                        error: function () {
+                            mui.toast('服务器异常');
                         }
-                    },
-                    error: function () {
-                        mui.toast('服务器异常');
-                    }
-                });
-            }
+                    });
+                }
+            });
         },
         refuseOrder() {
             //拒绝报修单
@@ -176,27 +140,29 @@ var vm = new Vue({
         },
         completeOrder() {
             //完成维修
-            if (confirm('确定已完成该保修单？')) {
-                $.ajax({
-                    url: `${rootUrl}/index/api/getUpdateOver`,
-                    type: 'post',
-                    async: false,
-                    dataType: 'json',
-                    data: {
-                        id: param.id
-                    },
-                    success: function (data) {
-                        mui.toast(data.msg);
-                        if (data.status == 1) {
-                            //重新拉取数据
-                            getRecordDetail(param.id);
+            mui.confirm('确定已完成该报修单？', '', ['取消', '确定'], function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        url: `${rootUrl}/index/api/getUpdateOver`,
+                        type: 'post',
+                        async: false,
+                        dataType: 'json',
+                        data: {
+                            id: param.id
+                        },
+                        success: function (data) {
+                            mui.toast(data.msg);
+                            if (data.status == 1) {
+                                //重新拉取数据
+                                getRecordDetail(param.id);
+                            }
+                        },
+                        error: function () {
+                            mui.toast('服务器异常');
                         }
-                    },
-                    error: function () {
-                        mui.toast('服务器异常');
-                    }
-                });
-            }
+                    });
+                }
+            });
         },
         setPrice() {
             mui.prompt('请输入金额', '金额', function (e) {
@@ -229,7 +195,42 @@ function getRecordDetail(id) {
             id: id
         },
         success: function (data) {
+            if (isRepairMan) {
+                switch (parseInt(data.result.handle_status)) {
+                    case 2:
+                        vm.repairInfo.repairStatusName = '待确认';
+                        break;
+                    case 3:
+                        vm.repairInfo.repairStatusName = '维修中';
+                        break;
+                    case 4:
+                        vm.repairInfo.repairStatusName = '已完成';
+                        break;
+                    case 5:
+                        vm.repairInfo.repairStatusName = '已完成';
+                        break;
+                }
+            } else {
+                switch (parseInt(param.status)) {
+                    case 1:
+                        vm.repairInfo.repairStatusName = '预约中';
+                        break;
+                    case 2:
+                        vm.repairInfo.repairStatusName = '指派中';
+                        break;
+                    case 3:
+                        vm.repairInfo.repairStatusName = '维修中';
+                        break;
+                    case 4:
+                        vm.repairInfo.repairStatusName = '已完成';
+                        break;
+                    case 5:
+                        vm.repairInfo.repairStatusName = '已完成';
+                        break;
+                }
+            }
             vm.repairInfo.submitTime = data.result.create_at;
+            vm.repairInfo.status = vm.repairInfo.order_status = data.result.handle_status;
             data.result.repait_content_images.forEach(function (item, index) {
                 vm.repairInfo.imgs.push(rootUrl + item);
             });
@@ -248,12 +249,27 @@ function getRecordDetail(id) {
     })
 }
 
-function confirm(msg) {
-    const flag = false;
-    mui.confirm(msg, '', ['取消', '确定'], function (e) {
-        if (e.index == 1) {
-            flag = true;
+
+function submitRepair(id, money) {
+    $.ajax({
+        url: `${rootUrl}/index/api/getUpdateMoney`,
+        data: {
+            id: id,
+            money: money
+        },
+        type: 'post',
+        datType: 'json',
+        success: function (data) {
+            if (data.status == 1) {
+                mui.confirm('提交成功！', '', ['确定'], function (e) {
+                    location.reload();
+                });
+            } else {
+                mui.toast(data.msg);
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常！');
         }
-    });
-    return flag;
+    })
 }
