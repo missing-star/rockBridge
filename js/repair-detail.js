@@ -59,7 +59,7 @@ var vm = new Vue({
                             url: `${rootUrl}/index/api/getCancelRepair`,
                             type: 'post',
                             data: {
-                                id: id,
+                                id: param.id,
                                 refusal_content: e.value
                             },
                             dataType: 'json',
@@ -116,7 +116,7 @@ var vm = new Vue({
                             url: `${rootUrl}/index/api/getCancelRepair`,
                             type: 'post',
                             data: {
-                                id: id,
+                                id: param.id,
                                 refusal_content: e.value
                             },
                             dataType: 'json',
@@ -171,7 +171,7 @@ var vm = new Vue({
                     var result = reg.test(e.value);
                     if (result) {
                         vm.inputMoney = e.value;
-                        submitRepair(id, e.value);
+                        submitRepair(param.id, e.value);
                     } else {
                         mui.toast('请输入正确的金额！');
                         return false;
@@ -211,7 +211,7 @@ function getRecordDetail(id) {
                         break;
                 }
             } else {
-                switch (parseInt(param.status)) {
+                switch (parseInt(data.result.handle_status)) {
                     case 1:
                         vm.repairInfo.repairStatusName = '预约中';
                         break;
@@ -231,6 +231,7 @@ function getRecordDetail(id) {
             }
             vm.repairInfo.submitTime = data.result.create_at;
             vm.repairInfo.status = vm.repairInfo.order_status = data.result.handle_status;
+            vm.repairInfo.imgs = [];
             data.result.repait_content_images.forEach(function (item, index) {
                 vm.repairInfo.imgs.push(rootUrl + item);
             });
