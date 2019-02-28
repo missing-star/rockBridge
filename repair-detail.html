@@ -86,7 +86,7 @@
                 <button v-if="repairInfo.status == 4 && parseFloat(repairInfo.needPay) == 0" @click="feedBack" class="submit-repair">
                     维修反馈
                 </button>
-                <button v-if="repairInfo.status == 3 && repairInfo.needPay > 0" @click="goPay(repairInfo.status,repairInfo.id,repairInfo.order_status)"
+                <button v-if="repairInfo.status == 3 && repairInfo.needPay > 0 && repairInfo.payStatus != '已支付'" @click="goPay(repairInfo.status,repairInfo.id,repairInfo.order_status)"
                     class="submit-repair pay">
                     立即支付￥{{repairInfo.needPay}}
                 </button>
