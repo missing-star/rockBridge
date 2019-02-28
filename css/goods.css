@@ -275,6 +275,9 @@ div.tab-content.goods.active.goods-line {
 div.tab-content.goods.active.goods-line {
     height: calc(100% - 2.2rem);
     overflow: scroll;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 .tab-content.goods.active.goods-not-line{
     height: calc(100% - 0.2rem);
@@ -706,4 +709,5 @@ li.category-item-open.active{
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 0.1rem;
 }

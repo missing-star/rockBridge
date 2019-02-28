@@ -138,9 +138,13 @@ var vm = new Vue({
                 return false;
             }
             page1 = 1;
+            this.cate_id = id;
             this.currentInnerIndex = -1;
             this.currentIndex = index;
             getCategory(id, 2);
+            if(page1 == 1) {
+                this.goodsList = [];
+            }
             getGoodsList(this.keyword, this.goodsSortName, this.goodsSortType, page1);
         },
         switchInner(index, id) {
@@ -178,7 +182,7 @@ $(function () {
             $(this).siblings().removeClass('active');
         }
     });
-    $(document,'.tab-content.goods.active.goods-line').scroll(function () {
+    $(document, '.tab-content.goods.active.goods-line').scroll(function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
             if (vm.isShowGoods && vm.isMoreGoods) {
                 //滚动加载商品
@@ -237,12 +241,6 @@ function getGoodsList(keyword, fields, type, page) {
                 return;
             }
             if (data.status == 1) {
-                if(page > 1) {
-
-                }
-                else {
-
-                }
                 vm.goodsList = vm.goodsList.concat(data.result);
             }
         },
@@ -310,11 +308,12 @@ function getCategory(cat_id, type) {
         success: function (data) {
             if (type == 1) {
                 //获取大分类（首次进入页面）
-                data.result.splice(0,0, {
-                    id: -1,
+                data.result.splice(0, 0, {
+                    id: '',
                     cate_name: '全部'
                 });
                 vm.categoryList = data.result;
+                getCategory('',2);
             } else {
                 //获取小分类
                 vm.categoryItemList = data.result;
