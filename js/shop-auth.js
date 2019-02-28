@@ -26,9 +26,8 @@ var vm = new Vue({
         district: '',
         //经营类目
         mainCategoryId: '',
-        mainCategoryName:'',
-        subMainCategoryId:'',
-        subMainCategoryName:'',
+        mainCategoryName: '',
+        subMainCategoryId: '',
         cardList: {
             emblem: {
                 src: 'imgs/id-card-1.png',
@@ -139,8 +138,8 @@ var vm = new Vue({
                 district: vm.district,
                 landlord: this.landlord,
                 landlord_phone: this.landlord_phone,
-                one_cate_id:this.mainCategoryId,
-                two_cate_id:this.subMainCategoryId
+                one_cate_id: this.mainCategoryId,
+                two_cate_id: this.subMainCategoryId
             };
             if (formData.person_name == '') {
                 mui.toast('请输入商户名！');
@@ -156,14 +155,13 @@ var vm = new Vue({
             } else if ((vm.isPub && formData.address_id == '') || (!vm.isPub && (formData.address == '' || formData.province == ''))) {
                 mui.toast('地址有误！');
                 return false;
-            } else if(vm.mainCategoryId == '') {
+            } else if (vm.mainCategoryId == '') {
                 mui.toast('请选择主营类目!');
                 return false;
-            }
-            else if (this.cardList.emblem.realPath == '' || this.cardList.portrait.realPath == '') {
+            } else if (this.cardList.emblem.realPath == '' || this.cardList.portrait.realPath == '') {
                 mui.toast('请上传身份证正反两面！');
                 return false;
-            } else if (this.cardList.business_license.realPath == '') {
+            } else if (this.cardList.license.realPath == '') {
                 mui.toast('请上传营业执照');
                 return false;
             } else if (formData.landlord_phone.length != 0 && !regPhone.test(formData.landlord_phone)) {
@@ -287,22 +285,21 @@ function initPicker() {
                         return {
                             id: item.id,
                             text: item.cate_name,
-                            children:item.children.map(function(child,j) {
+                            children: item.children.map(function (child, j) {
                                 return {
-                                    id:child.id,
-                                    text:child.cate_name
+                                    id: child.id,
+                                    text: child.cate_name
                                 }
                             })
                         }
                     });
                     categoryPicker.setData(data.result);
-                    var cateClickBtn = doc.getElementById('address-public-shop');
+                    var cateClickBtn = doc.getElementById('main-category');
                     cateClickBtn.addEventListener('tap', function (event) {
                         categoryPicker.show(function (items) {
                             vm.mainCategoryId = items[0].id;
-                            vm.mainCategoryName = items[0].text;
+                            vm.mainCategoryName = items[0].text + ' '+ items[1].text;
                             vm.subMainCategoryId = items[1].id;
-                            vm.subMainCategoryName = items[1].text;
                         });
                     }, false);
                 },
