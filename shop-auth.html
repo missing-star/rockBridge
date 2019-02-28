@@ -94,7 +94,7 @@
                 </li>
                 <li @click="uploadRent" class="tab-contetn-item arrow-right">
                     <label for="" class="title">
-                        租房合同（选填）
+                        租房合同<i class="must-icon">*</i>
                     </label>
                     <span v-cloak class="upload-status">{{cardList.renting.realPath != '' ? '已选择' : '请上传'}}</span>
                     <input type="file" accept="image/*" hidden id="renting">
