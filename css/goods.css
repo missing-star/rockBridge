@@ -278,6 +278,7 @@ div.tab-content.goods.active.goods-line {
 .tab-content.goods.active.goods-not-line{
     height: calc(100% - 0.2rem);
     overflow: scroll;
+    margin-top: 0.2rem;
 }
 .business-item,.business-item-line{
     margin-bottom: 1rem;

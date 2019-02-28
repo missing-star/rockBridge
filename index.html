@@ -93,7 +93,7 @@
                     <p v-cloak class="business-item-title">{{item.title}}</p>
                     <div v-cloak class="business-item-content">
                         <img src="imgs/position.png" class="icon-positon" alt="">
-                        <p class="address-info">地址信息</p>
+                        <p class="address-info" v-cloak>{{item.stage+item.storied_building+item.address}}</p>
                     </div>
                 </div>
             </div>

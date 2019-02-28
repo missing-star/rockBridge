@@ -299,9 +299,11 @@ function getCategory(cat_id, type) {
         dataType: 'json',
         data: data,
         success: function (data) {
-            if (type == 1 && !cat_id) {
+            if (type == 1) {
                 //大分类
-                vm.categoryList = data.result;
+                if(!cat_id) {
+                    vm.categoryList = data.result;
+                }
                 getCategory(data.result[0].id, 2);
             } else {
                 //小分类

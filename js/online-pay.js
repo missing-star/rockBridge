@@ -8,7 +8,7 @@ var vm = new Vue({
         //需要交纳的费用
         money: '',
         //支付费率
-        payFate:0,
+        payFate: 0,
         //用户输入的费用
         inputMoney: '',
         description: '',
@@ -21,9 +21,9 @@ var vm = new Vue({
         //选择的报修单名称
         selectedRepairName: '',
         //选择的商铺地址
-        selectedShopAddress:'',
+        selectedShopAddress: '',
         //地址id
-        selectedShopAddressId:'',
+        selectedShopAddressId: '',
         str: ''
     },
     methods: {
@@ -39,11 +39,10 @@ var vm = new Vue({
             } else if (this.selectedId == 0 && this.selectedRepairId == '') {
                 mui.toast('请选择报修单！');
                 return false;
-            } else if(this.selectedId != 0 && this.selectedShopAddressId == '') {
+            } else if (this.selectedId != 0 && this.selectedShopAddressId == '') {
                 mui.toast('请选择商铺地址！');
                 return false;
-            }
-            else if (!parseFloat(this.inputMoney) || this.inputMoney == '') {
+            } else if (!parseFloat(this.inputMoney) || this.inputMoney == '') {
                 mui.toast('请输入缴费金额！');
                 return false;
             } else if (this.payWay == '') {
@@ -55,7 +54,7 @@ var vm = new Vue({
                 content: this.description,
                 actual_payment: this.inputMoney,
                 pay_method: this.payWay,
-                address_id:this.selectedShopAddressId
+                address_id: this.selectedShopAddressId
             };
             $.ajax({
                 url: `${rootUrl}/index/api/getAddPayCharge`,
@@ -127,10 +126,10 @@ var vm = new Vue({
                         money: data.result.pay_category[key].pay_money
                     });
                 };
-                for(key in data.result.property_address) {
+                for (key in data.result.property_address) {
                     addList.push({
-                        value:data.result.property_address[key].id,
-                        text:data.result.property_address[key].province + result.property_address[key].city + result.property_address[key].area + result.property_address[key].address
+                        value: data.result.property_address[key].id,
+                        text: data.result.property_address[key].province + data.result.property_address[key].city + data.result.property_address[key].area + data.result.property_address[key].address
                     });
                 }
                 classifyPicker.setData(list);
@@ -167,11 +166,11 @@ var vm = new Vue({
         })
     });
     var payPicker = new $.PopPicker();
-    let result = getPayWay().map(function(item) {
+    let result = getPayWay().map(function (item) {
         return {
-            value:item.id,
-            text:item.name,
-            fate:item.service_price
+            value: item.id,
+            text: item.name,
+            fate: item.service_price
         }
     });
     payPicker.setData(result);
@@ -249,15 +248,14 @@ function jsApiCall() {
         function (res) {
             if (res.err_msg == "get_brand_wcpay_request:ok") {
                 mui.toast('支付成功!');
-                setTimeout(function() {
+                setTimeout(function () {
                     mui.openWindow({
-                        url:'pay-detail.html'
+                        url: 'pay-detail.html'
                     });
                 }, 200);
-            }
-            else {
+            } else {
                 //支付失败/用户取消支付
-                
+
             }
         }
     );
@@ -269,14 +267,14 @@ function jsApiCall() {
 function getPayWay() {
     let result = [];
     $.ajax({
-        url:`${rootUrl}/index/api/getPayment`,
-        dataType:'json',
-        type:'post',
-        async:false,
-        success:function(data) {
+        url: `${rootUrl}/index/api/getPayment`,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        success: function (data) {
             result = data.result;
         },
-        error:function() {
+        error: function () {
             mui.toast('服务器异常');
         }
     });
