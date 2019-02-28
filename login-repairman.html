@@ -30,9 +30,8 @@
                 <li v-show="loginWay == 0" class="login-item">
                     <input v-model="password" :type="isShowPwd ? 'text':'password'" placeholder="输入密码" type="text"
                         class="content password">
-                    <img @click="showHidePwd" src="imgs/show-password.png" class="show-hide-pwd" alt="" v-show="isShowPwd">
-                    <img @click="showHidePwd" src="imgs/hide-password.png" class="show-hide-pwd" alt="" v-show="!isShowPwd">
-                    <span @click="resetPass" class="forget-password">忘记密码</span>
+                    <img @click="showHidePwd" src="imgs/show-password.png" class="show-hide-pwd rep" alt="" v-show="isShowPwd">
+                    <img @click="showHidePwd" src="imgs/hide-password.png" class="show-hide-pwd rep" alt="" v-show="!isShowPwd">
                 </li>
                 <li v-show="loginWay == 1" class="login-item">
                     <input v-model="code" @input="validateCode" type="number" placeholder="输入验证码" class="content">
@@ -40,7 +39,6 @@
                 </li>
             </ul>
             <p class="other-way">
-                <a href="register.html" class="regisiter">注册</a>
                 <span v-show="loginWay == 0" @click="changeWay(1)" class="login-by-code">使用验证码登录</span>
                 <span v-show="loginWay == 1" @click="changeWay(0)" class="login-by-password">使用密码登录</span>
             </p>

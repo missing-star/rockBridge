@@ -150,6 +150,7 @@ var vm = new Vue({
             if (this.isOpen) {
                 this.isOpen = false;
             }
+            vm.goodsList = [];
             getGoodsList(this.keyword, this.goodsSortName, this.goodsSortType, page1);
         },
         //切换小分类布局（展开/收起）
@@ -251,7 +252,7 @@ function getShopList(keyword, sort, type, page) {
             sort: sort,
             type: type,
             page: page,
-            cate_id:vm.cat_id
+            cate_id: vm.cat_id
         },
         type: 'post',
         dataType: 'json',
@@ -285,23 +286,23 @@ function saveSearchKeywords() {
         }
     });
 }
-getCategory(undefined,1);
+getCategory(undefined, 1);
 
 function getCategory(cat_id, type) {
     const data = {};
     if (cat_id) {
-        data.cat_id = cat_id;
+        data.cate_id = cat_id;
     }
     $.ajax({
         url: `${rootUrl}/index/api/getGoodsCateList`,
         type: 'post',
         dataType: 'json',
-        data:data,
+        data: data,
         success: function (data) {
-            if (type == 1) {
+            if (type == 1 && !cat_id) {
                 //大分类
                 vm.categoryList = data.result;
-                getCategory(data.result[0].id,2);
+                getCategory(data.result[0].id, 2);
             } else {
                 //小分类
                 vm.categoryItemList = data.result;

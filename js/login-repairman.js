@@ -8,7 +8,7 @@ var vm = new Vue({
         waitTime: 60,
         password: '',
         code: '',
-        isShowPwd:false
+        isShowPwd: false
     },
     methods: {
         showHidePwd() {
@@ -48,7 +48,7 @@ var vm = new Vue({
                                 vm.waitTime -= 1;
                                 vm.msg = vm.waitTime + 's';
                             }, 1000);
-                        } 
+                        }
                     },
                     error: function () {
                         mui.toast('服务器异常');
@@ -92,7 +92,7 @@ var vm = new Vue({
                 formData.password = '';
             }
             $.ajax({
-                url: `${rootUrl}/index/api/getLogin`,
+                url: `${rootUrl}/index/api/getRepairmanLogin`,
                 type: 'post',
                 dataType: 'json',
                 data: formData,
@@ -101,22 +101,10 @@ var vm = new Vue({
                     mui.toast(data.msg);
                     if (data.status == 1) {
                         //设置维修员和其他人员跳转
-                        if (data.result.re_id > 0) {
-                            localStorage.setItem('user',JSON.stringify(data.result));
-                            mui.openWindow({
-                                url: 'repairman.html'
-                            });
-                        } else {
-                            mui.openWindow({
-                                url: 'user.html'
-                            });
-                        }
-                        //设置会员和商户的切换权限
-                        if (data.result.shop_id > 0) {
-                            localStorage.setItem('switchRole', 1);
-                        } else {
-                            localStorage.setItem('switchRole', 0);
-                        }
+                        localStorage.setItem('user', JSON.stringify(data.result));
+                        mui.openWindow({
+                            url: 'repairman.html'
+                        });
                     }
                 },
                 error: function () {

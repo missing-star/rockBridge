@@ -108,3 +108,6 @@ img.show-hide-pwd {
     right: 4rem;
     width: 1rem;
 }
+img.show-hide-pwd.rep {
+    right: 0;
+}
