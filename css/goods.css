@@ -263,6 +263,7 @@ div.tab-content{
 div.tab-content.goods.active{
     display: flex;
     flex: 1;
+    align-items: flex-start;
 }
 div.tab-content.business.active{
     display: block;
