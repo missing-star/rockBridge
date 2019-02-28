@@ -29,7 +29,7 @@ var vm = new Vue({
         //大分类
         currentIndex: 0,
         //小分类
-        currentInnerIndex: 0,
+        currentInnerIndex: -1,
         //是否展开小分类
         isOpen: false,
         categoryList: [],
@@ -137,8 +137,11 @@ var vm = new Vue({
             if (index == this.currentIndex) {
                 return false;
             }
+            page1 = 1;
+            this.currentInnerIndex = -1;
             this.currentIndex = index;
-            getCategory(id, '2');
+            getCategory(id, 2);
+            getGoodsList(this.keyword, this.goodsSortName, this.goodsSortType, page1);
         },
         switchInner(index, id) {
             if (this.currentInnerIndex == index) {
@@ -175,7 +178,7 @@ $(function () {
             $(this).siblings().removeClass('active');
         }
     });
-    $(document).scroll(function () {
+    $(document,'.tab-content.goods.active.goods-line').scroll(function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
             if (vm.isShowGoods && vm.isMoreGoods) {
                 //滚动加载商品
@@ -234,6 +237,12 @@ function getGoodsList(keyword, fields, type, page) {
                 return;
             }
             if (data.status == 1) {
+                if(page > 1) {
+
+                }
+                else {
+
+                }
                 vm.goodsList = vm.goodsList.concat(data.result);
             }
         },
@@ -300,17 +309,15 @@ function getCategory(cat_id, type) {
         data: data,
         success: function (data) {
             if (type == 1) {
-                //大分类
-                if(!cat_id) {
-                    vm.categoryList = data.result;
-                }
-                getCategory(data.result[0].id, 2);
+                //获取大分类（首次进入页面）
+                data.result.splice(0,0, {
+                    id: -1,
+                    cate_name: '全部'
+                });
+                vm.categoryList = data.result;
             } else {
-                //小分类
+                //获取小分类
                 vm.categoryItemList = data.result;
-                vm.cate_id = data.result[0].id;
-                vm.selectedCat = data.result[0].cate_name;
-                getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
             }
         },
         error: function () {

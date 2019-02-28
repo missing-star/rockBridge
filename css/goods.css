@@ -616,6 +616,7 @@ li.categroy-item.active{
     border-bottom: 1px solid #f6f6f6;
     background: #ffffff;
     z-index: 1;
+    min-height: 2.3rem;
 }
 ul.category-level-container {
     margin: 0;
