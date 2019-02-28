@@ -154,13 +154,14 @@ label.title {
 .business-item-content {
     display: flex;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 img.icon-positon {
-    width: 1rem;
+    width: 0.8rem;
 }
 p.address-info {
     padding-left: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     line-height: 1rem;
     flex: 1;
     overflow: hidden;

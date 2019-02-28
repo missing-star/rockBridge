@@ -33,7 +33,7 @@
         </p>
         <div v-cloak class="business-item-content">
             <img src="imgs/position.png" class="icon-positon" alt="">
-            <p class="address-info">地址信息</p>
+            <p class="address-info" v-cloak>{{attractInfo.stage+attractInfo.storied_building+attractInfo.address}}</p>
         </div>
         <p class="sub-title-btn">
             <span v-cloak class="sub-title">{{attractInfo.title2}}</span>
