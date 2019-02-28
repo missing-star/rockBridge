@@ -1,8 +1,8 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        nowNums:10,
-        buyNums:10,
+        nowNums:JSON.parse(localStorage.getItem('user')).shops.show_goods_num,
+        buyNums:JSON.parse(localStorage.getItem('user')).shops.goods_show_price,
         price:100,
         totalMoney:0,
         isDisabled:false,

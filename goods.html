@@ -109,7 +109,7 @@
                         </div>
                     </div>
                 </template>
-                <div class="tab-content goods" :class="{active:isShowGoods}">
+                <div class="tab-content goods" :class="{active:isShowGoods,'goods-line':isDefGoodsLayout,'goods-not-line':!isDefGoodsLayout}">
                     <div v-if="isDefGoodsLayout" class="show-categroy-name" v-cloak>{{selectedCat}}</div>
                     <div @click="getDetail('goods-detail.html',goods.id)" v-for="goods in goodsList" :class={'goods-item':!isDefGoodsLayout,'goods-item-line':isDefGoodsLayout}>
                         <img class="goods-img" :src="goods.images | filterImg" />
@@ -124,7 +124,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="mask" v-show="isOpen"></div>
+                    <div @click="isOpen = false" class="mask" v-show="isOpen"></div>
                     <div class="bottom-line">
                         ······ 已见底了 ······
                     </div>

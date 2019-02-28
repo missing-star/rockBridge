@@ -250,7 +250,8 @@ function getShopList(keyword, sort, type, page) {
             keyword: keyword,
             sort: sort,
             type: type,
-            page: page
+            page: page,
+            cate_id:vm.cat_id
         },
         type: 'post',
         dataType: 'json',
