@@ -21,7 +21,7 @@
         <!--顶部搜索栏-->
         <header class="mui-bar mui-bar-nav">
             <img src="imgs/search-left-icon.png" class="search-left-icon" />
-            <input readonly disabled @focus="showSearch" type="text" class="search-input" placeholder="四件套|寻找优质羽绒蚕丝" />
+            <input readonly @focus="showSearch" type="text" class="search-input" placeholder="四件套|寻找优质羽绒蚕丝" />
         </header>
         <!--底部导航栏-->
         <nav class="mui-bar mui-bar-tab">
@@ -91,7 +91,10 @@
                     class="slider-business-item">
                     <img :src="item.thumb | filterImg" />
                     <p v-cloak class="business-item-title">{{item.title}}</p>
-                    <p v-cloak class="business-item-content">{{item.title2}}</p>
+                    <div v-cloak class="business-item-content">
+                        <img src="imgs/position.png" class="icon-positon" alt="">
+                        <p class="address-info">地址信息</p>
+                    </div>
                 </div>
             </div>
             <!--卡片：新闻，领券，通知-->

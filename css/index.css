@@ -168,7 +168,7 @@ p.business-item-title {
 }
 p.business-item-content {
     font-size: 0.6rem;
-	line-height: 0.6rem;
+	line-height: 1rem;
 }
 .slider-business {
     padding: 0;
@@ -225,7 +225,7 @@ p.card-content-con>span {
 }
 p.card-content-con>span.title {
     font-size: 0.8rem;
-    line-height: 0.8rem;
+    line-height: 1rem;
     margin-top: 0.5rem;
     width: 100%;
     overflow: hidden;
@@ -555,4 +555,20 @@ p.class-title.arrow-right {
     background-repeat: no-repeat;
     background-position: right;
     background-size: 0.6rem;
+}
+.business-item-content {
+    display: flex;
+    align-items: center;
+}
+img.icon-positon {
+    width: 1rem;
+}
+p.address-info {
+    padding-left: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

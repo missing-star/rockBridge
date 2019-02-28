@@ -277,7 +277,7 @@ function initPicker() {
                         data.result = data.result.map(function (item, index) {
                             return {
                                 id: item.id,
-                                text: item.address
+                                text:item.stage + item.storied_building + item.address
                             }
                         });
                         addressPicker.setData(data.result);

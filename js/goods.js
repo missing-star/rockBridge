@@ -1,6 +1,7 @@
 var vm = new Vue({
     el: '#app',
     data: {
+        cate_id: '',
         isFadeIn: false,
         isFadeOut: false,
         //商品是否为默认布局方式
@@ -19,19 +20,28 @@ var vm = new Vue({
         //搜索内容
         keyword: '',
         //排序方式
-        goodsSortName:'click_num',
+        goodsSortName: 'click_num',
         goodsSortType: 'desc',
-        shopSortName:0,
+        shopSortName: 0,
         shopSortType: 1,
-        isMoreGoods:true,
-        isMoreShops:true
+        isMoreGoods: true,
+        isMoreShops: true,
+        //大分类
+        currentIndex: 0,
+        //小分类
+        currentInnerIndex: 0,
+        //是否展开小分类
+        isOpen: false,
+        categoryList: [],
+        categoryItemList: [],
+        selectedCat: ''
 
     },
     filters: {
         //拼接图片地址
         filterImg(thumb) {
             thumb = thumb == null ? '' : thumb;
-           if(thumb.indexOf('http') != -1) {
+            if (thumb.indexOf('http') != -1) {
                 return `${thumb}`;
             }
             return `${rootUrl}${thumb}`;
@@ -59,6 +69,9 @@ var vm = new Vue({
         switchGoodsLayout() {
             //切换商品布局
             this.isDefGoodsLayout = !this.isDefGoodsLayout;
+            if (this.isOpen) {
+                this.isOpen = false;
+            }
         },
         switchBusLayout() {
             //切换商家布局
@@ -119,17 +132,39 @@ var vm = new Vue({
             }
             saveSearchKeywords();
             this.hideSearch();
+        },
+        switchCategoryTab(index, id) {
+            if (index == this.currentIndex) {
+                return false;
+            }
+            this.currentIndex = index;
+            getCategory(id, '1');
+        },
+        switchInner(index, id) {
+            if (this.currentInnerIndex == index) {
+                return false;
+            }
+            this.cat_id = id;
+            this.currentInnerIndex = index;
+            this.selectedCat = this.categoryItemList[index].title;
+            if (this.isOpen) {
+                this.isOpen = false;
+            }
+            getGoodsList(this.keyword, this.goodsSortName, this.goodsSortType, page1);
+        },
+        //切换小分类布局（展开/收起）
+        triggerLayout() {
+            this.isOpen = !this.isOpen;
         }
     }
 });
 var page1 = 1;
 var page2 = 1;
 $(function () {
-    if(getParams().keywords) {
+    if (getParams().keywords) {
         vm.keyword = decodeURI(getParams().keywords);
         vm.startSearch();
-    }
-    else {
+    } else {
         getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
         getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, page2);
     }
@@ -143,8 +178,8 @@ $(function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
             if (vm.isShowGoods && vm.isMoreGoods) {
                 //滚动加载商品
-                getGoodsList(vm.keyword,vm.goodsSortName,vm.goodsSortType, ++page1);
-            } else if(!vm.isShowGoods && vm.isMoreShops) {
+                getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, ++page1);
+            } else if (!vm.isShowGoods && vm.isMoreShops) {
                 //滚动加载商家
                 getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, ++page2);
             }
@@ -161,17 +196,16 @@ $(function () {
         } else {
             $(this).toggleClass('asc');
             $(this).siblings().removeClass('asc');
-            if($(this).hasClass('asc')) {
+            if ($(this).hasClass('asc')) {
                 type = 'asc';
             }
         }
-        if(vm.isShowGoods) {
+        if (vm.isShowGoods) {
             vm.goodsSortName = fields;
             vm.goodsSortType = type;
             vm.goodsList = [];
             getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
-        }
-        else {
+        } else {
             vm.shopSortName = fields;
             vm.shopSortType = type == 'asc' ? 2 : 1;
             vm.shopList = [];
@@ -183,17 +217,18 @@ $(function () {
 function getGoodsList(keyword, fields, type, page) {
     $.ajax({
         url: `${rootUrl}/index/api/getGoodsList`,
-        async:false,
+        async: false,
         data: {
             keyword: keyword,
             fields: fields,
             type: type,
-            page: page
+            page: page,
+            cate_id: vm.cat_id
         },
-        dataType:'json',
+        dataType: 'json',
         type: 'post',
         success: function (data) {
-            if(data.result.length == 0) {
+            if (data.result.length == 0) {
                 vm.isMoreGoods = false;
                 return;
             }
@@ -210,17 +245,17 @@ function getGoodsList(keyword, fields, type, page) {
 function getShopList(keyword, sort, type, page) {
     $.ajax({
         url: `${rootUrl}/index/api/getShopsList`,
-        async:false,
+        async: false,
         data: {
             keyword: keyword,
             sort: sort,
             type: type,
             page: page
         },
-        type:'post',
-        dataType:'json',
+        type: 'post',
+        dataType: 'json',
         success: function (data) {
-            if(data.result.length == 0) {
+            if (data.result.length == 0) {
                 vm.isMoreShops = false;
                 return;
             }
@@ -238,14 +273,41 @@ function getShopList(keyword, sort, type, page) {
  */
 function saveSearchKeywords() {
     $.ajax({
-        url:`${rootUrl}/index/api/getAddSerachLog`,
-        type:'post',
-        data:{
-            keywords:vm.keyword
+        url: `${rootUrl}/index/api/getAddSerachLog`,
+        type: 'post',
+        data: {
+            keywords: vm.keyword
         },
-        success:function() {},
-        error:function() {
+        success: function () {},
+        error: function () {
             mui.toast('服务异常');
+        }
+    });
+}
+getCategory(undefined,1);
+
+function getCategory(cat_id, type) {
+    const data = {};
+    if (cat_id) {
+        data.cat_id = cat_id;
+    }
+    $.ajax({
+        url: `${rootUrl}/index/api/getGoodsCateList`,
+        type: 'post',
+        dataType: 'json',
+        data:data,
+        success: function (data) {
+            if (type == 1) {
+                //大分类
+                vm.categoryList = data.result;
+                getCategory(data.result[0].id,2);
+            } else {
+                //小分类
+                vm.categoryItemList = data.result;
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常');
         }
     });
 }

@@ -107,6 +107,10 @@ img.rent-img {
 p.content {
     font-size: 0.8rem;
     line-height: 1.2rem;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 p.status {
     background: #ff7c3c;

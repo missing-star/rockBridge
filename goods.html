@@ -19,8 +19,8 @@
     <div id="app">
         <header class="page1">
             <form class="input-group">
-                <input readonly disabled @focus="showSearch" placeholder="输入商品或商店名称" v-model="keyword" id="search" class="search-page-input"
-                    type="text">
+                <input readonly @focus="showSearch" placeholder="输入商品或商店名称" v-model="keyword" id="search"
+                    class="search-page-input" type="text">
             </form>
             <template v-if="isShowGoods">
                 <img @click="switchGoodsLayout" class="switch-layout" :class="{active:!isDefGoodsLayout}" src="imgs/layout-default.png" />
@@ -92,22 +92,42 @@
                 </li>
             </ul>
             <!--商品tab页内容-->
-            <div class="tab-content goods" :class="{active:isShowGoods}">
-                <div @click="getDetail('goods-detail.html',goods.id)" v-for="goods in goodsList" :class={'goods-item':isDefGoodsLayout,'goods-item-line':!isDefGoodsLayout}>
-                    <img class="goods-img" :src="goods.images | filterImg" />
-                    <div class="goods-info">
-                        <p>
-                            <span v-cloak>{{goods.title}}</span>
-                            <span v-cloak class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_num}}</span>
-                        </p>
-                        <p>
-                            <span v-cloak class="goods-price">￥{{goods.price}}</span>
-                            <button class="reserve">查看</button>
-                        </p>
+            <div class="category-goods-container">
+                <template v-if="isDefGoodsLayout">
+                    <ul class="categroy-list">
+                        <li class="categroy-item" v-for="(category,index) in categoryList" :class="{active:index == currentIndex}"
+                            @click="switchCategoryTab(index,category.id)" v-cloak>{{category.cate_name}}</li>
+                    </ul>
+                    <div class="show-categroy">
+                        <ul :class="{'category-level-container':!isOpen,'category-level-container-open':isOpen}">
+                            <li @click="switchInner(index,item.id)" :class="{active:currentInnerIndex == index,'category-item':!isOpen,'category-item-open':isOpen}"
+                                v-for="(item,index) in categoryItemList" v-cloak>{{item.cate_name}}</li>
+                        </ul>
+                        <div @click="triggerLayout" :class="{'icon-container':true,'icon-container-open':isOpen}">
+                            <img v-if="!isOpen" src="imgs/arrow-down.png" class="icon-down" alt="">
+                            <img v-if="isOpen" src="imgs/arrow-up.png" class="icon-down" alt="">
+                        </div>
                     </div>
-                </div>
-                <div class="bottom-line">
-                    ······ 已见底了 ······
+                </template>
+                <div class="tab-content goods" :class="{active:isShowGoods}">
+                    <div v-if="isDefGoodsLayout" class="show-categroy-name" v-cloak>{{selectedCat}}</div>
+                    <div @click="getDetail('goods-detail.html',goods.id)" v-for="goods in goodsList" :class={'goods-item':!isDefGoodsLayout,'goods-item-line':isDefGoodsLayout}>
+                        <img class="goods-img" :src="goods.images | filterImg" />
+                        <div class="goods-info">
+                            <p>
+                                <span v-cloak>{{goods.title}}</span>
+                                <span v-cloak class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_num}}</span>
+                            </p>
+                            <p>
+                                <span v-cloak class="goods-price">￥{{goods.price}}</span>
+                                <button class="reserve">查看</button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mask" v-show="isOpen"></div>
+                    <div class="bottom-line">
+                        ······ 已见底了 ······
+                    </div>
                 </div>
             </div>
             <!--商家tab页内容-->

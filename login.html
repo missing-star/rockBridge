@@ -47,18 +47,9 @@
                 <span v-show="loginWay == 0" @click="changeWay(1)" class="login-by-code">使用验证码登录</span>
                 <span v-show="loginWay == 1" @click="changeWay(0)" class="login-by-password">使用密码登录</span>
             </p>
-            <button @click="submitLogin" class="login">登录</button>
-            <!-- <div class="other-way-login-container">
-                <p class="other-way-login-title">
-                    <span class="title">第三方登录</span>
-                    <img class="other-icon" src="imgs/arrow-up.png" alt="">
-                </p>
-                <div class="other-login-way">
-                    <img class="login-icon" src="imgs/icon-wechat.png" alt="">
-                    <img class="login-icon"  src="imgs/icon-qq.png" alt="">
-                    <img class="login-icon"  src="imgs/icon-sina.png" alt="">
-                </div>
-            </div> -->
+            <div class="button-bottom-container">
+                <button @click="submitLogin" class="login">登录</button>
+            </div>
         </div>
     </div>
     <script src="assets/vue/vue.min.js?v=1.0.0"></script>
