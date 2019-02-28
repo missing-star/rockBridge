@@ -56,6 +56,9 @@ var vm = new Vue({
                 pay_method: this.payWay,
                 address_id: this.selectedShopAddressId
             };
+            if(this.selectedRepairId != '') {
+                formData.pay_order = this.selectedRepairId;
+            }
             $.ajax({
                 url: `${rootUrl}/index/api/getAddPayCharge`,
                 type: 'post',

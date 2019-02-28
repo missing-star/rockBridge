@@ -244,7 +244,7 @@ function getRecordDetail(id) {
             vm.repairInfo.needPay = data.result.re_money;
             vm.repairInfo.repairNo = data.result.re_code;
             vm.repairInfo.quesDesc = data.result.repair_content;
-            vm.repairInfo.shopName = data.result.shop_phone;
+            vm.repairInfo.shopName = data.result.title + data.result.shop_phone;
             vm.repairInfo.remindTime = countTime(data.result.create_at);
             vm.repairInfo.cause = data.result.refusal_content;
             //初始化图片预览
