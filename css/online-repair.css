@@ -70,10 +70,6 @@ li.goods-tab-bar-item.active:after {
     left: 0;
 }
 
-span.current-number {
-    display: none;
-}
-
 .goods-tab-bar-item.active>span.current-number {
     display: inline;
 }
@@ -370,6 +366,14 @@ p.desc-title {
 }
 p.desc-detail,p.desc-time {
     color: #888888;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+p.status {
+    color: #ff8b16;
     font-size: 0.8rem;
     line-height: 1.2rem;
 }

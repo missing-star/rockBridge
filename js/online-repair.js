@@ -68,11 +68,11 @@ $(function () {
             loadMore();
         }
     });
-    //获得报修记录1--预约中  2--指派中  3--维修中 4,5维修完成(包括已取消的和已拒绝的)
+    //获得报修记录1--预约中  2--指派中  3--维修中 4,5,6维修完成(包括已取消的和已拒绝的)
     getRepairRecord('1', page1, true);
     getRepairRecord('2', page2, true);
     getRepairRecord('3', page3, true);
-    getRepairRecord('4,5', page4, true);
+    getRepairRecord('4,5,6', page4, true);
     loadMore();
 });
 
@@ -129,7 +129,7 @@ function getRepairRecord(type, page, loadMore) {
                     vm.fixing.list = vm.fixing.list.concat(list);
                     vm.fixing.total = data.result.handle_num.handle_num3;
                     break;
-                case '4,5':
+                case '4,5,6':
                     if (list.length == 0) {
                         vm.finished.loadMore = false;
                         break;

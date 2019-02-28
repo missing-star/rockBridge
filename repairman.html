@@ -54,6 +54,7 @@
                             <p v-cloak class="desc-title">{{item.repair_title}}</p>
                             <!-- <p class="desc-detail">{{item.detail}}</p> -->
                             <p v-cloak class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p class="status">待确认</p>
                         </div>
                     </div>
                     <div class="operation-group">
@@ -75,6 +76,7 @@
                             <p v-cloak class="desc-title">{{item.repair_title}}</p>
                             <!-- <p class="desc-detail">{{item.detail}}</p> -->
                             <p v-cloak class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p class="status">维修中</p>
                             <p v-cloak v-if="item.re_money > 0" class="pay-re-money">需支付：￥{{item.re_money}}</p>
                         </div>
                     </div>
@@ -98,6 +100,8 @@
                             <p v-cloak class="desc-title">{{item.repair_title}}</p>
                             <!-- <p class="desc-detail">{{item.detail}}</p> -->
                             <p v-cloak class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p class="status">{{item.handle_status == 4 ? '已完成' : (item.handle_status == 5 ? '已取消':'已拒绝')}}</p>
+                            <p v-cloak v-if="item.re_money > 0" class="pay-re-money">已支付：￥{{item.re_money}}</p>
                         </div>
                     </div>
                     <div class="operation-group">

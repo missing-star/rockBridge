@@ -403,3 +403,6 @@ button.receive-order {
 button.set-price {
     background: #9d7e60;
 }
+button.set-price.success{
+    background: #04BE02;
+}

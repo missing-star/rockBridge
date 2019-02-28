@@ -69,11 +69,11 @@ li.goods-tab-bar-item.active:after {
     bottom: -0.5rem;
     left: 0;
 }
-
-span.current-number {
-    display: none;
+p.status {
+    color: #ff8b16;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
 }
-
 .goods-tab-bar-item.active>span.current-number {
     display: inline;
 }

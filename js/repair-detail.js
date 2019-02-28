@@ -113,7 +113,7 @@ var vm = new Vue({
                 if (e.index == 1) {
                     if (e.value.trim() != '') {
                         $.ajax({
-                            url: `${rootUrl}/index/api/getCancelRepair`,
+                            url: `${rootUrl}/index/api/getRepairmanCancel`,
                             type: 'post',
                             data: {
                                 id: param.id,

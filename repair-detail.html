@@ -72,8 +72,8 @@
                     <button @click="receiveOrder" class="receive-order">接受</button>
                     <button @click="refuseOrder" class="refuse-order">拒绝</button>
                 </div>
-                <button v-if="repairInfo.status == 3" @click="completeOrder" class="set-price">维修完成</button>
-                <button v-if="repairInfo.status == 4 && parseFloat(repairInfo.needPay) == 0" @click="setPrice" class="set-price">设置金额</button>
+                <button v-if="repairInfo.status == 3 && parseFloat(repairInfo.needPay) == 0" @click="setPrice" class="set-price">设置金额</button>
+                <button @click="completeOrder" class="set-price success">维修完成</button>
             </template>
             <!-- 商户 -->
             <template v-else>

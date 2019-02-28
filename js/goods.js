@@ -138,7 +138,7 @@ var vm = new Vue({
                 return false;
             }
             this.currentIndex = index;
-            getCategory(id, '1');
+            getCategory(id, '2');
         },
         switchInner(index, id) {
             if (this.currentInnerIndex == index) {
@@ -146,7 +146,7 @@ var vm = new Vue({
             }
             this.cat_id = id;
             this.currentInnerIndex = index;
-            this.selectedCat = this.categoryItemList[index].title;
+            this.selectedCat = this.categoryItemList[index].cate_name;
             if (this.isOpen) {
                 this.isOpen = false;
             }
@@ -224,7 +224,7 @@ function getGoodsList(keyword, fields, type, page) {
             fields: fields,
             type: type,
             page: page,
-            cate_id: vm.cat_id
+            cate_id: vm.cate_id
         },
         dataType: 'json',
         type: 'post',
@@ -252,7 +252,7 @@ function getShopList(keyword, sort, type, page) {
             sort: sort,
             type: type,
             page: page,
-            cate_id: vm.cat_id
+            cate_id: vm.cate_id
         },
         type: 'post',
         dataType: 'json',
@@ -308,6 +308,9 @@ function getCategory(cat_id, type) {
             } else {
                 //小分类
                 vm.categoryItemList = data.result;
+                vm.cate_id = data.result[0].cate_id;
+                vm.selectedCat = data.result[0].cate_name;
+                getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
             }
         },
         error: function () {
