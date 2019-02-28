@@ -24,6 +24,11 @@ var vm = new Vue({
         province: '',
         city: '',
         district: '',
+        //经营类目
+        mainCategoryId: '',
+        mainCategoryName:'',
+        subMainCategoryId:'',
+        subMainCategoryName:'',
         cardList: {
             emblem: {
                 src: 'imgs/id-card-1.png',
@@ -47,9 +52,9 @@ var vm = new Vue({
             }
         },
         //房东名称
-        landlord:'',
+        landlord: '',
         //房东电话
-        landlord_phone:''
+        landlord_phone: ''
     },
     methods: {
         limitPhone() {
@@ -132,8 +137,10 @@ var vm = new Vue({
                 province: vm.province,
                 city: vm.city,
                 district: vm.district,
-                landlord:this.landlord,
-                landlord_phone:this.landlord_phone
+                landlord: this.landlord,
+                landlord_phone: this.landlord_phone,
+                one_cate_id:this.mainCategoryId,
+                two_cate_id:this.subMainCategoryId
             };
             if (formData.person_name == '') {
                 mui.toast('请输入商户名！');
@@ -149,15 +156,17 @@ var vm = new Vue({
             } else if ((vm.isPub && formData.address_id == '') || (!vm.isPub && (formData.address == '' || formData.province == ''))) {
                 mui.toast('地址有误！');
                 return false;
-            } else if (this.cardList.emblem.realPath == '' || this.cardList.portrait.realPath == '') {
+            } else if(vm.mainCategoryId == '') {
+                mui.toast('请选择主营类目!');
+                return false;
+            }
+            else if (this.cardList.emblem.realPath == '' || this.cardList.portrait.realPath == '') {
                 mui.toast('请上传身份证正反两面！');
                 return false;
-            }
-            else if(this.cardList.business_license.realPath == '') {
+            } else if (this.cardList.business_license.realPath == '') {
                 mui.toast('请上传营业执照');
                 return false;
-            }
-            else if(formData.landlord_phone.length != 0 && !regPhone.test(formData.landlord_phone)) {
+            } else if (formData.landlord_phone.length != 0 && !regPhone.test(formData.landlord_phone)) {
                 mui.toast('请输入正确的房东电话！');
                 return false;
             }
@@ -170,7 +179,7 @@ var vm = new Vue({
                     if (data.status == 1) {
                         mui.confirm('资料已提交成功', '', ['确定'], function (e) {
                             mui.openWindow({
-                                url:'user.html'
+                                url: 'user.html'
                             });
                         });
                     } else {
@@ -265,6 +274,42 @@ function initPicker() {
     (function ($, doc) {
         $.init();
         $.ready(function () {
+            //设置主营类目picker
+            jQuery.ajax({
+                url: 'http://dieshiqiao.pzhkj.cn/index/api/getShopsGoodsCateList',
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    var categoryPicker = new $.PopPicker({
+                        layer: 2
+                    });
+                    data.result = data.result.map(function (item, index) {
+                        return {
+                            id: item.id,
+                            text: item.cate_name,
+                            children:item.children.map(function(child,j) {
+                                return {
+                                    id:child.id,
+                                    text:child.cate_name
+                                }
+                            })
+                        }
+                    });
+                    categoryPicker.setData(data.result);
+                    var cateClickBtn = doc.getElementById('address-public-shop');
+                    cateClickBtn.addEventListener('tap', function (event) {
+                        categoryPicker.show(function (items) {
+                            vm.mainCategoryId = items[0].id;
+                            vm.mainCategoryName = items[0].text;
+                            vm.subMainCategoryId = items[1].id;
+                            vm.subMainCategoryName = items[1].text;
+                        });
+                    }, false);
+                },
+                error: function () {
+                    mui.toast('获取类目异常!');
+                }
+            });
             if (vm.isPub && !vm.addressPicker) {
                 jQuery.ajax({
                     url: 'http://dieshiqiao.pzhkj.cn/index/api/getShopAddress',
@@ -277,7 +322,7 @@ function initPicker() {
                         data.result = data.result.map(function (item, index) {
                             return {
                                 id: item.id,
-                                text:item.stage + item.storied_building + item.address
+                                text: item.stage + item.storied_building + item.address
                             }
                         });
                         addressPicker.setData(data.result);

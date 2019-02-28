@@ -144,7 +144,7 @@ var vm = new Vue({
             if (this.currentInnerIndex == index) {
                 return false;
             }
-            this.cat_id = id;
+            this.cate_id = id;
             this.currentInnerIndex = index;
             this.selectedCat = this.categoryItemList[index].cate_name;
             if (this.isOpen) {
@@ -308,7 +308,7 @@ function getCategory(cat_id, type) {
             } else {
                 //小分类
                 vm.categoryItemList = data.result;
-                vm.cate_id = data.result[0].cate_id;
+                vm.cate_id = data.result[0].id;
                 vm.selectedCat = data.result[0].cate_name;
                 getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, page1);
             }

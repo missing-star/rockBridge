@@ -377,6 +377,9 @@ p.desc-detail,p.desc-time {
     color: #888888;
     font-size: 0.8rem;
     line-height: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 button.reverse-btn {
     background: #F0F0F0;

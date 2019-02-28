@@ -177,14 +177,14 @@ function getShopComments() {
         type: 'post',
         dataType: 'json',
         success: function (data) {
+            vm.commentsInfo.service_ratio = data.result.service_ratio;
+            vm.commentsInfo.shop_quality = data.result.shop_quality;
+            vm.commentsInfo.shop_review = data.result.shop_review;
             if(data.result.review_list.length == 0) {
                 vm.isMore = false;
                 return;
             }
             vm.commentsList = vm.commentsList.concat(data.result.review_list);
-            vm.commentsInfo.service_ratio = data.result.service_ratio;
-            vm.commentsInfo.shop_quality = data.result.shop_quality;
-            vm.commentsInfo.shop_review = data.result.shop_review;
         },
         error: function () {
             mui.toast('服务器异常');
