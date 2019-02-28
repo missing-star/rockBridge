@@ -135,7 +135,7 @@ function getRepairRecord(type, page, loadMore) {
                         break;
                     }
                     vm.finished.list = vm.finished.list.concat(list);
-                    vm.finished.total = data.result.handle_num.handle_num.handle_num4;
+                    vm.finished.total = data.result.handle_num.handle_num4;
                     break;
             }
         },
