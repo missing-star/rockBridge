@@ -44,7 +44,7 @@ var vm = new Vue({
         getDetail(id) {
             //查看报修详情
             mui.openWindow({
-                url: 'repair-detail.html?id='+ id
+                url: 'repair-detail.html?id=' + id + '&type=1'
             })
         }
     }

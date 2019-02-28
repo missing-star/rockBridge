@@ -1,7 +1,7 @@
 var param = getParams();
 var statusName = '';
 //当前用户为维修员还是商户
-const isRepairMan = JSON.parse(localStorage.getItem('user')).re_id > 0 ? true : false;
+const isRepairMan = param.type == 1  ? true : false;
 
 var vm = new Vue({
     el: '#app',
@@ -207,7 +207,10 @@ function getRecordDetail(id) {
                         vm.repairInfo.repairStatusName = '已完成';
                         break;
                     case 5:
-                        vm.repairInfo.repairStatusName = '已完成';
+                        vm.repairInfo.repairStatusName = '已取消';
+                        break;
+                    case 6:
+                        vm.repairInfo.repairStatusName = '已拒绝';
                         break;
                 }
             } else {
@@ -225,7 +228,10 @@ function getRecordDetail(id) {
                         vm.repairInfo.repairStatusName = '已完成';
                         break;
                     case 5:
-                        vm.repairInfo.repairStatusName = '已完成';
+                        vm.repairInfo.repairStatusName = '已取消';
+                        break;
+                    case 6:
+                        vm.repairInfo.repairStatusName = '已拒绝';
                         break;
                 }
             }
