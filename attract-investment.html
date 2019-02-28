@@ -31,7 +31,10 @@
                 <img :src="item.thumb" alt="" class="investment-img">
                 <p class="desc">
                     <span v-cloak class="title">{{item.title}}</span>
-                    <span v-cloak class="sub-title">{{item.title2}}</span>
+                    <div v-cloak class="business-item-content">
+                        <img src="imgs/position.png" class="icon-positon" alt="">
+                        <p class="address-info">地址信息</p>
+                    </div>
                 </p>
             </div>
         </div>

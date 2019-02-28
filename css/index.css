@@ -561,11 +561,11 @@ p.class-title.arrow-right {
     align-items: center;
 }
 img.icon-positon {
-    width: 1rem;
+    width: 0.7rem;
 }
 p.address-info {
     padding-left: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     line-height: 1rem;
     flex: 1;
     overflow: hidden;
