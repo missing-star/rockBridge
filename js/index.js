@@ -200,3 +200,4 @@ function initBanner() {
         loop: true
     });
 }
+getUserInfo();

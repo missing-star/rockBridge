@@ -172,3 +172,29 @@ function sortByPro(pro, flag) {
         }); 
      }
  }
+
+ 
+function getUserInfo() {
+    $.ajax({
+        url: `${rootUrl}/index/api/getMyCenter`,
+        type: 'post',
+        async: false,
+        datType: 'json',
+        success: function (data) {
+            if (data.status == 1) {
+                sessionStorage.setItem('user', JSON.stringify(data.result));
+                userData = data.result;
+                if (data.result.shop_id > 0) {
+                    sessionStorage.setItem('switchRole', 1);
+                } else {
+                    sessionStorage.setItem('switchRole', 0);
+                }
+            } else if (data.status == 202) {
+                goLogin();
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常！');
+        }
+    })
+}
