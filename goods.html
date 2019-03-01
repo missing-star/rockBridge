@@ -92,7 +92,7 @@
                 </li>
             </ul>
             <!--商品tab页内容-->
-            <div class="category-goods-container">
+            <div class="category-goods-container" v-if="isShowGoods">
                 <template v-if="isDefGoodsLayout">
                     <ul class="categroy-list">
                         <li class="categroy-item" v-for="(category,index) in categoryList" :class="{active:index == currentIndex}"

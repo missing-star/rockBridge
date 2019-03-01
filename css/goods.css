@@ -135,6 +135,7 @@ div.goods {
 .goods-item img.goods-img {
     width: 100%;
     height: 8rem;
+    border-radius: 0.2rem;
 }
 .goods-item .goods-info>p:first-child {
     margin: 0.2rem 0;
@@ -200,8 +201,9 @@ div.goods {
 }
 
 .goods-item-line img.goods-img {
-    width: 30%;
-    height: 5rem;
+    border-radius: 0.2rem;
+    width: 35%;
+    height: 4rem;
 }
 
 .goods-item-line .goods-info{
@@ -212,7 +214,7 @@ div.goods {
     font-size: 0.8rem;
     position: absolute;
     top: 0;
-    left: 32%;
+    left: 37%;
     line-height: 0.8rem;
 }
 .goods-item-line .goods-info>p:first-child>span{
@@ -229,8 +231,8 @@ div.goods {
     line-height: 0.8rem;
     position: absolute;
     bottom: 0;
-    left: 32%;
-    width: 68%;
+    left: 37%;
+    width: 63%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -329,6 +331,7 @@ img.business-img-item {
     width: 30%;
     margin: 0 1.5%;
     height: 5rem;
+    border-radius: 0.2rem;
 }
 p.business-detail>span:first-child {
     font-size: 0.8rem;

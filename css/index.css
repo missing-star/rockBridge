@@ -144,7 +144,7 @@ span.mui-badge.mui-badge-danger {
 }
 .slider-business-item img{
     width: 100%;
-    border-radius: 6px;
+    border-radius: 0.2rem;
 }
 span.first-title {
     font-size: 1rem;
@@ -219,6 +219,7 @@ p.card-content-con {
 }
 p.card-content-con>img {
     width: 100%;
+    border-radius: 0.2rem;
 }
 p.card-content-con>span {
     display: block;
@@ -326,10 +327,12 @@ button.go-business-btn{
 img.business-img-item {
     width: 30%;
     margin: 0 1.5%;
-    height: 4.5rem;
+    height: 5rem;
+    border-radius: 0.2rem;
 }
 img.goods-img {
     width: 100%;
+    border-radius: 0.2rem;
 }
 button.reserve {
     background: #9d7e60;
