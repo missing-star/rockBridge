@@ -252,7 +252,7 @@ function getRecordDetail(id) {
                     vm.repairInfo.imgs.push(rootUrl + item);
                 });
                 vm.repairInfo.needPay = data.result.re_money;
-                vm.repairInfo.payStatus = data.result.type == 0 ? '未支付' : '已支付';
+                vm.repairInfo.payStatus = data.result.type == 0 ? '' : '已支付';
                 vm.repairInfo.repairNo = data.result.re_code;
                 vm.repairInfo.quesDesc = data.result.repair_content;
                 vm.repairInfo.shopName = data.result.title + data.result.shop_phone;
@@ -302,6 +302,6 @@ function submitRepair(id, money) {
 
 function goHome() {
     mui.openWindow({
-        url: 'index.html'
+        url: 'workspace.html'
     });
 }

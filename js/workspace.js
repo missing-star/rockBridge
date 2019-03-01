@@ -1,3 +1,4 @@
+sessionStorage.setItem('currentRole',1);
 var vm = new Vue({
     el: '#app',
     data: {
