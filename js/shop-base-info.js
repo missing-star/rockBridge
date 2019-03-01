@@ -1,4 +1,4 @@
-const vm = new Vue({
+var vm = new Vue({
     el: '#app',
     data: {
         shopInfo:''

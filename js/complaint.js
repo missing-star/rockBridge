@@ -17,7 +17,7 @@ var vm = new Vue({
             this.uploadedImgs.splice(index, 1);
         },
         submitComplain() {
-            const imgs = this.uploadedImgs.map(function(item) {
+            var imgs = this.uploadedImgs.map(function(item) {
                 return item.realPath;
             });
             $.ajax({

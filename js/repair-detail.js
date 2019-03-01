@@ -1,7 +1,7 @@
 var param = getParams();
 var statusName = '';
 //当前用户为维修员还是商户
-const isRepairMan = param.type == 1 ? true : false;
+var isRepairMan = param.type == 1 ? true : false;
 var vm = new Vue({
     el: '#app',
     data: {

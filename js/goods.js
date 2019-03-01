@@ -296,7 +296,7 @@ function saveSearchKeywords() {
 getCategory(undefined, 1);
 
 function getCategory(cat_id, type) {
-    const data = {};
+    var data = {};
     if (cat_id) {
         data.cate_id = cat_id;
     }

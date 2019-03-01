@@ -21,7 +21,7 @@ var vm = new Vue({
                 mui.toast('请输入注销原因!');
                 return;
             }
-            const imgs = this.uploadedImgs.map(function (item) {
+            var imgs = this.uploadedImgs.map(function (item) {
                 return item.realPath;
             });
             //提交注销

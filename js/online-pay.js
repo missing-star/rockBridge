@@ -1,3 +1,6 @@
+if(!sessionStorage.getItem('user')) {
+    getUserInfo();
+}
 var vm = new Vue({
     el: '#app',
     data: {
@@ -187,7 +190,7 @@ var vm = new Vue({
         })
     });
     var payPicker = new $.PopPicker();
-    let result = getPayWay().map(function (item) {
+    varresult = getPayWay().map(function (item) {
         return {
             value: item.id,
             text: item.name,
@@ -302,7 +305,7 @@ function jsApiCall() {
  * 获得支付方式
  */
 function getPayWay() {
-    let result = [];
+    varresult = [];
     $.ajax({
         url: `${rootUrl}/index/api/getPayment`,
         dataType: 'json',

@@ -1,4 +1,4 @@
-const vm = new Vue({
+var vm = new Vue({
     el: '#app',
     data() {
         return {
@@ -23,7 +23,7 @@ const vm = new Vue({
                         mui.toast(data.msg);
                         if (data.status == 1) {
                             vm.btnInfo = `${vm.time}s`;
-                            const interval = setInterval(function () {
+                            var interval = setInterval(function () {
                                 if (vm.time == 1) {
                                     clearInterval(interval);
                                     vm.time = 60;

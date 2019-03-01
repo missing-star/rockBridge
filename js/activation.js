@@ -1,4 +1,4 @@
-const vm = new Vue({
+var vm = new Vue({
     el: '#app',
     data: {
         selectedNumber: '',
@@ -25,17 +25,17 @@ const vm = new Vue({
 (function ($, doc) {
     $.init();
     $.ready(function () {
-        const numberPicker = new $.PopPicker({
+        var numberPicker = new $.PopPicker({
             title: '门牌号选择'
         });
-        const data = getNotActivedAddress().map(function(address,index) {
+        var data = getNotActivedAddress().map(function(address,index) {
             return {
                 value:address.id,
                 text:address.address
             }
         });
         numberPicker.setData(data);
-        const eventBtn = doc.getElementById('number-btn');
+        var eventBtn = doc.getElementById('number-btn');
         eventBtn.addEventListener('tap', function (event) {
             numberPicker.show(function (items) {
                 vm.selectedId = items[0].value;
@@ -50,7 +50,7 @@ const vm = new Vue({
  * 获得未激活的地址列表
  */
 function getNotActivedAddress() {
-    let result = '';
+    varresult = '';
     $.ajax({
         url: `${rootUrl}/index/api/getNotAddress`,
         type: 'post',

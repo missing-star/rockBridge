@@ -57,7 +57,7 @@ var vm = new Vue({
             $(event.target).parent().toggleClass('active');
         },
         submitComments() {
-            const imgs = this.uploadedImgs.map(function(item) {
+            var imgs = this.uploadedImgs.map(function(item) {
                 return item.realPath;
             });
             $.ajax({

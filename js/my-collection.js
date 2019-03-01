@@ -1,5 +1,5 @@
-let page = 1;
-const vm = new Vue({
+varpage = 1;
+var vm = new Vue({
     el: '#app',
     data: {
         //搜索内容

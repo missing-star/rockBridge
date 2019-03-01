@@ -80,7 +80,7 @@ function initBanner() {
 getGoodsDetail(getParams().id);
 
 function getGoodsDetail(id) {
-    const data = {
+    var data = {
         id:id
     }
     if(getParams().ad_id) {

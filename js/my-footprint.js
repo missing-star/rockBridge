@@ -1,4 +1,4 @@
-let page = 1;
+varpage = 1;
 var nowDate = new Date();
 var vm = new Vue({
     el: '#app',

@@ -164,7 +164,7 @@ function getShopInfo() {
         }
     });
 }
-let page = 1;
+varpage = 1;
 
 function getShopComments() {
     $.ajax({
