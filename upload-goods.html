@@ -33,6 +33,10 @@
             <input v-model="goodsName" @input="limitName" placeholder="20字内编辑商品标题" type="text" class="goods-name-input">
         </div>
         <div class="goods-name-container">
+            <p class="goods-name-title">商品类目</p>
+            <input id="main-category" readonly v-model="mainCategoryName" placeholder="请选择商品类目" type="text" class="arrow-right goods-name-input">
+        </div>
+        <div class="goods-name-container">
             <p class="goods-name-title">搜索关键词</p>
             <input v-model="keywords" @input="limitKeywords" placeholder="以逗号隔开多个关键词" type="text" class="goods-name-input">
         </div>

@@ -191,3 +191,9 @@ span.delete-icon {
     background-size: 0.5rem;
     background-position: center;
 }
+input.arrow-right.goods-name-input {
+    background-image: url(../imgs/arrow-right.png);
+    background-size: 0.6rem;
+    background-position: 98%;
+    background-repeat: no-repeat;
+}

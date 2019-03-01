@@ -3,7 +3,7 @@ var vm = new Vue({
     data() {
         return {
             counts: 0,
-            goodsId:'',
+            goodsId: '',
             goodsName: '',
             description: '',
             goodsPrice: '100.00',
@@ -19,7 +19,11 @@ var vm = new Vue({
             uploadOk: false,
             descriptionOk: false,
             goodsNameOk: false,
-            keywordsOk: false
+            keywordsOk: false,
+            categoryOk: false,
+            mainCategoryId: '',
+            mainCategoryName: '',
+            subMainCategoryId: ''
         }
     },
     methods: {
@@ -96,7 +100,7 @@ var vm = new Vue({
             this.keywords = this.keywords.replace(/\s+/g, "");
         },
         validateAll() {
-            if (this.countsOk && this.priceOk && this.goodsNameOk && this.uploadOk && this.descriptionOk) {
+            if (this.countsOk && this.priceOk && this.goodsNameOk && this.uploadOk && this.descriptionOk && this.categoryOk) {
                 this.isDisabled = false;
             } else {
                 this.isDisabled = true;
@@ -111,14 +115,16 @@ var vm = new Vue({
                 imgs += this.uploadedImgs[i].realPath + ',';
             }
             var formData = {
-                id:this.goodsId,
+                id: this.goodsId,
                 act: getParams().type,
                 title: this.goodsName,
                 g_desc: this.description,
                 keywords: this.keywords,
                 price: this.goodsPrice,
                 nums: this.goodsCounts,
-                images: imgs.substring(0, imgs.length - 1)
+                images: imgs.substring(0, imgs.length - 1),
+                one_cate_id: this.mainCategoryId,
+                two_cate_id: this.subMainCategoryId
             }
             $.ajax({
                 url: `${rootUrl}/index/api/getShopsGoodsEdit`,
@@ -127,10 +133,10 @@ var vm = new Vue({
                 dataType: 'json',
                 success: function (data) {
                     mui.toast(data.msg);
-                    if(data.status == 1) {
-                        setTimeout(function() {
+                    if (data.status == 1) {
+                        setTimeout(function () {
                             mui.openWindow({
-                                url:'goods-management.html'
+                                url: 'goods-management.html'
                             });
                         }, 200);
                     }
@@ -141,10 +147,10 @@ var vm = new Vue({
             });
         }
     },
-    filters:{
+    filters: {
         filterImg(thumb) {
             thumb = thumb == null ? '' : thumb;
-           if(thumb.indexOf('http') != -1) {
+            if (thumb.indexOf('http') != -1) {
                 return `${thumb}`;
             }
             return `${rootUrl}${thumb}`;
@@ -169,6 +175,10 @@ var vm = new Vue({
         },
         description() {
             this.descriptionOk = this.description.trim().length > 0 ? true : false;
+            this.validateAll();
+        },
+        mainCategoryId() {
+            this.categoryOk = this.mainCategoryId == '' ? false : true;
             this.validateAll();
         }
     }
@@ -242,10 +252,10 @@ function getGoodsDetail(id) {
                 vm.goodsPrice = parseFloat(data.result.price).toFixed(2);
                 vm.goodsCounts = parseInt(data.result.nums);
                 vm.goodsId = data.result.id;
-                for(var i = 0; i < data.result.images.length;i++) {
+                for (var i = 0; i < data.result.images.length; i++) {
                     vm.uploadedImgs.push({
-                        src:`${rootUrl}${data.result.images[i]}`,
-                        realPath:data.result.images[i]
+                        src: `${rootUrl}${data.result.images[i]}`,
+                        realPath: data.result.images[i]
                     });
                 }
             }
@@ -255,3 +265,47 @@ function getGoodsDetail(id) {
         }
     });
 }
+
+function getCategory() {
+    (function ($, doc) {
+        $.init();
+        $.ready(function () {
+            jQuery.ajax({
+                url: 'http://dieshiqiao.pzhkj.cn/index/api/getShopsGoodsCateList',
+                dataType: 'json',
+                type: 'POST',
+                success: function (data) {
+                    var categoryPicker = new $.PopPicker({
+                        layer: 2
+                    });
+                    data.result = data.result.map(function (item, index) {
+                        return {
+                            id: item.id,
+                            text: item.cate_name,
+                            children: item.children.map(function (child, j) {
+                                return {
+                                    id: child.id,
+                                    text: child.cate_name
+                                }
+                            })
+                        }
+                    });
+                    categoryPicker.setData(data.result);
+                    var cateClickBtn = doc.getElementById('main-category');
+                    cateClickBtn.addEventListener('tap', function (event) {
+                        categoryPicker.show(function (items) {
+                            vm.mainCategoryId = items[0].id;
+                            vm.mainCategoryName = items[0].text + ' ' + items[1].text;
+                            vm.subMainCategoryId = items[1].id;
+                        });
+                    }, false);
+                },
+                error: function () {
+                    mui.toast('获取类目异常!');
+                }
+            });
+        })
+    })(mui, document);
+}
+
+getCategory();
