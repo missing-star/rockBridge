@@ -41,7 +41,7 @@ function getParams() {
 var rootUrl = 'http://dieshiqiao.pzhkj.cn';
 
 //将时间戳转换为时间（年-月-日）
-function transformTime(timeStat) {
+function transformTime(timeStat,flag) {
     var date = new Date(parseInt(timeStat * 1000));
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
@@ -51,6 +51,21 @@ function transformTime(timeStat) {
     var day = date.getDate();
     if (day < 10) {
         day = '0' + day;
+    }
+    var hour = date.getHours();
+    if(hour < 10) {
+        hour = '0' + hour;
+    }
+    var minute = date.getMinutes();
+    if(minute < 10) {
+        minute = '0' + minute;
+    }
+    var second = date.getSeconds();
+    if(second < 10) {
+        second = '0' + second;
+    }
+    if(flag) {
+        return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' +second;
     }
     return year + '-' + month + '-' + day;
 }

@@ -28,7 +28,7 @@
                 <img :src="news.thumb | filterImg" alt="" class="info-cover">
                 <p v-cloak class="info-title">{{news.title}}</p>
                 <p v-cloak class="info-source-time">
-                    {{news.author}} | {{news.update_time}}
+                    {{news.author}} | {{transformTime(news.add_time,true)}}
                 </p>
                 <p v-cloak class="middle-title">{{news.description}}</p>
                 <p v-cloak class="info-content" v-html="news.content"></p>

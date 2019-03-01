@@ -4,7 +4,7 @@ var vm = new Vue({
         news: ''
     },
     methods: {
-
+        transformTime:transformTime
     },
     filters: {
         //拼接图片地址
