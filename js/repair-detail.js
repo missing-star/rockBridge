@@ -1,12 +1,12 @@
 var param = getParams();
 var statusName = '';
 //当前用户为维修员还是商户
-const isRepairMan = param.type == 1  ? true : false;
-
+const isRepairMan = param.type == 1 ? true : false;
 var vm = new Vue({
     el: '#app',
     data: {
         isRepairMan: isRepairMan,
+        isCanBack: param.code == 1 ? false : true,
         repairInfo: {
             id: param.id,
             status: '',
@@ -23,7 +23,7 @@ var vm = new Vue({
             //倒计时
             remindTime: '',
             needPay: '',
-            payStatus:''
+            payStatus: ''
         }
     },
     methods: {
@@ -281,4 +281,10 @@ function submitRepair(id, money) {
             mui.toast('服务器异常！');
         }
     })
+}
+
+function goHome() {
+    mui.openWindow({
+        url:'index.html'
+    });
 }
