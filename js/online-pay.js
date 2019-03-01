@@ -30,7 +30,8 @@ var vm = new Vue({
         str: '',
         //是否已经获取过报修列表
         isGetList: false,
-        isDisabled: getParams().type == 1 ? true : false
+        isDisabled: getParams().type == 1 ? true : false,
+        id:''
     },
     methods: {
         goDetail() {
@@ -208,6 +209,7 @@ var vm = new Vue({
     if (vm.isDisabled) {
         payPicker.pickers[0].items.forEach(function (pay, index) {
             payPicker.pickers[0].setSelectedIndex(index);
+            vm.id = pay.id;
             vm.payFate = pay.service_price;
             vm.payWay = pay.name;
         });
@@ -226,6 +228,7 @@ function getRepairRecord() {
                 var repairPicker = new mui.PopPicker();
                 for (key in data.result) {
                     list.push({
+                        id:data.result[key].id,
                         value: data.result[key].re_code,
                         text: data.result[key].re_code,
                         money: data.result[key].re_money
@@ -235,6 +238,7 @@ function getRepairRecord() {
                 var eventBtn = document.getElementById('repair-list');
                 eventBtn.addEventListener('tap', function (event) {
                     repairPicker.show(function (items) {
+                        vm.id = items[0].id;
                         vm.selectedRepairName = items[0].text;
                         vm.selectedRepairId = items[0].value;
                         vm.money = items[0].money == 0 ? '' : items[0].money;
@@ -290,7 +294,7 @@ function jsApiCall() {
                 mui.toast('支付成功!');
                 setTimeout(function () {
                     mui.openWindow({
-                        url: 'pay-detail.html'
+                        url: 'repair-detail.html?id='+vm.id
                     });
                 }, 200);
             } else {
