@@ -23,7 +23,8 @@ var vm = new Vue({
             //倒计时
             remindTime: '',
             needPay: '',
-            payStatus: ''
+            payStatus: '',
+            repair_info:''
         }
     },
     methods: {
@@ -258,6 +259,7 @@ function getRecordDetail(id) {
                 vm.repairInfo.shopName = data.result.title + data.result.shop_phone;
                 vm.repairInfo.remindTime = countTime(data.result.create_at);
                 vm.repairInfo.cause = data.result.refusal_content;
+                vm.repairInfo.repair_info = data.result.repair_info;
                 //初始化图片预览
                 mui.previewImage();
 
