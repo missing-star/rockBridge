@@ -208,8 +208,8 @@ var vm = new Vue({
     if (vm.isDisabled) {
         payPicker.pickers[0].items.forEach(function (pay, index) {
             payPicker.pickers[0].setSelectedIndex(index);
-            vm.payFate = pay.fate;
-            vm.payWay = pay.text;
+            vm.payFate = pay.service_price;
+            vm.payWay = pay.name;
         });
     }
 })(mui, document);
