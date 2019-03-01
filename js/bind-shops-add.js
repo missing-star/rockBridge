@@ -44,6 +44,8 @@ const vm = new Vue({
                         setTimeout(function () {
                             history.go(-1);
                         }, 200);
+                    }else if(data.status == 202) {
+                        goLogin();
                     }
                 },
                 error: function () {
@@ -101,6 +103,8 @@ function uploadImgRealPath(fileObj, key, src) {
                 vm.renting.src = src;
                 //设置文件路径为服务器路径
                 vm.renting.realPath = data.result;
+            }else if(data.status == 202) {
+                goLogin();
             }
         },
         error: function () {
@@ -115,30 +119,35 @@ function initPicker() {
         dataType: 'json',
         type: 'POST',
         success: function (data) {
-            //公房商户选择地址
-            var addressPicker = new mui.PopPicker();
-            data.result = data.result.map(function (item, index) {
-                return {
-                    value: item.id,
-                    text: item.stage + item.storied_building + item.address
-                }
-            });
-            addressPicker.setData(data.result);
-            if (getParams().type == 'edit') {
-                addressPicker.pickers[0].items.forEach(function (address, index) {
-                    if (address.value == vm.addressPubId) {
-                        addressPicker.pickers[0].setSelectedIndex(index);
-                        vm.addressPub = address.text;
+            if(data.status == 1) {
+                //公房商户选择地址
+                var addressPicker = new mui.PopPicker();
+                data.result = data.result.map(function (item, index) {
+                    return {
+                        value: item.id,
+                        text: item.stage + item.storied_building + item.address
                     }
                 });
+                addressPicker.setData(data.result);
+                if (getParams().type == 'edit') {
+                    addressPicker.pickers[0].items.forEach(function (address, index) {
+                        if (address.value == vm.addressPubId) {
+                            addressPicker.pickers[0].setSelectedIndex(index);
+                            vm.addressPub = address.text;
+                        }
+                    });
+                }
+                var addressClickBtn = document.getElementById('address-public-shop');
+                addressClickBtn.addEventListener('tap', function (event) {
+                    addressPicker.show(function (items) {
+                        vm.addressPubId = items[0].value;
+                        vm.addressPub = items[0].text;
+                    });
+                }, false);
             }
-            var addressClickBtn = document.getElementById('address-public-shop');
-            addressClickBtn.addEventListener('tap', function (event) {
-                addressPicker.show(function (items) {
-                    vm.addressPubId = items[0].value;
-                    vm.addressPub = items[0].text;
-                });
-            }, false);
+            else if(data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('获取地址异常!');
@@ -155,11 +164,16 @@ function getSopsDetail() {
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            vm.addressPubId = data.result.address_id;
-            vm.renting.src = rootUrl + data.result.images;
-            vm.renting.realPath = data.result.images;
-            vm.shopStatus = data.result.status == 2 ? '已通过' : (data.result.status == 1 ? '待审核' : (data.result.status == 3 ? '已拒绝' : '已解绑'));
-            initPicker();
+            if(data.status == 1) {
+                vm.addressPubId = data.result.address_id;
+                vm.renting.src = rootUrl + data.result.images;
+                vm.renting.realPath = data.result.images;
+                vm.shopStatus = data.result.status == 2 ? '已通过' : (data.result.status == 1 ? '待审核' : (data.result.status == 3 ? '已拒绝' : '已解绑'));
+                initPicker();
+            }
+            else if(data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常');

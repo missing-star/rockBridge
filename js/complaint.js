@@ -35,7 +35,10 @@ var vm = new Vue({
                         setTimeout(function () {
                             location.reload();
                         }, 200);
+                    }else if(data.status == 202) {
+                        goLogin();
                     }
+            vm.commentsInfo = data.result;
                 },
                 error: function () {
                     mui.toast('服务器异常');
@@ -96,6 +99,8 @@ function uploadImgRealPath(fileObj, src) {
                     src: src,
                     realPath: data.result
                 });
+            }else if(data.status == 202) {
+                goLogin();
             }
         },
         error: function () {

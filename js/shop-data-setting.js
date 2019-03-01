@@ -72,7 +72,7 @@ var vm = new Vue({
                 mui.toast('请输入电话');
                 return;
             }
-            vm.updateForm.append('landline',this.landline);
+            vm.updateForm.append('landline', this.landline);
             if (updateUserInfo()) {
                 mui.toast('修改成功');
             } else {
@@ -80,11 +80,11 @@ var vm = new Vue({
             }
         },
         savePerseonName() {
-            if(this.person_name.trim().length == 0) {
+            if (this.person_name.trim().length == 0) {
                 mui.toast('请输入名称');
                 return;
             }
-            vm.updateForm.append('person_name',vm.person_name);
+            vm.updateForm.append('person_name', vm.person_name);
             if (updateUserInfo()) {
                 mui.toast('修改成功');
             } else {
@@ -100,7 +100,7 @@ var vm = new Vue({
         confirmName() {
             if (this.editName.length != 0) {
                 this.title = this.editName;
-                vm.updateForm.append('title',this.title);
+                vm.updateForm.append('title', this.title);
                 if (updateUserInfo()) {
                     mui.toast('修改成功');
                     this.isEditName = false;
@@ -145,7 +145,7 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
     clipFinish: function (dataURL) {
         $("#wait-loading").css("display", "flex");
         //上传图片
-        uploadImgRealPath(dataURLtoFile(dataURL, vm.imgObj.name), dataURL,'userLogo');
+        uploadImgRealPath(dataURLtoFile(dataURL, vm.imgObj.name), dataURL, 'userLogo');
     }
 });
 //关闭actionsheet
@@ -166,7 +166,7 @@ function parseImage(elem, key) {
     var arr = filePath.split('\\');
     var fileName = arr[arr.length - 1];
     fr.onload = function () {
-        uploadImgRealPath(imgObj, null,key);
+        uploadImgRealPath(imgObj, null, key);
         //置空文件上传框的值
         $(elem).val("");
     };
@@ -230,6 +230,8 @@ function uploadImgRealPath(fileObj, dataURL, key) {
                         break;
                 }
 
+            } else if (data.status == 202) {
+                goLogin();
             } else {
                 mui.toast('上传失败');
             }
@@ -257,6 +259,8 @@ function updateUserInfo() {
         success: function (data) {
             if (data.status == 1) {
                 result = true;
+            } else if (data.status == 202) {
+                goLogin();
             } else {
                 result = false;
             }

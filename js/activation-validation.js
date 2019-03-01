@@ -34,6 +34,9 @@ const vm = new Vue({
                                 vm.btnInfo = `${vm.time}s`;
                             }, 1000);
                         }
+                        else if(data.status == 202) {
+                            goLogin();
+                        }
                     },
                     error: function () {
                         mui.toast('服务器异常');
@@ -60,7 +63,10 @@ const vm = new Vue({
                 dataType: 'json',
                 success: function (data) {
                     if (data.status == 1) {
-                    mui('#sheet1').popover('toggle');
+                        mui('#sheet1').popover('toggle');
+                    }
+                    else if(data.status == 202) {
+                        goLogin();
                     }
                     else {
                         mui.toast('激活失败');

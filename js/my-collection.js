@@ -72,6 +72,9 @@ function getMyCollection() {
                 vm.goodsList = vm.shopList.concat(data.result.goods_list);
                 vm.shopList = vm.shopList.concat(data.result.shops_list);
             }
+            else if(data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常');

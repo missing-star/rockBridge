@@ -71,7 +71,9 @@ var vm = new Vue({
                         mui.confirm('已提交发票申请', '', ['确定'], function (e) {
                             window.location.reload();
                         });
-                    } else {
+                    } else if(data.status == 202) {
+                        goLogin();
+                    }else {
                         mui.toast(data.msg);
                     }
                 },

@@ -31,6 +31,9 @@ function getShopsInfo(shops_id) {
                 vm.person_name = data.result.person_name;
                 vm.phone = data.result.phone;
             }
+            else if(data.status == 202) {
+                goLogin();
+            }
         },
         error:function() {
             mui.toast('服务器异常');

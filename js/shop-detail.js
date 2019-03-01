@@ -15,18 +15,18 @@ var vm = new Vue({
         isCollection: '',
         score: 0,
         commentsList: [],
-        commentsInfo:{
-            service_ratio:'',
-            shop_quality:'',
-            shop_review:''
+        commentsInfo: {
+            service_ratio: '',
+            shop_quality: '',
+            shop_review: ''
         },
-        isMore:true
+        isMore: true
     },
     filters: {
         //拼接图片地址
         filterImg(thumb) {
             thumb = thumb == null ? '' : thumb;
-            if(thumb.indexOf('http') != -1) {
+            if (thumb.indexOf('http') != -1) {
                 return `${thumb}`;
             }
             return `${rootUrl}${thumb}`;
@@ -70,7 +70,7 @@ var vm = new Vue({
         },
         getDetail(id) {
             mui.openWindow({
-                url: 'goods-detail.html?id='+id
+                url: 'goods-detail.html?id=' + id
             })
         },
         clearHistory(name) {
@@ -100,10 +100,10 @@ var vm = new Vue({
         goToComments() {
             if (validateUser()) {
                 mui.openWindow({
-                    url: 'publish-comments.html?id='+getParams().id
+                    url: 'publish-comments.html?id=' + getParams().id
                 });
             } else {
-                mui.toast('请登录后操作!');
+                goLogin();
             }
         }
     }
@@ -134,7 +134,7 @@ $(function () {
 
     $(document).scroll(function () {
         if (document.querySelector('div.bottom-line.comments').getBoundingClientRect().top < document.documentElement.clientHeight) {
-            if(!vm.isMore) {
+            if (!vm.isMore) {
                 return;
             }
             page++;
@@ -180,7 +180,7 @@ function getShopComments() {
             vm.commentsInfo.service_ratio = data.result.service_ratio;
             vm.commentsInfo.shop_quality = data.result.shop_quality;
             vm.commentsInfo.shop_review = data.result.shop_review;
-            if(data.result.review_list.length == 0) {
+            if (data.result.review_list.length == 0) {
                 vm.isMore = false;
                 return;
             }

@@ -68,18 +68,22 @@ $.ajax({
     dataType: 'json',
     type: 'post',
     success: function (data) {
-        var list = [];
-        for (key in data.result.pay_category) {
-            vm.categoryIdList.push({
-                id: data.result.pay_category[key].id,
-                name: data.result.pay_category[key].name,
-                thumb: data.result.pay_category[key].thumb
-            });
-        };
-        vm.currentTab = vm.categoryIdList[0].id;
-        vm.currentIcon = `${rootUrl}${vm.categoryIdList[0].thumb}`;
-        var date = vm.printDate.replace('年', '-').replace('月', '');
-        getCostDetail(vm.currentTab, date);
+        if (data.status == 1) {
+            var list = [];
+            for (key in data.result.pay_category) {
+                vm.categoryIdList.push({
+                    id: data.result.pay_category[key].id,
+                    name: data.result.pay_category[key].name,
+                    thumb: data.result.pay_category[key].thumb
+                });
+            };
+            vm.currentTab = vm.categoryIdList[0].id;
+            vm.currentIcon = `${rootUrl}${vm.categoryIdList[0].thumb}`;
+            var date = vm.printDate.replace('年', '-').replace('月', '');
+            getCostDetail(vm.currentTab, date);
+        } else if (data.status == 202) {
+            goLogin();
+        }
     },
     error: function () {
         mui.toast('服务器异常！');
@@ -96,7 +100,12 @@ function getCostDetail(cateId, date) {
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            vm.contentList = data.result;
+            if(data.status == 1) {
+                vm.contentList = data.result;
+            }
+            else if (data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
 

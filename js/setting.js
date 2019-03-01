@@ -29,6 +29,9 @@ var vm = new Vue({
                                     });
                                 }, 500);
                             }
+                            else if (data.status == 202) {
+                                goLogin(1);
+                            }
                         },
                         error: function () {
                             mui.toast('服务器异常！');

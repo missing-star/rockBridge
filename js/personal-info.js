@@ -192,6 +192,7 @@ function uploadImgRealPath(fileObj, dataURL) {
         processData: false,
         data: formData,
         success: function (data) {
+            mui.toast(data.msg);
             if (data.status == 1) {
                 vm.images = data.result;
                 //图片上传成功,开始更新个人信息
@@ -202,8 +203,8 @@ function uploadImgRealPath(fileObj, dataURL) {
                 } else {
                     mui.toast('修改失败');
                 }
-            } else {
-                mui.toast('上传失败');
+            } else if (data.status == 202) {
+                goLogin();
             }
         },
         error: function () {
@@ -233,7 +234,11 @@ function updateUserInfo() {
         success: function (data) {
             if (data.status == 1) {
                 result = true;
-            } else {
+            } 
+            else if (data.status == 202) {
+                goLogin();
+            }
+            else {
                 result = false;
             }
         },

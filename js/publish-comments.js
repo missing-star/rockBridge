@@ -77,6 +77,8 @@ var vm = new Vue({
                         setTimeout(function () {
                             history.back(-1);
                         }, 200);
+                    }else if (data.status == 202) {
+                        goLogin();
                     }
                 },
                 error: function () {
@@ -135,6 +137,8 @@ function uploadImgRealPath(fileObj, src) {
                     src: src,
                     realPath: data.result
                 });
+            }else if (data.status == 202) {
+                goLogin();
             }
         },
         error: function () {

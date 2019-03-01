@@ -46,8 +46,11 @@ var vm = new Vue({
                         mui.confirm('反馈已提交！', '', ['确定'], function (e) {
                            history.go(-1);
                         });
-                    } else {
-                        mui.toast(data.msg);
+                    } else if(data.status == 202) {
+                        goLogin();
+                    }
+                    else {
+                        mui.toast('提交失败');
                     }
                 },
                 error: function () {
@@ -106,6 +109,8 @@ function uploadImgRealPath(fileObj, src) {
                     src: src,
                     realPath: data.result
                 });
+            }else if(data.status == 202) {
+                goLogin(param.type);
             }
         },
         error: function () {

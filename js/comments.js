@@ -22,7 +22,11 @@ function getComments() {
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            vm.commentsInfo = data.result;
+            if(data.status == 1) {
+                vm.commentsInfo = data.result;
+            }else if(data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常')

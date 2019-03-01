@@ -96,47 +96,51 @@ function getRepairRecord(type, page, loadMore) {
         },
         dataType: 'json',
         success: function (data) {
-            var list = data.result.list;
-            list.forEach(function (item, index) {
-                if (item.repait_content_images.indexOf(',') != -1) {
-                    list[index].repait_content_images = rootUrl + item.repait_content_images.substring(0, item.repait_content_images.indexOf(','));
-                } else {
-                    list[index].repait_content_images = rootUrl + item.repait_content_images;
+            if (data.status == 1) {
+                var list = data.result.list;
+                list.forEach(function (item, index) {
+                    if (item.repait_content_images.indexOf(',') != -1) {
+                        list[index].repait_content_images = rootUrl + item.repait_content_images.substring(0, item.repait_content_images.indexOf(','));
+                    } else {
+                        list[index].repait_content_images = rootUrl + item.repait_content_images;
+                    }
+                });
+                switch (type) {
+                    case '1':
+                        if (list.length == 0) {
+                            vm.reverseing.loadMore = false;
+                            break;
+                        }
+                        vm.reverseing.list = vm.reverseing.list.concat(list);
+                        vm.reverseing.total = data.result.handle_num.handle_num1;
+                        break;
+                    case '2':
+                        if (list.length == 0) {
+                            vm.assigning.loadMore = false;
+                            break;
+                        }
+                        vm.assigning.list = vm.assigning.list.concat(list);
+                        vm.assigning.total = data.result.handle_num.handle_num2;
+                        break;
+                    case '3':
+                        if (list.length == 0) {
+                            vm.fixing.loadMore = false;
+                            break;
+                        }
+                        vm.fixing.list = vm.fixing.list.concat(list);
+                        vm.fixing.total = data.result.handle_num.handle_num3;
+                        break;
+                    case '4,5,6':
+                        if (list.length == 0) {
+                            vm.finished.loadMore = false;
+                            break;
+                        }
+                        vm.finished.list = vm.finished.list.concat(list);
+                        vm.finished.total = data.result.handle_num.handle_num4;
+                        break;
                 }
-            });
-            switch (type) {
-                case '1':
-                    if (list.length == 0) {
-                        vm.reverseing.loadMore = false;
-                        break;
-                    }
-                    vm.reverseing.list = vm.reverseing.list.concat(list);
-                    vm.reverseing.total = data.result.handle_num.handle_num1;
-                    break;
-                case '2':
-                    if (list.length == 0) {
-                        vm.assigning.loadMore = false;
-                        break;
-                    }
-                    vm.assigning.list = vm.assigning.list.concat(list);
-                    vm.assigning.total = data.result.handle_num.handle_num2;
-                    break;
-                case '3':
-                    if (list.length == 0) {
-                        vm.fixing.loadMore = false;
-                        break;
-                    }
-                    vm.fixing.list = vm.fixing.list.concat(list);
-                    vm.fixing.total = data.result.handle_num.handle_num3;
-                    break;
-                case '4,5,6':
-                    if (list.length == 0) {
-                        vm.finished.loadMore = false;
-                        break;
-                    }
-                    vm.finished.list = vm.finished.list.concat(list);
-                    vm.finished.total = data.result.handle_num.handle_num4;
-                    break;
+            } else if (data.status == 202) {
+                goLogin();
             }
         },
         error: function () {

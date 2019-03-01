@@ -36,7 +36,12 @@ function getSopsDetail() {
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            vm.shopsInfo = data.result;
+            if(data.status == 1) {
+                vm.shopsInfo = data.result;
+            }
+            else if(data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常');

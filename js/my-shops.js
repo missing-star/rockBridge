@@ -42,6 +42,8 @@ const vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
+                            }else if(data.status == 202) {
+                                goLogin();
                             }
                         },
                         error: function () {
@@ -80,13 +82,18 @@ function getShopsList(status) {
         dataType: 'json',
         async: false,
         success: function (data) {
-            switch (parseInt(status)) {
-                case 1:
-                    vm.passList = data.result;
-                    break;
-                case 2:
-                    vm.checkList = data.result;
-                    break;
+            if(data.status == 1) {
+                switch (parseInt(status)) {
+                    case 1:
+                        vm.passList = data.result;
+                        break;
+                    case 2:
+                        vm.checkList = data.result;
+                        break;
+                }
+            }
+            else if(data.status == 202) {
+                goLogin();
             }
         },
         error: function () {

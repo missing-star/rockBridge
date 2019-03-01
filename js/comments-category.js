@@ -58,12 +58,17 @@ function getCommentsByType(type) {
         dataType: 'json',
         type: 'post',
         success: function (data) {
-            vm.commentsList = vm.commentsList.concat(data.result.review_list);
-            vm.nums.good = data.result.good;
-            vm.nums.img = data.result.img_count;
-            vm.nums.total = data.result.total_count;
-            vm.nums.negative = data.result.negative;
-            vm.nums.medium = data.result.medium;
+            if(data.status == 1) {
+                vm.commentsList = vm.commentsList.concat(data.result.review_list);
+                vm.nums.good = data.result.good;
+                vm.nums.img = data.result.img_count;
+                vm.nums.total = data.result.total_count;
+                vm.nums.negative = data.result.negative;
+                vm.nums.medium = data.result.medium;
+            }
+            else if(data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常');

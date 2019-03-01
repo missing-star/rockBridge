@@ -71,6 +71,8 @@ var vm = new Vue({
                     success: function (data) {
                         if (data.status == 1) {
                             vm.isRegister = true;
+                        } else if (data.status == 202) {
+                            goLogin();
                         } else {
                             vm.isRegister = false;
                         }
@@ -180,6 +182,8 @@ var vm = new Vue({
                                 url: 'user.html'
                             });
                         });
+                    } else if (data.status == 202) {
+                        goLogin();
                     } else {
                         mui.toast(data.msg);
                     }
@@ -260,6 +264,8 @@ function uploadImgRealPath(fileObj, key, src) {
                 vm.cardList[key].src = src;
                 //设置文件路径为服务器路径
                 vm.cardList[key].realPath = data.result;
+            } else if (data.status == 202) {
+                goLogin();
             }
         },
         error: function () {
@@ -278,30 +284,34 @@ function initPicker() {
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    var categoryPicker = new $.PopPicker({
-                        layer: 2
-                    });
-                    data.result = data.result.map(function (item, index) {
-                        return {
-                            id: item.id,
-                            text: item.cate_name,
-                            children: item.children.map(function (child, j) {
-                                return {
-                                    id: child.id,
-                                    text: child.cate_name
-                                }
-                            })
-                        }
-                    });
-                    categoryPicker.setData(data.result);
-                    var cateClickBtn = doc.getElementById('main-category');
-                    cateClickBtn.addEventListener('tap', function (event) {
-                        categoryPicker.show(function (items) {
-                            vm.mainCategoryId = items[0].id;
-                            vm.mainCategoryName = items[0].text + ' '+ items[1].text;
-                            vm.subMainCategoryId = items[1].id;
+                    if (data.status == 1) {
+                        var categoryPicker = new $.PopPicker({
+                            layer: 2
                         });
-                    }, false);
+                        data.result = data.result.map(function (item, index) {
+                            return {
+                                id: item.id,
+                                text: item.cate_name,
+                                children: item.children.map(function (child, j) {
+                                    return {
+                                        id: child.id,
+                                        text: child.cate_name
+                                    }
+                                })
+                            }
+                        });
+                        categoryPicker.setData(data.result);
+                        var cateClickBtn = doc.getElementById('main-category');
+                        cateClickBtn.addEventListener('tap', function (event) {
+                            categoryPicker.show(function (items) {
+                                vm.mainCategoryId = items[0].id;
+                                vm.mainCategoryName = items[0].text + ' ' + items[1].text;
+                                vm.subMainCategoryId = items[1].id;
+                            });
+                        }, false);
+                    } else if (data.status == 202) {
+                        goLogin();
+                    }
                 },
                 error: function () {
                     mui.toast('获取类目异常!');
@@ -313,23 +323,27 @@ function initPicker() {
                     dataType: 'json',
                     type: 'POST',
                     success: function (data) {
-                        vm.addressPicker = true;
-                        //公房商户选择地址
-                        var addressPicker = new $.PopPicker();
-                        data.result = data.result.map(function (item, index) {
-                            return {
-                                id: item.id,
-                                text: item.stage + item.storied_building + item.address
-                            }
-                        });
-                        addressPicker.setData(data.result);
-                        var addressClickBtn = doc.getElementById('address-public-shop');
-                        addressClickBtn.addEventListener('tap', function (event) {
-                            addressPicker.show(function (items) {
-                                vm.addressPubId = items[0].id;
-                                vm.addressPub = items[0].text;
+                        if (data.status == 1) {
+                            vm.addressPicker = true;
+                            //公房商户选择地址
+                            var addressPicker = new $.PopPicker();
+                            data.result = data.result.map(function (item, index) {
+                                return {
+                                    id: item.id,
+                                    text: item.stage + item.storied_building + item.address
+                                }
                             });
-                        }, false);
+                            addressPicker.setData(data.result);
+                            var addressClickBtn = doc.getElementById('address-public-shop');
+                            addressClickBtn.addEventListener('tap', function (event) {
+                                addressPicker.show(function (items) {
+                                    vm.addressPubId = items[0].id;
+                                    vm.addressPub = items[0].text;
+                                });
+                            }, false);
+                        } else if (data.status == 202) {
+                            goLogin();
+                        }
                     },
                     error: function () {
                         mui.toast('获取地址异常!');

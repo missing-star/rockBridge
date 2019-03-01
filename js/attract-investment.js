@@ -19,7 +19,12 @@ function getAttractList() {
         dataType:'json',
         type:'post',
         success:function(data) {
-            vm.attractList = data.result;
+            if(data.status == 1) {
+                vm.attractList = data.result;
+            }
+            else if(data.status == 202) {
+                goLogin();
+            }
         },
         error:function() {
             mui.toast('服务器异常');

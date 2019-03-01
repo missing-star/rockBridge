@@ -69,13 +69,13 @@ var vm = new Vue({
                 async: false,
                 dataType: 'json',
                 success: function (data) {
-                    if (data.status != 1) {
-                        mui.toast('订单提交失败!');
-                        return false;
-                    } else {
+                    mui.toast(data.msg);
+                    if (data.status == 1) {
                         vm.payOrder = data.result.pay_order;
                         //获取信息
                         getInfo();
+                    } else if (data.status == 202) {
+                        goLogin();
                     }
                 },
                 error: function () {
@@ -124,57 +124,61 @@ var vm = new Vue({
             dataType: 'json',
             type: 'post',
             success: function (data) {
-                //缴费类型picker
-                var classifyPicker = new $.PopPicker();
-                //商铺地址picker
-                var addressPicker = new $.PopPicker();
-                var list = [{
-                    value: 0,
-                    text: '报修单缴费',
-                    money: 0
-                }];
-                var addList = [];
-                for (key in data.result.pay_category) {
-                    list.push({
-                        value: data.result.pay_category[key].id,
-                        text: data.result.pay_category[key].name,
-                        money: data.result.pay_category[key].pay_money
-                    });
-                };
-                for (key in data.result.property_address) {
-                    addList.push({
-                        value: data.result.property_address[key].id,
-                        text: data.result.property_address[key].province + data.result.property_address[key].city + data.result.property_address[key].area + data.result.property_address[key].address
-                    });
-                }
-                classifyPicker.setData(list);
-                addressPicker.setData(addList);
-                //缴费类型选择
-                var eventBtn = doc.getElementById('classify');
-                eventBtn.addEventListener('tap', function (event) {
-                    classifyPicker.show(function (items) {
-                        vm.selectedClassify = items[0].text;
-                        vm.selectedId = items[0].value;
-                        vm.money = items[0].money == 0 ? '' : items[0].money;
-                        vm.inputMoney = items[0].money == 0 ? '' : items[0].money;
-                        if (items[0].value == 0) {
-                            vm.isShowRepair = true;
-                            if (!vm.isGetList) {
-                                getRepairRecord();
+                if (data.status == 1) {
+                    //缴费类型picker
+                    var classifyPicker = new $.PopPicker();
+                    //商铺地址picker
+                    var addressPicker = new $.PopPicker();
+                    var list = [{
+                        value: 0,
+                        text: '报修单缴费',
+                        money: 0
+                    }];
+                    var addList = [];
+                    for (key in data.result.pay_category) {
+                        list.push({
+                            value: data.result.pay_category[key].id,
+                            text: data.result.pay_category[key].name,
+                            money: data.result.pay_category[key].pay_money
+                        });
+                    };
+                    for (key in data.result.property_address) {
+                        addList.push({
+                            value: data.result.property_address[key].id,
+                            text: data.result.property_address[key].province + data.result.property_address[key].city + data.result.property_address[key].area + data.result.property_address[key].address
+                        });
+                    }
+                    classifyPicker.setData(list);
+                    addressPicker.setData(addList);
+                    //缴费类型选择
+                    var eventBtn = doc.getElementById('classify');
+                    eventBtn.addEventListener('tap', function (event) {
+                        classifyPicker.show(function (items) {
+                            vm.selectedClassify = items[0].text;
+                            vm.selectedId = items[0].value;
+                            vm.money = items[0].money == 0 ? '' : items[0].money;
+                            vm.inputMoney = items[0].money == 0 ? '' : items[0].money;
+                            if (items[0].value == 0) {
+                                vm.isShowRepair = true;
+                                if (!vm.isGetList) {
+                                    getRepairRecord();
+                                }
+                            } else {
+                                vm.isShowRepair = false;
                             }
-                        } else {
-                            vm.isShowRepair = false;
-                        }
-                    });
-                }, false);
-                //商铺地址选择
-                var addBtn = doc.getElementById('address');
-                addBtn.addEventListener('tap', function (event) {
-                    addressPicker.show(function (items) {
-                        vm.selectedShopAddressId = items[0].value;
-                        vm.selectedShopAddress = items[0].text;
-                    });
-                }, false);
+                        });
+                    }, false);
+                    //商铺地址选择
+                    var addBtn = doc.getElementById('address');
+                    addBtn.addEventListener('tap', function (event) {
+                        addressPicker.show(function (items) {
+                            vm.selectedShopAddressId = items[0].value;
+                            vm.selectedShopAddress = items[0].text;
+                        });
+                    }, false);
+                } else if (data.status == 202) {
+                    goLogin();
+                }
             },
             error: function () {
                 mui.toast('服务器异常！');
@@ -213,26 +217,30 @@ function getRepairRecord() {
         dataType: 'json',
         type: 'post',
         success: function (data) {
-            vm.isGetList = true;
-            var list = [];
-            var repairPicker = new mui.PopPicker();
-            for (key in data.result) {
-                list.push({
-                    value: data.result[key].re_code,
-                    text: data.result[key].re_code,
-                    money: data.result[key].re_money
-                });
-            };
-            repairPicker.setData(list);
-            var eventBtn = document.getElementById('repair-list');
-            eventBtn.addEventListener('tap', function (event) {
-                repairPicker.show(function (items) {
-                    vm.selectedRepairName = items[0].text;
-                    vm.selectedRepairId = items[0].value;
-                    vm.money = items[0].money == 0 ? '' : items[0].money;
-                    vm.inputMoney = items[0].money == 0 ? '' : items[0].money;
-                });
-            }, false);
+            if (data.status == 1) {
+                vm.isGetList = true;
+                var list = [];
+                var repairPicker = new mui.PopPicker();
+                for (key in data.result) {
+                    list.push({
+                        value: data.result[key].re_code,
+                        text: data.result[key].re_code,
+                        money: data.result[key].re_money
+                    });
+                };
+                repairPicker.setData(list);
+                var eventBtn = document.getElementById('repair-list');
+                eventBtn.addEventListener('tap', function (event) {
+                    repairPicker.show(function (items) {
+                        vm.selectedRepairName = items[0].text;
+                        vm.selectedRepairId = items[0].value;
+                        vm.money = items[0].money == 0 ? '' : items[0].money;
+                        vm.inputMoney = items[0].money == 0 ? '' : items[0].money;
+                    });
+                }, false);
+            } else if (data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常！');
@@ -254,7 +262,12 @@ function getInfo() {
         async: false,
         dataType: 'json',
         success: function (data) {
-            vm.str = data.info;
+            if(data.status == 1) {
+                vm.str = data.info;
+            }
+            else if (data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常!');
@@ -296,7 +309,12 @@ function getPayWay() {
         type: 'post',
         async: false,
         success: function (data) {
-            result = data.result;
+            if(data.status == 1) {
+                result = data.result;
+            }
+            else if (data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常');

@@ -85,6 +85,8 @@ var vm = new Vue({
                         mui.confirm('报修已提交成功！', '', ['确定'], function (e) {
                             history.go(-1);
                         });
+                    } else if (data.status == 202) {
+                        goLogin();
                     } else {
                         mui.toast(data.msg);
                     }
@@ -148,6 +150,8 @@ function uploadImgRealPath(fileObj, src) {
                     src: src,
                     realPath: data.result
                 });
+            } else if (data.status == 202) {
+                goLogin();
             }
         },
         error: function () {
@@ -186,9 +190,13 @@ function getShopInfo() {
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            vm.shopInfo = data.info;
-            vm.editPhone = vm.showPhone = data.info.phone;
-            vm.shopInfoShow = vm.shopInfo.title + ' ' + vm.showPhone;
+            if (data.status == 1) {
+                vm.shopInfo = data.info;
+                vm.editPhone = vm.showPhone = data.info.phone;
+                vm.shopInfoShow = vm.shopInfo.title + ' ' + vm.showPhone;
+            } else if (data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常！');

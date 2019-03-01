@@ -23,7 +23,12 @@ function getDetail(id) {
         },
         dataType: 'json',
         success: function (data) {
-            vm.detail = data.result;
+            if(data.status == 1) {
+                vm.detail = data.result;
+            }
+            else if (data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常！');

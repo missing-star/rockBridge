@@ -52,6 +52,9 @@ var vm = new Vue({
                                 vm.msg = vm.waitTime + 's';
                             }, 1000);
                         }
+                        else if(data.status == 202) {
+                            goLogin();
+                        }
                     },
                     error: function () {
                         mui.toast('服务器异常');
@@ -106,6 +109,8 @@ var vm = new Vue({
                         setTimeout(function(){
                             history.go(-1);
                         }, 200);
+                    }else if(data.status == 202) {
+                        goLogin();
                     }
                 },
                 error:function() {

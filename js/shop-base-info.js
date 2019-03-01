@@ -30,6 +30,8 @@ function getShopInfo() {
         success: function (data) {
             if(data.status == 1) {
                 vm.shopInfo = data.result;
+            }else if (data.status == 202) {
+                goLogin();
             }
         },
         error: function () {

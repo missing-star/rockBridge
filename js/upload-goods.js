@@ -139,6 +139,8 @@ var vm = new Vue({
                                 url: 'goods-management.html'
                             });
                         }, 200);
+                    } else if (data.status == 202) {
+                        goLogin();
                     }
                 },
                 error: function () {
@@ -223,6 +225,8 @@ function uploadImgRealPath(fileObj, src) {
                     src: src,
                     realPath: data.result
                 }]);
+            } else if (data.status == 202) {
+                goLogin();
             }
         },
         error: function () {
@@ -261,6 +265,8 @@ function getGoodsDetail(id) {
                         realPath: data.result.images[i]
                     });
                 }
+            } else if (data.status == 202) {
+                goLogin();
             }
         },
         error: function () {
@@ -278,43 +284,47 @@ function getCategory() {
                 dataType: 'json',
                 type: 'POST',
                 success: function (data) {
-                    var categoryPicker = new $.PopPicker({
-                        layer: 2
-                    });
-                    data.result = data.result.map(function (item, index) {
-                        return {
-                            value: item.id,
-                            text: item.cate_name,
-                            children: item.children.map(function (child, j) {
-                                return {
-                                    value: child.id,
-                                    text: child.cate_name
+                    if (data.status == 1) {
+                        var categoryPicker = new $.PopPicker({
+                            layer: 2
+                        });
+                        data.result = data.result.map(function (item, index) {
+                            return {
+                                value: item.id,
+                                text: item.cate_name,
+                                children: item.children.map(function (child, j) {
+                                    return {
+                                        value: child.id,
+                                        text: child.cate_name
+                                    }
+                                })
+                            }
+                        });
+                        categoryPicker.setData(data.result);
+                        var cateClickBtn = doc.getElementById('main-category');
+                        cateClickBtn.addEventListener('tap', function (event) {
+                            categoryPicker.show(function (items) {
+                                vm.mainCategoryId = items[0].value;
+                                vm.mainCategoryName = items[0].text + ' ' + items[1].text;
+                                vm.subMainCategoryId = items[1].value;
+                            });
+                        }, false);
+                        if (getParams().type == 'edit') {
+                            categoryPicker.pickers[0].setSelectedValue(vm.mainCategoryId);
+                            categoryPicker.pickers[0].items.forEach(function (mainCate, index) {
+                                if (mainCate.value == vm.mainCategoryId) {
+                                    vm.mainCategoryName += mainCate.text;
                                 }
-                            })
+                            });
+                            categoryPicker.getSelectedItems()[0].children.forEach(function (subCate, index) {
+                                if (vm.subMainCategoryId == subCate.value) {
+                                    categoryPicker.pickers[1].setSelectedIndex(index);
+                                    vm.mainCategoryName += " " + subCate.text;
+                                }
+                            });
                         }
-                    });
-                    categoryPicker.setData(data.result);
-                    var cateClickBtn = doc.getElementById('main-category');
-                    cateClickBtn.addEventListener('tap', function (event) {
-                        categoryPicker.show(function (items) {
-                            vm.mainCategoryId = items[0].value;
-                            vm.mainCategoryName = items[0].text + ' ' + items[1].text;
-                            vm.subMainCategoryId = items[1].value;
-                        });
-                    }, false);
-                    if (getParams().type == 'edit') {
-                        categoryPicker.pickers[0].setSelectedValue(vm.mainCategoryId);
-                        categoryPicker.pickers[0].items.forEach(function (mainCate, index) {
-                            if (mainCate.value == vm.mainCategoryId) {
-                                vm.mainCategoryName += mainCate.text;
-                            }
-                        });
-                        categoryPicker.getSelectedItems()[0].children.forEach(function (subCate, index) {
-                            if (vm.subMainCategoryId == subCate.value) {
-                                categoryPicker.pickers[1].setSelectedIndex(index);
-                                vm.mainCategoryName += " " + subCate.text;
-                            }
-                        });
+                    } else if (data.status == 202) {
+                        goLogin();
                     }
                 },
                 error: function () {

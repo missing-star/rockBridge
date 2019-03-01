@@ -11,12 +11,16 @@ function getUserInfo(temp) {
         async: false,
         datType: 'json',
         success: function (data) {
-            localStorage.setItem('user', JSON.stringify(data.result));
-            userData = data.result;
-            if (data.result.shop_id > 0) {
-                localStorage.setItem('switchRole', 1);
-            } else {
-                localStorage.setItem('switchRole', 0);
+            if (data.status == 1) {
+                localStorage.setItem('user', JSON.stringify(data.result));
+                userData = data.result;
+                if (data.result.shop_id > 0) {
+                    localStorage.setItem('switchRole', 1);
+                } else {
+                    localStorage.setItem('switchRole', 0);
+                }
+            } else if (data.status == 202) {
+                goLogin();
             }
         },
         error: function () {
@@ -38,7 +42,7 @@ var vm = new Vue({
             if (this.isSwitchRole == 0) {
                 mui.toast('请先进行商户认证！');
                 mui.openWindow({
-                    url:'shop-auth.html'
+                    url: 'shop-auth.html'
                 });
                 return false;
             }
@@ -90,10 +94,10 @@ var vm = new Vue({
             }
         }
     },
-    filters:{
+    filters: {
         filterImg(thumb) {
             thumb = thumb == null ? '' : thumb;
-            if(thumb.indexOf('http') != -1) {
+            if (thumb.indexOf('http') != -1) {
                 return `${thumb}`;
             }
             return `${rootUrl}${thumb}`;

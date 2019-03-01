@@ -39,6 +39,8 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
+                            }else if(data.status == 202) {
+                                goLogin();
                             }
                         },
                         error: function () {
@@ -71,6 +73,8 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
+                            }else if(data.status == 202) {
+                                goLogin();
                             }
                         },
                         error: function () {
@@ -98,6 +102,8 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
+                            }else if(data.status == 202) {
+                                goLogin();
                             }
                         },
                         error: function () {
@@ -129,6 +135,8 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
+                            }else if(data.status == 202) {
+                                goLogin();
                             }
                         },
                         error: function () {
@@ -203,6 +211,8 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
+                            }else if(data.status == 202) {
+                                goLogin();
                             }
                         },
                         error: function () {
@@ -307,6 +317,8 @@ function getGoodsList(status, list) {
         success: function (data) {
             if (data.status == 1) {
                 vm[list] = data.result;
+            }else if(data.status == 202) {
+                goLogin();
             }
         },
         error: function () {

@@ -57,7 +57,12 @@ function getNotActivedAddress() {
         dataType:'json',
         async:false,
         success: function (data) {
-            result = data.result;
+            if(data.status == 1) {
+                result = data.result;
+            }
+            else if(data.status == 202) {
+                goLogin();
+            }
         },
         error: function () {
             mui.toast('服务器异常');
@@ -83,6 +88,8 @@ function getNotActivdShops(address_id) {
                 vm.shopsList = data.result;
                 localStorage.setItem('activeName',data.result[0].person_name);
                 localStorage.setItem('activePhone',data.result[0].phone);
+            }else if(data.status == 202) {
+                goLogin();
             }
         },
         error: function () {

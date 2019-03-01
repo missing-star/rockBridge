@@ -36,6 +36,8 @@ var vm = new Vue({
                     if(data.status == 1) {
                         vm.str = data.info;
                         vm.isNext = true;
+                    }else if (data.status == 202) {
+                        goLogin();
                     }
                 }
             });

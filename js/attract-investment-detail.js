@@ -42,6 +42,8 @@ const vm = new Vue({
                         vm.name = '';
                         vm.phone = '';
                         mui('#sheet1').popover('toggle');
+                    }else if(data.status == 202) {
+                        goLogin();
                     }
                 },
                 error:function() {
@@ -65,6 +67,8 @@ function getAttractDetail(id) {
         success:function(data) {
             if(data.status == 1) {
                 vm.attractInfo = data.result;
+            }else if(data.status == 202) {
+                goLogin();
             }
         },
         error:function() {

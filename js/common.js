@@ -142,3 +142,18 @@ function sortByPro(pro, flag) {
      });
      return result;
  }
+
+ function goLogin(type) {
+     if(type == 1) {
+         //维修员
+        mui.openWindow({
+            url:`${rootUrl}/index/api/getWxLogin`
+        });
+        }
+     else {
+         //商户
+        mui.openWindow({
+            url:`${rootUrl}/index/api/getWxRepairmanLogin`
+        }); 
+     }
+ }
