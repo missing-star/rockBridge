@@ -5,8 +5,8 @@ const vm = new Vue({
             btnInfo: '发送验证码',
             time: 60,
             code: '',
-            username: localStorage.getItem('activeName'),
-            phone: localStorage.getItem('activePhone')
+            username: sessionStorage.getItem('activeName'),
+            phone: sessionStorage.getItem('activePhone')
         }
     },
     methods: {

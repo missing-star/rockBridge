@@ -101,16 +101,16 @@ var vm = new Vue({
                     mui.toast(data.msg);
                     if (data.status == 1) {
                         //设置维修员和其他人员跳转
-                        localStorage.setItem('user', JSON.stringify(data.result));
+                        sessionStorage.setItem('user', JSON.stringify(data.result));
                         mui.openWindow({
                             url: 'user.html'
                         });
 
                         //设置会员和商户的切换权限
                         if (data.result.shop_id > 0) {
-                            localStorage.setItem('switchRole', 1);
+                            sessionStorage.setItem('switchRole', 1);
                         } else {
-                            localStorage.setItem('switchRole', 0);
+                            sessionStorage.setItem('switchRole', 0);
                         }
                     }
                 },

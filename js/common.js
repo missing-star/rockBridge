@@ -1,10 +1,10 @@
 //保存用户还是商家版的变量 currentRole:[Number 0| Number 1] 0:user 1:business
-if (!parseInt(localStorage.getItem('currentRole'))) {
-    localStorage.setItem('currentRole', 0);
+if (!parseInt(sessionStorage.getItem('currentRole'))) {
+    sessionStorage.setItem('currentRole', 0);
 }
 //用户是否可以切换角色
-if (!localStorage.getItem('switchRole')) {
-    localStorage.setItem('switchRole', 0);
+if (!sessionStorage.getItem('switchRole')) {
+    sessionStorage.setItem('switchRole', 0);
 }
 
 
@@ -112,7 +112,7 @@ function countTime(str) {
 }
 
 function validateUser() {
-    if (localStorage.getItem('user') != `""`) {
+    if (sessionStorage.getItem('user') && sessionStorage.getItem('user') != `""`) {
         return true;
     } else {
         return false;
@@ -120,7 +120,7 @@ function validateUser() {
 }
 
 function validateUserPhone() {
-    if (JSON.parse(localStorage.getItem('user')).users.phone) {
+    if (JSON.parse(sessionStorage.getItem('user')).users.phone) {
         return true;
     } else {
         return false;

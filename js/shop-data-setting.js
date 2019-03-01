@@ -4,37 +4,37 @@ var vm = new Vue({
         updateForm: new FormData(),
         isEditName: false,
         //显示的名称
-        title: JSON.parse(localStorage.getItem('user')).shops.title,
+        title: JSON.parse(sessionStorage.getItem('user')).shops.title,
         //编辑的名称
         editName: '',
         //负责人
-        person_name: JSON.parse(localStorage.getItem('user')).shops.person_name,
+        person_name: JSON.parse(sessionStorage.getItem('user')).shops.person_name,
         //电话
-        landline: JSON.parse(localStorage.getItem('user')).shops.landline || '',
+        landline: JSON.parse(sessionStorage.getItem('user')).shops.landline || '',
         //展架数量
-        showCounts: JSON.parse(localStorage.getItem('user')).shops.show_goods_num,
+        showCounts: JSON.parse(sessionStorage.getItem('user')).shops.show_goods_num,
         images: '',
-        regisiterTime: transformTime(JSON.parse(localStorage.getItem('user')).shops.create_at),
+        regisiterTime: transformTime(JSON.parse(sessionStorage.getItem('user')).shops.create_at),
         cardList: {
             //头像
             userLogo: {
-                src: JSON.parse(localStorage.getItem('user')).shops.images,
-                realPath: JSON.parse(localStorage.getItem('user')).shops.images
+                src: JSON.parse(sessionStorage.getItem('user')).shops.images,
+                realPath: JSON.parse(sessionStorage.getItem('user')).shops.images
             },
             //国徽面
             emblem: {
-                src: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[0],
-                realPath: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[0]
+                src: JSON.parse(sessionStorage.getItem('user')).shops.idcard.split(',')[0],
+                realPath: JSON.parse(sessionStorage.getItem('user')).shops.idcard.split(',')[0]
             },
             //人像面
             portrait: {
-                src: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[1],
-                realPath: JSON.parse(localStorage.getItem('user')).shops.idcard.split(',')[1]
+                src: JSON.parse(sessionStorage.getItem('user')).shops.idcard.split(',')[1],
+                realPath: JSON.parse(sessionStorage.getItem('user')).shops.idcard.split(',')[1]
             },
             //营业执照
             license: {
-                src: JSON.parse(localStorage.getItem('user')).shops.business_license,
-                realPath: JSON.parse(localStorage.getItem('user')).shops.business_license
+                src: JSON.parse(sessionStorage.getItem('user')).shops.business_license,
+                realPath: JSON.parse(sessionStorage.getItem('user')).shops.business_license
             }
         }
     },

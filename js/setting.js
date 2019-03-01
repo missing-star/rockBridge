@@ -21,8 +21,8 @@ var vm = new Vue({
                             if (data.status == 1) {
                                 mui.toast('退出成功!');
                                 //重置本地存储信息
-                                localStorage.removeItem('user');
-                                localStorage.setItem('currentRole', 0);
+                                sessionStorage.removeItem('user');
+                                sessionStorage.setItem('currentRole', 0);
                                 setTimeout(function () {
                                     mui.openWindow({
                                         url: 'user.html'

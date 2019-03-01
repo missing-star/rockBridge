@@ -2,7 +2,7 @@ var page = 1;
 var vm = new Vue({
     el: '#app',
     data: {
-        currentRole: localStorage.getItem('currentRole'),
+        currentRole: sessionStorage.getItem('currentRole'),
         tab: [],
         tabContent: [],
         currentTab: '',

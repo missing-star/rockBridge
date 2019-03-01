@@ -1,15 +1,15 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        sex: JSON.parse(localStorage.getItem('user')).users.sex,
-        sexShow: JSON.parse(localStorage.getItem('user')).users.sex == 1 ? '男' : '女',
+        sex: JSON.parse(sessionStorage.getItem('user')).users.sex,
+        sexShow: JSON.parse(sessionStorage.getItem('user')).users.sex == 1 ? '男' : '女',
         city: '',
-        birthdate: JSON.parse(localStorage.getItem('user')).users.birth_time,
+        birthdate: JSON.parse(sessionStorage.getItem('user')).users.birth_time,
         address: '',
-        userLogo: JSON.parse(localStorage.getItem('user')).users.images,
+        userLogo: JSON.parse(sessionStorage.getItem('user')).users.images,
         isEditName: false,
         editName: '',
-        nickname: JSON.parse(localStorage.getItem('user')).users.nickname,
+        nickname: JSON.parse(sessionStorage.getItem('user')).users.nickname,
         //文件对象
         imgObj: '',
         //服务器返回的图片路径
@@ -55,7 +55,7 @@ var vm = new Vue({
     $.init();
     $.ready(function () {
         //性别选择
-        var userSex = JSON.parse(localStorage.getItem('user')).users.sex;
+        var userSex = JSON.parse(sessionStorage.getItem('user')).users.sex;
         var classifyPicker = new $.PopPicker();
         classifyPicker.setData([{
             value: 1,
@@ -109,9 +109,9 @@ var vm = new Vue({
         });
         //设置默认选中的城市
         cityPicker.setData(cityData);
-        var userProvince = parseInt(JSON.parse(localStorage.getItem('user')).users.province);
-        var userCity = parseInt(JSON.parse(localStorage.getItem('user')).users.city);
-        var userDistrict = parseInt(JSON.parse(localStorage.getItem('user')).users.district);
+        var userProvince = parseInt(JSON.parse(sessionStorage.getItem('user')).users.province);
+        var userCity = parseInt(JSON.parse(sessionStorage.getItem('user')).users.city);
+        var userDistrict = parseInt(JSON.parse(sessionStorage.getItem('user')).users.district);
         cityPicker.pickers[0].setSelectedValue(userProvince);
         cityPicker.pickers[0].items.forEach(function (provice, index) {
             if (provice.value == userProvince) {

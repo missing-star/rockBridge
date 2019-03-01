@@ -12,12 +12,12 @@ function getUserInfo(temp) {
         datType: 'json',
         success: function (data) {
             if (data.status == 1) {
-                localStorage.setItem('user', JSON.stringify(data.result));
+                sessionStorage.setItem('user', JSON.stringify(data.result));
                 userData = data.result;
                 if (data.result.shop_id > 0) {
-                    localStorage.setItem('switchRole', 1);
+                    sessionStorage.setItem('switchRole', 1);
                 } else {
-                    localStorage.setItem('switchRole', 0);
+                    sessionStorage.setItem('switchRole', 0);
                 }
             } else if (data.status == 202) {
                 goLogin();
@@ -32,9 +32,9 @@ function getUserInfo(temp) {
 var vm = new Vue({
     el: '#app',
     data: {
-        currentRole: localStorage.getItem('currentRole') || 0,
+        currentRole: sessionStorage.getItem('currentRole') || 0,
         userData: userData,
-        isSwitchRole: localStorage.getItem('switchRole')
+        isSwitchRole: sessionStorage.getItem('switchRole')
     },
     methods: {
         //切换用户角色
@@ -47,11 +47,11 @@ var vm = new Vue({
                 return false;
             }
             if (this.currentRole == 0) {
-                localStorage.setItem('currentRole', 1);
+                sessionStorage.setItem('currentRole', 1);
             } else {
-                localStorage.setItem('currentRole', 0);
+                sessionStorage.setItem('currentRole', 0);
             }
-            this.currentRole = localStorage.getItem('currentRole');
+            this.currentRole = sessionStorage.getItem('currentRole');
         },
         //登录
         login() {

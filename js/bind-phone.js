@@ -11,7 +11,7 @@ var vm = new Vue({
         sendCode: false,
         waitTime: 60,
         msg: '获取验证码',
-        originPhone:JSON.parse(localStorage.getItem('user')).users.phone
+        originPhone:JSON.parse(sessionStorage.getItem('user')).users.phone
     },
     methods: {
         validatePhone() {

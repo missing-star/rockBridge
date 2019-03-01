@@ -36,7 +36,7 @@ var vm = new Vue({
                 success: function (data) {
                     mui.toast(data.msg);
                     if (data.status == 1) {
-                        localStorage.clear();
+                        sessionStorage.clear();
                         setTimeout(function () {
                             mui.openWindow({
                                 url: 'user.html'

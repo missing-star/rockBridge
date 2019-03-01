@@ -23,7 +23,7 @@ function getShopInfo() {
     $.ajax({
         url: `${rootUrl}/index/api/getShopsShopsInfo`,
         data: {
-            id: JSON.parse(localStorage.getItem('user')).shop_id
+            id: JSON.parse(sessionStorage.getItem('user')).shop_id
         },
         type: 'post',
         dataType: 'json',

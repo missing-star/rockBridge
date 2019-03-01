@@ -4,7 +4,7 @@ var vm = new Vue({
         loginWay: 0,
         msg: '获取验证码',
         sendCode: true,
-        phone: localStorage.getItem('user') != `""` ? JSON.parse(localStorage.getItem('user')).users.phone : '',
+        phone: sessionStorage.getItem('user') != `""` ? JSON.parse(sessionStorage.getItem('user')).users.phone : '',
         waitTime: 60,
         password: '',
         code: '',
@@ -116,8 +116,8 @@ var vm = new Vue({
                                 success: function (data) {
                                     if (data.status == 1) {
                                         //重置本地存储信息
-                                        localStorage.removeItem('user');
-                                        localStorage.setItem('currentRole', 0);
+                                        sessionStorage.removeItem('user');
+                                        sessionStorage.setItem('currentRole', 0);
                                     }
                                 },
                                 error: function () {

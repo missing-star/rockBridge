@@ -101,7 +101,7 @@ var vm = new Vue({
                     mui.toast(data.msg);
                     if (data.status == 1) {
                         //设置维修员和其他人员跳转
-                        localStorage.setItem('user', JSON.stringify(data.result));
+                        sessionStorage.setItem('user', JSON.stringify(data.result));
                         mui.openWindow({
                             url: 'repairman.html'
                         });

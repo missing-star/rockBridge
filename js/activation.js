@@ -86,8 +86,8 @@ function getNotActivdShops(address_id) {
         success: function (data) {
             if(data.status == 1) {
                 vm.shopsList = data.result;
-                localStorage.setItem('activeName',data.result[0].person_name);
-                localStorage.setItem('activePhone',data.result[0].phone);
+                sessionStorage.setItem('activeName',data.result[0].person_name);
+                sessionStorage.setItem('activePhone',data.result[0].phone);
             }else if(data.status == 202) {
                 goLogin();
             }
