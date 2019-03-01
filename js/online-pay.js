@@ -24,7 +24,9 @@ var vm = new Vue({
         selectedShopAddress: '',
         //地址id
         selectedShopAddressId: '',
-        str: ''
+        str: '',
+        //是否已经获取过报修列表
+        isGetList:false
     },
     methods: {
         goDetail() {
@@ -147,7 +149,9 @@ var vm = new Vue({
                         vm.inputMoney = items[0].money == 0 ? '' : items[0].money;
                         if (items[0].value == 0) {
                             vm.isShowRepair = true;
-                            getRepairRecord();
+                            if(!vm.isGetList) {
+                                getRepairRecord();
+                            }
                         } else {
                             vm.isShowRepair = false;
                         }
@@ -193,6 +197,7 @@ function getRepairRecord() {
         dataType: 'json',
         type: 'post',
         success: function (data) {
+            vm.isGetList = true;
             var list = [];
             var repairPicker = new mui.PopPicker();
             for (key in data.result) {
