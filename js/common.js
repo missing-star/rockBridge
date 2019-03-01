@@ -1,3 +1,5 @@
+localStorage.clear();
+sessionStorage.clear();
 //保存用户还是商家版的变量 currentRole:[Number 0| Number 1] 0:user 1:business
 if (!parseInt(sessionStorage.getItem('currentRole'))) {
     sessionStorage.setItem('currentRole', 0);
