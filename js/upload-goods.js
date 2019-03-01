@@ -202,6 +202,7 @@ $(function () {
             $('input.upload-input').val("");
         };
     });
+    getCategory();
 });
 //上传图片到后台
 function uploadImgRealPath(fileObj, src) {
@@ -252,6 +253,8 @@ function getGoodsDetail(id) {
                 vm.goodsPrice = parseFloat(data.result.price).toFixed(2);
                 vm.goodsCounts = parseInt(data.result.nums);
                 vm.goodsId = data.result.id;
+                vm.mainCategoryId = data.result.one_cate_id;
+                vm.subMainCategoryId = data.result.two_cate_id;
                 for (var i = 0; i < data.result.images.length; i++) {
                     vm.uploadedImgs.push({
                         src: `${rootUrl}${data.result.images[i]}`,
@@ -280,11 +283,11 @@ function getCategory() {
                     });
                     data.result = data.result.map(function (item, index) {
                         return {
-                            id: item.id,
+                            value: item.id,
                             text: item.cate_name,
                             children: item.children.map(function (child, j) {
                                 return {
-                                    id: child.id,
+                                    value: child.id,
                                     text: child.cate_name
                                 }
                             })
@@ -294,11 +297,25 @@ function getCategory() {
                     var cateClickBtn = doc.getElementById('main-category');
                     cateClickBtn.addEventListener('tap', function (event) {
                         categoryPicker.show(function (items) {
-                            vm.mainCategoryId = items[0].id;
+                            vm.mainCategoryId = items[0].value;
                             vm.mainCategoryName = items[0].text + ' ' + items[1].text;
-                            vm.subMainCategoryId = items[1].id;
+                            vm.subMainCategoryId = items[1].value;
                         });
                     }, false);
+                    if (getParams().type == 'edit') {
+                        categoryPicker.pickers[0].setSelectedValue(vm.mainCategoryId);
+                        categoryPicker.pickers[0].items.forEach(function (mainCate, index) {
+                            if (mainCate.value == vm.mainCategoryId) {
+                                vm.mainCategoryName += mainCate.text;
+                            }
+                        });
+                        categoryPicker.getSelectedItems()[0].children.forEach(function (subCate, index) {
+                            if (vm.subMainCategoryId == subCate.value) {
+                                categoryPicker.pickers[1].setSelectedIndex(index);
+                                vm.mainCategoryName += " " + subCate.text;
+                            }
+                        });
+                    }
                 },
                 error: function () {
                     mui.toast('获取类目异常!');
@@ -307,5 +324,3 @@ function getCategory() {
         })
     })(mui, document);
 }
-
-getCategory();
