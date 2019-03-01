@@ -26,7 +26,8 @@ var vm = new Vue({
         selectedShopAddressId: '',
         str: '',
         //是否已经获取过报修列表
-        isGetList:false
+        isGetList: false,
+        isDisabled: getParams().type == 1 ? true : false
     },
     methods: {
         goDetail() {
@@ -58,7 +59,7 @@ var vm = new Vue({
                 pay_method: this.payWay,
                 address_id: this.selectedShopAddressId
             };
-            if(this.selectedRepairId != '') {
+            if (this.selectedRepairId != '') {
                 formData.pay_order = this.selectedRepairId;
             }
             $.ajax({
@@ -108,6 +109,15 @@ var vm = new Vue({
 (function ($, doc) {
     $.init();
     $.ready(function () {
+        if (vm.isDisabled) {
+            vm.selectedClassify = '报修单缴费';
+            vm.selectedId = 0;
+            vm.money = '';
+            vm.inputMoney = '';
+            vm.isShowRepair = true;
+            getRepairRecord();
+            return;
+        }
         //电费类型选择
         jQuery.ajax({
             url: 'http://dieshiqiao.pzhkj.cn/index/api/getPayCate',
@@ -121,7 +131,7 @@ var vm = new Vue({
                 var list = [{
                     value: 0,
                     text: '报修单缴费',
-                    money: 100
+                    money: 0
                 }];
                 var addList = [];
                 for (key in data.result.pay_category) {
@@ -149,7 +159,7 @@ var vm = new Vue({
                         vm.inputMoney = items[0].money == 0 ? '' : items[0].money;
                         if (items[0].value == 0) {
                             vm.isShowRepair = true;
-                            if(!vm.isGetList) {
+                            if (!vm.isGetList) {
                                 getRepairRecord();
                             }
                         } else {
@@ -186,9 +196,15 @@ var vm = new Vue({
         payPicker.show(function (items) {
             vm.payFate = items[0].fate;
             vm.payWay = items[0].text;
-            console.log(vm.payWay);
         });
     }, false);
+    if (vm.isDisabled) {
+        payPicker.pickers[0].items.forEach(function (pay, index) {
+            payPicker.pickers[0].setSelectedIndex(index);
+            vm.payFate = pay.fate;
+            vm.payWay = pay.text;
+        });
+    }
 })(mui, document);
 
 function getRepairRecord() {

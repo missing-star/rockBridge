@@ -48,7 +48,7 @@ var vm = new Vue({
         goPay(status, id, order_status) {
             //缴费
             mui.openWindow({
-                url: 'online-pay.html?status=' + status + '&id=' + id + '&order_status=' + order_status
+                url: 'online-pay.html?type=1'
             });
         },
         cancelReverse() {
