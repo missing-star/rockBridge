@@ -46,11 +46,6 @@
                     <label for="" class="title">维修状态</label>
                     <input v-model="repairInfo.repairStatusName" readonly disabled type="text" class="content warning">
                 </li>
-                <!-- repairInfo.repair_info == null -->
-                <li class="repair-item" v-if=repairInfo.repair_info != null>
-                    <label for="" class="title">评价内容</label>
-                    <input v-model="repairInfo.repair_info.repair_revire_content" readonly disabled type="text" class="content warning">
-                </li>
                 <template v-if="parseFloat(repairInfo.needPay) > 0">
                     <li class="repair-item">
                         <label for="" class="title">金额</label>
@@ -80,6 +75,21 @@
                     <label for="" class="title">拒绝原因</label>
                     <input v-model="repairInfo.cause" readonly disabled type="text" class="content">
                 </li>
+                <!-- 评价 -->
+                <template v-if="repairInfo.repair_info != null">
+                    <li class="repair-item">
+                        <label for="" class="title">服务评价</label>
+                        <input :value="repairInfo.repair_info.repair_revire_content == 1 ? '差评' : (repairInfo.repair_info.repair_revire_content == 2 ? '中评' : '好评')" readonly disabled type="text" class="content">
+                    </li>
+                    <li class="repair-item">
+                        <label for="" class="title">评价内容</label>
+                        <input v-model="repairInfo.repair_info.repair_revire_content" readonly disabled type="text" class="content">
+                    </li>
+                    <li class="repair-item img-container">
+                        <img data-preview-src="" v-for="item in repairInfo.repair_info.images" :src="item | filterImg" class="repair-img" alt=""
+                            data-preview-group="1" />
+                    </li>
+                </template>
             </ul>
             <!-- 维修员 -->
             <template v-if="isRepairMan">
@@ -92,7 +102,7 @@
             </template>
             <!-- 商户 -->
             <template v-else>
-                <button v-if="repairInfo.status == 4 && parseFloat(repairInfo.needPay) == 0 && repairInfo.repair_info == null" @click="feedBack" class="submit-repair">
+                <button v-if="repairInfo.status == 4 && repairInfo.repair_info == null" @click="feedBack" class="submit-repair">
                     维修反馈
                 </button>
                 <button v-if="repairInfo.status == 3 && repairInfo.needPay > 0 && repairInfo.payStatus != '已支付'" @click="goPay(repairInfo.status,repairInfo.id,repairInfo.order_status)"
@@ -109,7 +119,7 @@
     <script src="assets/mui/js/mui.zoom.js"></script>
     <script src="assets/mui/js/mui.previewimage.js"></script>
     <script src="js/common.js?v=1.0.5"></script>
-    <script src="js/repair-detail.js?v=1.0.2"></script>
+    <script src="js/repair-detail.js?v=1.0.3"></script>
 </body>
 
 </html>

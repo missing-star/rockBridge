@@ -31,7 +31,7 @@ var vm = new Vue({
         var data = getNotActivedAddress().map(function(address,index) {
             return {
                 value:address.id,
-                text:address.address
+                text:address.province + address.city + address.address 
             }
         });
         numberPicker.setData(data);
@@ -50,7 +50,7 @@ var vm = new Vue({
  * 获得未激活的地址列表
  */
 function getNotActivedAddress() {
-    varresult = '';
+    var result = '';
     $.ajax({
         url: `${rootUrl}/index/api/getNotAddress`,
         type: 'post',

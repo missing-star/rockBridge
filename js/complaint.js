@@ -33,7 +33,7 @@ var vm = new Vue({
                     mui.toast(data.msg);
                     if (data.status == 1) {
                         setTimeout(function () {
-                            location.reload();
+                            history.go(-1);
                         }, 200);
                     }else if(data.status == 202) {
                         goLogin();

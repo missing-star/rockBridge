@@ -1,4 +1,4 @@
-varpage = 1;
+var page = 1;
 var vm = new Vue({
     el: '#app',
     data: {

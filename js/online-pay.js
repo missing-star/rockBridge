@@ -191,7 +191,7 @@ var vm = new Vue({
         })
     });
     var payPicker = new $.PopPicker();
-    varresult = getPayWay().map(function (item) {
+    var result = getPayWay().map(function (item) {
         return {
             value: item.id,
             text: item.name,
@@ -309,7 +309,7 @@ function jsApiCall() {
  * 获得支付方式
  */
 function getPayWay() {
-    varresult = [];
+    var result = [];
     $.ajax({
         url: `${rootUrl}/index/api/getPayment`,
         dataType: 'json',

@@ -23,16 +23,12 @@ var vm = new Vue({
             this.uploadedImgs.splice(index, 1);
         },
         submitQues() {
-            var imgs = '';
-            this.uploadedImgs.forEach(function (img, index) {
-                imgs += img.realPath + ',';
-            });
             var formData = {
                 repair_id: param.repair_id,
                 repair_review_status: param.repair_review_status,
                 repair_revire_content: this.quesDesc,
                 revire_service: this.serviceComm,
-                images: imgs
+                images: this.uploadedImgs.join(',')
             }
             console.log(this.serviceComm);
             console.log(formData);
