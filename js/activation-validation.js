@@ -44,6 +44,9 @@ var vm = new Vue({
                 });
             }
         },
+        goBack() {
+            history.go(-1);
+        },
         limitCodeLength() {
             this.code = this.code.substring(0, 6);
         },
