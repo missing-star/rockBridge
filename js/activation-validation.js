@@ -44,9 +44,6 @@ var vm = new Vue({
                 });
             }
         },
-        goBack() {
-            history.go(-1);
-        },
         limitCodeLength() {
             this.code = this.code.substring(0, 6);
         },
@@ -81,4 +78,10 @@ var vm = new Vue({
             });
         }
     }
+});
+
+$(function() {
+    document.getElementById('confirm').addEventListener('tap',function() {
+        history.go(-1);
+    });
 });
