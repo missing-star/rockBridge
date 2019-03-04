@@ -6,7 +6,8 @@ var vm = new Vue({
             time: 60,
             code: '',
             username: sessionStorage.getItem('activeName'),
-            phone: sessionStorage.getItem('activePhone')
+            phone: sessionStorage.getItem('activePhone'),
+            password:''
         }
     },
     methods: {
@@ -48,7 +49,11 @@ var vm = new Vue({
             this.code = this.code.substring(0, 6);
         },
         activeNow() {
-            if (this.code.length != 6) {
+            if(this.password.trim() == '') {
+                mui.toast('请输入密码!');
+                return;
+            }
+            else if (this.code.length != 6) {
                 mui.toast('请输入6位数字验证码');
                 return;
             }
@@ -58,6 +63,7 @@ var vm = new Vue({
                 type: 'post',
                 data: {
                     phone:vm.phone,
+                    password:vm.password,
                     code:vm.code
                 },
                 dataType: 'json',

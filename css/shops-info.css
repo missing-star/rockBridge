@@ -50,4 +50,7 @@ p.content {
     color: #333333;
     font-size: 0.9rem;
     line-height: 1.5rem;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
