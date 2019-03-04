@@ -106,3 +106,10 @@ p.sub-title {
     font-size: 0.6rem;
     line-height: 1rem;
 }
+span.business-shops-title {
+    width: 4rem;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

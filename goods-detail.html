@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.2">
     <link rel="stylesheet" href="assets/swiper/css/swiper.min.css?v=1.0.2">
     <link rel="stylesheet" href="css/common.css?v=1.0.2">
-    <link rel="stylesheet" href="css/goods-detail.css?v=1.0.2">
+    <link rel="stylesheet" href="css/goods-detail.css?v=1.0.3">
     <title>叠石桥</title>
     <!--
         商品详情
@@ -53,7 +53,7 @@
             <div class="business-info">
                 <img :src="goodsInfo.shops_info.images" class="business-logo" />
                 <p class="business-detail">
-                    <span v-cloak class="business-name">{{goodsInfo.shops_info.title}}<img v-for="n in goodsInfo.shops_info.shop_review"
+                    <span v-cloak class="business-name"><span class="business-shops-title">{{goodsInfo.shops_info.title}}</span><img v-for="n in goodsInfo.shops_info.shop_review"
                             src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - goodsInfo.shops_info.shop_review)"
                             src="imgs/star.png" class="business-level" /></span>
                     <span v-cloak>收藏 {{goodsInfo.shops_info.shop_collection}}</span>

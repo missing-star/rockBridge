@@ -34,7 +34,7 @@ var vm = new Vue({
         isOpen: false,
         categoryList: [],
         categoryItemList: [],
-        selectedCat: ''
+        selectedCat: '全部'
 
     },
     filters: {
@@ -138,6 +138,7 @@ var vm = new Vue({
                 return false;
             }
             page1 = 1;
+            this.selectedCat = this.categoryList[index].cate_name;
             this.cate_id = id;
             this.currentInnerIndex = -1;
             this.currentIndex = index;

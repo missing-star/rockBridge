@@ -166,6 +166,7 @@ div.have-good-goods {
 img.goods-img {
     width: 100%;
     height: calc(48vw - 1rem);
+    border-radius: 0.2rem;
 }
 .goods-info>p:first-child {
     margin: 0.2rem 0;

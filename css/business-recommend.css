@@ -80,6 +80,8 @@ img.business-level {
 img.business-img-item {
     width: 30%;
     margin: 0 1.5%;
+    height: 5rem;
+    border-radius: 0.2rem;
 }
 .business-recommond {
     margin-top: 1rem;
