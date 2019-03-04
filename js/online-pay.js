@@ -206,14 +206,15 @@ var vm = new Vue({
             vm.payWay = items[0].text;
         });
     }, false);
-    if (vm.isDisabled) {
-        payPicker.pickers[0].items.forEach(function (pay, index) {
-            payPicker.pickers[0].setSelectedIndex(index);
+    payPicker.pickers[0].setSelectedIndex(0);
+    payPicker.pickers[0].items.forEach(function (pay, index) {
+        if(index == 0) {
             vm.id = pay.id;
             vm.payFate = pay.service_price;
-            vm.payWay = pay.name;
-        });
-    }
+            vm.payWay = pay.text;
+        }
+    });
+    
 })(mui, document);
 
 function getRepairRecord() {
