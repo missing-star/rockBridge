@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.2">
     <link rel="stylesheet" href="assets/swiper/css/swiper.min.css?v=1.0.2">
     <link rel="stylesheet" href="css/common.css?v=1.0.2">
-    <link rel="stylesheet" href="css/index.css?v=1.0.2">
+    <link rel="stylesheet" href="css/index.css?v=1.0.3">
     <title>叠石桥</title>
 </head>
 
@@ -109,7 +109,6 @@
                     <img :src="item.thumb | filterImg" class="news-img" />
                     <p v-cloak class="business-item-title">{{item.title}}</p>
                     <div v-cloak class="business-item-content">
-                        <p class="news-title">新闻标题</p>
                         <p class="news-info">
                             <span class="news-source" v-cloak>{{item.author}}</span>
                             <span class="news-time" v-cloak>{{item.add_time.substring(0,10)}}</span>

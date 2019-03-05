@@ -575,3 +575,32 @@ p.address-info {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+img.news-img{
+    height: 6rem;
+}
+.business-item-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+p.news-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+span.news-source {
+    width: 30%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+span.news-time {
+    flex: 1;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
