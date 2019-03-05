@@ -6,6 +6,8 @@ var vm = new Vue({
         //商铺名称
         shopName: '',
         //公房地址选择
+        addressPubProvince: '',
+        addressPubCity: '',
         addressPubId: '',
         addressPub: '',
         otherCitySelected: '',
@@ -326,21 +328,63 @@ function initPicker() {
                         if (data.status == 1) {
                             vm.addressPicker = true;
                             //公房商户选择地址
-                            var addressPicker = new $.PopPicker();
-                            data.result = data.result.map(function (item, index) {
+                            var addressPicker = new mui.PopPicker({
+                                layer: 3
+                            });
+                            data.result = data.result.map(function (province, i) {
                                 return {
-                                    id: item.id,
-                                    text: item.stage + item.storied_building + item.address
+                                    id: province.id,
+                                    text: province.cate_name,
+                                    children: province.children.map(function (city, j) {
+                                        return {
+                                            id: city.id,
+                                            text: city.cate_name,
+                                            children: city.children.map(function (district, k) {
+                                                return {
+                                                    id: district.id,
+                                                    text: district.address
+                                                }
+                                            })
+                                        }
+                                    })
                                 }
                             });
                             addressPicker.setData(data.result);
-                            var addressClickBtn = doc.getElementById('address-public-shop');
+                            if (getParams().type == 'edit') {
+                                //选中下拉框
+                                addressPicker.pickers[0].setSelectedValue(vm.addressPubProvince);
+                                addressPicker.pickers[0].items.forEach(function (provice, index) {
+                                    if (provice.id == vm.addressPubProvince) {
+                                        vm.addressPub += provice.text;
+                                    }
+                                });
+                                addressPicker.getSelectedItems()[0].children.forEach(function (city, index) {
+                                    if (vm.addressPubCity == city.id) {
+                                        addressPicker.pickers[1].setSelectedIndex(index);
+                                        vm.addressPub += " " + city.text;
+                                        city.children.forEach(function (district, i) {
+                                            if (vm.addressPubId == district.id) {
+                                                vm.addressPub += " " + district.text;
+                                                addressPicker.pickers[2].setSelectedIndex(i);
+                                            }
+                                        });
+                                    }
+                                });
+
+
+                            }
+                            var addressClickBtn = document.getElementById('address-public-shop');
                             addressClickBtn.addEventListener('tap', function (event) {
                                 addressPicker.show(function (items) {
-                                    vm.addressPubId = items[0].id;
-                                    vm.addressPub = items[0].text;
+                                    if (!items[1].id || !items[2].id) {
+                                        mui.toast('无效地址!');
+                                        return false;
+                                    }
+                                    vm.addressPubId = items[2].id;
+                                    vm.addressPub = items[0].text + items[1].text + items[2].text;
                                 });
                             }, false);
+
                         } else if (data.status == 202) {
                             goLogin();
                         }
@@ -361,6 +405,24 @@ function initPicker() {
                 cityPicker.setData(cityData);
                 var showCityPickerButton = doc.getElementById('address-public-other');
                 var cityResult = doc.getElementById('address-public-other');
+                cityPicker.pickers[0].setSelectedValue(vm.provice);
+                cityPicker.pickers[0].items.forEach(function (provice, index) {
+                    if (provice.value == vm.provice) {
+                        vm.otherCitySelected += provice.text;
+                    }
+                });
+                cityPicker.getSelectedItems()[0].children.forEach(function (city, index) {
+                    if (vm.city == city.value) {
+                        cityPicker.pickers[1].setSelectedIndex(index);
+                        vm.otherCitySelected += " " + city.text;
+                        city.children.forEach(function (district, i) {
+                            if (vm.district == district.value) {
+                                vm.otherCitySelected += " " + district.text;
+                                cityPicker.pickers[2].setSelectedIndex(i);
+                            }
+                        });
+                    }
+                });
                 showCityPickerButton.addEventListener('tap', function (event) {
                     cityPicker.show(function (items) {
                         vm.province = _getParam(items[0], 'value');
@@ -376,3 +438,24 @@ function initPicker() {
     })(mui, document);
 }
 initPicker();
+
+/**
+ * 获得申请商户的信息
+ */
+function getApplyInfo() {
+    $.ajax({
+        url: `${rootUrl}/index/api/getAddShopInfo`,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        success: function (data) {
+            if (data.result != null) {
+
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常');
+        }
+    });
+}
+getApplyInfo();

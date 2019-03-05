@@ -48,7 +48,7 @@ var vm = new Vue({
         enterItem(url, flag) {
             if (validateUser()) {
                 if (validateUserPhone()) {
-                    if (vm.isForce) {
+                    if (vm.isForce && flag) {
                         mui.toast(vm.showMsg);
                         return false;
                     }
