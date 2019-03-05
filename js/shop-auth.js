@@ -22,6 +22,7 @@ var vm = new Vue({
         //控制选择器实例化，防止多次实例化
         addressPicker: false,
         cityPicker: false,
+        categoryPicker: false,
         //省市区
         province: '',
         city: '',
@@ -55,7 +56,10 @@ var vm = new Vue({
         //房东名称
         landlord: '',
         //房东电话
-        landlord_phone: ''
+        landlord_phone: '',
+        isEdit: false,
+        refuseCause:'',
+        editId:''
     },
     methods: {
         limitPhone() {
@@ -145,6 +149,9 @@ var vm = new Vue({
                 one_cate_id: this.mainCategoryId,
                 two_cate_id: this.subMainCategoryId
             };
+            if(isEdit) {
+                formData.id = this.editId;
+            }
             if (formData.person_name == '') {
                 mui.toast('请输入商户名！');
                 return false;
@@ -280,45 +287,61 @@ function initPicker() {
     (function ($, doc) {
         $.init();
         $.ready(function () {
-            //设置主营类目picker
-            jQuery.ajax({
-                url: 'http://dieshiqiao.pzhkj.cn/index/api/getShopsGoodsCateList',
-                dataType: 'json',
-                type: 'POST',
-                success: function (data) {
-                    if (data.status == 1) {
-                        var categoryPicker = new $.PopPicker({
-                            layer: 2
-                        });
-                        data.result = data.result.map(function (item, index) {
-                            return {
-                                id: item.id,
-                                text: item.cate_name,
-                                children: item.children.map(function (child, j) {
-                                    return {
-                                        id: child.id,
-                                        text: child.cate_name
-                                    }
-                                })
-                            }
-                        });
-                        categoryPicker.setData(data.result);
-                        var cateClickBtn = doc.getElementById('main-category');
-                        cateClickBtn.addEventListener('tap', function (event) {
-                            categoryPicker.show(function (items) {
-                                vm.mainCategoryId = items[0].id;
-                                vm.mainCategoryName = items[0].text + ' ' + items[1].text;
-                                vm.subMainCategoryId = items[1].id;
+            if (!vm.categoryPicker) {
+                //设置主营类目picker
+                jQuery.ajax({
+                    url: 'http://dieshiqiao.pzhkj.cn/index/api/getShopsGoodsCateList',
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.status == 1) {
+                            var categoryPicker = new $.PopPicker({
+                                layer: 2
                             });
-                        }, false);
-                    } else if (data.status == 202) {
-                        goLogin();
+                            data.result = data.result.map(function (item, index) {
+                                return {
+                                    id: item.id,
+                                    text: item.cate_name,
+                                    children: item.children.map(function (child, j) {
+                                        return {
+                                            id: child.id,
+                                            text: child.cate_name
+                                        }
+                                    })
+                                }
+                            });
+                            categoryPicker.setData(data.result);
+                            // if (vm.isEdit) {
+                            //     categoryPicker.pickers[0].setSelectedValue(vm.mainCategoryId);
+                            //     categoryPicker.pickers[0].items.forEach(function (mainCate, index) {
+                            //         if (mainCate.value == vm.mainCategoryId) {
+                            //             vm.mainCategoryName += mainCate.text;
+                            //         }
+                            //     });
+                            //     categoryPicker.getSelectedItems()[0].children.forEach(function (subCate, index) {
+                            //         if (vm.subMainCategoryId == subCate.value) {
+                            //             categoryPicker.pickers[1].setSelectedIndex(index);
+                            //             vm.mainCategoryName += " " + subCate.text;
+                            //         }
+                            //     });
+                            // }
+                            var cateClickBtn = doc.getElementById('main-category');
+                            cateClickBtn.addEventListener('tap', function (event) {
+                                categoryPicker.show(function (items) {
+                                    vm.mainCategoryId = items[0].id;
+                                    vm.mainCategoryName = items[0].text + ' ' + items[1].text;
+                                    vm.subMainCategoryId = items[1].id;
+                                });
+                            }, false);
+                        } else if (data.status == 202) {
+                            goLogin();
+                        }
+                    },
+                    error: function () {
+                        mui.toast('获取类目异常!');
                     }
-                },
-                error: function () {
-                    mui.toast('获取类目异常!');
-                }
-            });
+                });
+            }
             if (vm.isPub && !vm.addressPicker) {
                 jQuery.ajax({
                     url: 'http://dieshiqiao.pzhkj.cn/index/api/getShopAddress',
@@ -350,29 +373,29 @@ function initPicker() {
                                 }
                             });
                             addressPicker.setData(data.result);
-                            if (getParams().type == 'edit') {
-                                //选中下拉框
-                                addressPicker.pickers[0].setSelectedValue(vm.addressPubProvince);
-                                addressPicker.pickers[0].items.forEach(function (provice, index) {
-                                    if (provice.id == vm.addressPubProvince) {
-                                        vm.addressPub += provice.text;
-                                    }
-                                });
-                                addressPicker.getSelectedItems()[0].children.forEach(function (city, index) {
-                                    if (vm.addressPubCity == city.id) {
-                                        addressPicker.pickers[1].setSelectedIndex(index);
-                                        vm.addressPub += " " + city.text;
-                                        city.children.forEach(function (district, i) {
-                                            if (vm.addressPubId == district.id) {
-                                                vm.addressPub += " " + district.text;
-                                                addressPicker.pickers[2].setSelectedIndex(i);
-                                            }
-                                        });
-                                    }
-                                });
+                            // if (vm.isEdit) {
+                            //     //选中下拉框
+                            //     addressPicker.pickers[0].setSelectedValue(vm.addressPubProvince);
+                            //     addressPicker.pickers[0].items.forEach(function (provice, index) {
+                            //         if (provice.id == vm.addressPubProvince) {
+                            //             vm.addressPub += provice.text;
+                            //         }
+                            //     });
+                            //     addressPicker.getSelectedItems()[0].children.forEach(function (city, index) {
+                            //         if (vm.addressPubCity == city.id) {
+                            //             addressPicker.pickers[1].setSelectedIndex(index);
+                            //             vm.addressPub += " " + city.text;
+                            //             city.children.forEach(function (district, i) {
+                            //                 if (vm.addressPubId == district.id) {
+                            //                     vm.addressPub += " " + district.text;
+                            //                     addressPicker.pickers[2].setSelectedIndex(i);
+                            //                 }
+                            //             });
+                            //         }
+                            //     });
 
 
-                            }
+                            // }
                             var addressClickBtn = document.getElementById('address-public-shop');
                             addressClickBtn.addEventListener('tap', function (event) {
                                 addressPicker.show(function (items) {
@@ -405,24 +428,24 @@ function initPicker() {
                 cityPicker.setData(cityData);
                 var showCityPickerButton = doc.getElementById('address-public-other');
                 var cityResult = doc.getElementById('address-public-other');
-                cityPicker.pickers[0].setSelectedValue(vm.provice);
-                cityPicker.pickers[0].items.forEach(function (provice, index) {
-                    if (provice.value == vm.provice) {
-                        vm.otherCitySelected += provice.text;
-                    }
-                });
-                cityPicker.getSelectedItems()[0].children.forEach(function (city, index) {
-                    if (vm.city == city.value) {
-                        cityPicker.pickers[1].setSelectedIndex(index);
-                        vm.otherCitySelected += " " + city.text;
-                        city.children.forEach(function (district, i) {
-                            if (vm.district == district.value) {
-                                vm.otherCitySelected += " " + district.text;
-                                cityPicker.pickers[2].setSelectedIndex(i);
-                            }
-                        });
-                    }
-                });
+                // cityPicker.pickers[0].setSelectedValue(vm.provice);
+                // cityPicker.pickers[0].items.forEach(function (provice, index) {
+                //     if (provice.value == vm.provice) {
+                //         vm.otherCitySelected += provice.text;
+                //     }
+                // });
+                // cityPicker.getSelectedItems()[0].children.forEach(function (city, index) {
+                //     if (vm.city == city.value) {
+                //         cityPicker.pickers[1].setSelectedIndex(index);
+                //         vm.otherCitySelected += " " + city.text;
+                //         city.children.forEach(function (district, i) {
+                //             if (vm.district == district.value) {
+                //                 vm.otherCitySelected += " " + district.text;
+                //                 cityPicker.pickers[2].setSelectedIndex(i);
+                //             }
+                //         });
+                //     }
+                // });
                 showCityPickerButton.addEventListener('tap', function (event) {
                     cityPicker.show(function (items) {
                         vm.province = _getParam(items[0], 'value');
@@ -438,7 +461,6 @@ function initPicker() {
     })(mui, document);
 }
 initPicker();
-
 /**
  * 获得申请商户的信息
  */
@@ -450,7 +472,8 @@ function getApplyInfo() {
         async: false,
         success: function (data) {
             if (data.result != null) {
-
+                vm.refuseCause = data.result.repulse_content;
+                vm.editId = data.result.id;
             }
         },
         error: function () {

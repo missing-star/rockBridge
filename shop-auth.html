@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.2">
     <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css?v=1.0.2">
     <link rel="stylesheet" href="css/common.css?v=1.0.2">
-    <link rel="stylesheet" href="css/shop-auth.css?v=1.0.2">
+    <link rel="stylesheet" href="css/shop-auth.css?v=1.0.4">
     <title>叠石桥</title>
 </head>
 
@@ -22,6 +22,7 @@
             <img onclick="history.go(-1)" src="imgs/arrow-left-black.png" alt="" class="icon-back">
         </header>
         <p class="title">商铺认证</p>
+        <p class="refuse-cause" v-if="isEdit">拒绝原因：爱的方式代理费</p>
         <div class="mui-content">
             <ul class="tab-bar">
                 <li class="tab-item active" data-shop-id="0">公房商户</li>

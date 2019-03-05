@@ -87,6 +87,8 @@ li.tab-contetn-item.id-card {
 }
 img.id-card {
     width: 35%;
+    height: 4rem;
+    border-radius: 0.2rem;
 }
 span.upload-status {
     font-size: 0.7rem;
@@ -96,4 +98,10 @@ span.upload-status {
 }
 img.show-upload-img {
     width: 100%;
+}
+p.refuse-cause {
+    padding: 0.2rem 1rem;
+    color: red;
+    font-size: 0.8rem;
+    line-height: 1rem;
 }
