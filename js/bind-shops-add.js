@@ -165,7 +165,7 @@ function getSopsDetail() {
         dataType: 'json',
         success: function (data) {
             if(data.status == 1) {
-                vm.addressPubId = data.result.address_id;
+                vm.addressPubId = data.result.id;
                 vm.renting.src = rootUrl + data.result.images;
                 vm.renting.realPath = data.result.images;
                 vm.shopStatus = data.result.status == 2 ? '已通过' : (data.result.status == 1 ? '待审核' : (data.result.status == 3 ? '已拒绝' : '已解绑'));
