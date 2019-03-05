@@ -131,10 +131,11 @@ div.goods {
     width: 48%;
     margin-bottom: 1rem;
     min-height: 4rem;
+    display: inline-block;
 }
 .goods-item img.goods-img {
     width: 100%;
-    height: 8rem;
+    height: 5.5rem;
     border-radius: 0.2rem;
 }
 .goods-item .goods-info>p:first-child {
@@ -281,10 +282,12 @@ div.tab-content.goods.active.goods-line {
     align-items: flex-start;
     justify-content: flex-start;
 }
-.tab-content.goods.active.goods-not-line{
-    height: calc(100% - 0.2rem);
+.tab-content.goods.active.goods-not-line {
+    height: calc(100% - 2rem);
     overflow: scroll;
-    margin-top: 0.2rem;
+    margin-top: 2.2rem;
+    padding-top: 0.1rem;
+    display: block;
 }
 .business-item,.business-item-line{
     margin-bottom: 1rem;
@@ -713,4 +716,10 @@ li.category-item-open.active{
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0.1rem;
+}
+.goods-item:nth-child(even) {
+    float: left;
+}
+.goods-item:nth-child(odd) {
+    float: right;
 }

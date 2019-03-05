@@ -1,12 +1,13 @@
 var userData = '';
 getUserInfo();
-
 var vm = new Vue({
     el: '#app',
     data: {
         currentRole: sessionStorage.getItem('currentRole') || 0,
         userData: userData,
-        isSwitchRole: sessionStorage.getItem('switchRole')
+        isSwitchRole: sessionStorage.getItem('switchRole'),
+        showMsg:'',
+        isForce:true
     },
     methods: {
         //切换用户角色
@@ -47,8 +48,8 @@ var vm = new Vue({
         enterItem(url, flag) {
             if (validateUser()) {
                 if (validateUserPhone()) {
-                    if (flag) {
-                        mui.toast('您已进行过商户认证');
+                    if (vm.isForce) {
+                        mui.toast(vm.showMsg);
                         return false;
                     }
                     //已绑定手机号
@@ -84,3 +85,27 @@ var vm = new Vue({
 mui('body').on('tap', 'a', function () {
     this.click();
 });
+
+/**
+ * 获得申请商户的信息
+ */
+function getApplyInfo() {
+    $.ajax({
+        url:`${rootUrl}/index/api/getAddShopInfo`,
+        dataType:'json',
+        type:'post',
+        async:false,
+        success:function(data) {
+            if(data.status == -1) {
+                vm.showMsg = data.msg;
+            }
+            else {
+                vm.isForce = false;
+            }
+        },
+        error:function() {
+            mui.toast('服务器异常');
+        }
+    });
+}
+getApplyInfo();

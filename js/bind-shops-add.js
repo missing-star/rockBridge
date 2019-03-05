@@ -8,8 +8,12 @@ var vm = new Vue({
                 realPath: '',
                 src: ''
             },
-            isEdit:false,
-            shopStatus:''
+            isEdit: false,
+            shopStatus: '',
+            //三级联动id数据
+            userProvince:'',
+            userCity:'',
+            userDistrict:''
         }
     },
     methods: {
@@ -29,7 +33,7 @@ var vm = new Vue({
                 address_id: vm.addressPubId,
                 lease: vm.renting.realPath
             }
-            if(getParams().type == 'edit') {
+            if (getParams().type == 'edit') {
                 formData.id = getParams().id;
             }
             //提交绑定商铺
@@ -44,7 +48,7 @@ var vm = new Vue({
                         setTimeout(function () {
                             history.go(-1);
                         }, 200);
-                    }else if(data.status == 202) {
+                    } else if (data.status == 202) {
                         goLogin();
                     }
                 },
@@ -103,7 +107,7 @@ function uploadImgRealPath(fileObj, key, src) {
                 vm.renting.src = src;
                 //设置文件路径为服务器路径
                 vm.renting.realPath = data.result;
-            }else if(data.status == 202) {
+            } else if (data.status == 202) {
                 goLogin();
             }
         },
@@ -119,33 +123,65 @@ function initPicker() {
         dataType: 'json',
         type: 'POST',
         success: function (data) {
-            if(data.status == 1) {
+            if (data.status == 1) {
                 //公房商户选择地址
-                var addressPicker = new mui.PopPicker();
-                data.result = data.result.map(function (item, index) {
+                var addressPicker = new mui.PopPicker({
+                    layer: 3
+                });
+                data.result = data.result.map(function (province, i) {
                     return {
-                        value: item.id,
-                        text: item.stage + item.storied_building + item.address
+                        value: province.id,
+                        text: province.cate_name,
+                        children: province.children.map(function (city, j) {
+                            return {
+                                value: city.id,
+                                text: city.cate_name,
+                                children: city.children.map(function (district, k) {
+                                    return {
+                                        value: district.id,
+                                        text: district.address
+                                    }
+                                })
+                            }
+                        })
                     }
                 });
                 addressPicker.setData(data.result);
                 if (getParams().type == 'edit') {
-                    addressPicker.pickers[0].items.forEach(function (address, index) {
-                        if (address.value == vm.addressPubId) {
-                            addressPicker.pickers[0].setSelectedIndex(index);
-                            vm.addressPub = address.text;
+                    //选中下拉框
+                    addressPicker.pickers[0].setSelectedValue(vm.userProvince);
+                    addressPicker.pickers[0].items.forEach(function (provice, index) {
+                        if (provice.value == vm.userProvince) {
+                            vm.addressPub += provice.text;
                         }
                     });
+                    addressPicker.getSelectedItems()[0].children.forEach(function (city, index) {
+                        if (vm.userCity == city.value) {
+                            addressPicker.pickers[1].setSelectedIndex(index);
+                            vm.addressPub += " " + city.text;
+                            city.children.forEach(function (district, i) {
+                                if (vm.userDistrict == district.value) {
+                                    vm.addressPub += " " + district.text;
+                                    addressPicker.pickers[2].setSelectedIndex(i);
+                                }
+                            });
+                        }
+                    });
+
+
                 }
                 var addressClickBtn = document.getElementById('address-public-shop');
                 addressClickBtn.addEventListener('tap', function (event) {
                     addressPicker.show(function (items) {
-                        vm.addressPubId = items[0].value;
-                        vm.addressPub = items[0].text;
+                        if(!items[1].value || !items[2].value) {
+                            mui.toast('无效地址!');
+                            return false;
+                        }
+                        vm.addressPubId = items[2].value;
+                        vm.addressPub = items[0].text + items[1].text + items[2].text;
                     });
                 }, false);
-            }
-            else if(data.status == 202) {
+            } else if (data.status == 202) {
                 goLogin();
             }
         },
@@ -164,14 +200,16 @@ function getSopsDetail() {
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            if(data.status == 1) {
-                vm.addressPubId = data.result.id;
+            if (data.status == 1) {
+                vm.addressPubId = data.result.address_id;
                 vm.renting.src = rootUrl + data.result.images;
                 vm.renting.realPath = data.result.images;
                 vm.shopStatus = data.result.status == 2 ? '已通过' : (data.result.status == 1 ? '待审核' : (data.result.status == 3 ? '已拒绝' : '已解绑'));
+                vm.userProvince = data.result.stage;
+                vm.userCity = data.result.storied_building;
+                vm.userDistrict = data.result.address_id;
                 initPicker();
-            }
-            else if(data.status == 202) {
+            } else if (data.status == 202) {
                 goLogin();
             }
         },

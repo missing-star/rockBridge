@@ -93,7 +93,7 @@
             </ul>
             <!--商品tab页内容-->
             <div class="category-goods-container" v-if="isShowGoods">
-                <template v-if="isDefGoodsLayout">
+                <template>
                     <ul class="categroy-list">
                         <li class="categroy-item" v-for="(category,index) in categoryList" :class="{active:index == currentIndex}"
                             @click="switchCategoryTab(index,category.id)" v-cloak>{{category.cate_name}}</li>
@@ -110,7 +110,7 @@
                     </div>
                 </template>
                 <div class="tab-content goods" :class="{active:isShowGoods,'goods-line':isDefGoodsLayout,'goods-not-line':!isDefGoodsLayout}">
-                    <div v-if="isDefGoodsLayout" class="show-categroy-name" v-cloak>{{selectedCat}}</div>
+                    <div class="show-categroy-name" v-cloak>{{selectedCat}}</div>
                     <div @click="getDetail('goods-detail.html',goods.id)" v-for="goods in goodsList" :class={'goods-item':!isDefGoodsLayout,'goods-item-line':isDefGoodsLayout}>
                         <img class="goods-img" :src="goods.images | filterImg" />
                         <div class="goods-info">
@@ -183,7 +183,7 @@
     <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
     <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.5"></script>
-    <script src="js/goods.js?v=1.0.3"></script>
+    <script src="js/goods.js?v=1.0.4"></script>
 </body>
 
 </html>

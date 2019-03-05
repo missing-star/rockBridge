@@ -547,11 +547,11 @@ p.price {
     line-height: 1rem;
 }
 .swiper-container{
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
 }
 .swiper-slide>img {
     width: 100%;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
 }
 p.class-title.arrow-right {
     background: url(../imgs/arrow-right.png);
