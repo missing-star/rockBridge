@@ -137,6 +137,9 @@ button.comments-btn {
 }
 img.show-img-item {
     width: 30%;
+    height: 5rem;
+    border-radius: 0.2rem;
+    margin: 0 1%;
 }
 img.comments-icon {
     width: 0.75rem;

@@ -143,6 +143,7 @@ span.is-upper {
 img.goods-img {
     width: 30%;
     height: 4.5rem;
+    border-radius: 0.2rem;
 }
 
 .goods-desc {

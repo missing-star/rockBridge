@@ -519,4 +519,6 @@ button.comments-btn {
 img.show-img-item {
     width: 30%;
     margin: 0 1%;
+    height: 5rem;
+    border-radius: 0.2rem;
 }

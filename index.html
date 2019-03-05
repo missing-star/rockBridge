@@ -97,8 +97,28 @@
                     </div>
                 </div>
             </div>
+            <!-- 新闻资讯 -->
+            <p @click="jumpLink('attract-investment.html')" class="business-top-title">
+                <span class="first-title">最新资讯</span>
+                <span class="middle-icon"> | </span>
+                <span class="end-title">每日资讯，知天下事</span>
+            </p>
+            <div class="slider-business">
+                <div @click="goDetail('info-detail.html',item.id)" v-for="item in homeInfo.new_list"
+                    class="slider-business-item">
+                    <img :src="item.thumb | filterImg" class="news-img" />
+                    <p v-cloak class="business-item-title">{{item.title}}</p>
+                    <div v-cloak class="business-item-content">
+                        <p class="news-title">新闻标题</p>
+                        <p class="news-info">
+                            <span class="news-source" v-cloak>{{item.author}}</span>
+                            <span class="news-time" v-cloak>{{item.add_time.substring(0,10)}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
             <!--卡片：新闻，领券，通知-->
-            <div class="card-view-con">
+            <!-- <div class="card-view-con">
                 <div @click="goInner(homeInfo.ad_left.ad_link)" class="news-card">
                     <p class="card-content-con">
                         <img :src="homeInfo.ad_left.ad_code | filterImg" alt="">
@@ -111,7 +131,7 @@
                         <span v-cloak class="title">{{homeInfo.ad_right.ad_name}}</span>
                     </p>
                 </div>
-            </div>
+            </div> -->
             <!--人气好物-->
             <div class="good-goods-con">
                 <p @click="jumpLink('popular-goods.html')" class="title">

@@ -210,7 +210,7 @@ var vm = new Vue({
     payPicker.pickers[0].items.forEach(function (pay, index) {
         if(index == 0) {
             vm.id = pay.id;
-            vm.payFate = pay.service_price;
+            vm.payFate = pay.fate;
             vm.payWay = pay.text;
         }
     });
