@@ -19,6 +19,10 @@ var vm = new Vue({
                 });
                 return;
             }
+            if(vm.isForce) {
+                mui.toast(vm.showMsg);
+                return;
+            }
             if (this.isSwitchRole == 0) {
                 mui.toast('请先进行商户认证！');
                 mui.openWindow({
