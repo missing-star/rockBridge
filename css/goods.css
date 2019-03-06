@@ -186,6 +186,7 @@ div.goods {
     font-size: 0.8rem;
     text-align: center;
     height: 2rem;
+    float: left;
 }
 
 /**

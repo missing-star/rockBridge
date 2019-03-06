@@ -12,6 +12,13 @@ var vm = new Vue({
     methods: {
         //切换用户角色
         switchRole() {
+            if(!validateUser()) {
+                mui.toast('请先登录!');
+                mui.openWindow({
+                    url:'login.html'
+                });
+                return;
+            }
             if (this.isSwitchRole == 0) {
                 mui.toast('请先进行商户认证！');
                 mui.openWindow({
