@@ -19,7 +19,7 @@ var vm = new Vue({
                 });
                 return;
             }
-            if(vm.isForce) {
+            if(vm.isForce && this.isSwitchRole == 0) {
                 mui.toast(vm.showMsg);
                 return;
             }
