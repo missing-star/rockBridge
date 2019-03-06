@@ -23,8 +23,9 @@ var vm = new Vue({
             this.uploadedImgs.splice(index, 1);
         },
         submitQues() {
-            const images = this.uploadedImgs.map(function(img,index) {
-                return img.realPath + ',';
+            var images = '';
+            this.uploadedImgs.forEach(function(img,index) {
+                images += img.realPath + ',';
             });
             var formData = {
                 repair_id: param.repair_id,
