@@ -305,8 +305,14 @@ function getCategory() {
                         cateClickBtn.addEventListener('tap', function (event) {
                             categoryPicker.show(function (items) {
                                 vm.mainCategoryId = items[0].value;
-                                vm.mainCategoryName = items[0].text + ' ' + items[1].text;
-                                vm.subMainCategoryId = items[1].value;
+                                if(items[1].value) {
+                                    vm.mainCategoryName = items[0].text + ' ' + items[1].text;
+                                    vm.subMainCategoryId = items[1].value;
+                                }
+                                else {
+                                    vm.mainCategoryName = items[0].text;
+                                    vm.subMainCategoryId = '';
+                                }
                             });
                         }, false);
                         if (getParams().type == 'edit') {

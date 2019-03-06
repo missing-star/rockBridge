@@ -149,7 +149,7 @@ var vm = new Vue({
                 one_cate_id: this.mainCategoryId,
                 two_cate_id: this.subMainCategoryId
             };
-            if(isEdit) {
+            if(vm.isEdit) {
                 formData.id = this.editId;
             }
             if (formData.person_name == '') {
@@ -474,6 +474,7 @@ function getApplyInfo() {
             if (data.result != null) {
                 vm.refuseCause = data.result.repulse_content;
                 vm.editId = data.result.id;
+                vm.isEdit = true;
             }
         },
         error: function () {

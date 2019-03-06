@@ -61,10 +61,6 @@ li.goods-tab-bar-item.active:after {
     left: 0;
 }
 
-span.current-number {
-    display: none;
-}
-
 .goods-tab-bar-item.active>span.current-number {
     display: inline;
 }
