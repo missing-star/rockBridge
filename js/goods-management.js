@@ -2,8 +2,11 @@ var vm = new Vue({
     el: '#app',
     data: {
         upperList: [],
+        upperListTotal:0,
         stockList: [],
+        stockListTotal:0,
         lowerList: [],
+        lowerListTotal:0,
         comments: [1, 2, 4, 5, 5],
         upperSelectedCount: 0,
         stockSelectedCount: 0,
@@ -317,6 +320,9 @@ function getGoodsList(status, list) {
         success: function (data) {
             if (data.status == 1) {
                 vm[list] = data.result;
+                vm.upperListTotal = data.goods_status.goods_status1;
+                vm.stockListTotal = data.goods_status.goods_status2;
+                vm.lowerListTotal = data.goods_status.goods_status3;
             }else if(data.status == 202) {
                 goLogin();
             }
