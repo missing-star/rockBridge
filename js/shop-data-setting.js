@@ -124,6 +124,11 @@ var vm = new Vue({
             mui.openWindow({
                 url: 'shop-settled.html'
             });
+        },
+        managerGoods() {
+            mui.openWindow({
+                url:'goods-management.html'
+            })
         }
     }
 });
