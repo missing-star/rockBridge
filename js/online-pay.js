@@ -31,7 +31,8 @@ var vm = new Vue({
         //是否已经获取过报修列表
         isGetList: false,
         isDisabled: getParams().type == 1 ? true : false,
-        id:''
+        id:'',
+        totalMoney:0
     },
     methods: {
         goDetail() {
@@ -55,6 +56,7 @@ var vm = new Vue({
             } else if (this.payWay == '') {
                 mui.toast('请选择支付方式！');
             }
+            vm.totalMoney = vm.money * (1 + parseFloat(vm.fate) / 100);
             //提交订单
             var formData = {
                 cate_id: this.selectedId,
@@ -202,7 +204,7 @@ var vm = new Vue({
     var eventBtn = doc.getElementById('pay-way');
     eventBtn.addEventListener('tap', function (event) {
         payPicker.show(function (items) {
-            vm.payFate = items[0].fate;
+            vm.payFate = items[0].fate + '%';
             vm.payWay = items[0].text;
         });
     }, false);
@@ -210,7 +212,7 @@ var vm = new Vue({
     payPicker.pickers[0].items.forEach(function (pay, index) {
         if(index == 0) {
             vm.id = pay.id;
-            vm.payFate = pay.fate;
+            vm.payFate = pay.fate + '%';
             vm.payWay = pay.text;
         }
     });

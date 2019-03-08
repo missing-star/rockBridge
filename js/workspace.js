@@ -1,3 +1,10 @@
+getUserInfo();
+if(sessionStorage.getItem('switchRole') == 0) {
+    mui.alert('您还不是商户!');
+    mui.openWindow({
+        url:'index.html'
+    });
+}
 sessionStorage.setItem('currentRole',1);
 var vm = new Vue({
     el: '#app',

@@ -103,6 +103,10 @@
                     <label for="" class="title">支付方式</label>
                     <input readonly disabled v-model="payWay" type="text" class="address" placeholder="请选择支付方式">
                 </li>
+                <li class="pay-item">
+                    <label for="" class="title">总计</label>
+                    <input readonly disabled v-model="totalMoney" type="text" class="address">
+                </li>
                 <button @click="submit" class="submit pay">立即支付</button>
             </div>
         </div>
@@ -113,7 +117,7 @@
     <script src="assets/mui/picker/js/mui.picker.js?v=1.0.2"></script>
     <script src="assets/mui/picker/js/mui.poppicker.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.5"></script>
-    <script src="js/online-pay.js?v=1.0.4"></script>
+    <script src="js/online-pay.js?v=1.0.5"></script>
 </body>
 
 </html>
