@@ -56,7 +56,7 @@ var vm = new Vue({
             } else if (this.payWay == '') {
                 mui.toast('请选择支付方式！');
             }
-            vm.totalMoney = vm.money * (1 + parseFloat(vm.fate) / 100);
+            vm.totalMoney = parseFloat(vm.inputMoney) * (1 + parseFloat(vm.payFate) / 100);
             //提交订单
             var formData = {
                 cate_id: this.selectedId,
