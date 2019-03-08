@@ -56,12 +56,14 @@ var vm = new Vue({
             } else if (this.payWay == '') {
                 mui.toast('请选择支付方式！');
             }
-            vm.totalMoney = parseFloat(vm.inputMoney) * (1 + parseFloat(vm.payFate) / 100);
+            var totalMoney = parseFloat(vm.inputMoney);
+            var fateMoney = totalMoney * (parseFloat(vm.payFate) / 100);
+            vm.totalMoney =  fateMoney < 0.1 ? parseFloat(totalMoney + 0.1).toFixed(2) : parseFloat(totalMoney + fateMoney).toFixed(2);
             //提交订单
             var formData = {
                 cate_id: this.selectedId,
                 content: this.description,
-                actual_payment: this.inputMoney,
+                actual_payment: this.totalMoney,
                 pay_method: this.payWay,
                 address_id: this.selectedShopAddressId
             };
