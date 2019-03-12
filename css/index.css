@@ -164,7 +164,9 @@ p.business-item-title {
     font-size: 0.8rem;
     color: #333;
 	line-height: 0.8rem;
-	margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 p.business-item-content {
     font-size: 0.6rem;
@@ -539,6 +541,9 @@ p.name {
     text-align: center;
     font-size: 0.8rem;
     line-height: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 p.price {
     color: #ff4404;

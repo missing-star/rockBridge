@@ -103,7 +103,7 @@
             <!-- 商户 -->
             <template v-else>
                 <button v-if="repairInfo.status == 4 && repairInfo.repair_info == null" @click="feedBack" class="submit-repair">
-                    维修反馈
+                    我要评价
                 </button>
                 <button v-if="repairInfo.status == 3 && repairInfo.needPay > 0 && repairInfo.payStatus != '已支付'" @click="goPay(repairInfo.status,repairInfo.id,repairInfo.order_status)"
                     class="submit-repair pay">

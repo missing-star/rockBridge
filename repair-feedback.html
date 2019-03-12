@@ -29,7 +29,7 @@
             </header>
             <ul class="repair-info">
                 <li class="repair-item question">
-                    <label for="" class="title">报修问题描述</label>
+                    <label for="" class="title">评价内容</label>
                     <textarea v-model="quesDesc" @input="limitLength" placeholder="简单描述您的报修问题" name="" id=""></textarea>
                     <span v-cloak class="show-number">{{inputCount}}/300</span>
                 </li>
@@ -76,7 +76,7 @@
                 </li>
             </ul>
             <button @click="submitQues" class="submit-repair">
-                提交反馈
+                提交评价
             </button>
         </div>
     </div>

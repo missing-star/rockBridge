@@ -99,3 +99,8 @@ a.btn.cancel {
     align-items: center;
     justify-content: center;
 }
+input#main-category {
+    background: url(../imgs/arrow-right.png) no-repeat;
+    background-position: right;
+    background-size: 0.7rem;
+}

@@ -8,6 +8,7 @@ var vm = new Vue({
         currentTab: 'all',
         //是否已入驻
         isSettled: false,
+        isForce:true,
         historyList: getSearchHistory(),
         itemList: [{
                 icon: 'imgs/safe.png',
@@ -35,7 +36,8 @@ var vm = new Vue({
                 url: 'contact-us.html'
             }
         ],
-        homeInfo: ''
+        homeInfo: '',
+        showMsg:''
     },
     filters: {
         //拼接图片地址
@@ -80,6 +82,11 @@ var vm = new Vue({
                 //需要登录操作
                 if (validateUser()) {
                     if (sessionStorage.getItem('switchRole') == 0) {
+                        //不是商家
+                        if(vm.isForce) {
+                            mui.toast(vm.showMsg);
+                            return;
+                        }
                         if(isShop == 1 || isShop == 2) {
                             mui.openWindow({
                                 url:'shop-auth.html'
@@ -88,7 +95,7 @@ var vm = new Vue({
                         else {
                             mui.openWindow({
                                 url:url
-                            })
+                            });
                         }
                         return false;
                     }
@@ -97,6 +104,7 @@ var vm = new Vue({
                            mui.toast('您已进行过商户认证');
                            return false;
                         }
+                        //缴费 和 其他
                         mui.openWindow({
                             url:url
                         });
@@ -201,3 +209,27 @@ function initBanner() {
     });
 }
 getUserInfo();
+
+/**
+ * 获得申请商户的信息
+ */
+function getApplyInfo() {
+    $.ajax({
+        url:`${rootUrl}/index/api/getAddShopInfo`,
+        dataType:'json',
+        type:'post',
+        async:false,
+        success:function(data) {
+            if(data.status == -1) {
+                vm.showMsg = data.msg;
+            }
+            else {
+                vm.isForce = false;
+            }
+        },
+        error:function() {
+            mui.toast('服务器异常');
+        }
+    });
+}
+getApplyInfo();

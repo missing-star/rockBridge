@@ -7,7 +7,7 @@ var vm = new Vue({
     },
     methods: {
         goNext() {
-            if (this.selectedNumber == '') {
+            if (this.selectedNumber == '' || !this.selectedNumber) {
                 mui.toast('请选择门牌号!');
                 return false;
             }
