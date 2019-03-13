@@ -4,7 +4,9 @@ body,
     font-size: calc(100vw / 20);
     background: #ffffff;
 }
-
+*{
+    word-break: break-all;
+}
 div.mui-content {
     padding: 1rem;
 }
