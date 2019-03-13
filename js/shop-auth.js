@@ -295,6 +295,7 @@ function initPicker() {
                     type: 'POST',
                     success: function (data) {
                         if (data.status == 1) {
+                            vm.categoryPicker = true;
                             var categoryPicker = new $.PopPicker({
                                 layer: 2
                             });
@@ -329,9 +330,9 @@ function initPicker() {
                             cateClickBtn.addEventListener('tap', function (event) {
                                 categoryPicker.show(function (items) {
                                     vm.mainCategoryId = items[0].id;
-                                    if(items[1].value) {
+                                    if(items[1].id) {
                                         vm.mainCategoryName = items[0].text + ' ' + items[1].text;
-                                        vm.subMainCategoryId = items[1].value;
+                                        vm.subMainCategoryId = items[1].id;
                                     }
                                     else {
                                         vm.mainCategoryName = items[0].text;
