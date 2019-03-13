@@ -92,7 +92,7 @@ span.facilities-name {
     line-height: 1.5rem;
 }
 .investment-detail img {
-    width: 100%;
+    width: 100% !important;
 }
 div#sheet1 {
     width: 100% !important;

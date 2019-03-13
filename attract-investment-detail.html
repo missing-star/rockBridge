@@ -11,7 +11,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.2">
     <link rel="stylesheet" href="css/common.css?v=1.0.3">
-    <link rel="stylesheet" href="css/attract-investment-detail.css?v=1.0.2">
+    <link rel="stylesheet" href="css/attract-investment-detail.css?v=1.0.3">
     <!--
         招商招租详情页
     -->
@@ -51,8 +51,7 @@
         <p class="investment-title">
             招租信息
         </p>
-        <div v-cloak class="investment-detail">
-            {{attractInfo.content}}
+        <div v-cloak class="investment-detail" v-html="attractInfo.content">
         </div>
         <div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
             <div class="content">
