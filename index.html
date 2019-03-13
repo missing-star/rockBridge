@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.2">
     <link rel="stylesheet" href="assets/swiper/css/swiper.min.css?v=1.0.2">
     <link rel="stylesheet" href="css/common.css?v=1.0.3">
-    <link rel="stylesheet" href="css/index.css?v=1.0.5">
+    <link rel="stylesheet" href="css/index.css?v=1.0.6">
     <title>叠石桥</title>
 </head>
 
@@ -96,7 +96,7 @@
             <div class="slider-business">
                 <div @click="goDetail('attract-investment-detail.html',item.id)" v-for="item in homeInfo.property_let_list"
                     class="slider-business-item">
-                    <img :src="item.thumb | filterImg" />
+                    <img :src="item.thumb | filterImg" class="show-slider-business-img" />
                     <p v-cloak class="business-item-title">{{item.title}}</p>
                     <div v-cloak class="business-item-content">
                         <img src="imgs/position.png" class="icon-positon" alt="">

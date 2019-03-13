@@ -705,7 +705,7 @@ ul.tab-bar.fixed {
     left: 0;
     height: 2rem;
     top: 2.5rem;
-    z-index: 1;
+    z-index: 6;
 }
 ul.sort-header.fixed {
     position: fixed;
@@ -729,6 +729,7 @@ ul.sort-header.fixed.active {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+            z-index: 5;
 }
 .mui-bar-tab~.mui-content{
     padding-top: 7rem;
@@ -805,6 +806,7 @@ li.categroy-item.active{
             justify-content: space-between;
     border-bottom: 1px solid #f6f6f6;
     background: #ffffff;
+    z-index: 2;
     min-height: 2.3rem;
 }
 ul.category-level-container {

@@ -609,3 +609,6 @@ span.news-time {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+img.show-slider-business-img{
+    height: 7.5rem;
+}
