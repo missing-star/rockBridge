@@ -11,7 +11,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.1.0">
     <link rel="stylesheet" href="css/common.css?v=1.1.0">
-    <link rel="stylesheet" href="css/goods-management.css?v=1.1.0">
+    <link rel="stylesheet" href="css/goods-management.css?v=1.1.1">
     <title>叠石桥</title>
 </head>
 
@@ -218,12 +218,27 @@
                 </ul>
             </div> -->
         </div>
+        <template v-show="isShowLegal">
+            <!-- 协议蒙版 -->
+            <div class="legal-mask"></div>
+            <!-- 协议 -->
+            <div class="legal-agreement">
+                <header class="legal-title">法律协议</header>
+                <div class="legal-content" v-cloak>
+                    {{protocolContent}}
+                </div>
+                <div class="legal-btn-group">
+                    <button type="button" @click="refuseProtocol" class="refuse-btn">拒绝</button>
+                    <button type="button" @click="acceptProtocol" class="accept-btn">接受</button>
+                </div>
+            </div>
+        </template>
     </div>
     <script src="assets/vue/vue.min.js?v=1.0.2"></script>
     <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
     <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.6"></script>
-    <script src="js/goods-management.js?v=1.0.4"></script>
+    <script src="js/goods-management.js?v=1.0.5"></script>
 </body>
 
 </html>

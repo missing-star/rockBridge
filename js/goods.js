@@ -143,7 +143,7 @@ var vm = new Vue({
             this.currentInnerIndex = -1;
             this.currentIndex = index;
             getCategory(id, 2);
-            if(page1 == 1) {
+            if (page1 == 1) {
                 this.goodsList = [];
             }
             getGoodsList(this.keyword, this.goodsSortName, this.goodsSortType, page1);
@@ -183,16 +183,11 @@ $(function () {
             $(this).siblings().removeClass('active');
         }
     });
-    $(document, '.tab-content.goods.active').scroll(function () {
-        if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
-            if (vm.isShowGoods && vm.isMoreGoods) {
-                //滚动加载商品
-                getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, ++page1);
-            } else if (!vm.isShowGoods && vm.isMoreShops) {
-                //滚动加载商家
-                getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, ++page2);
-            }
-        }
+    $('.tab-content.goods.active').scroll(function () {
+        onScroll();
+    });
+    $(document).scroll(function () {
+        onScroll();
     });
     //分类tab页切换
     $('li.sort-item').click(function () {
@@ -296,6 +291,22 @@ function saveSearchKeywords() {
 }
 getCategory(undefined, 1);
 
+/**
+ *滚动触发
+ */
+function onScroll() {
+    if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
+        if (vm.isShowGoods && vm.isMoreGoods) {
+            //滚动加载商品
+            getGoodsList(vm.keyword, vm.goodsSortName, vm.goodsSortType, ++page1);
+        } else if (!vm.isShowGoods && vm.isMoreShops) {
+            //滚动加载商家
+            getShopList(vm.keyword, vm.shopSortType, vm.shopSortName, ++page2);
+        }
+    }
+}
+
+
 function getCategory(cat_id, type) {
     var data = {};
     if (cat_id) {
@@ -314,7 +325,7 @@ function getCategory(cat_id, type) {
                     cate_name: '全部'
                 });
                 vm.categoryList = data.result;
-                getCategory('',2);
+                getCategory('', 2);
             } else {
                 //获取小分类
                 vm.categoryItemList = data.result;

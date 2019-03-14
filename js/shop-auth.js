@@ -411,8 +411,8 @@ function initPicker() {
                                         return false;
                                     }
                                     if(!verifyAddress(items[2].id)) {
-                                        mui.alert('该地址已被认证，请联系客服');
-                                        return;
+                                        mui.toast('该地址已被认证，请联系客服');
+                                        return false;
                                     }
                                     vm.addressPubId = items[2].id;
                                     vm.addressPub = items[0].text + items[1].text + items[2].text;

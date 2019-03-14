@@ -2,16 +2,18 @@ var vm = new Vue({
     el: '#app',
     data: {
         upperList: [],
-        upperListTotal:0,
+        upperListTotal: 0,
         stockList: [],
-        stockListTotal:0,
+        stockListTotal: 0,
         lowerList: [],
-        lowerListTotal:0,
+        lowerListTotal: 0,
         comments: [1, 2, 4, 5, 5],
         upperSelectedCount: 0,
         stockSelectedCount: 0,
         allUpperId: [],
-        allLowerId: []
+        allLowerId: [],
+        isShowLegal: false,
+        protocolContent:''
     },
     filters: {
         //拼接图片地址
@@ -42,7 +44,7 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
-                            }else if(data.status == 202) {
+                            } else if (data.status == 202) {
                                 goLogin();
                             }
                         },
@@ -76,7 +78,7 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
-                            }else if(data.status == 202) {
+                            } else if (data.status == 202) {
                                 goLogin();
                             }
                         },
@@ -105,7 +107,7 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
-                            }else if(data.status == 202) {
+                            } else if (data.status == 202) {
                                 goLogin();
                             }
                         },
@@ -138,7 +140,7 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
-                            }else if(data.status == 202) {
+                            } else if (data.status == 202) {
                                 goLogin();
                             }
                         },
@@ -186,9 +188,21 @@ var vm = new Vue({
             }
         },
         uplodGoods() {
-            mui.openWindow({
-                url: 'upload-goods.html?type=add'
-            })
+            if (JSON.parse(sessionStorage.getItem('user')).shops.is_pro != 1) {
+                this.isShowLegal = true;
+                getUserProtocol();
+            } else {
+                mui.openWindow({
+                    url: 'upload-goods.html?type=add'
+                });
+            }
+        },
+        refuseProtocol() {
+            this.isShowLegal = false;
+        },
+        acceptProtocol() {
+            this.isShowLegal = false;
+            userAcceptProtocol();
         },
         //获得商品详情
         getGoodsDetail(id) {
@@ -214,7 +228,7 @@ var vm = new Vue({
                                 setTimeout(function () {
                                     location.reload();
                                 }, 200);
-                            }else if(data.status == 202) {
+                            } else if (data.status == 202) {
                                 goLogin();
                             }
                         },
@@ -323,8 +337,50 @@ function getGoodsList(status, list) {
                 vm.upperListTotal = data.goods_status.goods_status1;
                 vm.stockListTotal = data.goods_status.goods_status2;
                 vm.lowerListTotal = data.goods_status.goods_status3;
-            }else if(data.status == 202) {
+            } else if (data.status == 202) {
                 goLogin();
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常');
+        }
+    });
+}
+
+/**
+ * 获得协议内容
+ */
+function getUserProtocol() {
+    $.ajax({
+        url: `${rootUrl}/index/api/getProtocolInfo`,
+        async: false,
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == 1) {
+                vm.protocolContent = data.result;
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常');
+        }
+    });
+}
+
+/**
+ * 用户同意
+ */
+function userAcceptProtocol() {
+    $.ajax({
+        url: `${rootUrl}/index/api/getShopsGoodsProtocol`,
+        async: false,
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == 1) {
+                mui.openWindow({
+                    url: 'upload-goods.html?type=add'
+                });
             }
         },
         error: function () {
