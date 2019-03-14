@@ -410,6 +410,10 @@ function initPicker() {
                                         mui.toast('无效地址!');
                                         return false;
                                     }
+                                    if(!verifyAddress(items[2].id)) {
+                                        mui.alert('该地址已被认证，请联系客服');
+                                        return;
+                                    }
                                     vm.addressPubId = items[2].id;
                                     vm.addressPub = items[0].text + items[1].text + items[2].text;
                                 });
@@ -490,3 +494,26 @@ function getApplyInfo() {
     });
 }
 getApplyInfo();
+
+
+function verifyAddress(address_id) {
+    var isValid = false;
+    $.ajax({
+        url:`${rootUrl}/index/api/getShopsAddress`,
+        data:{
+            address_id:address_id
+        },
+        type:'post',
+        dataType:'json',
+        async:false,
+        success:function(data) {
+            if(data.status == 1) {
+                isValid = true;
+            }
+        },
+        error:function() {
+            mui.toast('服务器异常');
+        }
+    });
+    return isValid;
+}
