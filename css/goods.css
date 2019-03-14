@@ -750,6 +750,8 @@ ul.categroy-list {
     background: #ffffff;
     left: -1rem;
     position: relative;
+    height: calc(100vh - 10rem);
+    overflow: scroll;
 }
 li.categroy-item {
     background: #f6f6f6;
