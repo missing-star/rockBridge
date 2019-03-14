@@ -52,7 +52,6 @@ li.tab-contetn-item {
     padding: 0.8rem 0;
     display:flex;
     align-items: center;
-    margin-bottom: 1rem;
 }
 label.title.edit {
     color: #333333;
@@ -110,7 +109,6 @@ p.content {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
 }
 p.status {
     background: #ff7c3c;

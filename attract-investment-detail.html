@@ -11,7 +11,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.0.2">
     <link rel="stylesheet" href="css/common.css?v=1.0.3">
-    <link rel="stylesheet" href="css/attract-investment-detail.css?v=1.0.3">
+    <link rel="stylesheet" href="css/attract-investment-detail.css?v=1.0.5">
     <!--
         招商招租详情页
     -->
@@ -33,7 +33,7 @@
         </p>
         <div v-cloak class="business-item-content">
             <img src="imgs/position.png" class="icon-positon" alt="">
-            <p class="address-info" v-cloak>{{attractInfo.stage+attractInfo.storied_building+attractInfo.address}}</p>
+            <p class="address-info" v-cloak>{{attractInfo.province+attractInfo.city+attractInfo.area+attractInfo.stage+attractInfo.building+attractInfo.address}}</p>
         </div>
         <p class="sub-title-btn">
             <span v-cloak class="sub-title">{{attractInfo.title2}}</span>
