@@ -63,7 +63,7 @@ var vm = new Vue({
     },
     methods: {
         limitPhone() {
-            var regPhone = /^1[34578]\d{9}$/;
+            var regPhone = /^1\d{9}\d$/;
             this.phone = this.phone.substring(0, 11);
             if (regPhone.test(this.phone)) {
                 //手机号验证通过，请求接口是否已注册
@@ -129,7 +129,7 @@ var vm = new Vue({
             this.detailAddress = this.detailAddress.replace(/\s+/g, "");
         },
         submit() {
-            var regPhone = /^1[34578]\d{9}$/;
+            var regPhone = /^1\d{9}\d$/;
             var formData = {
                 person_name: this.userName,
                 title: this.shopName,

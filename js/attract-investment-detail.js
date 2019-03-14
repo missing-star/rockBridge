@@ -18,7 +18,7 @@ var vm = new Vue({
         },
         submitReverse() {
             //预约招商招租
-            var regPhone = /^1[34578]\d{9}$/;
+            var regPhone = /^1\d{9}\d$/;
             if(this.name == '') {
                 mui.toast('请输入姓名');
                 return;

@@ -76,7 +76,7 @@ function replaceSpace(str) {
 }
 
 function validatePhone(phone) {
-    var regPhone = /^1[34578]\d{9}$/;
+    var regPhone = /^1\d{9}\d$/;
     return regPhone.test(phone);
 }
 
