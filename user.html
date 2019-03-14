@@ -11,7 +11,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.1.0">
     <link rel="stylesheet" href="css/common.css?v=1.1.0">
-    <link rel="stylesheet" href="css/user.css?v=1.1.0">
+    <link rel="stylesheet" href="css/user.css?v=1.1.1">
     <title>叠石桥</title>
 </head>
 
@@ -81,6 +81,7 @@
                             <span v-cloak class="user-nickname">{{userData.shops.title}}</span>
                             <span class="user-welcome">欢迎来叠石桥体验商城商铺一体化</span>
                         </p>
+                        <img src="imgs/qrcode.png" class="qrcode-icon" alt="">
                     </template>
                     <template v-if="currentRole == 0">
                         <img class="user-logo" :src="userData.users.images | filterImg" />
@@ -131,6 +132,12 @@
                             <p class="operation-item-name">在线缴费</p>
                         </li>
                     </a>
+                    <a href="javascript:;" @click="enterItem('pay-detail.html')">
+                        <li class="operation-item">
+                            <img class="operation-item-icon" src="imgs/online-pay.png" />
+                            <p class="operation-item-name">我的缴费</p>
+                        </li>
+                    </a>
                     <a href="javascript:;" @click="enterItem('online-repair.html')">
                         <li class="operation-item">
                             <img class="operation-item-icon" src="imgs/online-repair.png" />
@@ -160,12 +167,21 @@
                 </a>
             </ul>
         </div>
+        <div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+            <p class="title">分享我的店铺</p>
+            <div id="shops-qrcode">
+                <img class="test" src="imgs/qrcode.png" alt="">
+            </div>
+            <p class="sub-title">使用微信扫一扫</p>
+            <a href="#sheet1" class="close-sheet">关闭</a>
+        </div>
     </div>
     <script src="assets/vue/vue.min.js?v=1.0.2"></script>
     <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
+    <script src="assets/jq-qrcode/jquery.qrcode.min.js?v=1.0.1"></script>
     <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.6"></script>
-    <script src="js/user.js?v=1.0.6"></script>
+    <script src="js/user.js?v=1.0.7"></script>
 </body>
 
 </html>

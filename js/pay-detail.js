@@ -20,7 +20,7 @@ var vm = new Vue({
             //发票
             mui.openWindow({
                 url: 'apply-invoice.html'
-            })
+            });
         },
         switchTab(event, tabId) {
             if (!$(event.target).hasClass('active')) {
@@ -70,6 +70,11 @@ $.ajax({
     success: function (data) {
         if (data.status == 1) {
             var list = [];
+            vm.categoryIdList.push({
+                id: 0,
+                name: '报修单',
+                thumb: 'imgs/repair-icon.png'
+            });
             for (key in data.result.pay_category) {
                 vm.categoryIdList.push({
                     id: data.result.pay_category[key].id,

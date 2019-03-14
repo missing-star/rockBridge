@@ -55,10 +55,10 @@
                         <label for="" class="title">备注说明</label>
                         <input @input="validateDesc" v-model="description" type="text" class="address" placeholder="请输入说明">
                     </li>
-                    <li class="pay-item">
+                    <!-- <li class="pay-item">
                         <label for="" class="title">支付费率</label>
                         <input readonly disabled v-model="payFate" type="text" class="address">
-                    </li>
+                    </li> -->
                     <li id="pay-way" class="pay-item">
                         <label for="" class="title">支付方式</label>
                         <input readonly v-model="payWay" type="text" class="address classify" placeholder="请选择支付方式" :disabled="isDisabled">
@@ -87,10 +87,10 @@
                     <label for="" class="title">户号</label>
                     <input readonly disabled v-model="userNum" type="number" class="address">
                 </li>
-                <li class="pay-item">
+                <!-- <li class="pay-item">
                     <label for="" class="title">缴费金额</label>
                     <input readonly disabled v-model="totalMoney" type="number" class="address" placeholder="请输入充值金额">
-                </li>
+                </li> -->
                 <li class="pay-item">
                     <label for="" class="title">备注说明</label>
                     <input readonly disabled @input="validateDesc" v-model="description" type="text" class="address">
@@ -109,7 +109,7 @@
     <script src="assets/mui/picker/js/mui.picker.js?v=1.0.2"></script>
     <script src="assets/mui/picker/js/mui.poppicker.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.6"></script>
-    <script src="js/online-pay.js?v=1.1.0"></script>
+    <script src="js/online-pay.js?v=1.1.1"></script>
 </body>
 
 </html>

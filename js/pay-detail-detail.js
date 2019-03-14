@@ -25,6 +25,9 @@ function getDetail(id) {
         success: function (data) {
             if(data.status == 1) {
                 vm.detail = data.result;
+                jQuery('#qr-code').qrcode({
+                    text: "https://www.baidu.com"
+                });	
             }
             else if (data.status == 202) {
                 goLogin();

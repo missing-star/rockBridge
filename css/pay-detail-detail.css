@@ -106,3 +106,8 @@ p.show-title {
     font-size: 0.6rem;
     color: #ff5816;
 }
+div#qr-code canvas{
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+}

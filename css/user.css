@@ -70,7 +70,7 @@ span.user-nickname {
 span.user-welcome {
     color: #b2bcbd;
     font-size: 0.6rem;
-    line-height: 0.6rem;
+    line-height: 0.85rem;
 }
 ul.operation-list {
     list-style: none;
@@ -149,4 +149,35 @@ p.amount-title, p.balance-title {
 p.amount-num, p.balance-num {
     color: #333333;
     font-size: 1rem;
+}
+img.qrcode-icon {
+    width: 1.8rem;
+}
+div#sheet1 {
+    background: #FFFFFF;
+    padding: 0.5rem;
+    width: 96%;
+    box-sizing: border-box;
+    margin: 2%;
+    border-radius: 0.2rem;
+}
+a.close-sheet{
+    width: 100%;
+    display: block;
+    border-top: 1px solid #f6f6f6;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: #aaaaaa;
+}
+p.title, p.sub-title {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+}
+div#sheet1 canvas{
+    width: 60%;
+    margin: 5% 20%;
 }

@@ -224,8 +224,7 @@
             <!-- 协议 -->
             <div class="legal-agreement">
                 <header class="legal-title">法律协议</header>
-                <div class="legal-content" v-cloak>
-                    {{protocolContent}}
+                <div class="legal-content" v-cloak v-html="protocolContent.content">
                 </div>
                 <div class="legal-btn-group">
                     <button type="button" @click="refuseProtocol" class="refuse-btn">拒绝</button>
@@ -238,7 +237,7 @@
     <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
     <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.6"></script>
-    <script src="js/goods-management.js?v=1.0.5"></script>
+    <script src="js/goods-management.js?v=1.0.6"></script>
 </body>
 
 </html>

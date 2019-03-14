@@ -153,7 +153,7 @@ var vm = new Vue({
                     for (key in data.result.property_address) {
                         addList.push({
                             value: data.result.property_address[key].id,
-                            text: data.result.property_address[key].province + data.result.property_address[key].city + data.result.property_address[key].area + data.result.property_address[key].address
+                            text: data.result.property_address[key].province + data.result.property_address[key].city + data.result.property_address[key].area + data.result.property_address[key].stage+data.result.property_address[key].building + data.result.property_address[key].address
                         });
                     }
                     classifyPicker.setData(list);

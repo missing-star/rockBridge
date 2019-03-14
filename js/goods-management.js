@@ -388,3 +388,7 @@ function userAcceptProtocol() {
         }
     });
 }
+/**
+ * 重新拉取用户信息
+ */
+getUserInfo();
