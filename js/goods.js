@@ -183,7 +183,7 @@ $(function () {
             $(this).siblings().removeClass('active');
         }
     });
-    $(document, '.tab-content.goods.active.goods-line').scroll(function () {
+    $(document, '.tab-content.goods.active').scroll(function () {
         if (document.querySelector('div.bottom-line').getBoundingClientRect().top < document.documentElement.clientHeight) {
             if (vm.isShowGoods && vm.isMoreGoods) {
                 //滚动加载商品

@@ -132,6 +132,9 @@ img.sort-icon {
 }
 .goods-item span.goods-price{
     color:#ff5816;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 div.goods {
@@ -921,4 +924,7 @@ li.category-item-open.active{
 }
 .goods-item:nth-child(odd) {
     float: right;
+}
+.tab-content.goods.active.goods-line{
+    display:block;
 }
