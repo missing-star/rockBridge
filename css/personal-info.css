@@ -1,8 +1,12 @@
 header.mui-bar.mui-bar-nav {
     height: 2.5rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .mui-bar-nav~.mui-content {
@@ -10,9 +14,15 @@ header.mui-bar.mui-bar-nav {
 }
 
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 
@@ -36,13 +46,19 @@ input.content{
     background: url(../imgs/arrow-right-black.png) no-repeat;
     background-position: right;
     background-size: 0.5rem;
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     text-align:left;
     padding-right: 1rem;
 }
 li.info-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     border-bottom: 1px solid #f6f6f6;
     padding: 0.5rem 0;
     position: relative;
@@ -67,15 +83,27 @@ label.title.gray {
 }
 .user-logo-editor {
     height: 4rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .editor-nickname {
     height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 }
 p.nickname {
     color: #333333;
@@ -88,8 +116,12 @@ p.sub-title {
 }
 .editor-logo {
     height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     position: relative;
 }
 p.title {
@@ -105,7 +137,9 @@ div.mui-loading {
     width: 100%;
     background-color: #00000012;
     display: none;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     z-index: 999;
 }
 #clipArea {
@@ -126,14 +160,27 @@ button#cancel-btn, button#confirm-btn {
     margin-bottom: 15px;
 }
 .editName {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .input-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     padding-right: 1rem;
     position: relative;
 }
@@ -165,9 +212,13 @@ span.inpupt-number {
 span.clear-input {
     position: absolute;
     right: 1.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 2rem;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 span.clear-input>img {
     width: 1rem;

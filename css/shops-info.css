@@ -1,8 +1,12 @@
 header.mui-bar.mui-bar-nav {
     height: 2.5rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .mui-bar-nav~.mui-content {
     padding-top: 2.5rem;
@@ -31,8 +35,12 @@ ul.info-list {
     padding: 0;
 }
 li.info-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 0.5rem 0;
     border-bottom: 1px solid #f6f6f6;
     margin-bottom: 1rem;
@@ -50,7 +58,9 @@ p.content {
     color: #333333;
     font-size: 0.9rem;
     line-height: 1.5rem;
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
 }

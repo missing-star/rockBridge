@@ -17,15 +17,25 @@ p.sub-title {
     height: 4rem;
     border-radius: 0.3rem;
     margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
 }
 
 p.msg-num {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 0.5rem;
     font-size: 0.8rem;
 }
@@ -52,11 +62,16 @@ element.style {
 }
 .msg-list-item {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     height: 5rem;
     background: #ffffff;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
     border-radius: 0.2rem;
     padding: 0 0.5rem;
     margin-bottom: 1rem;
@@ -76,9 +91,15 @@ span.mui-badge.mui-badge-danger {
     height: 1rem;
     text-align: center;
     font-size: 0.8rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 p.from-user {
     padding-left: 1rem;
@@ -92,9 +113,15 @@ span.from-time {
 }
 p.from-user {
     padding-left: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 span.from-user-nickname {
     color: #333333;

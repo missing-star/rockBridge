@@ -1,16 +1,26 @@
 header.mui-bar.mui-bar-nav {
     height: 2.5rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .mui-bar-nav~.mui-content {
     padding-top: 2.5rem;
 }
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 header.packet-title>p:first-child {
@@ -32,11 +42,17 @@ ul.repair-info {
 li.repair-item {
     border-bottom: 1px solid #f6f6f6;
     padding: 0.5rem 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 input.content.arrow-right {
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     background: url(../imgs/arrow-right.png) no-repeat;
     background-size: 0.5rem;
     background-position: 95%;
@@ -47,11 +63,17 @@ label.title {
 }
 li.repair-item.question {
     padding: 0;
-    flex-direction: column;
-    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     position: relative;
     border: none;
-    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.15);
+            box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.15);
     border-radius: 0.2rem;
 }
 li.repair-item.question label {
@@ -89,10 +111,18 @@ span.show-number {
     position: relative;
     width: 25vw;
     height: 25vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     margin-right: 5vw;
 }
 button.submit-repair {
@@ -139,6 +169,8 @@ span.delete-icon {
     display: none;
 }
 .upload-item.upload.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 .mask-click {
@@ -177,15 +209,25 @@ li.service-item.active span.checkbox {
     background-color: #FF7C3C;
 }
 li.service-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     border-bottom: 1px solid #F6F6F6;
     padding: 1rem 0;
 }
 .left-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 p.service-title {
     font-size: 1rem;

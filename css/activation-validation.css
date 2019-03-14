@@ -1,16 +1,26 @@
 header.mui-bar.mui-bar-nav {
     height: 2.5rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .mui-bar-nav~.mui-content {
     padding-top: 2.5rem;
 }
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 header.packet-title>p:first-child {
@@ -31,8 +41,12 @@ ul.validate-info {
 li.info-item {
     position: relative;
     border-bottom: 1px solid #f6f6f6;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-bottom: 0.5rem;
 }
 label.title {
@@ -95,9 +109,15 @@ a.btn.cancel {
     bottom: 0;
     height: 2rem;
     border-radius: 0 0 0.3rem 0.3rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 input#main-category {
     background: url(../imgs/arrow-right.png) no-repeat;

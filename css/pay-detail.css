@@ -1,16 +1,26 @@
 header.mui-bar.mui-bar-nav {
     height: 2.5rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .mui-bar-nav~.mui-content {
     padding-top: 5rem;
 }
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     height: 2rem;
     background: #ffffff;
     position: fixed;
@@ -35,7 +45,8 @@ header.packet-title>p:last-child {
     font-size: 0.7rem;
 }
 .date-picker {
-    box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
+            box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
     padding: 1rem 0.5rem;
     margin-top: 1.5rem;
     background: url(../imgs/arrow-right.png) no-repeat;
@@ -59,8 +70,12 @@ ul.paid-list {
     margin-top: 1rem;
 }
 li.paid-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     border-bottom: 1px solid #f6f6f6;
     padding: 0.8rem 0;
 }
@@ -69,12 +84,20 @@ img.paid-item-icon {
     margin-right: 1rem;
 }
 .detail-container {
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
 }
 p.top ,p.bottom{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 span.title {
     color: #000000;
@@ -106,9 +129,15 @@ p.desc {
 header.packet-title>p:last-child {
     background: #f0f0f0;
     border-radius: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 0.2rem 0.5rem;
 }
 img.icon-down {
@@ -163,9 +192,15 @@ div.history-pay-list {
     margin-bottom: 1.5rem;
 }
 div.history-pay-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     height: 3rem;
     border-bottom: 1px solid #F6F6F6;
     margin-bottom: 1rem;
@@ -177,19 +212,37 @@ img.pay-icon {
     padding: 0.3rem;
 }
 .pay-category {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .title-address {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-left: 0.5rem;
 }
 .pay-date {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 p.pay-title {
     color: #000000;

@@ -13,13 +13,20 @@
 ul.score-list {
     list-style: none;
     padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 li.score-item {
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
     width: 30%;
     height: 5rem;
     padding: 0.2rem;
@@ -35,7 +42,9 @@ li.score-item>p.title {
 li.score-item>p.score {
     font-size: 1.5rem;
     text-align: center;
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     margin-top: 0.5rem;
 }
 
@@ -55,8 +64,12 @@ ul.comments-list {
 
 li.comments-item {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     height: 3rem;
     border-bottom: 1px solid #f6f6f6;
     background: url(../imgs/arrow-right.png) no-repeat;
@@ -95,9 +108,15 @@ p.title {
 }
 
 header.top-upload {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     height: 2rem;
 }
 
@@ -112,8 +131,12 @@ span.upload-title {
 }
 
 p.upload-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 ul.goods-tab-bar {
@@ -121,9 +144,15 @@ ul.goods-tab-bar {
     padding: 0;
     margin: 0;
     margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 input[type=number] {

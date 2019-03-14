@@ -1,16 +1,26 @@
 header.mui-bar.mui-bar-nav {
     height: 2.5rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .mui-bar-nav~.mui-content {
     padding-top: 2.5rem;
 }
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 header.packet-title>p:first-child {
@@ -26,9 +36,15 @@ header.packet-title>p:first-child {
 .choose-number {
     border-bottom: 1px solid #f6f6f6;
     margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 label.title {
     color: #333333;
@@ -45,15 +61,22 @@ input.arrow-right{
 ul.shops-list {
     list-style: none;
     padding: 0;
-    box-shadow: 0 0 6px 0 rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 6px 0 rgba(0,0,0,0.15);
+            box-shadow: 0 0 6px 0 rgba(0,0,0,0.15);
     padding: 0.5rem;
     position: relative;
     border-radius: 0.3rem;
 }
 header.shops-info-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     position: relative;
     padding-bottom: 0.5rem;
 }
@@ -78,8 +101,12 @@ button.detail {
     line-height: 1rem;
 }
 p.shops-name, p.shops-number {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-bottom: 2rem;
 }
 p.shops-number{

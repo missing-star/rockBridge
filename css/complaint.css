@@ -1,8 +1,12 @@
 header.mui-bar.mui-bar-nav {
     height: 2.5rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .mui-bar-nav~.mui-content {
@@ -10,9 +14,15 @@ header.mui-bar.mui-bar-nav {
 }
 
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 
@@ -42,9 +52,14 @@ button.submit-repair.submit-repair{
 }
 .classify {
     margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     height: 4rem;
     margin-bottom: 1rem; 
 }
@@ -70,9 +85,16 @@ button.submit-repair.submit-repair{
 }
 .classify-item {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     position: relative;
     border: 1px solid rgba(237,237,237,1);
     border-radius: 0.5rem;
@@ -98,6 +120,8 @@ button.submit-repair.submit-repair{
     display: none;
 }
 .ques-classify.active{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 .classify.sub>.classify-item {
@@ -186,9 +210,15 @@ img.classify-icon {
     color: #9D7E60;
 }
 .bottom-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 0.5rem;
     font-size: 1rem;
 }
@@ -196,24 +226,41 @@ ul.ques-classify.active {
     margin: 0;
     list-style: none;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
 }
 li.ques-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 50%;
     margin-bottom: 1.5rem;
 }
 div.repair-item {
     border-bottom: 1px solid #f6f6f6;
     padding: 0.5rem 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .upload-item.upload.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 .upload-item.upload {
@@ -223,10 +270,18 @@ div.repair-item {
     position: relative;
     width: 25vw;
     height: 25vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     margin-right: 5vw;
 }
 .mask-click {

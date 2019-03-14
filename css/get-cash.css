@@ -1,7 +1,13 @@
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 header.packet-title>p:first-child {
@@ -11,8 +17,12 @@ header.packet-title>p:first-child {
 header.mui-bar.mui-bar-nav{
     height: 2.5rem;
     padding:0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .mui-bar-nav~.mui-content{
     padding-top: 2.5rem;
@@ -23,9 +33,16 @@ header.mui-bar.mui-bar-nav{
     height: 10rem;
     border-radius: 0.3rem;
     margin-top: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 span.packet-balance-icon {
     line-height: 9rem;
@@ -51,8 +68,13 @@ span.packet-balance-icon {
 }
 .packet-btn-group {
     margin-top: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 button.btn-charge {
     border-radius: 1rem;
@@ -89,8 +111,12 @@ button.btn-get-cash {
     font-size: 3rem;
     line-height: 3rem;
     height: 3rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 input.input-cash {
     height: 100%;
@@ -109,8 +135,12 @@ p.get-cash-container {
 }
 p.current-balance {
     height: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     color:#9d7e60;
     padding-left: 0.5rem;
     font-size: 0.8rem;
@@ -124,8 +154,12 @@ p.current-balance>span:nth-child(2) {
 }
 .alipay-get-cash {
     height: 3.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     border-bottom: 1px solid #f6f6f6;
     margin-top: 1rem;
     background-image: url(../imgs/arrow-right.png);

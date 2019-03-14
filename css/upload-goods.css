@@ -9,10 +9,19 @@ p.title {
     line-height: 1.6rem;
 }
 header.top-upload {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     height: 6rem;
 }
 p.sub-title {
@@ -71,25 +80,42 @@ span.limit-num {
 }
 .price-container {
     margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 p.calculator {
-    box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
+            box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
     width: 55%;
     margin: 0 0.5rem;
     height: 2rem;
     border-radius: 0.2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 span.reduce,span.add {
     width: 20%;
     height: 80%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     font-size: 1rem;
     line-height: 1.5rem;
 }
@@ -108,8 +134,12 @@ span.unit {
     font-size: 0.7rem;
     color: #9d7e60;
     height: 1.8rem;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
-    align-items: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
 }
 input.goods-price {
     border: none;
@@ -128,21 +158,36 @@ span.warning {
 }
 .repair-item {
     padding: 0.5rem 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
 }
 .upload-item.upload.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 .upload-item {
     position: relative;
     width: 25vw;
     height: 25vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     margin-right: 5vw;
     margin-bottom: 1.5rem;
 }

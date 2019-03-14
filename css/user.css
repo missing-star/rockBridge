@@ -2,13 +2,23 @@
     padding-top: 1rem;
 }
 header.switch-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 p.switch-role {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     color: #000000;
     font-size: 0.8rem;
 }
@@ -31,9 +41,15 @@ span.mui-badge.mui-badge-danger {
     left: 0.5rem;
 }
 .user-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     padding: 1rem 0;
 }
 img.user-logo {
@@ -67,8 +83,12 @@ ul.operation-list:last-child{
     border: none;
 }
 li.operation-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     border-bottom: 1px solid #f6f6f6;
     padding: 0 1rem;
     background: url(../imgs/arrow-right.png) no-repeat;
@@ -88,9 +108,15 @@ p.operation-item-name {
     font-size: 0.8rem;
 }
 .business-deal-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .tody-deal-amount, .my-balance {
     width: 49%;
@@ -98,9 +124,15 @@ p.operation-item-name {
     border-radius: 0.5rem;
     height: 4.5rem;
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     padding-left: 0.5rem;
 }
 img.amount-icon, img.balance-icon {

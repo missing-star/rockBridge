@@ -1,7 +1,13 @@
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 header.packet-title>p:first-child {
@@ -15,21 +21,33 @@ header.packet-title>p:last-child {
 header.mui-bar.mui-bar-nav{
     height: 2.5rem;
     padding:0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .mui-bar-nav~.mui-content{
     padding-top: 2.5rem;
 }
 .packet-balance {
     position: relative;
+    background: -webkit-gradient(linear, right top, left top, from(#fecd93), to(#fa8383));
     background: linear-gradient(-90deg, #fecd93 0%, #fa8383 100%);
     height: 7rem;
     border-radius: 0.3rem;
     margin-top: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     padding: 1rem;
 }
 span.packet-balance-icon {
@@ -54,8 +72,13 @@ span.packet-balance-icon {
 }
 .packet-btn-group {
     margin-top: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 button.btn-charge {
     background: #9d7e60;

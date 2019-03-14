@@ -1,8 +1,14 @@
 header {
     padding: 0.5rem 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     height: 2.5rem;
     position: fixed;
     width: 100%;
@@ -11,7 +17,9 @@ header {
 }
 .input-group {
     position: relative;
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     margin-right: 1rem;
     height: 1.8rem;
 }
@@ -21,7 +29,8 @@ input.search-page-input {
     background-position: 0.5rem;
     background-size: 1rem;
     margin: 0;
-    box-shadow: 0 0 6px 0 rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 6px 0 rgba(0,0,0,0.15);
+            box-shadow: 0 0 6px 0 rgba(0,0,0,0.15);
     border-radius: 1rem;
     padding-left: 2rem;
     font-size: 0.8rem;
@@ -36,10 +45,19 @@ img.clear-icon {
 header.mui-bar.mui-bar-nav {
     height: 4rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
 }
 p.collection {
     color: #333333;
@@ -52,9 +70,15 @@ p.collection {
 }
 
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 
@@ -110,16 +134,26 @@ li.tab-bar-item.active:after {
 
 ul.sort-header {
     list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 0;
     border-bottom: 1px solid #f6f6f6;
     padding-bottom: 0.6rem;
 }
 li.sort-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 img.sort-icon {
     width: 0.6rem;
@@ -137,10 +171,17 @@ img.sort-icon {
 }
 
 div.goods {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 
@@ -164,17 +205,27 @@ div.goods {
 .goods-item .goods-info>p {
     font-size: 0.8rem;
     line-height: 0.8rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .goods-item .goods-info>p:first-child>span:first-child{
     color: #333333;
 }
 .goods-item span.eye-container {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .goods-item img.view-num {
@@ -184,9 +235,15 @@ div.goods {
 .goods-item .goods-info>p {
     font-size: 0.8rem;
     line-height: 0.8rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .goods-item button.reserve {
@@ -211,9 +268,15 @@ div.goods {
 */
 .goods-item-line {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-bottom: 1rem;
     position: relative;
 }
@@ -223,7 +286,9 @@ div.goods {
 }
 
 .goods-item-line .goods-info{
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     height: 100%;
 }
 .goods-item-line .goods-info>p:first-child {
@@ -237,8 +302,12 @@ div.goods {
     display: block;
 }
 .goods-item-line .goods-info>p:first-child>span:last-child{
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .goods-item-line .goods-info>p:last-child {
@@ -249,9 +318,15 @@ div.goods {
     bottom: 0;
     left: 32%;
     width: 68%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .goods-item-line img.view-num {
     width: 1rem;
@@ -279,6 +354,8 @@ div.tab-content{
     display:none;
 }
 div.tab-content.goods.active{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 div.tab-content.business.active{
@@ -287,19 +364,32 @@ div.tab-content.business.active{
 
 .business-item,.business-item-line{
     margin-bottom: 1rem;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
+            box-shadow: 0 0 4px 0 rgba(0,0,0,0.15);
     border-radius: 0.5rem;
     padding: 0.5rem;
 }
 .business-item>.top {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .business-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 img.business-logo {
     width: 2rem;
@@ -312,8 +402,13 @@ img.business-level {
     margin-left: 0.2rem;
 }
 p.business-detail {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 button.go-business-btn{
     border: 1px solid #9d7e60;
@@ -321,9 +416,15 @@ button.go-business-btn{
     color:#9d7e60;
 }
 .business-item .bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     margin-top: 1rem;
 }
 img.business-img-item {
@@ -336,8 +437,12 @@ p.business-detail>span:first-child {
     font-size: 0.8rem;
     line-height: 0.8rem;
     margin-bottom: 0.4rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 p.business-detail>span:last-child {
     font-size: 0.6rem;
@@ -347,26 +452,47 @@ p.business-detail>span:last-child {
     商铺行排列方式
 */
 .business-item-line {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 .business-item-line>.top {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    order: 1;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
 }
 .business-item-line .bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-bottom: 1rem;
 }
 .business-item-line img.business-level:first-child{
     margin-left: 1rem;
 }
 .business-item-line .goods-desc {
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     padding-left: 1rem;
 }
 .goods-item-line p.goods-title {

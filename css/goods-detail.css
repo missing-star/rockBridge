@@ -24,15 +24,26 @@ p.title {
     margin-top: 1rem;
 }
 .goods-desc {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-top: 3rem;
     border-bottom: 1px solid #f6f6f6;
 }
 .goods-title-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .goods-title-container>p.title {
     color: #000000;
@@ -43,8 +54,12 @@ p.collection>img {
     width: 1rem;
 }
 p.collection {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 p.collection>img {
     width: 1rem;
@@ -63,27 +78,47 @@ img.business-logo {
     border-radius: 50%;
 }
 .business-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.20);
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.20);
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.20);
     padding: 0.5rem;
     border-radius: 0.5rem;
 }
 .business-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 span.business-name {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     font-size: 0.8rem;
     line-height: 1rem;
 }
 p.business-detail {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-left: 1rem;
 }
 img.business-level {

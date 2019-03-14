@@ -1,16 +1,26 @@
 header.mui-bar.mui-bar-nav {
     height: 2.5rem;
     padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .mui-bar-nav~.mui-content {
     padding-top: 2.5rem;
 }
 header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-top: 1rem;
 }
 header.packet-title>p:first-child {
@@ -31,10 +41,12 @@ p.sub-title {
 }
 .cost-preview {
     height: 8rem;
+    background: -webkit-gradient(linear,left top, right top,from(rgba(254,205,148,1)),to(rgba(250,131,131,1)));
     background: linear-gradient(90deg,rgba(254,205,148,1) 0%,rgba(250,131,131,1) 100%);
     margin-top: 1rem;
     border-radius: 0.5rem;
-    box-shadow: 0px 2px 2px 0px rgba(201,77,40,0.5);
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(201,77,40,0.5);
+            box-shadow: 0px 2px 2px 0px rgba(201,77,40,0.5);
     padding: 0.5rem;
 }
 p.title {
@@ -44,10 +56,16 @@ p.title {
     height: 2rem;
 }
 p.show-money {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 3rem;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 span.money {
     font-size: 2rem;
@@ -72,8 +90,12 @@ p.desc {
 .cost-detail {
     margin-top: 0.5rem;
     height: 1.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
     border-top: 1px solid #ffffff;
 }
 ul.history-pay-list {
@@ -82,9 +104,15 @@ ul.history-pay-list {
     margin-top: 2rem;
 }
 li.history-pay-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     height: 3rem;
     border-bottom: 1px solid #F6F6F6;
     margin-bottom: 1rem;
@@ -97,19 +125,37 @@ img.pay-icon {
     padding: 0.3rem;
 }
 .pay-category {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .title-address {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-left: 0.5rem;
 }
 .pay-date {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 p.pay-title {
     color: #000000;
