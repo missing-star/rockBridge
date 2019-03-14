@@ -48,9 +48,11 @@ var vm = new Vue({
                 }
                 else if(this.currentRole == 1) {
                     //生成二维码
-                    jQuery('#shops-qrcode').qrcode({
-                        text: "http://dieshiqiao.pzhkj.cn/dsq/shop-detail.html?id="+JSON.parse(sessionStorage.getItem('user')).shop_id
-                    });	
+                    if(!$('#shops-qrcode').find('canvase')) {
+                        jQuery('#shops-qrcode').qrcode({
+                            text: "http://dieshiqiao.pzhkj.cn/dsq/shop-detail.html?id="+JSON.parse(sessionStorage.getItem('user')).shop_id
+                        });	
+                    }
                     mui('#sheet1').popover('toggle');
                 }
             } else {

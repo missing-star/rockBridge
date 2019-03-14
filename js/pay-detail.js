@@ -73,7 +73,7 @@ $.ajax({
             vm.categoryIdList.push({
                 id: 0,
                 name: '报修单',
-                thumb: 'imgs/repair-icon.png'
+                thumb: './dsq/imgs/repair-icon.png'
             });
             for (key in data.result.pay_category) {
                 vm.categoryIdList.push({
