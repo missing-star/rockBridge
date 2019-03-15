@@ -25,7 +25,7 @@
         </header>
         <div class="mui-content">
             <header class="packet-title">
-                <p>申请发票</p>
+                <p>发票信息设置</p>
             </header>
             <ul class="tab-bar">
                 <li class="tab-bar-item active">个人</li>
@@ -57,14 +57,14 @@
                     </li>
                     <li class="repair-item">
                         <label for="" class="title">企业电话</label>
-                        <input v-model="invoiceInfo.erpTel" :disabled="isApplied" :readonly="isApplied" placeholder="选填" type="number" class="content">
+                        <input v-model="invoiceInfo.erpTel" :disabled="isApplied" :readonly="isApplied" placeholder="选填" type="tel" class="content">
                     </li>
                 </template>
                 <li class="repair-item">
                     <label for="" class="title">电子邮箱</label>
                     <input v-model="invoiceInfo.email" :disabled="isApplied" :readonly="isApplied" placeholder="接收您的电子发票" type="email" class="content">
                 </li>
-                <li class="repair-item setting">
+                <!-- <li class="repair-item setting">
                     <label for="" class="setting-often">
                         <span class="title">设为常用发票信息</span>
                         <span class="sub-title">可在一个月内开发票</span>
@@ -73,14 +73,14 @@
                         <div class="switch-mask-click" :class="{enable:!isApplied}"></div>
                         <div class="switch-round"></div>
                     </div>
-                </li>
+                </li> -->
             </ul>
             <button @click="submitApply" :disabled="isApplied" class="button-apply" :class="{'submit-repair':!isApplied}">
                 <template v-if="isApplied">
                     已提交申请
                 </template>
                 <template v-else>
-                    提交申请
+                    保存信息
                 </template>
             </button>
         </div>
@@ -89,7 +89,7 @@
     <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
     <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.6"></script>
-    <script src="js/apply-invoice.js?v=1.0.2"></script>
+    <script src="js/apply-invoice.js?v=1.0.4"></script>
 </body>
 
 </html>

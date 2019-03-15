@@ -48,7 +48,7 @@ var vm = new Vue({
                 }
                 else if(this.currentRole == 1) {
                     //生成二维码
-                    if(!$('#shops-qrcode').find('canvase')) {
+                    if($('#shops-qrcode').find('canvas').length == 0) {
                         jQuery('#shops-qrcode').qrcode({
                             text: "http://dieshiqiao.pzhkj.cn/dsq/shop-detail.html?id="+JSON.parse(sessionStorage.getItem('user')).shop_id
                         });	

@@ -56,9 +56,9 @@ var vm = new Vue({
             } else if (this.payWay == '') {
                 mui.toast('请选择支付方式！');
             }
-            var totalMoney = parseFloat(vm.inputMoney);
-            var fateMoney = totalMoney * (parseFloat(vm.payFate) / 100);
-            vm.totalMoney =  fateMoney < 0.1 ? parseFloat(totalMoney + 0.1).toFixed(2) : parseFloat(totalMoney + fateMoney).toFixed(2);
+            // var totalMoney = parseFloat(vm.inputMoney);
+            // var fateMoney = totalMoney * (parseFloat(vm.payFate) / 100);
+            // vm.totalMoney =  fateMoney < 0.1 ? parseFloat(totalMoney + 0.1).toFixed(2) : parseFloat(totalMoney + fateMoney).toFixed(2);
             //提交订单
             var formData = {
                 cate_id: this.selectedId,
@@ -153,7 +153,9 @@ var vm = new Vue({
                     for (key in data.result.property_address) {
                         addList.push({
                             value: data.result.property_address[key].id,
-                            text: data.result.property_address[key].province + data.result.property_address[key].city + data.result.property_address[key].area + data.result.property_address[key].stage+data.result.property_address[key].building + data.result.property_address[key].address
+                            text: data.result.property_address[key].stage + ' '
+                            + data.result.property_address[key].building + ' '
+                            + data.result.property_address[key].address
                         });
                     }
                     classifyPicker.setData(list);
