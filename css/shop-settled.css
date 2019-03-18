@@ -120,3 +120,9 @@ li.pay-item {
 .one.next>div.mui-content {
     padding-top: 0;
 }
+input.address.arrow-right {
+    background: url(../imgs/arrow-right.png) no-repeat;
+    background-size: 0.5rem;
+    background-position: right;
+    font-size: 0.8rem;
+}

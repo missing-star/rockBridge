@@ -1,42 +1,45 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        nowNums:JSON.parse(sessionStorage.getItem('user')).shops.show_goods_num,
-        buyNums:10,
-        price:JSON.parse(sessionStorage.getItem('user')).shops.goods_show_price,
-        totalMoney:0,
-        isDisabled:false,
-        msg:'',
-        str:'',
-        isNext:false
+        nowNums: JSON.parse(sessionStorage.getItem('user')).shops.show_goods_num,
+        buyNums: 10,
+        price: JSON.parse(sessionStorage.getItem('user')).shops.goods_show_price,
+        totalMoney: 0,
+        isDisabled: false,
+        msg: '',
+        str: '',
+        isNext: false,
+        payDirection:'下一步',
+        payWay:'',
+        payWayId:''
     },
     methods: {
         validateNum() {
-            this.buyNums = this.buyNums.replace(".","");
+            this.buyNums = this.buyNums.replace(".", "");
             var reg = /^[1-9]+\d*$/;
-            if(!reg.test(this.buyNums)) {
+            if (!reg.test(this.buyNums)) {
                 this.isDisabled = true;
                 this.msg = '您输入的数量有误';
-            }
-            else {
+            } else {
                 this.msg = '';
-                this.totalMoney = this.buyNums*this.price*1.006
+                this.totalMoney = this.buyNums * this.price * 1.006
                 this.isDisabled = false;
             }
         },
         submitOrder() {
             $.ajax({
-                url:`${rootUrl}/index/api/displayDopay`,
-                type:'post',
-                dataType:'json',
-                data:{
-                    buy_num:vm.buyNums
+                url: `${rootUrl}/index/api/displayDopay`,
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    buy_num: vm.buyNums,
+                    pay_method:this.payWayId
                 },
-                success:function(data) {
-                    if(data.status == 1) {
+                success: function (data) {
+                    if (data.status == 1) {
                         vm.str = data.info;
                         vm.isNext = true;
-                    }else if (data.status == 202) {
+                    } else if (data.status == 202) {
                         goLogin();
                     }
                 }
@@ -59,7 +62,7 @@ var vm = new Vue({
         }
     },
     created() {
-        this.totalMoney = this.buyNums*this.price*1.006
+        this.totalMoney = this.buyNums * this.price * 1.006
     },
 });
 $(function () {
@@ -90,6 +93,35 @@ $(function () {
     });
 });
 
+(function ($, doc) {
+    $.init();
+    $.ready(function () {
+        var payPicker = new $.PopPicker();
+        var result = getPayWay().map(function (item) {
+            return {
+                value: item.id,
+                text: item.name,
+                fate: item.service_price
+            }
+        });
+        payPicker.setData(result);
+        var eventBtn = doc.getElementById('pay-way');
+        eventBtn.addEventListener('tap', function (event) {
+            payPicker.show(function (items) {
+                vm.payWayId = items[0].value;
+                vm.payWay = items[0].text;
+            });
+        }, false);
+        payPicker.pickers[0].setSelectedIndex(0);
+        payPicker.pickers[0].items.forEach(function (pay, index) {
+            if (index == 0) {
+                vm.payWayId = pay.value;
+                vm.payWay = pay.text;
+            }
+        });
+
+    });
+})(mui,document);
 
 /**
  * 微信支付
@@ -101,16 +133,42 @@ function jsApiCall() {
         function (res) {
             if (res.err_msg == "get_brand_wcpay_request:ok") {
                 mui.toast('支付成功!');
-                setTimeout(function() {
+                setTimeout(function () {
                     mui.openWindow({
-                        url:'workspace.html'
+                        url: 'workspace.html'
                     });
                 }, 200);
-            }
-            else {
+            } else {
                 //支付失败/用户取消支付
-                
+
             }
         }
     );
+}
+
+/**
+ * 获得支付方式
+ */
+function getPayWay() {
+    var result = [];
+    $.ajax({
+        url: `${rootUrl}/index/api/getPayment`,
+        dataType: 'json',
+        type: 'post',
+        data: {
+            type: 1
+        },
+        async: false,
+        success: function (data) {
+            if (data.status == 1) {
+                result = data.result;
+            } else if (data.status == 202) {
+                goLogin();
+            }
+        },
+        error: function () {
+            mui.toast('服务器异常');
+        }
+    });
+    return result;
 }

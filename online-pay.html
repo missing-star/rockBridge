@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.1.0">
     <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css?v=1.1.0">
     <link rel="stylesheet" href="css/common.css?v=1.1.0">
-    <link rel="stylesheet" href="css/online-pay.css?v=1.1.0">
+    <link rel="stylesheet" href="css/online-pay.css?v=1.1.1">
     <title>叠石桥</title>
     <!--
         缴费
@@ -64,7 +64,7 @@
                         <input readonly v-model="payWay" type="text" class="address classify" placeholder="请选择支付方式" :disabled="isDisabled">
                     </li>
                 </ul>
-                <button @click="next" class="next">下一步</button>
+                <button @click="next" class="next" v-cloak>{{payDirection}}</button>
             </div>
             <!--预览界面-->
             <div :class={active:isNext} class="preview-page">
@@ -109,7 +109,7 @@
     <script src="assets/mui/picker/js/mui.picker.js?v=1.0.2"></script>
     <script src="assets/mui/picker/js/mui.poppicker.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.6"></script>
-    <script src="js/online-pay.js?v=1.1.2"></script>
+    <script src="js/online-pay.js?v=1.2.1"></script>
 </body>
 
 </html>

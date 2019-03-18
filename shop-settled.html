@@ -10,8 +10,9 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.1.0">
+    <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css?v=1.1.0">
     <link rel="stylesheet" href="css/common.css?v=1.1.0">
-    <link rel="stylesheet" href="css/shop-settled.css?v=1.1.0">
+    <link rel="stylesheet" href="css/shop-settled.css?v=1.1.2">
     <title>叠石桥</title>
 </head>
 
@@ -38,13 +39,12 @@
                         <label for="" class="title">购买数量</label>
                         <input @input="validateNum" v-model="buyNums" placeholder="请输入购买数量" type="number" class="classify">
                     </li>
-                    <li class="pay-item">
-                        <label for="" class="title">支付费率</label>
-                        <input readonly disabled type="text" class="classify" value="0.6%">
+                    <li id="pay-way" class="pay-item">
+                        <label for="" class="title">支付方式</label>
+                        <input readonly v-model="payWay" type="text" class="address arrow-right" placeholder="请选择支付方式">
                     </li>
                 </ul>
-                <p class="show-money">总价：￥{{totalMoney}}</p>
-                <button @click="submitOrder" :disabled="isDisabled" class="submit-btn" :class="{'submit-order':!isDisabled,'disabled':isDisabled}">下一步</button>
+                <button @click="submitOrder" :disabled="isDisabled" class="submit-btn" :class="{'submit-order':!isDisabled,'disabled':isDisabled}" v-cloak>{{payDirection}}</button>
             </div>
         </div>
         <div class="one next" :class="{'fade-in':isNext,'fade-out':!isNext}">
@@ -68,12 +68,11 @@
                         <label for="" class="title">购买数量</label>
                         <input @input="validateNum" v-model="buyNums" placeholder="请输入购买数量" type="number" class="classify">
                     </li>
-                    <li class="pay-item">
-                        <label for="" class="title">支付费率</label>
-                        <input readonly disabled type="text" class="classify" value="0.6%">
+                    <li id="pay-way" class="pay-item">
+                        <label for="" class="title">支付方式</label>
+                        <input readonly disabled v-model="payWay" type="text" class="address" placeholder="请选择支付方式">
                     </li>
                 </ul>
-                <p class="show-money">总价：￥{{totalMoney}}</p>
                 <button @click="submit" :disabled="isDisabled" class="submit-btn" :class="{'submit-order':!isDisabled,'disabled':isDisabled}">立即支付</button>
             </div>
         </div>
@@ -82,8 +81,10 @@
     <script src="assets/vue/vue.min.js?v=1.0.2"></script>
     <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
     <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
+    <script src="assets/mui/picker/js/mui.picker.js?v=1.0.2"></script>
+    <script src="assets/mui/picker/js/mui.poppicker.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.6"></script>
-    <script src="js/shop-settled.js?v=1.0.2"></script>
+    <script src="js/shop-settled.js?v=1.0.5"></script>
 </body>
 
 </html>

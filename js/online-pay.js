@@ -1,4 +1,4 @@
-if(!sessionStorage.getItem('user')) {
+if (!sessionStorage.getItem('user')) {
     getUserInfo();
 }
 var vm = new Vue({
@@ -16,6 +16,7 @@ var vm = new Vue({
         inputMoney: '',
         description: '',
         payWay: '',
+        payWayId: '',
         isNext: false,
         //是否显示选择报修单
         isShowRepair: false,
@@ -31,8 +32,10 @@ var vm = new Vue({
         //是否已经获取过报修列表
         isGetList: false,
         isDisabled: getParams().type == 1 ? true : false,
-        id:'',
-        totalMoney:0
+        id: '',
+        totalMoney: 0,
+        payDirection: '下一步',
+        online: true
     },
     methods: {
         goDetail() {
@@ -53,7 +56,7 @@ var vm = new Vue({
             } else if (!parseFloat(this.inputMoney) || this.inputMoney == '') {
                 mui.toast('请输入缴费金额！');
                 return false;
-            } else if (this.payWay == '') {
+            } else if (this.payWayId == '') {
                 mui.toast('请选择支付方式！');
             }
             // var totalMoney = parseFloat(vm.inputMoney);
@@ -63,8 +66,8 @@ var vm = new Vue({
             var formData = {
                 cate_id: this.selectedId,
                 content: this.description,
-                actual_payment: this.totalMoney,
-                pay_method: this.payWay,
+                actual_payment: this.inputMoney,
+                pay_method: this.payWayId,
                 address_id: this.selectedShopAddressId
             };
             if (this.selectedRepairId != '') {
@@ -77,8 +80,10 @@ var vm = new Vue({
                 async: false,
                 dataType: 'json',
                 success: function (data) {
-                    mui.toast(data.msg);
                     if (data.status == 1) {
+                        if (!vm.online) {
+                            return false;
+                        }
                         vm.payOrder = data.result.pay_order;
                         //获取信息
                         getInfo();
@@ -91,7 +96,13 @@ var vm = new Vue({
                 }
             });
             //下一步
-            this.isNext = true;
+            if (vm.online) {
+                this.isNext = true;
+            } else {
+                mui.confirm('缴费申请已提交，请到财务科扫码缴费', '', ['确定'], function (e) {
+                    history.go(-1);
+                });
+            }
         },
         validateDesc() {
             this.description = replaceSpace(this.description);
@@ -153,9 +164,9 @@ var vm = new Vue({
                     for (key in data.result.property_address) {
                         addList.push({
                             value: data.result.property_address[key].id,
-                            text: data.result.property_address[key].stage + ' '
-                            + data.result.property_address[key].building + ' '
-                            + data.result.property_address[key].address
+                            text: data.result.property_address[key].stage + ' ' +
+                                data.result.property_address[key].building + ' ' +
+                                data.result.property_address[key].address
                         });
                     }
                     classifyPicker.setData(list);
@@ -201,7 +212,8 @@ var vm = new Vue({
         return {
             value: item.id,
             text: item.name,
-            fate: item.service_price
+            fate: item.service_price,
+            online: item.on_line
         }
     });
     payPicker.setData(result);
@@ -209,18 +221,32 @@ var vm = new Vue({
     eventBtn.addEventListener('tap', function (event) {
         payPicker.show(function (items) {
             vm.payFate = items[0].fate + '%';
+            vm.payWayId = items[0].value;
             vm.payWay = items[0].text;
+            vm.online = items[0].online == 1 ? false : true;
+            if (items[0].online == 1) {
+                vm.payDirection = '提交申请';
+            } else {
+                vm.payDirection = '下一步';
+            }
         });
     }, false);
     payPicker.pickers[0].setSelectedIndex(0);
     payPicker.pickers[0].items.forEach(function (pay, index) {
-        if(index == 0) {
+        if (index == 0) {
             vm.id = pay.id;
             vm.payFate = pay.fate + '%';
+            vm.payWayId = pay.value;
             vm.payWay = pay.text;
+            vm.online = pay.online == 1 ? false : true;
+            if (pay.online == 1) {
+                vm.payDirection = '提交申请';
+            } else {
+                vm.payDirection = '下一步';
+            }
         }
     });
-    
+
 })(mui, document);
 
 function getRepairRecord() {
@@ -235,7 +261,7 @@ function getRepairRecord() {
                 var repairPicker = new mui.PopPicker();
                 for (key in data.result) {
                     list.push({
-                        id:data.result[key].id,
+                        id: data.result[key].id,
                         value: data.result[key].re_code,
                         text: data.result[key].re_code,
                         money: data.result[key].re_money
@@ -276,10 +302,9 @@ function getInfo() {
         async: false,
         dataType: 'json',
         success: function (data) {
-            if(data.status == 1) {
+            if (data.status == 1) {
                 vm.str = data.info;
-            }
-            else if (data.status == 202) {
+            } else if (data.status == 202) {
                 goLogin();
             }
         },
@@ -300,9 +325,16 @@ function jsApiCall() {
             if (res.err_msg == "get_brand_wcpay_request:ok") {
                 mui.toast('支付成功!');
                 setTimeout(function () {
-                    mui.openWindow({
-                        url: 'repair-detail.html?id='+vm.id
-                    });
+                    if(vm.selectedId == 0) {
+                        mui.openWindow({
+                            url: 'repair-detail.html?id=' + vm.id
+                        });
+                    }
+                    else {
+                        mui.openWindow({
+                            url: 'pay-detail.html'
+                        });
+                    }
                 }, 200);
             } else {
                 //支付失败/用户取消支付
@@ -323,10 +355,9 @@ function getPayWay() {
         type: 'post',
         async: false,
         success: function (data) {
-            if(data.status == 1) {
+            if (data.status == 1) {
                 result = data.result;
-            }
-            else if (data.status == 202) {
+            } else if (data.status == 202) {
                 goLogin();
             }
         },
