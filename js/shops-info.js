@@ -31,7 +31,7 @@ function getShopsInfo(shops_id) {
                 vm.shop_name = data.result.title;
                 vm.person_name = data.result.person_name;
                 vm.phone = data.result.phone;
-                vm.shop_address = data.result.province + data.result.city + data.result.address;
+                vm.shop_address = data.result.province + data.result.city + data.result.area + data.result.stage + data.result.building + data.result.address;
             }
             else if(data.status == 202) {
                 goLogin();

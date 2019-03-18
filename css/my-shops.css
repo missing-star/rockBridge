@@ -502,3 +502,7 @@ span.title {
     font-size: 0.8rem;
     line-height: 1.5rem;
 }
+span.status {
+    display: block;
+    color: #9D7E60;
+}

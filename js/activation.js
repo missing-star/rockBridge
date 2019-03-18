@@ -2,8 +2,8 @@ var vm = new Vue({
     el: '#app',
     data: {
         selectedNumber: '',
-        selectedId:'',
-        shopsList:[]
+        selectedId: '',
+        shopsList: []
     },
     methods: {
         goNext() {
@@ -25,21 +25,38 @@ var vm = new Vue({
 (function ($, doc) {
     $.init();
     $.ready(function () {
-        var numberPicker = new $.PopPicker({
+        var numberPicker = new mui.PopPicker({
+            layer: 3,
             title: '门牌号选择'
         });
-        var data = getNotActivedAddress().map(function(address,index) {
+        var data = getNotActivedAddress().map(function (province, i) {
             return {
-                value:address.id,
-                text:address.province + address.city + address.address 
+                value: province.id,
+                text: province.cate_name,
+                children: province.children.map(function (city, j) {
+                    return {
+                        value: city.id,
+                        text: city.cate_name,
+                        children: city.children.map(function (district, k) {
+                            return {
+                                value: district.id,
+                                text: district.address
+                            }
+                        })
+                    }
+                })
             }
         });
         numberPicker.setData(data);
         var eventBtn = doc.getElementById('number-btn');
         eventBtn.addEventListener('tap', function (event) {
             numberPicker.show(function (items) {
-                vm.selectedId = items[0].value;
-                vm.selectedNumber = items[0].text;
+                if (!items[2].value) {
+                    mui.toast('无效地址!');
+                    return false;
+                }
+                vm.selectedId = items[2].value;
+                vm.selectedNumber = items[0].text + items[1].text + items[2].text;
                 getNotActivdShops(vm.selectedId);
             });
         }, false);
@@ -54,13 +71,12 @@ function getNotActivedAddress() {
     $.ajax({
         url: `${rootUrl}/index/api/getNotAddress`,
         type: 'post',
-        dataType:'json',
-        async:false,
+        dataType: 'json',
+        async: false,
         success: function (data) {
-            if(data.status == 1) {
+            if (data.status == 1) {
                 result = data.result;
-            }
-            else if(data.status == 202) {
+            } else if (data.status == 202) {
                 goLogin();
             }
         },
@@ -79,16 +95,16 @@ function getNotActivdShops(address_id) {
     $.ajax({
         url: `${rootUrl}/index/api/getShopRelatedAddress`,
         type: 'post',
-        dataType:'json',
+        dataType: 'json',
         data: {
             address_id: address_id
         },
         success: function (data) {
-            if(data.status == 1) {
+            if (data.status == 1) {
                 vm.shopsList = data.result;
-                sessionStorage.setItem('activeName',data.result[0].person_name);
-                sessionStorage.setItem('activePhone',data.result[0].phone);
-            }else if(data.status == 202) {
+                sessionStorage.setItem('activeName', data.result[0].person_name);
+                sessionStorage.setItem('activePhone', data.result[0].phone);
+            } else if (data.status == 202) {
                 goLogin();
             }
         },

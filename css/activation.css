@@ -128,6 +128,7 @@ span.content {
     color: #333333;
     font-size: 0.8rem;
     line-height: 1rem;
+    flex: 1;
 }
 button.next {
     background: #9d7e60;
