@@ -762,7 +762,6 @@ span.news-time {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    text-align: right;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

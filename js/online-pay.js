@@ -100,7 +100,9 @@ var vm = new Vue({
                 this.isNext = true;
             } else {
                 mui.confirm('缴费申请已提交，请到财务科扫码缴费', '', ['确定'], function (e) {
-                    history.go(-1);
+                    mui.openWindow({
+                        url: 'pay-detail.html'
+                    });
                 });
             }
         },

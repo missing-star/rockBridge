@@ -232,6 +232,7 @@ div.cost-container>div:last-child{
     width: 80%;
     bottom: 0.5rem;
     left: 0.2rem;
+    z-index: 2;
 }
 .apply-upper-auth:after {
     height: 60%;
@@ -241,6 +242,7 @@ div.cost-container>div:last-child{
     width: 1px;
     left: 0.5rem;
     bottom: 0.2rem;
+    z-index: 2;
 }
 p.apply-title, p.apply-desc {
     color: #fff;
@@ -251,12 +253,14 @@ p.apply-title {
     left: 0.8rem;
     bottom: 2.5rem;
     line-height: 1rem;
+    z-index: 2;
 }
 p.apply-desc {
     left: 0.8rem;
     bottom: 1rem;
     font-size: 0.6rem;
     line-height: 0.6rem;
+    z-index: 2
 }
 p.class-title {
     color: #333;
@@ -400,4 +404,13 @@ p.time-status {
             flex-direction: column;
     font-size: 0.6rem;
     color: #888888;
+}
+.font-mask {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.3);
+    border-radius: 0.2rem;
 }
