@@ -38,7 +38,7 @@ function getParams() {
 }
 
 //域名
-var rootUrl = 'http://dieshiqiao.pzhkj.cn';
+var rootUrl = 'http://jfc.dsqgf.cn';
 
 //将时间戳转换为时间（年-月-日）
 function transformTime(timeStat,flag) {

@@ -2,7 +2,8 @@ var param = getParams();
 var vm = new Vue({
     el: '#app',
     data: {
-        detail: ''
+        detail: '',
+        currentType:0
     },
     methods: {
         getInvoice(id) {
@@ -10,6 +11,9 @@ var vm = new Vue({
             mui.openWindow({
                 url: 'apply-invoice.html?id=' + id
             })
+        },
+        switchType(type) {
+            this.currentType = type;
         }
     }
 })

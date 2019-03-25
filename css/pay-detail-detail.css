@@ -111,3 +111,33 @@ div#qr-code canvas{
     display: block;
     margin: 0 auto;
 }
+span.checkbox {
+    border: 1px solid #ff7041;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+span.checkbox.active{
+    background: url(../imgs/checked.png) no-repeat;
+}
+span.checkbox.active {
+    background: url(../imgs/checked.png) no-repeat;
+    background-size: 0.8rem;
+    background-position: center center;
+    background-color: #ff7041;
+}
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f6f6f6;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+p.checkbox-item {
+    display: inline-flex;
+    align-items: center;
+    width: 5rem;
+}
