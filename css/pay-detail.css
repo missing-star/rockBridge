@@ -169,7 +169,7 @@ ul.cost-category-list::-webkit-scrollbar{
 li.cost-category-item {
     display: inline-block;
     position: relative;
-    margin-right: 2rem;
+    margin-right: 1.2rem;
     color: #888888;
     font-size: 0.8rem;
 }
