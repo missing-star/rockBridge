@@ -93,7 +93,9 @@ var vm = new Vue({
 
 $(function () {
     document.getElementById('confirm').addEventListener('tap', function () {
-        history.go(-1);
+        mui.openWindow({
+            url: `login.html`
+        });
     });
 });
 
