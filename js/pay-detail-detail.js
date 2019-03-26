@@ -3,7 +3,8 @@ var vm = new Vue({
     el: '#app',
     data: {
         detail: '',
-        currentType:0
+        currentType:-1,
+        pay_order:''
     },
     methods: {
         getInvoice(id) {
@@ -14,6 +15,7 @@ var vm = new Vue({
         },
         switchType(type) {
             this.currentType = type;
+            createQrCode('2'+this.currentType.toString() + this.pay_order.toString());
         }
     }
 })
@@ -29,9 +31,10 @@ function getDetail(id) {
         success: function (data) {
             if(data.status == 1) {
                 vm.detail = data.result;
-                jQuery('#qr-code').qrcode({
-                    text: "https://www.baidu.com"
-                });	
+                vm.pay_order = data.result.pay_order;
+                if(data.result.pay_status == 1) {
+                    createQrCode('1' + data.result.pay_order.toString());
+                }
             }
             else if (data.status == 202) {
                 goLogin();
@@ -44,3 +47,10 @@ function getDetail(id) {
 }
 
 getDetail(param.id);
+
+function createQrCode(content) {
+    jQuery('#qr-code').html('');
+    jQuery('#qr-code').qrcode({
+        text: content
+    });	
+}

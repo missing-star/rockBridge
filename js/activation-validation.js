@@ -51,7 +51,7 @@ var vm = new Vue({
             this.code = this.code.substring(0, 6);
         },
         activeNow() {
-            if(this.mainCategoryName == '' || this.mainCategoryName) {
+            if(this.mainCategoryName == '' || !this.mainCategoryName) {
                 mui.toast('请选择经营类目!');
                 return;
             }

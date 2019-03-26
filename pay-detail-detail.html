@@ -73,7 +73,7 @@
                     <p v-cloak class="content">{{detail.pay_order}}</p>
                 </li>
             </ul>
-            <div class="checkbox-wrapper">
+            <div class="checkbox-wrapper" v-if="detail.pay_status == 2">
                 <p class="checkbox-item" @click="switchType(0)"><span class="checkbox" :class="{active:currentType == 0}"></span>个人</p>
                 <p class="checkbox-item" @click="switchType(1)"><span class="checkbox" :class="{active:currentType == 1}"></span>企业</p>
             </div>
@@ -87,7 +87,7 @@
     <script src="assets/jq-qrcode/jquery.qrcode.min.js"></script>
     <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
     <script src="js/common.js?v=1.0.7.1"></script>
-    <script src="js/pay-detail-detail.js?v=1.0.3"></script>
+    <script src="js/pay-detail-detail.js?v=1.0.6"></script>
 </body>
 
 </html>
