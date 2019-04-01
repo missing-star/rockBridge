@@ -311,6 +311,42 @@ $(function () {
             $('div.goods-tab-content-item').eq(index).siblings().removeClass('active');
         }
     });
+    vm.$nextTick(function () {
+        //上架的商品选中操作
+        $('.goods-info.upper').click(function () {
+            $(this).find('span.checkbox').toggleClass('active');
+            if ($(this).find('span.checkbox').hasClass('active')) {
+                //选中上架商品的数量+1
+                vm.upperSelectedCount += 1;
+                vm.allLowerId.push($(this).attr('goods-id'));
+                if (vm.upperSelectedCount == vm.upperList.length) {
+                    $('div.tools-bar.upper').find('span.checkbox').addClass('active');
+                }
+            } else {
+                //选中上架商品的数量-1
+                vm.upperSelectedCount -= 1;
+                vm.allLowerId.splice(vm.allLowerId.indexOf($(this).attr('goods-id')), 1);
+                $('div.tools-bar.upper').find('span.checkbox').removeClass('active');
+            }
+        });
+        //下架的商品选中操作
+        $('.goods-info.stock').click(function () {
+            $(this).find('span.checkbox').toggleClass('active');
+            if ($(this).find('span.checkbox').hasClass('active')) {
+                //选中上架商品的数量+1
+                vm.stockSelectedCount += 1;
+                vm.allUpperId.push($(this).attr('goods-id'));
+                if (vm.stockSelectedCount == vm.stockList.length) {
+                    $('div.tools-bar.stock').find('span.checkbox').addClass('active');
+                }
+            } else {
+                //选中上架商品的数量-1
+                vm.stockSelectedCount -= 1;
+                vm.allUpperId.splice(vm.allUpperId.indexOf($(this).attr('goods-id')), 1);
+                $('div.tools-bar.stock').find('span.checkbox').removeClass('active');
+            }
+        });
+    });
 });
 
 function pageLink(url) {

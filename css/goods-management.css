@@ -493,3 +493,11 @@ button.accept-btn{
     height: 100%;
     z-index: 998;
 }
+.goods-mask-click {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    left: 0;
+    z-index: 2;
+}
