@@ -110,9 +110,7 @@ var vm = new Vue({
                         });
                     }
                 } else {
-                    mui.openWindow({
-                        url:'login.html'
-                    });
+                    mui.toast('请登录后操作!');
                 }
             } else {
                 //无需登录操作
