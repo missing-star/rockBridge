@@ -13,7 +13,7 @@ var vm = new Vue({
         allUpperId: [],
         allLowerId: [],
         isShowLegal: false,
-        protocolContent:''
+        protocolContent: ''
     },
     filters: {
         //拼接图片地址
@@ -243,6 +243,44 @@ var vm = new Vue({
         editGoods(id) {
             mui.openWindow({
                 url: 'upload-goods.html?type=edit&id=' + id
+            });
+        },
+        operateUpper(e) {
+            //上架的商品选中操作
+            $(e.target).click(function () {
+                $(e.target).find('span.checkbox').toggleClass('active');
+                if ($(e.target).find('span.checkbox').hasClass('active')) {
+                    //选中上架商品的数量+1
+                    vm.upperSelectedCount += 1;
+                    vm.allLowerId.push($(e.target).attr('goods-id'));
+                    if (vm.upperSelectedCount == vm.upperList.length) {
+                        $('div.tools-bar.upper').find('span.checkbox').addClass('active');
+                    }
+                } else {
+                    //选中上架商品的数量-1
+                    vm.upperSelectedCount -= 1;
+                    vm.allLowerId.splice(vm.allLowerId.indexOf($(e.target).attr('goods-id')), 1);
+                    $('div.tools-bar.upper').find('span.checkbox').removeClass('active');
+                }
+            });
+        },
+        operateStock(e) {
+            //下架的商品选中操作
+            $(e.target).click(function () {
+                $(e.target).find('span.checkbox').toggleClass('active');
+                if ($(e.target).find('span.checkbox').hasClass('active')) {
+                    //选中上架商品的数量+1
+                    vm.stockSelectedCount += 1;
+                    vm.allUpperId.push($(e.target).attr('goods-id'));
+                    if (vm.stockSelectedCount == vm.stockList.length) {
+                        $('div.tools-bar.stock').find('span.checkbox').addClass('active');
+                    }
+                } else {
+                    //选中上架商品的数量-1
+                    vm.stockSelectedCount -= 1;
+                    vm.allUpperId.splice(vm.allUpperId.indexOf($(e.target).attr('goods-id')), 1);
+                    $('div.tools-bar.stock').find('span.checkbox').removeClass('active');
+                }
             });
         }
     }
