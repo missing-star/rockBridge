@@ -158,12 +158,6 @@
                         <p class="operation-item-name">设置</p>
                     </li>
                 </a>
-                <a href="javascript:;" @click="enterItem('contact-us.html')">
-                    <li class="operation-item">
-                        <img class="operation-item-icon" src="imgs/user-collection.png" />
-                        <p class="operation-item-name">联系我们</p>
-                    </li>
-                </a>
                 <template v-if="currentRole == 1">
                     <!-- <a href="javascript:;" @click="enterItem('apply-invoice.html')">
                         <li class="operation-item">
@@ -184,6 +178,20 @@
                         </li>
                     </a>
                 </template>
+            </ul>
+            <ul class="operation-list">
+                <a href="javascript:;" @click="enterItem('related-us.html')">
+                    <li class="operation-item">
+                        <img class="operation-item-icon" src="imgs/user-collection.png" />
+                        <p class="operation-item-name">联系我们</p>
+                    </li>
+                </a>
+                <a href="javascript:;" @click="enterItem('complaint.html')">
+                    <li class="operation-item">
+                        <img class="operation-item-icon" src="imgs/user-collection.png" />
+                        <p class="operation-item-name">投诉建议</p>
+                    </li>
+                </a>
             </ul>
         </div>
         <div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">

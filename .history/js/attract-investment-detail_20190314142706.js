@@ -31,7 +31,6 @@ var vm = new Vue({
             $.ajax({
                 url:`${rootUrl}/index/api/getAddAppointment`,
                 data:{
-                    let_id:this.attractInfo.id,
                     phone:this.phone,
                     username:this.name
                 },
@@ -43,7 +42,6 @@ var vm = new Vue({
                         vm.name = '';
                         vm.phone = '';
                         mui('#sheet1').popover('toggle');
-                        getAttractDetail();
                     }else if(data.status == 202) {
                         goLogin();
                     }

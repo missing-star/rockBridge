@@ -208,6 +208,3 @@ p.address-info {
             flex: 1;
     display: inline-block;
 }
-button.revese.disabled {
-    background: #aaaaaa;
-}

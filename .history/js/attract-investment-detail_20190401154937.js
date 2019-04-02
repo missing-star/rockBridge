@@ -43,7 +43,6 @@ var vm = new Vue({
                         vm.name = '';
                         vm.phone = '';
                         mui('#sheet1').popover('toggle');
-                        getAttractDetail();
                     }else if(data.status == 202) {
                         goLogin();
                     }

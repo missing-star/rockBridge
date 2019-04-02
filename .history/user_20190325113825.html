@@ -108,6 +108,7 @@
                         <p class="operation-item-name">我的收藏</p>
                     </li>
                 </a>
+
             </ul>
             <ul class="operation-list">
                 <template v-if="currentRole == 0">
@@ -156,12 +157,6 @@
                     <li class="operation-item">
                         <img class="operation-item-icon" src="imgs/user-setting.png" />
                         <p class="operation-item-name">设置</p>
-                    </li>
-                </a>
-                <a href="javascript:;" @click="enterItem('contact-us.html')">
-                    <li class="operation-item">
-                        <img class="operation-item-icon" src="imgs/user-collection.png" />
-                        <p class="operation-item-name">联系我们</p>
                     </li>
                 </a>
                 <template v-if="currentRole == 1">

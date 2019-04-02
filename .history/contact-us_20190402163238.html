@@ -30,14 +30,18 @@
             </header>
             <div class="main-content">
                 <ul class="operation-list">
-                    <li class="operation-item" @click="enterItem('related-us.html')">
-                        <img class="operation-item-icon" src="imgs/user-collection.png" />
-                        <p class="operation-item-name">关于我们</p>
-                    </li>
-                    <li class="operation-item" @click="enterItem('complaint.html')">
-                        <img class="operation-item-icon" src="imgs/user-collection.png" />
-                        <p class="operation-item-name">投诉建议</p>
-                    </li>
+                    <a href="javascript:;" @click="enterItem('related-us.html')">
+                        <li class="operation-item">
+                            <img class="operation-item-icon" src="imgs/user-collection.png" />
+                            <p class="operation-item-name">关于我们</p>
+                        </li>
+                    </a>
+                    <a href="javascript:;" @click="enterItem('complaint.html')">
+                        <li class="operation-item" @click="enterItem('complaint.html')">
+                            <img class="operation-item-icon" src="imgs/user-collection.png" />
+                            <p class="operation-item-name">投诉建议</p>
+                        </li>
+                    </a>
                 </ul>
             </div>
         </div>
