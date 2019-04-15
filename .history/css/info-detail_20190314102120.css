@@ -40,10 +40,6 @@ header.packet-title>p:first-child {
 img.info-cover {
     width: 100%;
 }
-img {
-    width: 100% !important;
-    height: auto !important;
-}
 .info-container {
     padding-top: 1rem;
 }
