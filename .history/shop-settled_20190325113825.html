@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.1.0">
+    <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css?v=1.1.0">
+    <link rel="stylesheet" href="css/common.css?v=1.1.0">
+    <link rel="stylesheet" href="css/shop-settled.css?v=1.1.2">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="one">
+            <header class="mui-bar mui-bar-nav">
+                <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+            </header>
+            <div class="mui-content">
+                <header class="packet-title">
+                    <p>购买展架</p>
+                </header>
+                <ul class="pay-list">
+                    <li id="classify" class="pay-item picker">
+                        <label for="" class="title">现有展架</label>
+                        <input v-model="nowNums" type="text" class="classify" readonly>
+                    </li>
+                    <li id="classify" class="pay-item picker">
+                        <label for="" class="title">价格</label>
+                        <input v-model="price" type="text" class="classify" readonly>
+                    </li>
+                    <li id="repair-list" class="pay-item picker">
+                        <label for="" class="title">购买数量</label>
+                        <input @input="validateNum" v-model="buyNums" placeholder="请输入购买数量" type="number" class="classify">
+                    </li>
+                    <li id="pay-way" class="pay-item">
+                        <label for="" class="title">支付方式</label>
+                        <input readonly v-model="payWay" type="text" class="address arrow-right" placeholder="请选择支付方式">
+                    </li>
+                </ul>
+                <button @click="submitOrder" :disabled="isDisabled" class="submit-btn" :class="{'submit-order':!isDisabled,'disabled':isDisabled}" v-cloak>{{payDirection}}</button>
+            </div>
+        </div>
+        <div class="one next" :class="{'fade-in':isNext,'fade-out':!isNext}">
+            <header class="mui-bar mui-bar-nav">
+                <i @click="hideSubmit" class="mui-icon mui-icon-arrowleft"></i>
+            </header>
+            <div class="mui-content">
+                <header class="packet-title">
+                    <p>购买展架</p>
+                </header>
+                <ul class="pay-list">
+                    <li id="classify" class="pay-item picker">
+                        <label for="" class="title">现有展架</label>
+                        <input v-model="nowNums" type="text" class="classify" readonly>
+                    </li>
+                    <li id="classify" class="pay-item picker">
+                        <label for="" class="title">价格</label>
+                        <input v-model="price" type="text" class="classify" readonly>
+                    </li>
+                    <li id="repair-list" class="pay-item picker">
+                        <label for="" class="title">购买数量</label>
+                        <input @input="validateNum" v-model="buyNums" placeholder="请输入购买数量" type="number" class="classify">
+                    </li>
+                    <li id="pay-way" class="pay-item">
+                        <label for="" class="title">支付方式</label>
+                        <input readonly disabled v-model="payWay" type="text" class="address" placeholder="请选择支付方式">
+                    </li>
+                </ul>
+                <button @click="submit" :disabled="isDisabled" class="submit-btn" :class="{'submit-order':!isDisabled,'disabled':isDisabled}">立即支付</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="assets/vue/vue.min.js?v=1.0.2"></script>
+    <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
+    <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
+    <script src="assets/mui/picker/js/mui.picker.js?v=1.0.2"></script>
+    <script src="assets/mui/picker/js/mui.poppicker.js?v=1.0.2"></script>
+    <script src="js/common.js?v=1.0.7.1"></script>
+    <script src="js/shop-settled.js?v=1.0.5"></script>
+</body>
+
+</html>

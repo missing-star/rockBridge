@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.1.0">
+    <link rel="stylesheet" href="css/common.css?v=1.1.0">
+    <link rel="stylesheet" href="css/goods.css?v=1.1.1">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <header class="page1">
+            <form class="input-group">
+                <input readonly @focus="showSearch" placeholder="输入商品或商店名称" v-model="keyword" id="search"
+                    class="search-page-input" type="text">
+            </form>
+            <template v-if="isShowGoods">
+                <img @click="switchGoodsLayout" class="switch-layout" :class="{active:!isDefGoodsLayout}" src="imgs/layout-default.png" />
+                <img @click="switchGoodsLayout" class="switch-layout" :class="{active:isDefGoodsLayout}" src="imgs/layout-line.png" />
+            </template>
+        </header>
+        <!--底部导航栏-->
+        <nav class="mui-bar mui-bar-tab">
+            <a class="mui-tab-item" href="index.html">
+                <img src="imgs/home.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/home-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">首页</span>
+            </a>
+            <a class="mui-tab-item mui-active" href="javascript:;">
+                <img src="imgs/goods.png" class="mui-icon nav-bar-icon" />
+                <img src="imgs/goods-active.png" class="mui-icon nav-bar-icon active" />
+                <span class="mui-tab-label">商品</span>
+            </a>
+            <a class="mui-tab-item" href="info.html">
+                <img src="imgs/info.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/info-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">资讯</span>
+            </a>
+            <a class="mui-tab-item" href="user.html">
+                <img src="imgs/user.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/user-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">我的</span>
+            </a>
+        </nav>
+        <div class="mui-content">
+            <!--分类-->
+            <ul class="tab-bar fixed">
+                <li @click="switchTab(0,$event)" class="tab-bar-item active">商品</li>
+                <li @click="switchTab(1,$event)" class="tab-bar-item">商铺</li>
+            </ul>
+            <!--分类排序-->
+            <ul class="sort-header fixed" :class="{active:isShowGoods}">
+                <li class="sort-item active">
+                    <p class="sort-item-title">综合</p>
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
+                </li>
+                <li data-sort-type="click_num" class="sort-item">
+                    <p class="sort-item-title">点击量</p>
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
+                </li>
+                <li data-sort-type="price" class="sort-item">
+                    <p class="sort-item-title">价格</p>
+                    <img class="sort-icon  no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon  active" src="imgs/sort-down-active.png" />
+                </li>
+            </ul>
+            <ul class="sort-header fixed" :class="{active:!isShowGoods}">
+                <li data-sort-type="0" class="sort-item active">
+                    <p class="sort-item-title">综合</p>
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
+                </li>
+                <li data-sort-type="0" class="sort-item">
+                    <p class="sort-item-title">收藏</p>
+                    <img class="sort-icon no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon active" src="imgs/sort-down-active.png" />
+                </li>
+                <li data-sort-type="1" class="sort-item">
+                    <p class="sort-item-title">评分</p>
+                    <img class="sort-icon  no-active" src="imgs/sort-down.png" />
+                    <img class="sort-icon  active" src="imgs/sort-down-active.png" />
+                </li>
+            </ul>
+            <!--商品tab页内容-->
+            <div class="category-goods-container" v-if="isShowGoods">
+                <template>
+                    <ul class="categroy-list">
+                        <li class="categroy-item" v-for="(category,index) in categoryList" :class="{active:index == currentIndex}"
+                            @click="switchCategoryTab(index,category.id)" v-cloak>{{category.cate_name}}</li>
+                    </ul>
+                    <div class="show-categroy">
+                        <ul :class="{'category-level-container':!isOpen,'category-level-container-open':isOpen}">
+                            <li @click="switchInner(index,item.id)" :class="{active:currentInnerIndex == index,'category-item':!isOpen,'category-item-open':isOpen}"
+                                v-for="(item,index) in categoryItemList" v-cloak>{{item.cate_name}}</li>
+                        </ul>
+                        <div @click="triggerLayout" :class="{'icon-container':true,'icon-container-open':isOpen}">
+                            <img v-if="!isOpen" src="imgs/arrow-down.png" class="icon-down" alt="">
+                            <img v-if="isOpen" src="imgs/arrow-up.png" class="icon-down" alt="">
+                        </div>
+                    </div>
+                </template>
+                <div class="tab-content goods" :class="{active:isShowGoods,'goods-line':isDefGoodsLayout,'goods-not-line':!isDefGoodsLayout}">
+                    <div class="show-categroy-name" v-cloak>{{selectedCat}}</div>
+                    <div @click="getDetail('goods-detail.html',goods.id)" v-for="goods in goodsList" :class={'goods-item':!isDefGoodsLayout,'goods-item-line':isDefGoodsLayout}>
+                        <img class="goods-img" :src="goods.images | filterImg" />
+                        <div class="goods-info">
+                            <p>
+                                <span v-cloak>{{goods.title}}</span>
+                                <span v-cloak class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_num}}</span>
+                            </p>
+                            <p>
+                                <span v-cloak class="goods-price">￥{{goods.price}}</span>
+                                <button class="reserve">查看</button>
+                            </p>
+                        </div>
+                    </div>
+                    <div @click="isOpen = false" class="mask" v-show="isOpen"></div>
+                    <div class="bottom-line">
+                        ······ 已见底了 ······
+                    </div>
+                </div>
+            </div>
+            <!--商家tab页内容-->
+            <div class="tab-content business" :class="{active:!isShowGoods}">
+                <div v-for="shop in shopList" :class={'business-item':isDefBusLayout,'business-item-line':!isDefBusLayout}>
+                    <div class="top">
+                        <div class="business-info">
+                            <img :src="shop.images | filterImg" class="business-logo" />
+                            <p class="business-detail">
+                                <span v-cloak class="business-name">{{shop.title}}<img v-for="n in shop.shop_review"
+                                        src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - shop.shop_review)"
+                                        src="imgs/star.png" class="business-level" /></span>
+                                <span v-cloak>收藏 {{shop.shop_collection}}</span>
+                            </p>
+                        </div>
+                        <button @click="getDetail('shop-detail.html',shop.id)" class="go-business-btn">
+                            进店
+                        </button>
+                    </div>
+                    <div class="bottom">
+                        <img @click="getDetail('goods-detail.html',goods.id)" v-for="goods in shop.goods_list" :src="goods.images | filterImg"
+                            class="business-img-item" />
+                    </div>
+                </div>
+                <div class="bottom-line">
+                    ······ 已见底了 ······
+                </div>
+            </div>
+        </div>
+        <!--搜索页-->
+        <div class="search-page" :class={active:isFadeIn,'slide-out':isFadeOut}>
+            <header>
+                <img @click="hideSearch" src="imgs/icon-back.png" class="icon-back" />
+                <form @submit.prevent="startSearch" class="input-group">
+                    <input placeholder="输入商品或商店名称" @input="limitContent" v-model="keyword" id="search" class="search-page-input"
+                        type="text">
+                    <img v-show="keyword.length != 0" @click="clearInput" class="clear-icon" src="imgs/clear.png" />
+                </form>
+                <span @click="startSearch" class="cancel-search">搜索</span>
+            </header>
+            <!--历史搜索-->
+            <div class="search-history">
+                <header class="history-header">
+                    <p class="search-history-title">历史搜索</p>
+                </header>
+                <ul class="history-list">
+                    <li v-cloak @click="searchHistory(item)" v-for="item in historyList" class="list-item">{{item}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js?v=1.0.2"></script>
+    <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
+    <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
+    <script src="js/common.js?v=1.0.7.1"></script>
+    <script src="js/goods.js?v=1.0.5"></script>
+</body>
+
+</html>

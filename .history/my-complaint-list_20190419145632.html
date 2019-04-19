@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.1.0">
+    <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css?v=1.1.0">
+    <link rel="stylesheet" href="css/common.css?v=1.1.0">
+    <link rel="stylesheet" href="css/my-complaint-list.css?v=1.1.0">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>我的投诉建议</p>
+                <p id="footprint-date">
+                    <span v-cloak class="date-time">{{printDate}}</span>
+                    <span class="arrow-down">
+                        <img class="icon-down" src="imgs/arrow-down-black.png" alt="">
+                    </span>
+                </p>
+            </header>
+            <div class="foot-print-container">
+                <div class="date-group">
+                    <ul class="complaint-list-wrapper">
+                        <li v-for="item in complaintList" class="complaint-item">
+                            <p class="complaint-category">{{item.type == 1 ? '建议' : '投诉'}}</p>
+                            <p class="complaint-date">{{item.add_time}}</p>
+                            <p class="show-more">
+                                <span>详情</span>
+                                <img src="imgs/arr-ri" alt="">
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="bottom-line">
+                        ······ 已见底了 ······
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js?v=1.0.2"></script>
+    <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
+    <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
+    <script src="assets/mui/picker/js/mui.picker.js?v=1.0.2"></script>
+    <script src="assets/mui/picker/js/mui.poppicker.js?v=1.0.2"></script>
+    <script src="assets/mui/picker/js/mui.dtpicker.js?v=1.0.2"></script>
+    <script src="js/common.js?v=1.0.1"></script>
+    <script src="js/my-complaint-list.js?v=1.0.1"></script>
+</body>
+
+</html>

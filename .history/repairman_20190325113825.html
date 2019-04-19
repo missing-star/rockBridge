@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.1.0">
+    <link rel="stylesheet" href="css/common.css?v=1.1.0">
+    <link rel="stylesheet" href="css/repairman.css?v=1.1.0">
+    <title>叠石桥</title>
+    <!--
+        维修人员
+    -->
+</head>
+
+<body>
+    <div id="app" class="mui-content">
+        <!--tab页头-->
+        <ul class="goods-tab-bar">
+            <li class="goods-tab-bar-item active">
+                待确认
+                <span v-cloak class="current-number">
+                    ({{assigning.total}})
+                </span>
+            </li>
+            <li class="goods-tab-bar-item">
+                维修中
+                <span v-cloak class="current-number">
+                    ({{fixing.total}})
+                </span>
+            </li>
+            <li class="goods-tab-bar-item">
+                已完成
+                <span v-cloak class="current-number">
+                    ({{finished.total}})
+                </span>
+            </li>
+        </ul>
+        <div class="goods-tab-content">
+            <!--待确认-->
+            <div data-type="2" class="goods-tab-content-item active">
+                <div v-for="item in assigning.list" class="goods-item upper">
+                    <div class="goods-info upper">
+                        <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
+                    </div>
+                    <div class="goods-img-container">
+                        <img :src="item.repait_content_images" alt="" class="goods-img">
+                        <div class="goods-desc">
+                            <p v-cloak class="desc-title">{{item.repair_title}}</p>
+                            <!-- <p class="desc-detail">{{item.detail}}</p> -->
+                            <p v-cloak class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p class="status">待确认</p>
+                        </div>
+                    </div>
+                    <div class="operation-group">
+                        <!-- <button @click="confirmRepair(item.id)" class="get-detail reverse">完成维修</button> -->
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
+                    </div>
+                </div>
+                <div class="no-more">--没有更多了--</div>
+            </div>
+            <!--维修中-->
+            <div data-type="3" class="goods-tab-content-item active">
+                <div v-for="item in fixing.list" class="goods-item upper">
+                    <div class="goods-info upper">
+                        <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
+                    </div>
+                    <div class="goods-img-container">
+                        <img :src="item.repait_content_images" alt="" class="goods-img">
+                        <div class="goods-desc">
+                            <p v-cloak class="desc-title">{{item.repair_title}}</p>
+                            <!-- <p class="desc-detail">{{item.detail}}</p> -->
+                            <p v-cloak class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p class="status">维修中</p>
+                            <p v-cloak v-if="item.re_money > 0 && item.type == 0" class="pay-re-money">需支付：￥{{item.re_money}}</p>
+                            <p v-cloak v-if="item.re_money > 0 && item.type == 1" class="pay-re-money">已支付：￥{{item.re_money}}</p>
+                        </div>
+                    </div>
+                    <div class="operation-group">
+                        <!-- <button @click="settingMoney(item.id)" class="get-detail reverse">设置金额</button>
+                        <button @click="confirmRepair(item.id)" class="get-detail">无需缴费</button> -->
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
+                    </div>
+                </div>
+                <div class="no-more">--没有更多了--</div>
+            </div>
+            <!--已完成-->
+            <div data-type="4,5" class="goods-tab-content-item">
+                <div v-for="item in finished.list" class="goods-item upper">
+                    <div class="goods-info upper">
+                        <p v-cloak class="goods-order">单号：{{item.re_code}}</p>
+                    </div>
+                    <div class="goods-img-container">
+                        <img :src="item.repait_content_images" alt="" class="goods-img">
+                        <div class="goods-desc">
+                            <p v-cloak class="desc-title">{{item.repair_title}}</p>
+                            <!-- <p class="desc-detail">{{item.detail}}</p> -->
+                            <p v-cloak class="desc-time">预约时间：{{item.create_at}}</p>
+                            <p class="status">{{item.handle_status == 4 ? '已完成' : (item.handle_status == 5 ? '已取消':'已拒绝')}}</p>
+                            <p v-cloak v-if="item.re_money > 0 && item.type == 0" class="pay-re-money">需支付：￥{{item.re_money}}</p>
+                            <p v-cloak v-if="item.re_money > 0 && item.type == 1" class="pay-re-money">已支付：￥{{item.re_money}}</p>
+                        </div>
+                    </div>
+                    <div class="operation-group">
+                        <button @click="getDetail(item.id)" class="get-detail">查看详情</button>
+                    </div>
+                </div>
+                <div class="no-more">--没有更多了--</div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js?v=1.0.2"></script>
+    <script src="assets/jquery/jquery.min.js?v=1.0.2"></script>
+    <script src="assets/mui/js/mui.min.js?v=1.0.2"></script>
+    <script src="js/common.js?v=1.0.7.1"></script>
+    <script src="js/repairman.js?v=1.0.2"></script>
+</body>
+
+</html>

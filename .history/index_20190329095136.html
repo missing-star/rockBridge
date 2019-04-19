@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.1.0">
+    <link rel="stylesheet" href="assets/swiper/css/swiper.min.css?v=1.1.0">
+    <link rel="stylesheet" href="css/common.css?v=1.1.0">
+    <link rel="stylesheet" href="css/index.css?v=1.1.2">
+    <title>叠石桥</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--顶部搜索栏-->
+        <header class="mui-bar mui-bar-nav">
+            <img src="imgs/search-left-icon.png" class="search-left-icon" />
+            <input readonly @focus="showSearch" type="text" class="search-input" placeholder="四件套|寻找优质羽绒蚕丝" />
+        </header>
+        <!--底部导航栏-->
+        <nav class="mui-bar mui-bar-tab">
+            <a class="mui-tab-item mui-active" href="javascript:;">
+                <img src="imgs/home.png" class="mui-icon nav-bar-icon" />
+                <img src="imgs/home-active.png" class="mui-icon nav-bar-icon active" />
+                <span class="mui-tab-label">首页</span>
+            </a>
+            <a class="mui-tab-item" href="goods.html">
+                <img src="imgs/goods.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/goods-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">商品</span>
+            </a>
+            <a class="mui-tab-item" href="info.html">
+                <img src="imgs/info.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/info-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">资讯</span>
+            </a>
+            <a class="mui-tab-item" href="user.html">
+                <img src="imgs/user.png" class="mui-icon nav-bar-icon active" />
+                <img src="imgs/user-active.png" class="mui-icon nav-bar-icon" />
+                <span class="mui-tab-label">我的</span>
+            </a>
+        </nav>
+        <div class="mui-content">
+            <!--页面主体内容-->
+            <!--图片展示-->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div v-for="img in homeInfo.ad_list" class="swiper-slide">
+                        <img :src="img.ad_code | filterImg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!--滑动项目-->
+            <div class="slider">
+                <div @click="jumpLink('shop-auth.html',true,1)" class="slider-item">
+                    <img class="item-icon" src="imgs/safe.png" />
+                    <p class="item-desc">
+                        <span class="item-desc-title">商家认证</span>
+                        <span class="item-desc-content">商品安全保障</span>
+                    </p>
+                </div>
+                <div @click="jumpLink('online-pay.html',true,2)" class="slider-item">
+                    <img class="item-icon" src="imgs/home-line.png" />
+                    <p class="item-desc">
+                        <span class="item-desc-title">在线缴费</span>
+                        <span class="item-desc-content">商铺线上管理</span>
+                    </p>
+                </div>
+                <div @click="jumpLink('reverse-repair.html',true,2)" class="slider-item">
+                    <img class="item-icon" src="imgs/setting.png" />
+                    <p class="item-desc">
+                        <span class="item-desc-title">物业报修</span>
+                        <span class="item-desc-content">商铺线上报修</span>
+                    </p>
+                </div>
+                <div @click="jumpLink('related-us.html',false,0)" class="slider-item">
+                    <img class="item-icon" src="imgs/phone.png" />
+                    <p class="item-desc">
+                        <span class="item-desc-title">联系我们</span>
+                        <span class="item-desc-content">随时随地咨询</span>
+                    </p>
+                </div>
+            </div>
+            <!--招商招租-->
+            <p @click="jumpLink('attract-investment.html')" class="business-top-title">
+                <span class="first-title">招商招租</span>
+                <span class="middle-icon"> | </span>
+                <span class="end-title">优选店面</span>
+            </p>
+            <div class="slider-business">
+                <div @click="goDetail('attract-investment-detail.html',item.id)" v-for="item in homeInfo.property_let_list"
+                    class="slider-business-item">
+                    <img :src="item.thumb | filterImg" class="show-slider-business-img" />
+                    <p v-cloak class="business-item-title">{{item.title}}</p>
+                    <!-- <div v-cloak class="business-item-content">
+                        <img src="imgs/position.png" class="icon-positon" alt="">
+                        <p class="address-info" v-cloak>{{item.province+item.city+item.area+item.stage+item.building+item.address}}</p>
+                    </div> -->
+                </div>
+            </div>
+            <!-- 新闻资讯 -->
+            <p @click="jumpLink('info.html')" class="business-top-title">
+                <span class="first-title">最新资讯</span>
+                <span class="middle-icon"> | </span>
+                <span class="end-title">每日资讯，知天下事</span>
+            </p>
+            <div class="slider-business">
+                <div @click="goDetail('info-detail.html',item.id)" v-for="item in homeInfo.new_list"
+                    class="slider-business-item">
+                    <img :src="item.thumb | filterImg" class="news-img" />
+                    <p v-cloak class="business-item-title">{{item.title}}</p>
+                </div>
+            </div>
+            <!--卡片：新闻，领券，通知-->
+            <!-- <div class="card-view-con">
+                <div @click="goInner(homeInfo.ad_left.ad_link)" class="news-card">
+                    <p class="card-content-con">
+                        <img :src="homeInfo.ad_left.ad_code | filterImg" alt="">
+                        <span v-cloak class="title">{{homeInfo.ad_left.ad_name}}</span>
+                    </p>
+                </div>
+                <div @click="goInner(homeInfo.ad_right.ad_link)" class="news-card">
+                    <p class="card-content-con">
+                        <img :src="homeInfo.ad_right.ad_code | filterImg" alt="">
+                        <span v-cloak class="title">{{homeInfo.ad_right.ad_name}}</span>
+                    </p>
+                </div>
+            </div> -->
+            <!--人气好物-->
+            <div class="good-goods-con">
+                <p @click="jumpLink('popular-goods.html')" class="title">
+                    <span>人气好物 | </span>
+                    <span>回头率超高</span>
+                </p>
+                <div class="goods-container">
+                    <div class="bottom-item" v-for="goods in homeInfo.goods_list">
+                        <img @click="goDetail('goods-detail.html',goods.id)" :src="goods.images | filterImg" />
+                        <p v-cloak class="name">{{goods.title}}</p>
+                        <p v-cloak class="price">￥{{goods.price}}</p>
+                    </div>
+                </div>
+            </div>
+            <!--商家推荐-->
+            <p @click="jumpLink('business-recommend.html')" class="class-title arrow-right">商家推荐</p>
+            <div class="business-recommond">
+                <div v-for="shop in homeInfo.shops_list" class="business-item">
+                    <div class="top">
+                        <div class="business-info">
+                            <img :src="shop.images" class="business-logo" />
+                            <p class="business-detail">
+                                <span class="business-name" v-cloak>{{shop.title}}<img v-for="n in shop.shop_review"
+                                        src="imgs/star-high.png" class="business-level" /><img v-for="n in (5 - shop.shop_review)"
+                                        src="imgs/star.png" class="business-level" /></span>
+                                <span v-cloak>收藏 {{shop.shop_collection}}</span>
+                            </p>
+                        </div>
+                        <button @click="enterShop(shop.id)" class="go-business-btn">
+                            进店
+                        </button>
+                    </div>
+                    <div class="bottom">
+                        <img @click="goDetail('goods-detail.html',img.id)" v-for="img in shop.goods_list" :src="img.images | filterImg"
+                            class="business-img-item" />
+                    </div>
+                </div>
+            </div>
+            <!--有好物-->
+            <p @click="jumpLink('have-good-goods.html')" class="class-title arrow-right">有好物</p>
+            <div class="have-good-goods">
+                <div @click="goAd(goods.ad_link+'&ad_id='+goods.id)" v-for="goods in homeInfo.ad_goods_list" class="goods-item">
+                    <img class="goods-img" :src="goods.ad_code | filterImg" />
+                    <div class="goods-info">
+                        <p>
+                            <span v-cloak>{{goods.ad_name}}</span>
+                            <span v-cloak class="eye-container"><img class="view-num" src="imgs/eye.png" />{{goods.click_count}}</span>
+                        </p>
+                        <!-- <p>
+                            <span class="goods-price">￥{{goods.</span>
+                            <button @click.stop="reGoods" class="reserve">查看</button>
+                        </p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-line">
+                ······ 已见底了 ······
+            </div>
+        </div>
+        <!--搜索页-->
+        <div class="search-page" :class={active:isFadeIn,'slide-out':isFadeOut}>
+            <header>
+                <img @click="hideSearch" src="imgs/icon-back.png" class="icon-back" />
+                <form @submit.prevent="startSearch" class="input-group">
+                    <input placeholder="输入商品或商店名称" v-model="keyword" id="search" class="search-page-input" type="text">
+                    <img v-show="searchContent.length != 0" @click="clearInput" class="clear-icon" src="imgs/clear.png" />
+                </form>
+                <span @click="startSearch" class="cancel-search">搜索</span>
+            </header>
+            <!--历史搜索-->
+            <div class="search-history">
+                <header class="history-header">
+                    <p class="search-history-title">历史搜索</p>
+                </header>
+                <ul class="history-list">
+                    <li v-cloak @click="searchHistory(item)" v-for="item in historyList" class="list-item">{{item}}</li>
+                </ul>
+            </div>
+            <!--热门搜索-->
+            <!-- <div class="hot-search">
+                <header class="hot-header">
+                    <p class="search-hot-title">热门搜索</p>
+                </header>
+                <ul class="hot-list">
+                    <template v-for="n in 3">
+                        <li class="list-item">手机</li>
+                        <li class="list-item">羽绒服</li>
+                    </template>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js?v=1.0.2?v=1.0.2"></script>
+    <script src="assets/jquery/jquery.min.js?v=1.0.2?v=1.0.2"></script>
+    <script src="assets/mui/js/mui.min.js?v=1.0.2?v=1.0.2"></script>
+    <script src="assets/swiper/js/swiper.min.js?v=1.0.2?v=1.0.2"></script>
+    <script src="js/common.js?v=1.0.7.1?v=1.0.2"></script>
+    <script src="js/index.js?v=1.0.2?v=1.0.3"></script>
+</body>
+
+</html>

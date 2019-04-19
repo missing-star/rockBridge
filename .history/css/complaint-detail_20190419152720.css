@@ -1,0 +1,52 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+img.show-img {
+    width: 30%;
+    margin-right: 3%;
+    border-radius: 0.2rem;
+}
+.detail-item {
+    margin: 1rem 0;
+    border-bottom: 1px solid #f6f6f6;
+}
+p.title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}

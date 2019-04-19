@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.2.0">
+    <link rel="stylesheet" href="css/common.css?v=1.2.0">
+    <link rel="stylesheet" href="css/repair-feedback.css?v=1.2.0">
+    <title>叠石桥</title>
+    <!--
+        维修反馈
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>维修反馈</p>
+            </header>
+            <ul class="repair-info">
+                <li class="repair-item question">
+                    <label for="" class="title">评价内容</label>
+                    <textarea v-model="quesDesc" @input="limitLength" placeholder="简单描述您的报修问题" name="" id=""></textarea>
+                    <span v-cloak class="show-number">{{inputCount}}/300</span>
+                </li>
+            </ul>
+            <p class="repair-title">服务评价</p>
+            <!-- data-service="1" -->
+            <ul class="service-list">
+                <li data-service="1" class="service-item active">
+                    <div class="left-section">
+                        <img src="imgs/good-comments.png" alt="" class="sercice-icon">
+                        <p class="service-title">满意</p>
+                    </div>
+                    <span class="checkbox"></span>
+                </li>
+                <li data-service="2" class="service-item">
+                    <div class="left-section">
+                        <img src="imgs/normal-comments.png" alt="" class="sercice-icon">
+                        <p class="service-title">一般</p>
+                    </div>
+                    <span class="checkbox"></span>
+                </li>
+                <li data-service="3" class="service-item">
+                    <div class="left-section">
+                        <img src="imgs/bad-comments.png" alt="" class="sercice-icon">
+                        <p class="service-title">不满意</p>
+                    </div>
+                    <span class="checkbox"></span>
+                </li>
+            </ul>
+            <ul class="repair-info">
+                <li class="repair-item upload">
+                    <div v-for="(item,index) in uploadedImgs" class="upload-item">
+                        <img :src="item.src" alt="" class="upload-img-item">
+                        <span @click="deleteImg(index)" class="delete-icon">
+                        </span>
+                    </div>
+                    <div :class="{active:uploadedImgs.length < 3}" class="upload-item upload">
+                        <div @click="uploadImg($event)" class="mask-click">
+                            <input class="upload-input" hidden type="file" accept="image/*">
+                        </div>
+                        <img src="imgs/camera.png" alt="" class="camera">
+                        <span v-cloak class="imgs-num">{{uploadedImgs.length}} / 3</span>
+                    </div>
+                </li>
+            </ul>
+            <button @click="submitQues" class="submit-repair">
+                提交评价
+            </button>
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js?v=1.2.0"></script>
+    <script src="assets/jquery/jquery.min.js?v=1.2.0"></script>
+    <script src="assets/mui/js/mui.min.js?v=1.2.0"></script>
+    <script src="js/common.js?v=1.2.0.1"></script>
+    <script src="js/repair-feedback.js?v=1.2.0"></script>
+</body>
+
+</html>
