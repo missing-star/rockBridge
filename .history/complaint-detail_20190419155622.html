@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.2.0">
+    <link rel="stylesheet" href="assets/mui/picker/css/mui.picker.min.css?v=1.2.0">
+    <link rel="stylesheet" href="css/common.css?v=1.2.0">
+    <link rel="stylesheet" href="css/complaint-detail.css?v=1.2.0">
+    <title>叠石桥</title>
+    <!--
+        意见投诉
+    -->
+</head>
+
+<body>
+    <div id="app">
+        <header class="mui-bar mui-bar-nav">
+            <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
+        </header>
+        <div class="mui-content">
+            <header class="packet-title">
+                <p>投诉建议详情</p>
+            </header>
+            <div class="complaint-detail-wrapper">
+                <div class="detail-item">
+                    <p class="title">提交日期</p>
+                    <p class="content">{{detail.add_time}}</p>
+                </div>
+                <div class="detail-item">
+                    <p class="title">提交内容</p>
+                    <p class="content">{{detail.content}}</p>
+                </div>
+                <div class="detail-item">
+                    <p class="title">提交部门</p>
+                    <p class="content">{{detail.role_id}}</p>
+                </div>
+                <div class="detail-item">
+                    <p class="title">负责人</p>
+                    <p class="content">{{detail.admin_id}}</p>
+                </div>
+                <div class="detail-item">
+                    <p class="content">
+                        <img v-for="src in (detail.images.split(',')" :src="src | filterImg" class="show-img">
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="assets/vue/vue.min.js?v=1.2.0"></script>
+    <script src="assets/jquery/jquery.min.js?v=1.2.0"></script>
+    <script src="assets/mui/js/mui.min.js?v=1.2.0"></script>
+    <script src="js/common.js?v=1.2.0"></script>
+    <script src="js/complaint-detail.js?v=1.2.0"></script>
+</body>
+
+</html>
