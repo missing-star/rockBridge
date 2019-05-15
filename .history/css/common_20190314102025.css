@@ -232,8 +232,3 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
-.ellipsis{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
