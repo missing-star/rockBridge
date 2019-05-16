@@ -1,0 +1,274 @@
+html,
+body,
+.mui-content {
+    font-size: calc(100vw / 20);
+    background: #ffffff;
+}
+*{
+    word-break: break-all;
+}
+div.mui-content {
+    padding: 1rem;
+}
+
+header.mui-bar.mui-bar-nav {
+    background: #ffffff;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+
+nav.mui-bar.mui-bar-tab {
+    background: #ffffff;
+    -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+nva.mui-bar-tab span.mui-tab-label {
+    color: #9d7e60;
+}
+
+.mui-bar-tab .mui-tab-item.mui-active {
+    color: #5f4831;
+}
+
+img.mui-icon.nav-bar-icon.active {
+    display: inline;
+}
+
+img.mui-icon.nav-bar-icon {
+    display: none;
+}
+
+p {
+    margin: 0;
+}
+
+input[type=color],
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+select,
+textarea {
+    margin-bottom: 0;
+    width: auto;
+    height: auto;
+    border: none;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    font-size: 0.8rem;
+}
+
+input::-webkit-input-placeholder {
+    color: #c2c2c2;
+}
+
+nav.mui-bar.mui-bar-tab a.mui-tab-item {
+    -ms-touch-action: none;
+        touch-action: none;
+    height: 100%;
+}
+
+nav.mui-bar.mui-bar-tab {
+    height: 3rem;
+}
+
+.mui-bar-tab .mui-tab-item .mui-icon {
+    top: 3px;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0.1rem;
+}
+
+.mui-bar-tab .mui-tab-item .mui-icon~.mui-tab-label {
+    font-size: 0.5rem;
+    line-height: 1rem;
+}
+
+.mui-bar-tab~.mui-content {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+}
+
+button.submit {
+    background: #9d7e60;
+    width: 100%;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #fff;
+    margin-top: 1rem;
+    height: 2rem;
+}
+
+button.mui-btn.mui-btn-blue.mui-poppicker-btn-ok,
+button.mui-btn.mui-btn-blue {
+    color: #ff8b16;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+}
+
+.mui-poppicker-header,
+.mui-dtpicker-header {
+    border-radius: 0.3rem 0.3rem 0 0;
+}
+
+button.mui-btn.mui-poppicker-btn-cancel,
+.mui-dtpicker-header button {
+    color: #aaaaaa;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+}
+
+button.mui-btn.mui-poppicker-btn-cancel>img,
+.mui-dtpicker-header button>img {
+    width: 1rem;
+}
+
+.mui-picker-inner,
+.mui-picker {
+    background: #fcfcfc;
+    -webkit-mask-box-image: none;
+    border-radius: 0 0 0.3rem 0.3rem;
+}
+
+.mui-poppicker-body {
+    border: none;
+    border-radius: 0 0 0.3rem 0.3rem;
+}
+
+button.mui-btn {
+    color: #aaaaaa;
+    border-color: #aaaaaa;
+}
+
+.mui-dtpicker-header {
+    background: #ffffff;
+}
+
+.mui-dtpicker-title h5 {
+    display: none;
+}
+
+span.mui-popup-button.mui-popup-button-bold {
+    color: #FF8B16;
+}
+
+span.mui-popup-button {
+    color: #aaaaaa;
+}
+
+[v-cloak] {
+    display: none !important;
+}
+
+.mui-poppicker.mui-active,
+.mui-dtpicker.mui-active {
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+    border-radius: 0.3rem;
+}
+
+.popicker-title,
+.dt-popicker-title {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    text-align: center;
+    font-size: 1rem;
+    color: #000000;
+}
+
+.mui-poppicker-header,
+.mui-dtpicker-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    background: #eeeeee;
+}
+
+.mui-pciker-list li {
+    color: #b19c88;
+}
+
+.mui-pciker-list li.highlight {
+    color: #5f4831;
+}
+
+.mui-pciker-rule-ft {
+    z-index: 2;
+    border-top: solid 1px #ced7de;
+    border-bottom: solid 1px #ced7de;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+
+    -webkit-appearance: none !important;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+.ellipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* 联系商家 */
+.contact-business-wrapper {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    background: #FFFFFF;
+    border-top: 1px solid #f6f6f6;
+    box-shadow: 0 2px 6px 0 #EBEBEB;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+span.phone-number {
+    color: #9e7f62;
+    font-size: 0.8rem;
+}
+a.contact-business-btn {
+    background: #ff8a16;
+    color: #fff;
+    font-size: 0.7rem;
+    border-radius: 1rem;
+    padding: 0.1rem 0.8rem;
+    line-height: 1rem;
+}
+p.phone-number-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 28%;
+}
+img.phone-icon {
+    width: 1rem;
+}

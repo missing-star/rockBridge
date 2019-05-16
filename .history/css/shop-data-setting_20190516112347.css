@@ -1,0 +1,295 @@
+header.mui-bar.mui-bar-nav {
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 2.5rem;
+}
+
+header.packet-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 1rem;
+}
+
+header.packet-title>p:first-child {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+    margin-left: -0.5rem;
+    padding: 0;
+    font-size: 2rem;
+    color: #AAAAAA;
+}
+.hello {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border-bottom: 1px solid #f6f6f6;
+}
+img.business-logo {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+button.edit {
+    border: none;
+    background: #9D7E60;
+    border-radius: 1rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: #ffffff;
+}
+p.hello-info {
+    color: #333333;
+    font-size: 1.2rem;
+}
+p.sub-title {
+    color: #aaaaaa;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    line-height: 1rem;
+}
+p.base-info {
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1rem;
+    margin-top: 1rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+ul.info-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+li.info-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border-bottom: 1px solid #f6f6f6;
+    padding: 0.5rem 0;
+}
+.editor-logo {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: relative;
+}
+.mask-upload {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+#clipArea {
+    margin: 20px;
+    height: 300px;
+}
+button#cancel-btn {
+    float: left;
+    margin-left: 15px;
+}
+button#cancel-btn, button#confirm-btn {
+    border-radius: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+button#confirm-btn {
+    float: right;
+    margin-right: 15px;
+}
+button#cancel-btn, button#confirm-btn {
+    border-radius: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+label.title {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    width: 25%;
+}
+p.level-up.arrow-right {
+    background: url(../imgs/arrow-right-black.png) no-repeat;
+    background-size: 0.5rem;
+    background-position: right;
+    padding-right: 1rem;
+    color: #FF8B16;
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+input.content.arrow-right {
+    font-size: 0.8rem;
+    color: #aaaaaa;
+}
+input.content.arrow-right {
+    color: #333333;
+    background: url(../imgs/arrow-right-black.png) no-repeat;
+    background-size: 0.5rem;
+    background-position: right;
+}
+input.content.arrow-right.no-bg {
+    background: none;
+}
+button.apply-destory {
+    width: 100%;
+    border-radius: 1.2rem;
+    border: 1px solid #9D7E60;
+    color: #9D7E60;
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+.editName {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.input-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    padding-right: 1rem;
+    position: relative;
+}
+input.editor {
+    border: 1px dashed #DADADA;
+    height: 2rem;
+}
+button.cancel-btn{
+    height: 2rem;
+    font-size: 0.8rem;
+    background: #ffffff;
+    border: none;
+    color: #aaaaaa;
+    border-color: #aaaaaa;
+}
+button.confirm {
+    height: 2rem;
+    font-size: 0.8rem;
+    background: #9D7E60;
+    color: #ffffff;
+    border: none;
+}
+span.inpupt-number {
+    text-align: right;
+    font-size: 0.6rem;
+    line-height: 1rem;
+    color: #aaaaaa;
+}
+span.clear-input {
+    position: absolute;
+    right: 1.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 2rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+span.clear-input>img {
+    width: 1rem;
+}
+input.content.limit {
+    width: 50%;
+}
+.id-card-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    height: 6rem;
+    overflow: hidden;
+}
+img.id-card {
+    width: 35%;
+    height: 4rem;
+    border-radius: 0.2rem;
+}
+li.tab-contetn-item.id-card {
+    margin-top: 1rem;
+}
+li.info-item.renting {
+    padding: 1rem 0;
+}
+span.upload-status {
+    font-size: 0.6rem;
+    color: #aaaaaa;
+}
+li.info-item.renting.arrow-right {
+    background: url(../imgs/arrow-right-black.png) no-repeat;
+    background-position: right;
+    background-size: 0.6rem;
+    padding-right: 1rem;
+}
+button.apply-destory.save {
+    background: #9D7E60;
+    color: #FFFFFF;
+}
+button.apply-destory.manager {
+    background: #9d7e60;
+    color: #ffffff;
+}
+button.save-edit-info {
+    background: #ff8a16;
+    color: #fff;
+    font-size: 0.8rem;
+    border-radius: 1rem;
+    padding: 0.2rem 1rem;
+    line-height: 1rem;
+    border: none;
+    position: absolute;
+    right: 1rem;
+}

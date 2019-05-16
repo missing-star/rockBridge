@@ -1,0 +1,14 @@
+img.preview-item {
+    width: 44vw;
+    height: 22vw;
+    margin: 3vw 0;
+}
+.tab-content.active {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.preview-img-wrapper {
+    position: relative;
+}
