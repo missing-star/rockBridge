@@ -108,7 +108,7 @@ var vm = new Vue({
         },
         getShopsDetail() {
             mui.openWindow({
-                url: 'shop-base-info.html?shop_id=' + getParams().id
+                url: 'shop-base-info.html?shops_id=' + getParams().id
             });
         }
     }
