@@ -51,13 +51,13 @@
         </header>
         <div class="mui-content">
             <div class="tab-content" :class="{active:showTab == 0}">
-                <div @click="previewBg(item.id,item.ad_code)" v-for="(item,index) in bgList" :class="{active:currentPreview == item.id}" class="preview-img-wrapper">
-                    <img :src="item.ad_code | filterImg" class="preview-item">
+                <div @click="previewBg(item.id)" v-for="(item,index) in bgList" :class="{active:currentPreview == item.id}" class="preview-img-wrapper">
+                    <img :src="item.ad_code" class="preview-item">
                     <img v-if="currentPreview == item.id" src="imgs/preview.png" class="preview-icon">
                 </div>
             </div>
             <div class="tab-content goods" :class="{active:showTab == 1}">
-                <div @click="previewBg(item.id,item.ad_code)" v-for="(item,index) in bgHistory" :class="{active:currentPreview == item.id}" class="preview-img-wrapper">
+                <div @click="previewBg(item.id)" v-for="(item,index) in bgHistory" :class="{active:currentPreview == item.id}" class="preview-img-wrapper">
                     <img :src="item.ad_code | filterImg" class="preview-item">
                     <img v-if="currentPreview == item.id" src="imgs/preview.png" class="preview-icon">
                 </div>

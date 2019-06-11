@@ -325,26 +325,19 @@ function jsApiCall() {
         JSON.parse(vm.str),
         function (res) {
             if (res.err_msg == "get_brand_wcpay_request:ok") {
-                if (vm.selectedId == 5) {
-                    mui.confirm('缴费成功，请拿电卡至服务大厅进行充电', '', ['确定'], function (e) {
+                mui.toast('支付成功!');
+                setTimeout(function () {
+                    if(vm.selectedId == 0) {
+                        mui.openWindow({
+                            url: 'repair-detail.html?id=' + vm.id
+                        });
+                    }
+                    else {
                         mui.openWindow({
                             url: 'pay-detail.html'
                         });
-                    });
-                } else {
-                    mui.toast('支付成功!');
-                    setTimeout(function () {
-                        if (vm.selectedId == 0) {
-                            mui.openWindow({
-                                url: 'repair-detail.html?id=' + vm.id
-                            });
-                        } else {
-                            mui.openWindow({
-                                url: 'pay-detail.html'
-                            });
-                        }
-                    }, 200);
-                }
+                    }
+                }, 200);
             } else {
                 //支付失败/用户取消支付
 

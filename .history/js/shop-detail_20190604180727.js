@@ -167,7 +167,7 @@ function getShopInfo() {
             vm.searchList = data.result.goods_list;
             vm.isCollection = data.result.is_collection;
             vm.score = data.result.shop_review;
-            vm.shopBg.backgroundImage = `url(${rootUrl}${data.result.bacgd_img})`;
+            vm.shopBg = `${rootUrl}${data.result.bacgd_img}`;
         },
         error: function () {
             mui.toast('服务器异常');

@@ -39,7 +39,7 @@ var vm = new Vue({
                 type:'post',
                 dataTpe:'json',
                 data:{
-                    bd_id:this.currentBgIndex
+                    bg_id:this.currentBgIndex
                 },
                 success:function(data) {
                     if(data.status == 1) {
@@ -91,33 +91,9 @@ var vm = new Vue({
                     mui.toast('服务器异常');
                 }
             });
-        },
-        getShopInfo() {
-            var vm = this;
-            $.ajax({
-                url: `${rootUrl}/index/api/getShopsInfo`,
-                data: {
-                    id: JSON.parse(sessionStorage.getItem('user')).shop_id
-                },
-                type: 'post',
-                dataType: 'json',
-                success: function (data) {
-                    vm.shopInfo = data.result[0];
-                    vm.hotList = data.result.click_goods_list;
-                    vm.allList = data.result.goods_list;
-                    vm.searchList = data.result.goods_list;
-                    vm.isCollection = data.result.is_collection;
-                    vm.score = data.result.shop_review;
-                    vm.currentCode = `${rootUrl}${data.result.bacgd_img}`;
-                },
-                error: function () {
-                    mui.toast('服务器异常');
-                }
-            });
         }
     },
     mounted() {
-        this.getShopInfo();
         this.getBgList();
         this.getBgHistoryList();
     },

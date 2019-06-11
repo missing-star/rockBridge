@@ -21,9 +21,8 @@ var vm = new Vue({
             shop_review: ''
         },
         isMore: true,
-        shopBg: {
-            backgroundImage: '',
-            backgroundSize: '100% 100%'
+        shopBg:{
+            bacgd_img
         }
     },
     filters: {
@@ -167,7 +166,6 @@ function getShopInfo() {
             vm.searchList = data.result.goods_list;
             vm.isCollection = data.result.is_collection;
             vm.score = data.result.shop_review;
-            vm.shopBg.backgroundImage = `url(${rootUrl}${data.result.bacgd_img})`;
         },
         error: function () {
             mui.toast('服务器异常');

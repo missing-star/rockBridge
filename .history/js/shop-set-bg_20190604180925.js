@@ -39,7 +39,7 @@ var vm = new Vue({
                 type:'post',
                 dataTpe:'json',
                 data:{
-                    bd_id:this.currentBgIndex
+                    bg_id:this.currentBgIndex
                 },
                 success:function(data) {
                     if(data.status == 1) {
@@ -97,7 +97,7 @@ var vm = new Vue({
             $.ajax({
                 url: `${rootUrl}/index/api/getShopsInfo`,
                 data: {
-                    id: JSON.parse(sessionStorage.getItem('user')).shop_id
+                    id: getParams().id
                 },
                 type: 'post',
                 dataType: 'json',
@@ -117,7 +117,6 @@ var vm = new Vue({
         }
     },
     mounted() {
-        this.getShopInfo();
         this.getBgList();
         this.getBgHistoryList();
     },

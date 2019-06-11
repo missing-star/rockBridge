@@ -9,9 +9,9 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.2.5">
-    <link rel="stylesheet" href="css/common.css?v=1.2.5">
-    <link rel="stylesheet" href="css/shop-detail.css?v=1.2.5">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.2.6">
+    <link rel="stylesheet" href="css/common.css?v=1.2.6">
+    <link rel="stylesheet" href="css/shop-detail.css?v=1.2.6">
     <title>叠石桥</title>
     <!--
         店铺详情
@@ -21,22 +21,24 @@
 <body>
     <div id="app">
         <!--顶部搜索栏-->
-        <header class="mui-bar mui-bar-nav">
+        <header class="mui-bar mui-bar-nav" :style="currentBg">
             <div class="bg-black">
                 <div class="search-group">
                     <i onclick="goBack()" class="mui-icon mui-icon-arrowleft"></i>
                 </div>
                 <div class="shop-info">
-                    <img :src="shopInfo.images" alt="" class="shop-logo">
-                    <div class="shop-title">
-                        <p class="shop-name">{{shopInfo.title}}</p>
-                        <p class="shop-level">
-                            <span class="shop-score">{{score}}分</span>
-                            <span class="shop-level-icon">
-                                <img v-for="n in score" class="img-level" src="imgs/crown-active.png" alt="">
-                                <img class="img-level" v-for="n in (5-score)" src="imgs/crown.png" alt="">
-                            </span>
-                        </p>
+                    <div @click="getShopsDetail" class="left-part-wrapper">
+                        <img :src="shopInfo.images" alt="" class="shop-logo">
+                        <div class="shop-title">
+                            <p class="shop-name">{{shopInfo.title}}</p>
+                            <p class="shop-level">
+                                <span class="shop-score">{{score}}分</span>
+                                <span class="shop-level-icon">
+                                    <img v-for="n in score" class="img-level" src="imgs/crown-active.png" alt="">
+                                    <img class="img-level" v-for="n in (5-score)" src="imgs/crown.png" alt="">
+                                </span>
+                            </p>
+                        </div>
                     </div>
                     <button @click="collect(isCollection)" class="follow" :class="{active:isCollection}">
                         <template v-if="isCollection == 1">已收藏</template>
@@ -58,7 +60,7 @@
                 <div class="slider-business">
                     <div @click="getDetail(shops.id)" v-for="shops in hotList" class="slider-business-item">
                         <img :src="shops.images | filterImg" />
-                        <p class="business-item-title">{{shops.title}}</p>
+                        <p class="business-item-title ellipsis">{{shops.title}}</p>
                         <p class="business-item-content">{{shops.price}}</p>
                     </div>
                 </div>
@@ -69,8 +71,9 @@
                         <img class="goods-img" :src="shops.images | filterImg" />
                         <div class="goods-info">
                             <p>
-                                <span>{{shops.title}}</span>
-                                <span class="eye-container"><img class="view-num" src="imgs/eye.png" />{{shops.click_num}}</span>
+                                <span class="ellipsis">{{shops.title}}</span>
+                                <span class="eye-container"><img class="view-num"
+                                        src="imgs/eye.png" />{{shops.click_num}}</span>
                             </p>
                             <p>
                                 <span class="goods-price">￥ {{shops.price}}</span>
@@ -178,12 +181,20 @@
                 </ul>
             </div>
         </div>
+        <!-- 联系商家 -->
+        <div class="contact-business-wrapper">
+            <p class="phone-number-wrapper">
+                <img src="imgs/phone.png" alt="电话" class="phone-icon">
+                <span class="phone-number">{{shopInfo.landline}}</span>
+            </p>
+            <a href="tel:025-85123654" class="contact-business-btn">联系商家</a>
+        </div>
     </div>
-    <script src="assets/vue/vue.min.js?v=1.2.5"></script>
-    <script src="assets/jquery/jquery.min.js?v=1.2.5"></script>
-    <script src="assets/mui/js/mui.min.js?v=1.2.5"></script>
-    <script src="js/common.js?v=1.2.5"></script>
-    <script src="js/shop-detail.js?v=1.2.5"></script>
+    <script src="assets/vue/vue.min.js?v=1.2.6"></script>
+    <script src="assets/jquery/jquery.min.js?v=1.2.6"></script>
+    <script src="assets/mui/js/mui.min.js?v=1.2.6"></script>
+    <script src="js/common.js?v=1.2.6"></script>
+    <script src="js/shop-detail.js?v=1.2.6"></script>
 </body>
 
 </html>

@@ -9,9 +9,9 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.2.5">
-    <link rel="stylesheet" href="css/common.css?v=1.2.5">
-    <link rel="stylesheet" href="css/shop-data-setting.css?v=1.2.5">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css?v=1.2.6">
+    <link rel="stylesheet" href="css/common.css?v=1.2.6">
+    <link rel="stylesheet" href="css/shop-data-setting.css?v=1.2.6">
     <title>叠石桥</title>
 </head>
 
@@ -46,7 +46,8 @@
                 <button @click="confirmName" class="confirm">确定</button>
             </div>
             <p class="base-info">
-                基本信息
+                <span class="title">基本信息</span>
+                <button class="save-edit-info" @click="saveEditInfo">保存</button>
             </p>
             <ul class="info-list">
                 <li @click="buySettles" class="info-item">
@@ -57,12 +58,23 @@
                 <li class="info-item">
                     <label for="" class="title">负责人</label>
                     <input v-model="person_name" type="text" class="content limit">
-                    <button type="button" @click="savePerseonName" class="edit">保存</button>
+                    <!-- <button type="button" @click="savePerseonName" class="edit">保存</button> -->
                 </li>
                 <li class="info-item">
                     <label for="" class="title">商家电话</label>
-                    <input type="tel" class="content" v-model="landline">
-                    <button type="button" @click="savePhone" class="edit">保存</button>
+                    <input placeholder="请输入电话" type="tel" class="content" v-model="landline">
+                    <!-- <button type="button" @click="savePhone" class="edit">保存</button> -->
+                </li>
+                <li class="info-item wechat renting arrow-right">
+                    <label for="" class="title">微信号</label>
+                    <input placeholder="请输入微信号" type="text" class="content" v-model="customer_service">
+                    <img @click="uploadWechatCode" src="imgs/qrcode-icon.png" class="picture-icon" >
+                    <input type="file" accept="image/*" hidden id="wechat">
+                    <!-- <button type="button" @click="savePhone" class="edit">保存</button> -->
+                </li>
+                <li @click="pageLink('shop-set-bg.html')" class="info-item renting arrow-right">
+                    <label for="" class="title">商铺背景图</label>
+                    <img src="imgs/picture.png" class="picture-icon" >
                 </li>
                 <li @click="uploadLicense" class="info-item renting arrow-right">
                     <label for="" class="title">
@@ -92,20 +104,21 @@
         </div>
         <div id="sheet" class="mui-popover mui-popover-bottom mui-popover-action ">
             <div id="clipArea"></div>
-            <button onclick="closeSheet()" id="cancel-btn"><i class="mui-icon mui-icon mui-icon-closeempty"></i></button>
+            <button onclick="closeSheet()" id="cancel-btn"><i
+                    class="mui-icon mui-icon mui-icon-closeempty"></i></button>
             <button id="confirm-btn"><i class="mui-icon mui-icon mui-icon-checkmarkempty"></i></button>
         </div>
     </div>
-    <script src="assets/vue/vue.min.js?v=1.2.5"></script>
-    <script src="assets/jquery/jquery.min.js?v=1.2.5"></script>
-    <script src="assets/mui/js/mui.min.js?v=1.2.5"></script>
-    <script type="text/javascript" src="assets/upload/js/jquery-2.1.3.min.js?v=1.2.5"></script>
-    <script src="assets/upload/js/iscroll-zoom.js?v=1.2.5"></script>
-    <script src="assets/upload/js/hammer.js?v=1.2.5"></script>
-    <script src="assets/upload/js/lrz.all.bundle.js?v=1.2.5"></script>
-    <script src="assets/upload/js/jquery.photoClip.js?v=1.2.5"></script>
-    <script src="js/common.js?v=1.2.5"></script>
-    <script src="js/shop-data-setting.js?v=1.2.5"></script>
+    <script src="assets/vue/vue.min.js?v=1.2.6"></script>
+    <script src="assets/jquery/jquery.min.js?v=1.2.6"></script>
+    <script src="assets/mui/js/mui.min.js?v=1.2.6"></script>
+    <script type="text/javascript" src="assets/upload/js/jquery-2.1.3.min.js?v=1.2.6"></script>
+    <script src="assets/upload/js/iscroll-zoom.js?v=1.2.6"></script>
+    <script src="assets/upload/js/hammer.js?v=1.2.6"></script>
+    <script src="assets/upload/js/lrz.all.bundle.js?v=1.2.6"></script>
+    <script src="assets/upload/js/jquery.photoClip.js?v=1.2.6"></script>
+    <script src="js/common.js?v=1.2.6"></script>
+    <script src="js/shop-data-setting.js?v=1.2.6"></script>
 </body>
 
 </html>

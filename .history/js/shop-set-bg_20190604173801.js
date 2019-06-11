@@ -9,8 +9,7 @@ var vm = new Vue({
         bgList:[],
         currentBgIndex:0,
         bgHistory:[],
-        currentPreview:-1,
-        currentCode:''
+        currentPreview:-1
     },
     filters: {
         //拼接图片地址
@@ -25,7 +24,7 @@ var vm = new Vue({
     computed: {
         currentBg:function() {
             return {
-                backgroundImage:`url(${this.currentCode})`,
+                backgroundImage:`url(bg/${this.bgList[this.currentBgIndex]}.png)`,
                 backgroundSize:'100% 100%'
             }
         }
@@ -35,19 +34,14 @@ var vm = new Vue({
         // 更换背景图
         changeBg() {
             $.ajax({
-                url:`${rootUrl}/index/api/getShopBacgd`,
+                url:`${rootUrl}/index/api/getHistoryBacgdList`,
                 type:'post',
                 dataTpe:'json',
                 data:{
-                    bd_id:this.currentBgIndex
+                    bg_id:this.currentBgIndex
                 },
                 success:function(data) {
-                    if(data.status == 1) {
-                        mui.toast('设置成功');
-                    }
-                    else {
-                        mui.toast('设置失败');
-                    }
+
                 },
                 error:function() {
                     mui.toast('服务器异常');
@@ -59,19 +53,17 @@ var vm = new Vue({
             return `bg/${this.bgList[index]}.png`;
         },
         // 预览
-        previewBg(id,code) {
-            this.currentPreview = id;
-            this.currentBgIndex = id;
-            this.currentCode = `${rootUrl}${code}`;
+        previewBg(index) {
+            this.currentPreview = index;
+            this.currentBgIndex = index;
         },
         getBgList() {
-            var vm = this;
             $.ajax({
                 url:`${rootUrl}/index/api/getBacgdList`,
                 type:'post',
                 dataTpe:'json',
                 success:function(data) {
-                    vm.bgList = data.result;
+
                 },
                 error:function() {
                     mui.toast('服务器异常');
@@ -79,47 +71,18 @@ var vm = new Vue({
             });
         },
         getBgHistoryList() {
-            var vm = this;
             $.ajax({
                 url:`${rootUrl}/index/api/getHistoryBacgdList`,
                 type:'post',
                 dataTpe:'json',
                 success:function(data) {
-                    vm.bgHistory = data.result;
+
                 },
                 error:function() {
                     mui.toast('服务器异常');
                 }
             });
-        },
-        getShopInfo() {
-            var vm = this;
-            $.ajax({
-                url: `${rootUrl}/index/api/getShopsInfo`,
-                data: {
-                    id: JSON.parse(sessionStorage.getItem('user')).shop_id
-                },
-                type: 'post',
-                dataType: 'json',
-                success: function (data) {
-                    vm.shopInfo = data.result[0];
-                    vm.hotList = data.result.click_goods_list;
-                    vm.allList = data.result.goods_list;
-                    vm.searchList = data.result.goods_list;
-                    vm.isCollection = data.result.is_collection;
-                    vm.score = data.result.shop_review;
-                    vm.currentCode = `${rootUrl}${data.result.bacgd_img}`;
-                },
-                error: function () {
-                    mui.toast('服务器异常');
-                }
-            });
         }
-    },
-    mounted() {
-        this.getShopInfo();
-        this.getBgList();
-        this.getBgHistoryList();
     },
 });
 
