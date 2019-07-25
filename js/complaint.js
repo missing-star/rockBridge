@@ -54,7 +54,13 @@ var vm = new Vue({
                         setTimeout(function () {
                             history.go(-1);
                         }, 200);
-                    } else if (data.status == 202) {
+                    }
+                    else if(data.status == 302) {
+                        mui.openWindow({
+                            url:data.result
+                        });
+                    }
+                    else if (data.status == 202) {
                         goLogin();
                     }
                     vm.commentsInfo = data.result;

@@ -85,7 +85,13 @@ var vm = new Vue({
                         mui.confirm('报修已提交成功！', '', ['确定'], function (e) {
                             history.go(-1);
                         });
-                    } else if (data.status == 202) {
+                    }
+                    else if(data.status == 302) {
+                        mui.openWindow({
+                            url:data.result
+                        });
+                    }
+                    else if (data.status == 202) {
                         goLogin();
                     } else {
                         mui.toast(data.msg);
